@@ -661,7 +661,13 @@
   var supperEl=document.getElementById('supper');
   function route(){
     var h=location.hash;
-    if(h==='#editor'){openEditor();return}
+    if(h==='#editor'){
+      var CF=window.EDEN_CONFIG||{};
+      if(String(CF.backend).toLowerCase()==='supabase'){ // editing lives on the staff site now
+        if(CF.staffSite){location.href=CF.staffSite;return}
+        history.replaceState(null,'','#home');h='#home';
+      }else{openEditor();return}
+    }
     if(!ed.el.hidden)closeEditor();
     var kiosk=false;try{kiosk=localStorage.getItem('eden-ipad-menu')==='1'}catch(e){}
     if(h==='#ipad'){try{localStorage.setItem('eden-ipad-menu','1')}catch(e){}kiosk=true}

@@ -9,6 +9,7 @@
  *   static   — read-only; the menu comes from js/menu-data.js
  *   local    — the editor saves to this browser's localStorage
  *   firebase — the editor saves to Cloud Firestore; everyone sees changes live
+ *   supabase — read-only here, live from Supabase; the menu is edited on the staff site
  *
  * Database paths used by the site (identical in local and Firebase modes):
  *   site/menu                 { allergy, updatedAt, tabs:[{ id, label, gids:[...] }] }
@@ -121,9 +122,90 @@
     return !editors.length || editors.indexOf(email) !== -1;
   }
 
+  /* ---------- Supabase mode (read-only on the public site) ----------
+   * The whole "site/..." area is small (one row per menu section), so it is read
+   * once into memory and then kept current by Supabase Realtime. Editing happens on
+   * the staff site; this page never signs in and cannot write. */
+  var SUPABASE_JS = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js';
+  function makeSupabaseDb(client) {
+    var data = {}, subs = [], loaded = false;
+    function fire() { if (loaded) subs.slice().forEach(function (f) { f(); }); }
+    function load() {
+      return client.from('site_docs').select('path,data').like('path', 'site/%').then(function (r) {
+        if (r.error) throw r.error;
+        var next = {};
+        (r.data || []).forEach(function (row) { next[row.path] = row.data; });
+        data = next; loaded = true; fire();
+      });
+    }
+    function meta() { return { fromCache: false, hasPendingWrites: false }; }
+    function docSnap(p) {
+      var v = data[p];
+      return { id: p.split('/').pop(), exists: v !== undefined, data: function () { return clone(v); }, metadata: meta() };
+    }
+    function watch(f) { subs.push(f); if (loaded) setTimeout(f, 0); return function () { subs = subs.filter(function (x) { return x !== f; }); }; }
+    function readOnly() { return Promise.reject({ code: 'invalid_argument', message: 'The public website is read-only. Use the staff site to edit.' }); }
+    function doc(p) {
+      return {
+        id: p.split('/').pop(), path: p,
+        get: function () { return Promise.resolve(docSnap(p)); },
+        set: readOnly, update: readOnly, delete: readOnly,
+        onSnapshot: function (next) { return watch(function () { next(docSnap(p)); }); },
+        collection: function (sub) { return col(p + '/' + sub); }
+      };
+    }
+    function col(p) {
+      var depth = p.split('/').length;
+      function snap() {
+        var docs = Object.keys(data).filter(function (k) { return k.indexOf(p + '/') === 0 && k.split('/').length === depth + 1; }).sort().map(docSnap);
+        return { docs: docs, size: docs.length, empty: !docs.length, docChanges: function () { return []; }, metadata: meta() };
+      }
+      return {
+        path: p,
+        doc: function (id) { return doc(p + '/' + (id || rid())); },
+        get: function () { return Promise.resolve(snap()); },
+        onSnapshot: function (next) { return watch(function () { next(snap()); }); }
+      };
+    }
+    // live updates; after any reconnect, re-read everything so nothing is missed
+    var firstJoin = true;
+    client.channel('eden-site-docs')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'site_docs' }, function (ch) {
+        var row = ch.new && ch.new.path ? ch.new : null, old = ch.old || {};
+        if (ch.eventType === 'DELETE') { if (old.path) delete data[old.path]; }
+        else if (row && row.path.indexOf('site/') === 0) data[row.path] = row.data;
+        fire();
+      })
+      .subscribe(function (status) {
+        if (status === 'SUBSCRIBED') { if (!firstJoin) load().catch(function () {}); firstJoin = false; }
+      });
+    // iPads sleep between services: refresh when the page becomes visible again
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') load().catch(function () {}); });
+    return load().then(function () { return { doc: doc, collection: col }; });
+  }
+  function initSupabase() {
+    var c = CFG.supabase || {};
+    if (!c.url || !c.key) return Promise.reject(new Error('Supabase is selected in js/config.js but its settings are empty.'));
+    return loadScript(SUPABASE_JS).then(function () {
+      /* global supabase */
+      var client = supabase.createClient(c.url, c.key, { auth: { persistSession: false, autoRefreshToken: false } });
+      return makeSupabaseDb(client);
+    });
+  }
+
   /* ---------- choose the backend ---------- */
   var db = null, canEdit = false, ready;
-  if (mode === 'local') {
+  if (mode === 'supabase') {
+    // if the database can't be reached in a few seconds, show the built-in menu; live data replaces it when it arrives
+    var sbReady = initSupabase();
+    ready = Promise.race([sbReady, new Promise(function (r) { setTimeout(function () { r(null); }, 6000); })])
+      .then(function (store) {
+        if (store) { db = store; return; }
+        console.warn('[Eden] Supabase is slow to answer; showing the built-in menu for now.');
+        mode = 'static';
+      })
+      .catch(function (e) { console.warn('[Eden] Supabase unavailable, showing the built-in menu:', e && e.message || e); mode = 'static'; });
+  } else if (mode === 'local') {
     db = makeLocalDb(); canEdit = true; ready = Promise.resolve();
   } else if (mode === 'firebase') {
     ready = initFirebase().then(function () { db = fb.db; canEdit = fbCanEdit(); })
@@ -189,7 +271,7 @@
   function el(html) { var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
 
   function setupEditorExtras() {
-    if (mode === 'static') return;
+    if (mode === 'static' || mode === 'supabase') return;
     var style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
     var actions = document.querySelector('#editor .ed-actions');
 

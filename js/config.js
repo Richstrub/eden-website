@@ -1,20 +1,28 @@
 /* Eden website configuration.
  *
- * backend — where the menu comes from and whether the menu editor can save:
- *   'static'   (default) The menu is read from js/menu-data.js (built from data/menu.json).
- *              Works anywhere, including GitHub Pages, with no setup. The menu editor is off.
- *   'local'    The menu editor works, but changes are saved only in this browser.
- *              Use it to try the editor, or to prepare a new data/menu.json
- *              ("Download menu.json" button in the editor) that you then commit.
- *   'firebase' Live editing: changes made in the editor appear on the website and the
- *              iPad menu within seconds, on every device. Needs a free Firebase project.
- *              See "Menu editor setup" in README.md.
+ * backend — where the menu comes from:
+ *   'supabase' Live: the menu and Supper Club page are read from Eden's Supabase database,
+ *              and changes made on the staff site appear here and on the iPad menu within
+ *              about a second. If the database can't be reached, the built-in menu
+ *              (js/menu-data.js) is shown instead. This site never signs in or writes.
+ *   'static'   The menu is read from js/menu-data.js (built from data/menu.json). No setup.
+ *   'local'    Menu editor on this site, saving only in this browser (for trying things out).
+ *   'firebase' Older live-editing option, kept for reference. See README.md.
  *
- * The Firebase values below are a public web-app identifier, not a password.
- * Access is controlled by firebase/firestore.rules. Never put secret keys in this file.
+ * The Supabase "publishable" key below is meant to be public: it is built into every page
+ * that talks to the database, and the database's own rules decide what it may do
+ * (here: read the website content, nothing else). Never put a secret key in this file.
  */
 window.EDEN_CONFIG = {
-  backend: 'static',
+  backend: 'supabase',
+
+  supabase: {
+    url: 'https://qmblccwyxbpvziiwrlne.supabase.co',
+    key: 'sb_publishable_Nbp1K_Co8tDVB-jNjBRs3w_D40qm4Mg'
+  },
+
+  // Where staff edit the menu. "#editor" on this site sends people there.
+  staffSite: '',
 
   firebase: {
     apiKey: '',
@@ -22,8 +30,5 @@ window.EDEN_CONFIG = {
     projectId: '',
     appId: ''
   },
-
-  // Email addresses allowed to edit the menu (Firebase mode). Keep this list in sync
-  // with firebase/firestore.rules, which is what actually enforces it.
   editors: []
 };
