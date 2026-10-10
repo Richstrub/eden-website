@@ -22,7 +22,7 @@ window.EDEN_CONFIG = {
   },
 
   // Where staff edit the menu. "#editor" on this site sends people there.
-  staffSite: '',
+  staffSite: 'https://eden-admin.richard-a-strub.workers.dev/',
 
   firebase: {
     apiKey: '',
