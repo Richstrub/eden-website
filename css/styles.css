@@ -290,6 +290,8 @@ body.on-ipad{overflow:hidden;background:var(--ink)}
 .pad-tabs button[aria-current="true"]{color:var(--ivory);border-left-color:var(--ember-hot)}
 .pad-foot{margin-top:auto;padding-top:24px;font-size:.78rem;line-height:1.6;color:var(--soft-dark)}
 .pad-updated{margin-top:10px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+.pad-site{display:inline-block;margin-top:14px;padding-bottom:3px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember-hot);border-bottom:1px solid rgba(224,154,94,.35)}
+.pad-site:hover,.pad-site:focus-visible{color:var(--ivory);border-bottom-color:var(--ivory)}
 .pad-main{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(56px + env(safe-area-inset-top,0px)) 56px calc(64px + env(safe-area-inset-bottom,0px));background:var(--paper);color:var(--ink)}
 .pad-main h2{font-size:clamp(2.4rem,4vw,3.4rem);font-weight:300}
 .pad-main .pad-rule{width:48px;height:1px;background:var(--ember);margin:20px 0 34px}
