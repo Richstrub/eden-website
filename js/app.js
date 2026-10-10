@@ -159,10 +159,19 @@
     });
   }
   function hasWine(t){return (t.groups||[]).some(function(g){return (g.items||[]).some(isWine)})}
-  var SUB_LABEL={style:'Styles',country:'Countries',grape:'Grapes'};
+  var SUB_LABEL={style:'Styles',country:'Countries',appellation:'Appellations',grape:'Grapes'};
   function grapeLinks(groups,idp,cls,mode){
-    var h='<div class="'+cls+'"><div class="wn-sublabel">'+(SUB_LABEL[mode]||'Jump to')+'</div>';
-    groups.forEach(function(g,i){if((g.items||[]).filter(shown).length)h+='<a href="#'+idp+i+'" data-target="'+idp+i+'">'+esc(g.title)+'</a>'});
+    var h='<div class="'+cls+'"><div class="wn-sublabel">'+(SUB_LABEL[mode]||'Jump to')+'</div>',lastC=null;
+    groups.forEach(function(g,i){
+      var items=(g.items||[]).filter(shown);if(!items.length)return;
+      var label=g.title;
+      if(mode==='appellation'){ // appellations are listed country by country, so group the links the same way
+        var c=items[0].country||'';
+        if(c&&c!==lastC){h+='<div class="wn-country">'+esc(c)+'</div>';lastC=c}
+        var suf=', '+c;if(c&&label.length>suf.length&&label.slice(-suf.length)===suf)label=label.slice(0,-suf.length);
+      }
+      h+='<a href="#'+idp+i+'" data-target="'+idp+i+'">'+esc(label)+'</a>';
+    });
     return h+'</div>';
   }
   function wineNav(mode,cls,groups,idp){
@@ -420,11 +429,15 @@
       if(SUB_LABEL[pad.wineMode])wh+=grapeLinks(gs,'pg','wc-sub',pad.wineMode);
       wc.innerHTML=wh;
       setTimeout(spyPad,0);
-      wc.querySelectorAll('.wc-sub a').forEach(function(a){a.onclick=function(e){e.preventDefault();var el=document.getElementById(a.dataset.target);if(el)main.scrollTo({top:el.offsetTop-24,behavior:'smooth'})}});
+      wc.querySelectorAll('.wc-sub a').forEach(function(a){a.onclick=function(e){e.preventDefault();padScrollTo(document.getElementById(a.dataset.target))}});
       wc.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(pad.wineMode===b.dataset.mode)return;pad.wineMode=b.dataset.mode;renderPad(menuData);main.scrollTop=0;main.classList.remove('fade');void main.offsetWidth;main.classList.add('fade')}});
     }
-    main.querySelectorAll('.pad-jump button').forEach(function(b){b.onclick=function(){var el=document.getElementById(b.dataset.g);main.scrollTo({top:el.offsetTop-24,behavior:'smooth'})}});
+    main.querySelectorAll('.pad-jump button').forEach(function(b){b.onclick=function(){padScrollTo(document.getElementById(b.dataset.g))}});
     if(keepScroll)main.scrollTop=st;
+  }
+  function padScrollTo(el){ // bring a section's heading to the top of the menu, measured on screen so nested layouts can't throw it off
+    if(!el)return;var main=document.getElementById('padMain');
+    main.scrollTo({top:main.scrollTop+el.getBoundingClientRect().top-main.getBoundingClientRect().top-24,behavior:'smooth'});
   }
   function padIdle(){ // after 3 quiet minutes, return to the first page for the next guest
     clearTimeout(pad.idle);
