@@ -180,6 +180,10 @@
     if(SUB_LABEL[mode]&&groups)h+=grapeLinks(groups,idp,'wn-sub',mode);
     return h+'</div>';
   }
+  function pairHTML(it,c){ // suggested wine pairing under a dish (Kitchen menu)
+    if(!it.pair||isWine(it))return '';
+    return '<div class="'+c+'-pair"><span class="'+c+'-pair-label">Pairing</span><span class="'+c+'-pair-wine">'+esc(it.pair)+'</span>'+(it.pairPrice?'<span class="'+c+'-pair-price">'+esc(it.pairPrice)+' glass</span>':'')+'</div>';
+  }
   function groupsHTML(groups,idp){
     var h='';
     groups.forEach(function(g,gi){
@@ -191,6 +195,7 @@
         h+='<li class="mi"'+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+='<div class="mi-src">'+esc(it.src)+'</div>';
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
+        h+=pairHTML(it,'mi');
         h+='</li>';
       });
       h+='</ul>';
@@ -414,6 +419,7 @@
         h+='<div class="pad-item"'+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+='<div class="pad-src">'+esc(it.src)+'</div>';
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
+        h+=pairHTML(it,'pad');
         h+='</div>';
       });
       if(big)h+='</div>';
@@ -538,11 +544,18 @@
         ib.appendChild(btn('↑','Move up',function(){if(ii>0){g.items.splice(ii-1,0,g.items.splice(ii,1)[0]);markDirty();edRender()}}));
         ib.appendChild(btn('↓','Move down',function(){if(ii<g.items.length-1){g.items.splice(ii+1,0,g.items.splice(ii,1)[0]);markDirty();edRender()}}));
         ib.appendChild(confirmBtn('✕',function(){g.items.splice(ii,1);markDirty();edRender()},'Remove item'));
-        row.appendChild(ib);list.appendChild(row);
+        row.appendChild(ib);
+        if(!isWine(it)&&(t.id==='m-food'||/kitchen/i.test(t.label||''))){
+          var pr=document.createElement('div');pr.className='ed-pairrow';
+          pr.appendChild(field('Wine pairing (optional)',it.pair,function(v){if(v)it.pair=v;else delete it.pair}));
+          pr.appendChild(field('Glass price',it.pairPrice,function(v){if(v)it.pairPrice=v;else delete it.pairPrice}));
+          row.appendChild(pr);
+        }
+        list.appendChild(row);
       });
       box.appendChild(list);
       var foot=document.createElement('div');foot.className='ed-gfoot';
-      foot.appendChild(btn('+ Add item','Add item',function(){g.items.push(hasWine(t)?{name:'',country:'',appellation:'',grape:'',bottle:'',desc:'',price:''}:{name:'',src:'',desc:'',price:''});markDirty();edRender();var ins=box.querySelectorAll('.ed-item input');if(ins.length)ins[ins.length-4].focus()}));
+      foot.appendChild(btn('+ Add item','Add item',function(){g.items.push(hasWine(t)?{name:'',country:'',appellation:'',grape:'',bottle:'',desc:'',price:''}:{name:'',src:'',desc:'',price:''});markDirty();edRender();var rows=box.querySelectorAll('.ed-item');if(rows.length)rows[rows.length-1].querySelector('input').focus()}));
       box.appendChild(foot);main.appendChild(box);
     });
     var ag=btn('+ Add section','Add section',function(){t.groups.push({id:newGid(),title:'New section',note:'',noteAfter:'',items:[{name:'',src:'',desc:'',price:''}]});markDirty();edRender();main.scrollTop=main.scrollHeight});

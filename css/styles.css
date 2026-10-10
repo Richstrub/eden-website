@@ -132,6 +132,10 @@ section{padding:120px 40px}
 .mi-price{font-family:var(--serif);font-size:1.3rem;font-variant-numeric:tabular-nums}
 .mi-src{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ember-hot);margin-top:2px}
 .mi-desc{font-size:.9rem;color:var(--soft-dark);margin-top:2px}
+.mi-pair{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:4px 14px;margin-top:9px;padding-top:8px;border-top:1px dotted rgba(243,238,229,.16)}
+.mi-pair-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember-hot);white-space:nowrap}
+.mi-pair-wine{font-family:var(--serif);font-size:1.02rem;line-height:1.35;color:rgba(243,238,229,.86);min-width:0}
+.mi-pair-price{font-family:var(--serif);font-size:1rem;color:var(--soft-dark);white-space:nowrap;font-variant-numeric:tabular-nums}
 .mg-note{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--soft-dark)}
 .mg-title + .mg-note{margin:4px 0 4px}
 .allergy{margin-top:64px;text-align:center;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-dark)}
@@ -311,6 +315,10 @@ body.on-ipad{overflow:hidden;background:var(--ink)}
 .pad-price{font-family:var(--serif);font-size:1.4rem;font-variant-numeric:tabular-nums}
 .pad-src{font-family:var(--serif);font-style:italic;font-size:1.08rem;color:var(--ember);margin-top:2px}
 .pad-desc{font-size:.95rem;color:#4a4e53;margin-top:3px;line-height:1.55}
+.pad-pair{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:4px 14px;margin-top:10px;padding-top:9px;border-top:1px dotted var(--line)}
+.pad-pair-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember);white-space:nowrap}
+.pad-pair-wine{font-family:var(--serif);font-size:1.1rem;line-height:1.35;color:var(--text);min-width:0}
+.pad-pair-price{font-family:var(--serif);font-size:1.05rem;color:#4a4e53;white-space:nowrap;font-variant-numeric:tabular-nums}
 .pad-main.fade{animation:padfade .45s ease}
 @keyframes padfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (max-width:820px){.pad,.pad.wine{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}.pad-wcol{flex-direction:row;overflow-x:auto;padding:10px 16px;border-right:0;border-bottom:1px solid var(--line-dark)}.pad-wcol .wc-label{margin:0 6px 0 0;align-self:center;white-space:nowrap}.pad-wcol button{white-space:nowrap;padding:9px 12px}.pad{grid-template-columns:1fr;grid-template-rows:auto 1fr}.pad-side{padding:calc(20px + env(safe-area-inset-top,0px)) 16px 12px;border-right:0;border-bottom:1px solid var(--line-dark)}.pad-tabs{flex-direction:row;margin-top:14px;overflow-x:auto}.pad-tabs button{white-space:nowrap;font-size:1.15rem;border-left:0;border-bottom:1px solid transparent;padding:6px 12px}.pad-tabs button[aria-current="true"]{border-bottom-color:var(--ember-hot)}.pad-foot{display:none}.pad-main{padding:28px 16px 48px}.pad-brand{font-size:1.8rem}}
@@ -530,3 +538,8 @@ footer small{font-size:.74rem;letter-spacing:.08em}
 }
 @media (max-width:420px){.wordmark{font-size:1.45rem}}
 @media (prefers-reduced-motion:reduce){*,*::before{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* wine pairing row under Kitchen dishes */
+.ed-pairrow{grid-column:1/-2;display:grid;grid-template-columns:minmax(0,1fr) 90px;gap:10px;padding-top:2px}
+.ed-pairrow .ed-field span{color:var(--ember)}
+@media (max-width:820px){.ed-pairrow{grid-column:1/-1}}

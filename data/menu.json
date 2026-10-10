@@ -13,31 +13,41 @@
               "desc": "Bacon, poached egg, chives",
               "name": "Mushroom Toast",
               "price": "18",
-              "src": "Fruit of the Fungi · Lebanon, NY"
+              "src": "Fruit of the Fungi · Lebanon, NY",
+              "pair": "2023 Wölffer Estate Cabernet Franc, Long Island",
+              "pairPrice": "16"
             },
             {
               "desc": "Egg yolk, shallot, parsley, toast points, cornichons",
               "name": "Beef Tartare",
               "price": "18",
-              "src": "Hillside Farm · Truxton, NY"
+              "src": "Hillside Farm · Truxton, NY",
+              "pair": "Hermann J. Wiemer Extra Brut Méthode Champenoise, Seneca Lake",
+              "pairPrice": "18"
             },
             {
               "desc": "Braised leeks, fried halloumi, confit garlic",
               "name": "Green Lentil Salad",
               "price": "16",
-              "src": "Sorrell Hill Farm · Baldwinsville, NY"
+              "src": "Sorrell Hill Farm · Baldwinsville, NY",
+              "pair": "2023 Lieb Cellars Sauvignon Blanc, North Fork",
+              "pairPrice": "17"
             },
             {
               "desc": "Blue corn grits, fried egg, pickled red onions",
               "name": "Braised Short Rib",
               "price": "18",
-              "src": "Hillside Farm · Truxton, NY"
+              "src": "Hillside Farm · Truxton, NY",
+              "pair": "2023 Red Tail Ridge Blaufränkisch, Finger Lakes",
+              "pairPrice": "16"
             },
             {
               "desc": "Goat cheese, oranges, almond brittle, arugula",
               "name": "Beet and Carrot Salad",
               "price": "15",
-              "src": "Grindstone Farm · Pulaski, NY"
+              "src": "Grindstone Farm · Pulaski, NY",
+              "pair": "2024 Apollo's Praise Lahoma Vineyard Scheurebe, Seneca Lake",
+              "pairPrice": "17"
             }
           ],
           "note": "",
@@ -51,31 +61,41 @@
               "desc": "Israeli couscous, charred tomatillo, grilled radicchio, caramelized onions",
               "name": "Pan Seared Salmon",
               "price": "48",
-              "src": "Wester Ross · Scotland"
+              "src": "Wester Ross · Scotland",
+              "pair": "2024 Living Roots Ramato Pinot Gris, Finger Lakes",
+              "pairPrice": "16"
             },
             {
               "desc": "Heirloom tomatoes, olives, roasted garlic, bread crumbs, basil salsa verde",
               "name": "Goat Cheese Cappelletti",
               "price": "38",
-              "src": "Sorrell Hill Farm · Baldwinsville, NY"
+              "src": "Sorrell Hill Farm · Baldwinsville, NY",
+              "pair": "2024 Giovanni Battista Mesina 'Vermentuzzo' Vermentino, Umbria",
+              "pairPrice": "20"
             },
             {
               "desc": "Basmati rice, marinated cucumbers, arugula, raita, house naan",
               "name": "Tandoori Chicken",
               "price": "38",
-              "src": "Hillside Farm · Truxton, NY"
+              "src": "Hillside Farm · Truxton, NY",
+              "pair": "2024 Hermann J. Wiemer Flower Day Riesling, Seneca Lake",
+              "pairPrice": "18"
             },
             {
               "desc": "Smashed potatoes, chimichurri, kale, crème fraîche",
               "name": "Ember Roasted NY Strip",
               "price": "48",
-              "src": "Certified Angus Beef"
+              "src": "Certified Angus Beef",
+              "pair": "2018 Luke Reserve Syrah, Wahluke Slope",
+              "pairPrice": "30"
             },
             {
               "desc": "",
               "name": "Specialty Cuts",
               "price": "Market",
-              "src": "Listed above the hearth"
+              "src": "Listed above the hearth",
+              "pair": "2021 Living Roots Cabernet – Tannat, Adelaide Hills",
+              "pairPrice": "20"
             }
           ],
           "note": "",
