@@ -292,6 +292,9 @@ body.on-ipad{overflow:hidden;background:var(--ink)}
 .pad-updated{margin-top:10px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
 .pad-site{display:inline-block;margin-top:14px;padding-bottom:3px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember-hot);border-bottom:1px solid rgba(224,154,94,.35)}
 .pad-site:hover,.pad-site:focus-visible{color:var(--ivory);border-bottom-color:var(--ivory)}
+.pad-back{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:90;display:inline-flex;gap:10px;align-items:center;padding:14px 26px;background:rgba(15,18,21,.92);color:var(--ivory);border:1px solid var(--ember);font-family:var(--sans);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pad-back:hover,.pad-back:focus-visible{background:var(--ember);color:var(--ivory)}
+body.on-ipad .pad-back{display:none}
 .pad-main{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(56px + env(safe-area-inset-top,0px)) 56px calc(64px + env(safe-area-inset-bottom,0px));background:var(--paper);color:var(--ink)}
 .pad-main h2{font-size:clamp(2.4rem,4vw,3.4rem);font-weight:300}
 .pad-main .pad-rule{width:48px;height:1px;background:var(--ember);margin:20px 0 34px}

@@ -672,6 +672,39 @@
   }
   function closeEditor(){ed.el.hidden=true;document.body.style.overflow=''}
   var supperEl=document.getElementById('supper');
+  /* iPad visiting the full website: shows a "Back to menu" button and returns to the menu after 3 quiet minutes */
+  var AWAY_KEY='eden-ipad-away',AWAY_MS=180000,awayT=null,awayLast=0;
+  function awayOn(){
+    var t=0;try{t=+localStorage.getItem(AWAY_KEY)||0}catch(e){}
+    if(t&&Date.now()-t>AWAY_MS){awayEnd(false);return false}
+    return !!t;
+  }
+  function awayTouch(){
+    var now=Date.now();if(now-awayLast<5000)return;awayLast=now;
+    try{localStorage.setItem(AWAY_KEY,String(now))}catch(e){}
+    clearTimeout(awayT);awayT=setTimeout(function(){awayEnd(true)},AWAY_MS);
+  }
+  function awayStart(){awayLast=0;awayTouch();awayUI(true)}
+  function awayEnd(goMenu){
+    clearTimeout(awayT);try{localStorage.removeItem(AWAY_KEY)}catch(e){}awayUI(false);
+    if(goMenu)location.hash='#ipad';
+  }
+  var awayBtn=null;
+  function awayUI(on){
+    if(on&&!awayBtn){
+      awayBtn=document.createElement('a');awayBtn.href='#ipad';awayBtn.className='pad-back';
+      awayBtn.innerHTML='<span aria-hidden="true">&larr;</span> Back to menu';
+      document.body.appendChild(awayBtn);
+    }
+    if(awayBtn)awayBtn.hidden=!on;
+  }
+  ['pointerdown','touchstart','scroll','wheel','keydown'].forEach(function(ev){
+    window.addEventListener(ev,function(){if(awayBtn&&!awayBtn.hidden)awayTouch()},{passive:true,capture:true});
+  });
+  (function(){ // reloaded mid-visit: keep the button and the timer going
+    var t=0;try{t=+localStorage.getItem(AWAY_KEY)||0}catch(e){}
+    if(t&&Date.now()-t<=AWAY_MS){awayUI(true);clearTimeout(awayT);awayT=setTimeout(function(){awayEnd(true)},AWAY_MS-(Date.now()-t))}
+  })();
   function route(){
     var h=location.hash;
     if(h==='#editor'){
@@ -683,9 +716,14 @@
     }
     if(!ed.el.hidden)closeEditor();
     var kiosk=false;try{kiosk=localStorage.getItem('eden-ipad-menu')==='1'}catch(e){}
-    if(h==='#ipad'){try{localStorage.setItem('eden-ipad-menu','1')}catch(e){}kiosk=true}
-    var onPad=(h==='#ipad')||(kiosk&&h!=='#editor'&&h!=='#exit-ipad');
-    if(h==='#exit-ipad'){try{localStorage.removeItem('eden-ipad-menu')}catch(e){}history.replaceState(null,'','#home');h='#home';}
+    if(h==='#ipad'){try{localStorage.setItem('eden-ipad-menu','1')}catch(e){}kiosk=true;awayEnd(false)}
+    if(h==='#ipad-site'){ // "Full website" on an iPad: a visit, not leaving iPad mode
+      if(kiosk)awayStart();
+      history.replaceState(null,'','#home');h='#home';
+    }
+    var away=kiosk&&awayOn();
+    var onPad=(h==='#ipad')||(kiosk&&!away&&h!=='#editor'&&h!=='#exit-ipad');
+    if(h==='#exit-ipad'){try{localStorage.removeItem('eden-ipad-menu')}catch(e){}awayEnd(false);history.replaceState(null,'','#home');h='#home';}
     pad.el.hidden=!onPad;document.body.classList.toggle('on-ipad',onPad);
     if(onPad){renderPad(menuData);padIdle();}
     padIdentity(onPad);

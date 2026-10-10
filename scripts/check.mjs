@@ -77,7 +77,7 @@ try {
 
 console.log('In-page links');
 const ids = new Set([...html.matchAll(/\bid="([^"'+]+)"/g)].map(m => m[1]));
-const routes = new Set(['home', 'editor', 'ipad', 'exit-ipad', 'catering', 'supper', 'supper-menu', 'menu']);
+const routes = new Set(['home', 'editor', 'ipad', 'ipad-site', 'exit-ipad', 'catering', 'supper', 'supper-menu', 'menu']);
 const hashes = new Set([...html.matchAll(/href="#([^"]*)"/g)].map(m => m[1]).filter(h => !h.includes("'")));
 for (const h of hashes) (ids.has(h) || routes.has(h)) ? ok('#' + h) : fail(`link to #${h} has no matching section`);
 
