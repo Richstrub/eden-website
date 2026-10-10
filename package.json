@@ -1,0 +1,16 @@
+{
+  "name": "eden-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website, iPad table menu, live menu editor and catering questionnaire for Eden, a wood-fired restaurant in Syracuse, NY.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build:menu": "node scripts/build-menu-data.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

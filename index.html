@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eden Syracuse</title>
+<meta name="description" content="Eden — entirely wood-fired, farm-to-table dining at 118 E. Genesee St., Syracuse, NY. Menu, wine list, catering, partners and the Eden Supper Club.">
+<meta name="theme-color" content="#0f1215">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="progress" id="progress"></div>
+  <div class="bar">
+    <a href="#home" class="wordmark">EDEN</a>
+    <nav class="main" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#catering">Catering</a>
+      <a href="#partners">Partners</a>
+      <a href="https://squareup.com/gift/MLP07Q85G4E60/order" target="_blank" rel="noopener">Gift Cards</a>
+      <a href="#supper">Supper Club</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="reserve-top" href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reservations</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <canvas id="fire" aria-hidden="true"></canvas>
+  <a href="#about">About</a>
+  <a href="#menu">Menu</a>
+  <a href="#catering">Catering</a>
+  <a href="#partners">Partners</a>
+  <a href="https://squareup.com/gift/MLP07Q85G4E60/order" target="_blank" rel="noopener">Gift Cards</a>
+  <a href="#supper">Supper Club</a>
+  <a href="#contact">Contact</a>
+  <a class="btn light" style="font-family:var(--sans);font-size:.7rem;margin-top:10px" href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reservations</a>
+</div>
+
+<section class="hero" id="home">
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="inner" id="heroInner">
+    <div class="eyebrow">Locally Sourced &nbsp;·&nbsp; Wood Fired Cuisine</div>
+    <h1>EDEN</h1>
+    <div class="sub">From the Heart of New York</div>
+    <div class="btn-row">
+      <a class="btn light" href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reservations</a>
+      <a class="btn light" href="#menu">Menu</a>
+      <a class="btn light" href="https://squareup.com/gift/MLP07Q85G4E60/order" target="_blank" rel="noopener">Gift Cards</a>
+      <a class="btn light" href="#supper">Eden × James Beard</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="narrow center">
+    <div class="eyebrow" style="color:var(--ember)">About Us</div>
+    <div class="rule"></div>
+    <div class="about-copy">
+      <p class="lede">Eden is a wood-fired restaurant in a restored historic building on Hanover Square in downtown Syracuse. Everything we serve is cooked over an open hearth at the center of our kitchen, fueled by wood and guided by the seasons.</p>
+      <p>Our mission is to highlight the best farmers, foragers, brewers, distillers and food producers in New York State. Our menu changes with each harvest, and every dish names the farm or producer it comes from, so you know exactly where your dinner began.</p>
+      <p>The bar pours New York State spirits, craft cocktails and a wine list chosen with the same care as the food.</p>
+      <p class="honors">Eden is a Wine Spectator Restaurant Award winner, a DiRōNA Award of Excellence recipient, and in 2026 we hosted our first Friends of James Beard Benefit dinner.</p>
+      <p class="pillars">Fire. Farm. Food. Wine.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="team">
+      <div class="member">
+        <div class="portrait"><img src="assets/images/rich-strub.jpg" alt="Rich Strub"></div>
+        <div class="eyebrow">Executive Chef / Partner</div>
+        <h3>Rich Strub</h3>
+        <a href="mailto:Rich@edencny.com">Rich@edencny.com</a>
+        <a href="tel:+13159918408">315.991.8408</a>
+      </div>
+      <div class="member">
+        <div class="portrait"><img src="assets/images/adam-anderson.jpg" alt="Adam Anderson"></div>
+        <div class="eyebrow">Partner</div>
+        <h3>Adam Anderson</h3>
+      </div>
+      <div class="member">
+        <div class="portrait"><img src="assets/images/eve-derosa.jpg" alt="Eve DeRosa"></div>
+        <div class="eyebrow">Partner</div>
+        <h3>Eve DeRosa</h3>
+      </div>
+    </div>
+    <p class="center motto">Dedication. Expertise. Passion.</p>
+  </div>
+</section>
+
+<section class="on-dark" id="menu">
+  <div class="wrap">
+    <div class="center narrow">
+      <div class="eyebrow" style="color:var(--ember-hot)">Tonight's Menu</div>
+      <div class="rule"></div>
+      <h2>Our menu changes daily with the seasons</h2>
+      <p class="menu-intro">We strive to source as much of our food locally, or through sustainable farms. Each dish names the farm or producer it comes from.</p>
+    </div>
+    <div id="menuMount"><div class="tabs" role="tablist" aria-label="Menu"><button class="tab" id="t-m-food" role="tab" aria-selected="true" aria-controls="m-food" data-tab="m-food">Kitchen</button><button class="tab" id="t-m-bar" role="tab" aria-selected="false" aria-controls="m-bar" data-tab="m-bar">Cocktails</button><button class="tab" id="t-m-beer" role="tab" aria-selected="false" aria-controls="m-beer" data-tab="m-beer">Beer &amp; Soft Drinks</button><button class="tab" id="t-m-spirits" role="tab" aria-selected="false" aria-controls="m-spirits" data-tab="m-spirits">Spirits</button><button class="tab" id="t-m-coffee" role="tab" aria-selected="false" aria-controls="m-coffee" data-tab="m-coffee">Coffee &amp; Tea</button></div><div class="panel mpanel" id="m-food" role="tabpanel" aria-labelledby="t-m-food"><div class="mg"><h3 class="mg-title">Small Plates</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Mushroom Toast</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Fruit of the Fungi · Lebanon, NY</div><div class="mi-desc">Bacon, poached egg, chives</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Beef Tartare</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Hillside Farm · Truxton, NY</div><div class="mi-desc">Egg yolk, shallot, parsley, toast points, cornichons</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Green Lentil Salad</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Sorrel Hill Farm · Baldwinsville, NY</div><div class="mi-desc">Braised leeks, fried halloumi, confit garlic</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Braised Short Rib</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Hillside Farm · Truxton, NY</div><div class="mi-desc">Blue corn grits, fried egg, pickled red onions</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Beet and Carrot Salad</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Grindstone Farm · Pulaski, NY</div><div class="mi-desc">Goat cheese, oranges, almond brittle, arugula</div></li></ul></div><div class="mg"><h3 class="mg-title">Large Plates</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Pan Seared Salmon</span><span class="mi-dots"></span><span class="mi-price">48</span></div><div class="mi-src">Wester Ross · Scotland</div><div class="mi-desc">Israeli couscous, charred tomatillo, grilled radicchio, caramelized onions</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Goat Cheese Cappelletti</span><span class="mi-dots"></span><span class="mi-price">38</span></div><div class="mi-src">Sorrel Hill Farm · Baldwinsville, NY</div><div class="mi-desc">Heirloom tomatoes, olives, roasted garlic, bread crumbs, basil salsa verde</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Tandoori Chicken</span><span class="mi-dots"></span><span class="mi-price">38</span></div><div class="mi-src">Hillside Farm · Truxton, NY</div><div class="mi-desc">Basmati rice, marinated cucumbers, arugula, raita, house naan</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Ember Roasted NY Strip</span><span class="mi-dots"></span><span class="mi-price">48</span></div><div class="mi-src">Certified Angus Beef</div><div class="mi-desc">Smashed potatoes, chimichurri, kale, crème fraîche</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Specialty Cuts</span><span class="mi-dots"></span><span class="mi-price">Market</span></div><div class="mi-src">Listed above the hearth</div></li></ul><p class="mg-note">Add to any large plate: Chickpea &amp; Red Miso Butter 6 · Roasted Mushrooms 10 · Bone Marrow 15</p></div><div class="mg"><h3 class="mg-title">Dessert</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Flourless Chocolate Torte</span><span class="mi-dots"></span><span class="mi-price">12</span></div><div class="mi-src">Nostalgia Chocolate · Syracuse, NY</div><div class="mi-desc">Chantilly cream, seasonal fruit</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Buttermilk Panna Cotta</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Upstate Farms · Buffalo, NY</div><div class="mi-desc">Shortbread cookie, seasonal topping, mint</div></li></ul></div></div><div class="panel mpanel" id="m-bar" role="tabpanel" aria-labelledby="t-m-bar" hidden><div class="mg"><h3 class="mg-title">Signature Cocktails</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Silk Sheets</span><span class="mi-dots"></span><span class="mi-price">17</span></div><div class="mi-src">Maison Rogue · France</div><div class="mi-desc">Cognac, toasted corn silk, lemon, La Crescent, crème fraîche syrup</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Rear Admiral</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Taconic · Stanfordville, NY</div><div class="mi-desc">Rum, Lockhouse Isco Bitter, pineapple, lime juice</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Bad Apple</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Steelbound Distilling · Ellicottville, NY</div><div class="mi-desc">Reposado, crab apple juice, hibiscus concentrate, China-China, agave syrup</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Second Act</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Finger Lakes Distilling · Burdett, NY</div><div class="mi-desc">Dry gin, Cocchi Dopo Teatro, Antica Torino, lemon, tarragon, bell pepper gastrique</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Blue! You&#x27;re My Boy Blue!</span><span class="mi-dots"></span><span class="mi-price">17</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">Bourbon, crème de cacao, sweet vermouth, espresso, blue curaçao cream</div></li><li class="mi"><div class="mi-head"><span class="mi-name">The Rye of Power</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Hollerhorn · Naples, NY</div><div class="mi-desc">Rye vodka, Contratto Aperitif, Salers Aperitif, cherry, maraschino, ginger, honey</div></li><li class="mi"><div class="mi-head"><span class="mi-name">No Country</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Trascendente · Oaxaca, Mexico</div><div class="mi-desc">Mezcal, Primo Aperitivo, honey, lemon</div></li></ul></div><div class="mg"><h3 class="mg-title">Mocktails</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Bramble On</span><span class="mi-dots"></span><span class="mi-price">7</span></div><div class="mi-desc">Lime, blackberry, orgeat, coconut water, soda</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Golden Remedy</span><span class="mi-dots"></span><span class="mi-price">7</span></div><div class="mi-desc">Lemon, honey, ginger, mint, club soda</div></li><li class="mi"><div class="mi-head"><span class="mi-name">West Coast IPA, Non-Alcoholic</span><span class="mi-dots"></span><span class="mi-price">7</span></div><div class="mi-src">Best Day Brewing</div><div class="mi-desc">12oz</div></li></ul></div><div class="mg"><h3 class="mg-title">Aperitif</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">L.N. Mattei Cap Corse Rouge</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">L.N. Mattei Cap Corse Blanc</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Contratto Aperitif</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Contratto Bitter Liqueur</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Haus Citrus Flower Aperitif</span><span class="mi-dots"></span><span class="mi-price">5</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Des Terres Rouges Salers Aperitif</span><span class="mi-dots"></span><span class="mi-price">8</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Cocchi Americano Aperitivo</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Cappelletti Alpeggio</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-desc">Hay, alpine meadow herbal liqueur</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Carpano Dry Vermouth</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Carpano Sweet Vermouth</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Tribuno Extra Dry Vermouth</span><span class="mi-dots"></span><span class="mi-price">12</span></div></li></ul></div></div><div class="panel mpanel" id="m-beer" role="tabpanel" aria-labelledby="t-m-beer" hidden><div class="mg"><h3 class="mg-title">Draught</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Birdy Cream</span><span class="mi-dots"></span><span class="mi-price">12</span></div><div class="mi-src">StrangeBird · Rochester, NY</div><div class="mi-desc">16oz Cream Ale · 5.1%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Case Study</span><span class="mi-dots"></span><span class="mi-price">11</span></div><div class="mi-src">Wayland · Orchard Park, NY</div><div class="mi-desc">16oz West Coast IPA · 6.5%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Oktoberfest</span><span class="mi-dots"></span><span class="mi-price">14</span></div><div class="mi-src">Talking Cursive · Syracuse, NY</div><div class="mi-desc">16oz Märzen · 6.0%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Peach Kolsch</span><span class="mi-dots"></span><span class="mi-price">13</span></div><div class="mi-src">Stoneyard Brewing · Brockport, NY</div><div class="mi-desc">16oz Kölsch · 5.0%</div></li></ul></div><div class="mg"><h3 class="mg-title">Cans</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Mass Riot</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Prison City · Auburn, NY</div><div class="mi-desc">16oz IPA · 6.8%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Metric Pils</span><span class="mi-dots"></span><span class="mi-price">13</span></div><div class="mi-src">Industrial Arts Brewing · Beacon, NY</div><div class="mi-desc">16oz Pilsner · 4.7%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">It Was Written</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Rising Storm Brewing · Penfield, NY</div><div class="mi-desc">16oz Mango Raspberry Sour · 6.0%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">The Phantom</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Lower Lake Brewing · Hamilton, NY</div><div class="mi-desc">12oz Dark Lager · 5.7%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Tiny Lobster</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Aurora Brewery · King Ferry, NY</div><div class="mi-desc">16oz NEPA · 3.8%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Infinite Cosmos</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">StrangeBird · Rochester, NY</div><div class="mi-desc">16oz Belgian White · 5.3%</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hereafter</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Threes Brewing · Brooklyn, NY</div><div class="mi-desc">16oz Oktoberfest · 5.3%</div></li></ul></div><div class="mg"><h3 class="mg-title">Juice</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Cranberry Juice</span><span class="mi-dots"></span><span class="mi-price">2</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Grapefruit Juice</span><span class="mi-dots"></span><span class="mi-price">2</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Lemonade</span><span class="mi-dots"></span><span class="mi-price">3</span></div></li></ul></div><div class="mg"><h3 class="mg-title">Soda</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Sprite</span><span class="mi-dots"></span><span class="mi-price">3</span></div><div class="mi-desc">12oz</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Coke</span><span class="mi-dots"></span><span class="mi-price">3</span></div><div class="mi-desc">12oz</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Diet Coke</span><span class="mi-dots"></span><span class="mi-price">3</span></div><div class="mi-desc">12oz</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Club Soda</span><span class="mi-dots"></span><span class="mi-price">3</span></div><div class="mi-desc">10oz</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Saratoga Sparkling Water</span><span class="mi-dots"></span><span class="mi-price">7</span></div><div class="mi-desc">24oz</div></li></ul></div></div><div class="panel mpanel" id="m-spirits" role="tabpanel" aria-labelledby="t-m-spirits" hidden><div class="mg"><h3 class="mg-title">Bourbon</h3><p class="mg-note">Spirits are 1.5oz. On the rocks 3 · Double 9</p><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Old Home Distillers · Noche</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Lebanon, NY</div><div class="mi-desc">Tequila barrel aged</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hillrock Estate</span><span class="mi-dots"></span><span class="mi-price">22</span></div><div class="mi-src">Ancram, NY</div><div class="mi-desc">Solera aged</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Springbrook Distillery</span><span class="mi-dots"></span><span class="mi-price">14</span></div><div class="mi-src">Queensbury, NY</div><div class="mi-desc">Straight</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Springbrook Distillery</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Queensbury, NY</div><div class="mi-desc">Barrel strength</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Albany Distilling Co. · Ironweed</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Albany, NY</div><div class="mi-desc">Straight</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Fort Hamilton</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">4 year double barrel</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Kings County Distillery</span><span class="mi-dots"></span><span class="mi-price">20</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">Straight</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Lock 1 Distilling Co. · Waldron Coconut</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Phoenix, NY</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Lock 1 Distilling Co. · The Waldron</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Phoenix, NY</div><div class="mi-desc">2 year straight</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn</span><span class="mi-dots"></span><span class="mi-price">22</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">6 year single barrel</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Fort Hamilton</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">6 year single barrel</div></li></ul></div><div class="mg"><h3 class="mg-title">Rye</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Old Home Distillers · King Mayhem</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Lebanon, NY</div><div class="mi-desc">Straight</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Springbrook Distillery</span><span class="mi-dots"></span><span class="mi-price">14</span></div><div class="mi-src">Queensbury, NY</div><div class="mi-desc">Straight</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Adirondack Distillery</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Queensbury, NY</div><div class="mi-desc">High rye</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Fort Hamilton</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">Double barrel</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Lock 1 Distilling Co. · Waldron Honey</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Phoenix, NY</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn Distilling · Big Green</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">Empire</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Fort Hamilton</span><span class="mi-dots"></span><span class="mi-price">16</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">6 year single barrel</div></li></ul></div><div class="mg"><h3 class="mg-title">Malt</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Old Home Distillers · Empire</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Lebanon, NY</div><div class="mi-desc">Single malt</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Dalmore</span><span class="mi-dots"></span><span class="mi-price">21</span></div><div class="mi-src">Alness, Scotland</div><div class="mi-desc">12 year single malt Scotch</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn Distilling · Malt in Motion</span><span class="mi-dots"></span><span class="mi-price">22</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">Single malt</div></li></ul></div><div class="mg"><h3 class="mg-title">Gin</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Greenhook Ginsmiths</span><span class="mi-dots"></span><span class="mi-price">13</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">Old Tom</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Old Home Distillers</span><span class="mi-dots"></span><span class="mi-price">12</span></div><div class="mi-src">Lebanon, NY</div><div class="mi-desc">Barrel aged</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Lock 1 Distilling Co. · Locktenders</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Phoenix, NY</div><div class="mi-desc">Lavender</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Long Island Spirits · Pine Barrens</span><span class="mi-dots"></span><span class="mi-price">7</span></div><div class="mi-src">Baiting Hollow, NY</div><div class="mi-desc">Dry</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn · Neapolitan</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">Citrus forward</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Finger Lakes Distilling · McKenzie Reserve</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Burdett, NY</div><div class="mi-desc">Dry</div></li></ul></div><div class="mg"><h3 class="mg-title">Vodka</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Albany Distilling Co.</span><span class="mi-dots"></span><span class="mi-price">6</span></div><div class="mi-src">Albany, NY</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Sauvage Distillery</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Charlotteville, NY</div><div class="mi-desc">Apple distilled</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Lock 1 Distilling Co. · Ryze</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Phoenix, NY</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn · Ryeval</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">Rye vodka</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Fort Hamilton · Fortress</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Brooklyn, NY</div></li></ul></div><div class="mg"><h3 class="mg-title">Agave</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Steelbound</span><span class="mi-dots"></span><span class="mi-price">12</span></div><div class="mi-src">Ellicottville, NY</div><div class="mi-desc">Blanco</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Steelbound</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Ellicottville, NY</div><div class="mi-desc">Reposado</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Olujo</span><span class="mi-dots"></span><span class="mi-price">28</span></div><div class="mi-src">Jalisco, Mexico</div><div class="mi-desc">Añejo</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Trascendente</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Oaxaca, Mexico</div><div class="mi-desc">Joven mezcal</div></li></ul></div><div class="mg"><h3 class="mg-title">Rum</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Albany Distilling Co.</span><span class="mi-dots"></span><span class="mi-price">11</span></div><div class="mi-src">Albany, NY</div><div class="mi-desc">Navy strength</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Taconic Distillery</span><span class="mi-dots"></span><span class="mi-price">11</span></div><div class="mi-src">Stanfordville, NY</div><div class="mi-desc">4 year aged</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Albany Distilling Co.</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Albany, NY</div><div class="mi-desc">White</div></li></ul></div><div class="mg"><h3 class="mg-title">Specialty</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Brooklyn Kura</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Brooklyn, NY</div><div class="mi-desc">Sake</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Old Home Distillers · Peppershine</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Lebanon, NY</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Maison Rogue</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">France</div><div class="mi-desc">Cognac</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Batavia-Arrack van Oosten</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Java, Indonesia</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Compañía Pisquera de Chile · Pisco Mistral</span><span class="mi-dots"></span><span class="mi-price">12</span></div><div class="mi-src">La Serena, Chile</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Black Dirt</span><span class="mi-dots"></span><span class="mi-price">15</span></div><div class="mi-src">Warwick, NY</div><div class="mi-desc">Applejack</div></li><li class="mi"><div class="mi-head"><span class="mi-name">John D. Taylor&#x27;s Velvet Falernum</span><span class="mi-dots"></span><span class="mi-price">7</span></div><div class="mi-src">Barbados</div><div class="mi-desc">Liqueur</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn Distilling · Flamed Maple</span><span class="mi-dots"></span><span class="mi-price">18</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">Maple spirit</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn Distilling · Pflaume</span><span class="mi-dots"></span><span class="mi-price">22</span></div><div class="mi-src">Naples, NY</div><div class="mi-desc">Plum brandy</div></li></ul></div><div class="mg"><h3 class="mg-title">Digestif</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Fernet Contratto</span><span class="mi-dots"></span><span class="mi-price">11</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Enrico Toro Centuca</span><span class="mi-dots"></span><span class="mi-price">12</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Montenegro Amaro</span><span class="mi-dots"></span><span class="mi-price">12</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Savory &amp; James Sherry</span><span class="mi-dots"></span><span class="mi-price">5</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Fratelli Caffo Amaretto</span><span class="mi-dots"></span><span class="mi-price">8</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">January Spirits Amaro</span><span class="mi-dots"></span><span class="mi-price">14</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Cocchi Dopo Teatro Vermouth Amaro</span><span class="mi-dots"></span><span class="mi-price">7</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Cardamaro Amaro</span><span class="mi-dots"></span><span class="mi-price">8</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Sfumato Rabarbaro Amaro</span><span class="mi-dots"></span><span class="mi-price">8</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Amario</span><span class="mi-dots"></span><span class="mi-price">8</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Luigi Francoli Fernet</span><span class="mi-dots"></span><span class="mi-price">9</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Cividina Grappa</span><span class="mi-dots"></span><span class="mi-price">9</span></div><div class="mi-src">Udine, Italy</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Boomsma Cloosterbitter</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-desc">Herbal bitter</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Dolin Génépy Liqueur</span><span class="mi-dots"></span><span class="mi-price">11</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Alpe Génépy Liqueur</span><span class="mi-dots"></span><span class="mi-price">12</span></div></li><li class="mi"><div class="mi-head"><span class="mi-name">Hollerhorn Limoncello</span><span class="mi-dots"></span><span class="mi-price">18</span></div></li></ul></div></div><div class="panel mpanel" id="m-coffee" role="tabpanel" aria-labelledby="t-m-coffee" hidden><div class="mg"><h3 class="mg-title">Tea</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Ding Gu Da Fang Green Tea</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">UnyTea · Syracuse, NY</div><div class="mi-desc">20oz French press</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Gui Fei Chai Oolong</span><span class="mi-dots"></span><span class="mi-price">11</span></div><div class="mi-src">UnyTea · Syracuse, NY</div><div class="mi-desc">20oz French press</div></li></ul></div><div class="mg"><h3 class="mg-title">Coffee</h3><ul class="ml"><li class="mi"><div class="mi-head"><span class="mi-name">Syracuse Blend</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Salt City Coffee · Syracuse, NY</div><div class="mi-desc">20oz French press</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Colombia Decaffeinated</span><span class="mi-dots"></span><span class="mi-price">10</span></div><div class="mi-src">Salt City Coffee · Syracuse, NY</div><div class="mi-desc">20oz French press</div></li><li class="mi"><div class="mi-head"><span class="mi-name">Dark Arts Espresso</span><span class="mi-dots"></span><span class="mi-price">8</span></div><div class="mi-src">Salt City Coffee · Syracuse, NY</div><div class="mi-desc">Shot</div></li></ul></div></div>
+    <p class="allergy">If you have a food allergy or intolerance, please notify us.</p></div><p class="menu-live" id="menuLive" hidden></p>
+  </div>
+</section>
+
+<section class="catering" id="catering-info">
+  <div class="inner">
+    <div class="eyebrow">Catering</div>
+    <div class="rule"></div>
+    <h2>Farm to table catering, anywhere</h2>
+    <p>Our experience with cooking over a wood fire allows us to create a unique and memorable culinary occasion anywhere. Let us cater your next special event.</p>
+    <a class="btn light" href="#catering">Plan Your Event</a>
+    <div class="addr">Events@edencny.com</div>
+  </div>
+</section>
+
+<section id="partners">
+  <div class="wrap">
+    <div class="center narrow">
+      <div class="eyebrow" style="color:var(--ember)">Our Partners</div>
+      <div class="rule"></div>
+      <h2>Soil, pasture, sea &amp; community</h2>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Partner categories">
+      <button class="tab" id="tab-soil" role="tab" aria-selected="true" aria-controls="soil" data-tab="soil">Soil</button>
+      <button class="tab" id="tab-pasture" role="tab" aria-selected="false" aria-controls="pasture" data-tab="pasture">Pasture</button>
+      <button class="tab" id="tab-sea" role="tab" aria-selected="false" aria-controls="sea" data-tab="sea">Sea</button>
+      <button class="tab" id="tab-community" role="tab" aria-selected="false" aria-controls="community" data-tab="community">Community</button>
+    </div>
+
+    <div class="panel" id="soil" role="tabpanel" aria-labelledby="tab-soil">
+      <article class="partner">
+        <h3>Grindstone Farm</h3>
+        <div class="eyebrow loc">Pulaski, NY</div>
+        <p>Richard de Graff and his wife, Vic, have farmed in Pulaski for 45 years, 38 of them certified organic, with Anna Joy Corson as their lead gardener. Midway between Syracuse and Watertown, they grow organic vegetables, berries, herbs and tree fruit, and sell through their CSA, an on-farm market and farmers markets across Central New York.</p>
+        <div class="links">
+          <a href="https://www.grindstonefarm.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://www.facebook.com/grindstone.farm.5" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/grindstone_farm/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+      <article class="partner">
+        <h3>Fresh Herbs of Fabius</h3>
+        <div class="eyebrow loc">Fabius, NY · (315) 683-5159</div>
+        <p>Producers of gourmet vegetables, edible flowers, and microgreens since 2000, delivering to all points between Utica and Auburn. Microgreens and flowers available all year.</p>
+        <div class="links">
+          <a href="https://www.facebook.com/pages/category/Agricultural-Cooperative/Fresh-herbs-of-fabius-988663231162934/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/neviusken/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+      <article class="partner">
+        <h3>Fruit of the Fungi</h3>
+        <div class="eyebrow loc">Lebanon, NY</div>
+        <p>KC and Kristi Mangine began growing shiitake on logs in 2008 and went full time in 2015. Today they grow certified organic shiitake, lion's mane, oyster, maitake, beech, chestnut and reishi mushrooms, all on wood using sawdust from local mills. Find them year-round at the CNY Regional Market's Saturday farmers market.</p>
+      </article>
+    </div>
+
+    <div class="panel" id="pasture" role="tabpanel" aria-labelledby="tab-pasture" hidden>
+      <article class="partner">
+        <h3>Hillside Farm</h3>
+        <div class="eyebrow loc">Truxton, NY</div>
+        <p>Alexa and Jacob Newton raise beef, pork, chickens and turkeys in the hills of Cortland County. Their birds live in shelters that move across the pasture so they can graze and forage outdoors, and the Newtons process their poultry right on the farm.</p>
+        <div class="links">
+          <a href="https://www.facebook.com/jacob.newton.756/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/_hillside.farms/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+      <article class="partner">
+        <h3>Sorrell Hill Milk Co.</h3>
+        <div class="eyebrow loc">Baldwinsville, NY</div>
+        <p>Sara and Josh Kerrick met showing cows at the Cayuga County Fair. In 2025 they opened Sorrell Hill Milk Co., an on-farm creamery at 2 Kids Goat Farm. They're home to the CregoCrest Registered Holsteins and make creamline milk and fresh cheese from both cow and goat milk, with every animal in the small herd known by name.</p>
+        <div class="links">
+          <a href="https://sorrellhillmilkco.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://www.facebook.com/people/Sorrell-Hill-Milk-Co/61574788211893/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/sorrellhillmilkco/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+      <article class="partner">
+        <h3>Certified Angus Beef</h3>
+        <div class="eyebrow loc">Wooster, OH</div>
+        <p>Founded in 1978 by ranchers working with an Ohio State University meat scientist, the Certified Angus Beef brand judges every cut against 10 quality standards. It is the source of the Ember Roasted NY Strip we cook over the hearth.</p>
+        <div class="links">
+          <a href="https://www.certifiedangusbeef.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://facebook.com/CertifiedAngusBeef" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/certifiedangusbeef/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="panel" id="sea" role="tabpanel" aria-labelledby="tab-sea" hidden>
+      <article class="partner">
+        <h3>Browne Trading Co.</h3>
+        <div class="eyebrow loc">Portland, ME</div>
+        <p>Committed to the purchase and supply of responsibly sourced seafood, meeting customers' needs without compromising the future health of our oceans' fish.</p>
+        <div class="links">
+          <a href="https://www.brownetrading.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://www.facebook.com/BrowneTradingCompany/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/brownetradingco/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="panel" id="community" role="tabpanel" aria-labelledby="tab-community" hidden>
+      <article class="partner">
+        <h3>James Beard Foundation</h3>
+        <div class="eyebrow loc">New York, NY</div>
+        <p>On October 2 and 3, 2026, Eden hosted its first Friends of James Beard Benefit dinner. Guests enjoyed a reception and an eight-course tasting menu cooked over our wood-fired hearth, with optional wine pairings presented by sommelier Keenan Davis. Proceeds support the James Beard Foundation's programs for the restaurant community.</p>
+        <div class="links">
+          <a href="https://www.jamesbeard.org/" target="_blank" rel="noopener">Website</a>
+          <a href="https://www.jamesbeard.org/events/fojbb-syracuse" target="_blank" rel="noopener">The Dinner</a>
+          <a href="https://www.instagram.com/beardfoundation/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+      <article class="partner">
+        <h3>Kitchen Literacy Project</h3>
+        <div class="eyebrow loc">Syracuse, NY</div>
+        <p>Founded in 2023 by Jess Miller, the Kitchen Literacy Project teaches Syracuse teens to cook, free of charge, at Salt City Market. Local chefs teach paid cooking classes for the public, and that money pays for the free teen program, giving young people kitchen skills they can use for life.</p>
+      </article>
+      <article class="partner">
+        <h3>Grills by Demant</h3>
+        <div class="eyebrow loc">Custom Fabrication</div>
+        <p>Every grill is a collaboration between stainless-steel expertise and the client's own ideas: custom grills built to bring grill dreams to life.</p>
+        <div class="links">
+          <a href="http://www.grillsbydemant.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://www.facebook.com/grillsbydemant/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/grillsbydemant/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+      <article class="partner">
+        <h3>Eat Local New York</h3>
+        <div class="eyebrow loc">New York State</div>
+        <p>Eat Local New York celebrates the state's independent restaurants, chefs and producers through restaurant reviews, a podcast featuring local food and drink makers, and Eat Local New York Restaurant Week, which runs from Buffalo to Brooklyn.</p>
+        <div class="links">
+          <a href="https://eatlocalnewyork.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://www.facebook.com/eatlocalnewyork" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/eatlocalnewyork/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="center narrow">
+      <div class="eyebrow" style="color:var(--ember)">Visit</div>
+      <div class="rule"></div>
+      <h2>Get in touch</h2>
+    </div>
+    <div class="visit">
+      <div>
+        <div class="eyebrow">Address</div>
+        <div class="val">118 E. Genesee St.<br>Syracuse, NY 13202</div>
+        <a class="btn copy-btn" href="https://maps.google.com/?q=118+E+Genesee+St,+Syracuse,+NY+13202" target="_blank" rel="noopener">Directions</a>
+      </div>
+      <div>
+        <div class="eyebrow">Telephone</div>
+        <div class="val" id="phone">315.991.8408</div>
+        <button class="btn copy-btn" data-copy="phone">Copy number</button>
+      </div>
+      <div>
+        <div class="eyebrow">Email</div>
+        <div class="val" id="email">Info@edencny.com</div>
+        <div class="val sm" id="events">Events@edencny.com</div>
+        <button class="btn copy-btn" data-copy="email">Copy email</button>
+      </div>
+    </div>
+    <p class="note">For reservation inquiries please visit <a href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reservations</a>.</p>
+  </div>
+</section>
+
+
+<div id="supper" class="supper" hidden>
+  <section class="sp sp-hero">
+    <div class="narrow center">
+      <div class="eyebrow" style="color:var(--ember-hot)" id="spEyebrow">Eden Supper Club</div>
+      <div class="rule"></div>
+      <h1 class="sp-title" id="spTitle">Eden <span>×</span> Friends of the James&nbsp;Beard Foundation</h1>
+      <p class="sp-date" id="spDate">October 2 &amp; 3, 2026 &nbsp;·&nbsp; Seatings at 5:00 and 9:00 pm</p>
+      <p class="sp-intro" id="spIntro">An intimate, multi-course tasting dinner cooked over our wood-fired hearth. Chef Rich Strub built the menu around seasonal ingredients and global flavors, and sommelier Keenan Davis chose two tiers of wine to accompany each course.</p>
+    </div>
+  </section>
+
+  <section class="sp sp-menu" id="supper-menu">
+    <div class="wrap">
+      <div class="center narrow">
+        <div class="eyebrow" style="color:var(--ember)">The Menu</div>
+        <div class="rule"></div>
+        <h2 id="spMenuHeading">Eight courses, two pairings</h2>
+      </div>
+      <ol class="sp-list" id="spList">
+        <li class="sp-course">
+          <div class="sp-num">01</div>
+          <div class="sp-dish"><h3>Grilled Endive</h3><p>Ember-roasted carrot, yogurt, dukkah, beet syrup</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Floral Terranes Chardonnay · North Fork of Long Island</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>Oltretorrente Colli Tortonesi Timorasso</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">02</div>
+          <div class="sp-dish"><h3>Pan-Seared Scallops</h3><p>Radish, apple, radicchio, ginger, charred lemon vinegar</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Hermann J. Wiemer Riesling, HJW Vineyard Estate · Seneca Lake</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>Domaine Geschickt Wineck-Schlossberg Riesling</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">03</div>
+          <div class="sp-dish"><h3>Dayboat Halibut</h3><p>Delicata squash, Marcona almonds, fennel, bonito vinaigrette</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Dr. Konstantin Frank Rkatsiteli Amber · Finger Lakes</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>I Vini di Giovanni Umbria Il Vermentuzzo 2024</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">04</div>
+          <div class="sp-dish"><h3>Mushroom Pâté</h3><p>Pickled grapes, caraway crisps</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Domaine LeSeurre Cabernet Franc Barrel Select · Finger Lakes</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>Cantina Ortaccio Vecchi Filari</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">05</div>
+          <div class="sp-dish"><h3>Beef Tartare</h3><p>Pickled farm vegetables, cured egg yolk, marrow toast</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Red Tail Ridge Blaufränkisch, RTR Estate Vineyard · Finger Lakes</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>Arpepe Valtellina Superiore Sassella Stella Retica</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">06</div>
+          <div class="sp-dish"><h3>Duck Confit</h3><p>Sweet potato, mustard spaetzle, collard greens, apple agrodolce</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Wölffer Estate Fatalis Fatum Red Blend · Long Island</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>I Custodi Aetneus Etna Rosso</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">07</div>
+          <div class="sp-dish"><h3>Sweet Corn Ice Cream</h3><p>Tomato jam, basil</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Wölffer Estate Diosa Late Harvest</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>Selbach-Oster Riesling Noble R Beerenauslese</p></div>
+        </li>
+        <li class="sp-course">
+          <div class="sp-num">08</div>
+          <div class="sp-dish"><h3>A Taste of New York Maple Syrup</h3><p>Maple popcorn, maple crème brûlée, maple toffee</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing I</span><p>Lamoreaux Landing Vidal Ice · Finger Lakes</p></div>
+          <div class="sp-wine"><span class="eyebrow">Pairing II</span><p>Canella Vin Santo del Chianti</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sp sp-note on-dark">
+    <div class="narrow center">
+      <div class="eyebrow" style="color:var(--ember-hot)">Reservations</div>
+      <div class="rule"></div>
+      <p class="sp-past" id="spRes">This benefit dinner took place on October 2 and 3, 2026. Thank you to everyone who joined us and supported the James Beard Foundation.</p>
+      <ul class="sp-howto" id="spNotes">
+        <li>Guests chose a wine pairing tier when booking, one pairing per guest.</li>
+        <li>Dietary restrictions were noted in the special-note box when reserving.</li>
+        <li>Special requests could not be accommodated on the day of the dinner.</li>
+      </ul>
+      <div class="btn-row" style="margin-top:40px">
+        <a class="btn" id="spCta" href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reserve a Table at Eden</a>
+        <a class="btn" href="#home">Back to Eden</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="ipad" class="pad" hidden>
+  <aside class="pad-side">
+    <canvas id="padFire" class="pad-fire" aria-hidden="true"></canvas>
+    <div class="pad-brand" id="padBrand">EDEN</div>
+    <div class="pad-tag">Wood Fired Cuisine</div>
+    <nav class="pad-tabs" id="padTabs" aria-label="Menu sections"></nav>
+    <div class="pad-foot">
+      <p id="padAllergy"></p>
+      <p class="pad-updated" id="padUpdated"></p>
+    </div>
+  </aside>
+  <nav class="pad-wcol" id="padWcol" aria-label="Browse wines by" hidden></nav>
+  <main class="pad-main" id="padMain"></main>
+</div>
+
+<div id="cater" class="cater" hidden>
+  <section class="sp sp-hero cater-hero">
+    <div class="narrow center">
+      <div class="eyebrow" style="color:var(--ember-hot)">Eden Catering</div>
+      <div class="rule"></div>
+      <h1 class="sp-title">Farm to table catering, anywhere</h1>
+      <p class="sp-intro">Our experience with cooking over a wood fire allows us to create a unique and memorable culinary occasion anywhere. Tell us about your event below and see an estimate as you choose.</p>
+    </div>
+  </section>
+<div class="q-wrap">
+<div class="q-head">
+  <div class="eyebrow" style="color:var(--ember)">Catering &amp; Private Events</div>
+  <h1>Plan your event</h1>
+  <p class="q-lede">Tell us about your event and the menu you have in mind. Your estimate updates as you choose. When you're done, send your selections to us, and your event manager will follow up with a banquet event order to confirm. Your answers save in this browser as you go.</p>
+</div>
+</div>
+
+<div class="q-layout">
+<form id="q" autocomplete="on" onsubmit="return false">
+
+<section class="block">
+  <h2><span class="step">STEP 1</span>About you</h2>
+  <div class="fields">
+    <label class="f">Your name<input data-f="ev.contact" autocomplete="name"></label>
+    <label class="f">Organization or family (optional)<input data-f="ev.client" autocomplete="organization"></label>
+    <label class="f">Phone<input type="tel" data-f="ev.phone" autocomplete="tel"></label>
+    <label class="f">Email<input type="email" data-f="ev.email" autocomplete="email"></label>
+    <label class="f wide">Billing address<input data-f="ev.address" autocomplete="street-address"></label>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 2</span>Your event</h2>
+  <div class="fields">
+    <label class="f">Event name<input data-f="ev.name" placeholder="e.g., Harper–Lee Wedding"></label>
+    <label class="f">Type of event<select data-f="ev.type"><option></option><option>Wedding</option><option>Corporate</option><option>Social</option><option>Other</option></select></label>
+    <label class="f">Event date<input type="date" data-f="ev.date"></label>
+    <label class="f">Start time<input type="time" data-f="ev.start"></label>
+    <label class="f">End time<input type="time" data-f="ev.end"></label>
+    <label class="f">Expected number of guests<input type="number" min="0" inputmode="numeric" data-f="ev.expected"></label>
+    <label class="f">Where would you like to hold it?<select data-f="ev.room"><option></option><option>3rd Floor Event Space</option><option>Palladian Hall</option><option>Restaurant</option><option value="Other">Another location (off-site)</option></select></label>
+    <label class="f wide" data-show="ev.room=Other">Event address<input data-f="ev.roomAddr" placeholder="Street, city, state, ZIP"></label>
+    <label class="f">When will guests arrive?<input type="time" data-f="q.arrive"></label>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 3</span>Room and setup</h2>
+  <div class="fields">
+    <label class="f">Seating style<select data-f="rm.style"><option></option><option>Rounds</option><option>Banquet</option><option>Cocktail</option><option>Classroom</option><option>Other</option></select></label>
+    <label class="f">Head or sweetheart table?<input data-f="rm.head" placeholder="e.g., sweetheart table for two"></label>
+    <label class="f">Linen and napkin colors<input data-f="rm.linen" placeholder="e.g., ivory / sage"></label>
+    <label class="f">Who is providing centerpieces and décor?<input data-f="rm.decor"></label>
+    <label class="f">A/V, microphone or music needs<input data-f="rm.av"></label>
+    <label class="f">Outside vendors (florist, DJ, cake, photographer)<input data-f="rm.vendors"></label>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 4</span>Morning of the event</h2>
+  <p class="q-note">Getting-ready food for the wedding party, or a breakfast or brunch buffet for your guests.</p>
+  <div class="ask"><label class="pill"><input type="radio" name="q.morning" value="yes" data-f="q.morning"> Yes, I'm interested</label><label class="pill"><input type="radio" name="q.morning" value="no" data-f="q.morning"> No, thanks</label></div>
+  <div data-show="q.morning=yes" class="sub">
+    <h3>In-suite dining <span class="tag">10-guest minimum</span></h3>
+    <p class="q-note">Enter how many people each would serve.</p>
+    <div class="opts" id="o-suite"></div>
+    <div class="fields" style="margin-top:12px"><label class="f">Delivery time<input type="time" data-f="suite.time"></label><label class="f">Suite or room<input data-f="suite.room"></label></div>
+    <h3>Breakfast and brunch buffet <span class="tag">25-guest minimum</span></h3>
+    <p class="q-note">Includes a coffee station and chilled juices.</p>
+    <div class="opts" id="o-brunch"></div>
+    <h3>Chef-attended stations</h3>
+    <p class="q-note">A $150 chef attendant fee applies for every 35 guests at each station.</p>
+    <div class="opts" id="o-stations"></div>
+    <label class="f" style="margin-top:10px;max-width:260px">Carving station protein<select data-f="carv.protein"><option>NY strip loin</option><option>Pork loin</option></select></label>
+    <p class="warn" id="w-morning"></p>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 5</span>Social hour reception</h2>
+  <p class="q-note">Passed canapés and stations while guests mingle. 25-guest minimum.</p>
+  <div class="ask"><label class="pill"><input type="radio" name="q.rec" value="yes" data-f="q.rec"> Yes</label><label class="pill"><input type="radio" name="q.rec" value="no" data-f="q.rec"> No</label></div>
+  <div data-show="q.rec=yes" class="sub">
+    <div class="fields">
+      <label class="f">Reception guests<input type="number" min="0" inputmode="numeric" data-f="rec.guests" placeholder="Same as expected guests"></label>
+      <label class="f">Length<select data-f="rec.len"><option value="1">One hour</option><option value="2">Two hours</option></select></label>
+    </div>
+    <p class="q-note" style="margin-top:12px">Choose the canapés you'd like. We plan about 3 to 4 pieces per guest for one hour, or 5 to 6 for two hours, and divide them among your choices. Prices are per piece.</p>
+    <h3>Hot canapés</h3><div class="opts" id="o-hot"></div>
+    <h3>Chilled canapés</h3><div class="opts" id="o-cold"></div>
+    <h3>Displays and stations</h3>
+    <p class="q-note">Priced per guest and served to the full reception.</p>
+    <div class="opts" id="o-enh"></div>
+    <p class="warn" id="w-rec"></p>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 6</span>Dinner</h2>
+  <p class="q-note">Choose a seated, plated dinner or a dinner buffet.</p>
+  <div class="ask">
+    <label class="pill"><input type="radio" name="q.din" value="plated" data-f="q.din"> Plated dinner</label>
+    <label class="pill"><input type="radio" name="q.din" value="buffet" data-f="q.din"> Dinner buffet</label>
+    <label class="pill"><input type="radio" name="q.din" value="no" data-f="q.din"> No dinner</label>
+  </div>
+
+  <div data-show="q.din=plated" class="sub">
+    <p class="q-note" style="margin-top:10px">Three courses: one salad, one starter (or a dessert in its place), and up to three entrees including one vegetarian choice. Everyone receives the same sides.</p>
+    <h3>Menu level</h3>
+    <div class="tiers" id="tiers"></div>
+    <div class="fields" style="margin-top:12px">
+      <label class="f">Dinner guests<input type="number" min="0" inputmode="numeric" data-f="din.guests" placeholder="Same as expected guests"></label>
+      <label class="f">How will guests choose their entree?<select data-f="din.mode"><option value="pre">In advance, on the RSVP (place cards)</option><option value="table">At the table (+$35 per guest)</option></select></label>
+    </div>
+    <p class="q-note" id="tier-hint" style="margin-top:12px">Choose a menu level to see its options.</p>
+    <div id="courses" hidden>
+      <h3>Salad <span class="tag">choose one</span></h3><div class="opts" id="o-salad"></div>
+      <h3>Starter <span class="tag">choose one, or none</span></h3><p class="q-note">Prefer a dessert instead of a starter? Leave this blank (click a selected starter again to clear it) and choose a dessert in Step 7.</p><div class="opts" id="o-starter"></div>
+      <h3>Entrees <span class="tag">up to three, including one vegetarian</span></h3><div class="opts" id="o-entree"></div>
+      <h3>Sides <span class="tag">one starch and one vegetable</span></h3><p class="q-note">Served to all guests.</p>
+      <h3 class="minor">Starch</h3><div class="opts" id="o-starch"></div>
+      <h3 class="minor">Vegetable</h3><div class="opts" id="o-veg"></div>
+    </div>
+    <p class="warn" id="w-din"></p>
+  </div>
+
+  <div data-show="q.din=buffet" class="sub">
+    <p class="q-note" style="margin-top:10px">A 90-minute dinner buffet: one or two salads, two entrees plus one vegetarian choice, and one starch and one vegetable side. Each buffet menu level is $10 per person less than the plated dinner.</p>
+    <h3>Menu level</h3>
+    <div class="tiers" id="bf-tiers"></div>
+    <div class="fields" style="margin-top:12px">
+      <label class="f">Buffet guests<input type="number" min="0" inputmode="numeric" data-f="bf.guests" placeholder="Same as expected guests"></label>
+    </div>
+    <p class="q-note" id="bf-hint" style="margin-top:12px">Choose a menu level to see its options.</p>
+    <div id="bf-courses" hidden>
+      <h3>Salads <span class="tag">one or two</span></h3><div class="opts" id="o-bf-salad"></div>
+      <h3>Entrees <span class="tag">two, plus one vegetarian</span></h3><div class="opts" id="o-bf-entree"></div>
+      <h3>Sides <span class="tag">one starch and one vegetable</span></h3>
+      <h3 class="minor">Starch</h3><div class="opts" id="o-bf-starch"></div>
+      <h3 class="minor">Vegetable</h3><div class="opts" id="o-bf-veg"></div>
+    </div>
+    <p class="warn" id="w-bf"></p>
+  </div>
+
+  <div data-show="q.din!=no">
+    <div class="fields" style="margin-top:16px">
+      <label class="f">Dinner time<input type="time" data-f="q.seat"></label>
+      <label class="f" data-show="q.hasBeef=yes">Beef temperature<select data-f="din.temp"><option></option><option>Rare</option><option>Medium-rare</option><option>Medium</option><option>Medium-well</option><option>Well done</option></select></label>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 7</span>Dessert</h2>
+  <p class="q-note">Enter how many servings of each dessert you'd like. Most hosts order one per dinner guest. If you left the starter blank in Step 6, your dessert is served in its place.</p>
+  <div class="opts" id="o-dessert"></div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 8</span>Beverages</h2>
+  <p class="q-note">Beverage service is priced by your event manager and isn't included in the estimate.</p>
+  <div class="fields">
+    <label class="f">Bar service<select data-f="q.bar"><option></option><option>Hosted (you cover drinks)</option><option>Cash bar (guests pay)</option><option>On consumption (billed for what's poured)</option><option>No bar</option></select></label>
+    <label class="f">Bar opens<input type="time" data-f="bev.open"></label>
+    <label class="f">Bar closes<input type="time" data-f="bev.close"></label>
+  </div>
+  <div class="ask" style="margin-top:12px">
+    <label class="pill"><input type="checkbox" data-f="q.wine"> Wine service with dinner</label>
+    <label class="pill"><input type="checkbox" data-f="q.toast"> Champagne toast</label>
+    <label class="pill"><input type="checkbox" data-f="q.na"> Non-alcoholic beverages</label>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 9</span>Allergies and dietary needs</h2>
+  <p class="q-note">List any guests with a food allergy or dietary need you already know about. You can add more later.</p>
+  <div class="diet-wrap"><table class="diet" id="diet"><thead><tr><th>Guest name</th><th>Allergy or restriction</th><th>Notes</th><th></th></tr></thead><tbody></tbody></table></div>
+  <div class="actions"><button type="button" class="ghost" id="addDiet">Add a guest</button></div>
+</section>
+
+<section class="block">
+  <h2><span class="step">STEP 10</span>Anything else?</h2>
+  <label class="f">Special requests, schedule details, or questions for us<textarea data-f="notes"></textarea></label>
+</section>
+
+<section class="block" id="send">
+  <h2>Send your selections</h2>
+  <p class="q-note">When you're ready, we'll save a small file with your answers and give you our event team's email addresses. Attach the file to an email to us and send it. Your event manager will review your selections and follow up with a banquet event order and final pricing.</p>
+  <p class="warn" id="w-final"></p>
+  <div class="actions">
+    <button type="button" class="big" id="sendBtn">Send my selections</button>
+    <button type="button" class="ghost" id="clearBtn">Start over</button>
+  </div>
+  <div class="status" id="status" role="status"></div>
+  <p class="ver">Menu and prices as of <span id="qver"></span>.</p>
+  <p class="disclaimer">*Consuming raw or undercooked meats, poultry, seafood, shellfish, oysters, or eggs may increase your risk of foodborne illness.</p>
+</section>
+</form>
+
+<aside class="est" id="est" aria-live="polite">
+  <h2>Your estimate</h2>
+  <dl class="lines" id="estLines"></dl>
+  <p class="empty" id="estEmpty">Your estimate appears here as you choose.</p>
+  <div class="grand"><span>Estimated total</span><strong id="estTotal">$0.00</strong></div>
+  <p class="fine" id="estNote"></p>
+</aside>
+</div>
+
+<dialog id="sendDlg" aria-labelledby="sendTitle"><div id="sendBody"></div></dialog>
+
+<div class="totalbar"><span>Estimate <strong id="estTotal2">$0.00</strong></span><a href="#est">Details</a></div>
+</div>
+<footer>
+  <a href="#home" class="wordmark">EDEN</a>
+  <div class="tag">Locally Sourced · Wood Fired Cuisine · From the Heart of New York</div>
+  <nav aria-label="Footer">
+    <a href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reservations</a>
+    <a href="#menu">Menu</a>
+    <a href="https://squareup.com/gift/MLP07Q85G4E60/order" target="_blank" rel="noopener">Gift Cards</a>
+    <a href="#catering">Catering</a>
+    <a href="#partners">Partners</a>
+    <a href="#supper">Eden × James Beard</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <small>118 E. Genesee St., Syracuse, NY 13202 &nbsp;·&nbsp; 315.991.8408</small><br>
+  <a href="#editor" class="edit-link" id="editLink" hidden>Edit menu</a> <a href="#ipad" class="edit-link" id="padLink">Open iPad menu</a><br>
+  <small>© <span id="yr">2026</span> Eden</small>
+</footer>
+
+
+<div class="ed" id="editor" hidden>
+  <div class="ed-bar">
+    <div class="ed-brand">EDEN <span>Menu Editor</span></div>
+    <div class="ed-status" id="edStatus" role="status">Loading…</div>
+    <div class="ed-actions">
+      <button class="ed-btn ghost" id="edView">View site</button>
+      <button class="ed-btn" id="edSave">Publish changes</button>
+    </div>
+  </div>
+  <div class="ed-body">
+    <nav class="ed-side" id="edTabs" aria-label="Menu sections"></nav>
+    <main class="ed-main" id="edMain"></main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/runtime.js"></script>
+<script src="js/country-maps.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/catering.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+rules_version = '2';
+
+// Cloud Firestore security rules for the Eden website (Firebase mode).
+//
+// Everyone can read the menu (the public website and the iPad menu need it).
+// Only the email addresses listed below can change it. Replace the example
+// address with the real editor accounts, and keep the same list in
+// js/config.js -> editors. Create each editor's account in the Firebase
+// console (Authentication -> Users -> Add user) before adding it here.
+//
+// Deploy with the Firebase console (Firestore Database -> Rules -> paste -> Publish)
+// or the Firebase CLI: firebase deploy --only firestore:rules
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isEditor() {
+      return request.auth != null
+        && request.auth.token.email.lower() in [
+          'editor@example.com'
+        ];
+    }
+
+    match /site/{document=**} {
+      allow read: if true;
+      allow write: if isEditor();
+    }
+
+    // Anything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
