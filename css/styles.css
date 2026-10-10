@@ -230,6 +230,9 @@ section{padding:120px 40px}
 .wine-nav button[aria-pressed="true"]{background:var(--ember);border-color:var(--ember);color:var(--ivory)}
 .wn-sub{display:flex;flex-direction:column;margin-top:18px;padding-top:16px;border-top:1px solid var(--line-dark)}
 .wn-sublabel{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember-hot);margin-bottom:8px}
+.wn-sub.solo,.wc-sub.solo{margin-top:0;padding-top:0;border-top:0}
+.wn-sub.solo .wn-sublabel{margin-bottom:12px}
+.pad-wcol .wc-sub.solo .wn-sublabel{margin:12px 0 14px}
 .wn-sub a{font-family:var(--serif);font-size:1.05rem;line-height:1.3;padding:5px 0;color:var(--soft-dark);transition:color .2s}
 .wn-sub a:hover,.wn-sub a:focus-visible{color:var(--ivory)}
 .wn-country{font-family:var(--sans);font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:var(--soft-dark);opacity:.7;margin:14px 0 4px}

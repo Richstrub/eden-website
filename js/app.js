@@ -160,6 +160,12 @@
   }
   function hasWine(t){return (t.groups||[]).some(function(g){return (g.items||[]).some(isWine)})}
   var SUB_LABEL={style:'Styles',country:'Countries',appellation:'Appellations',grape:'Grapes'};
+  function sideNavTab(t){return !hasWine(t)&&(t.id==='m-spirits'||/spirit/i.test(t.label||''))} // tabs that get the wine list's side column
+  function jumpLinks(groups,idp,cls,label){
+    var h='<div class="'+cls+'"><div class="wn-sublabel">'+esc(label)+'</div>';
+    groups.forEach(function(g,i){if((g.items||[]).filter(shown).length)h+='<a href="#'+idp+i+'" data-target="'+idp+i+'">'+esc(g.title)+'</a>'});
+    return h+'</div>';
+  }
   function grapeLinks(groups,idp,cls,mode){
     var h='<div class="'+cls+'"><div class="wn-sublabel">'+(SUB_LABEL[mode]||'Jump to')+'</div>',lastC=null;
     groups.forEach(function(g,i){
@@ -206,6 +212,7 @@
   }
   function panelInner(t){
     if(hasWine(t)){var wg=wineGroups(t,siteWineMode);return '<div class="wine-layout">'+wineNav(siteWineMode,'wine-nav',wg,'wg-')+'<div class="wine-body">'+((siteWineMode==='country'||siteWineMode==='appellation')?'<div class="wm" aria-hidden="true"></div>':'')+groupsHTML(wg,'wg-')+'</div></div>';}
+    if(sideNavTab(t)){var sg=t.groups||[],sp='sg-'+t.id+'-';return '<div class="wine-layout"><nav class="wine-nav side-only" aria-label="'+esc(t.label)+'">'+jumpLinks(sg,sp,'wn-sub solo',t.label)+'</nav><div class="wine-body">'+groupsHTML(sg,sp)+'</div></div>';}
     return groupsHTML(t.groups||[]);
   }
   function bindWineNav(panel,t){
@@ -307,11 +314,11 @@
     tabs.forEach(function(t){h+='<button class="tab" id="t-'+esc(t.id)+'" role="tab" aria-selected="'+(t.id===curId)+'" aria-controls="'+esc(t.id)+'" data-tab="'+esc(t.id)+'">'+esc(t.label)+'</button>'});
     h+='</div>';
     tabs.forEach(function(t){
-      h+='<div class="panel mpanel'+(hasWine(t)?' wine-panel':'')+'" id="'+esc(t.id)+'" role="tabpanel" aria-labelledby="t-'+esc(t.id)+'"'+(t.id===curId?'':' hidden')+'>'+panelInner(t)+'</div>';
+      h+='<div class="panel mpanel'+(hasWine(t)||sideNavTab(t)?' wine-panel':'')+'" id="'+esc(t.id)+'" role="tabpanel" aria-labelledby="t-'+esc(t.id)+'"'+(t.id===curId?'':' hidden')+'>'+panelInner(t)+'</div>';
     });
     if(d.allergy)h+='<p class="allergy">'+esc(d.allergy)+'</p>';
     mount.innerHTML=h;
-    tabs.forEach(function(t){if(hasWine(t))bindWineNav(document.getElementById(t.id),t)});
+    tabs.forEach(function(t){if(hasWine(t)||sideNavTab(t))bindWineNav(document.getElementById(t.id),t)});
     setTimeout(spySite,0);
     var btns=mount.querySelectorAll('.tab');
     btns.forEach(function(b){b.addEventListener('click',function(){
@@ -406,7 +413,8 @@
     var gs=(wine?wineGroups(t,pad.wineMode):(t.groups||[])).filter(function(g){return vis(g).length});
     var total=gs.reduce(function(n,g){return n+vis(g).length},0),big=total>40;
     var h='<h2>'+esc(t.label)+'</h2><div class="pad-rule"></div>';
-    if(!wine&&big&&gs.length>1&&gs.length<=10){h+='<div class="pad-jump">';gs.forEach(function(g,i){h+='<button data-g="pg'+i+'">'+esc(g.title)+'</button>'});h+='</div>'}
+    var side=!wine&&sideNavTab(t)&&gs.length>1;
+    if(!wine&&!side&&big&&gs.length>1&&gs.length<=10){h+='<div class="pad-jump">';gs.forEach(function(g,i){h+='<button data-g="pg'+i+'">'+esc(g.title)+'</button>'});h+='</div>'}
     
     if(wine&&(pad.wineMode==='country'||pad.wineMode==='appellation'))h+='<div class="wm" aria-hidden="true"></div>';
     h+='<div class="pad-grid'+(big?' stack':'')+'">';
@@ -428,7 +436,13 @@
     });
     main.innerHTML=h+'</div>';
     var wc=document.getElementById('padWcol');
-    pad.el.classList.toggle('wine',wine);wc.hidden=!wine;
+    pad.el.classList.toggle('wine',wine||side);wc.hidden=!(wine||side);
+    wc.setAttribute('aria-label',side?t.label:'Browse wines by');
+    if(side){
+      wc.innerHTML=jumpLinks(gs,'pg','wc-sub solo',t.label);
+      setTimeout(spyPad,0);
+      wc.querySelectorAll('.wc-sub a').forEach(function(a){a.onclick=function(e){e.preventDefault();padScrollTo(document.getElementById(a.dataset.target))}});
+    }
     if(wine){
       var wh='<div class="wc-label">Browse by</div>';
       WINE_MODES.forEach(function(m){wh+='<button type="button" data-mode="'+m[0]+'" aria-pressed="'+(m[0]===pad.wineMode)+'">'+m[1]+'</button>'});
