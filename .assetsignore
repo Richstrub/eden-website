@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+scripts
+docs
+firebase
+README.md
+package.json
+wrangler.jsonc
+.assetsignore
+.gitignore
+.nojekyll

@@ -1,0 +1,7 @@
+// Cloudflare settings: publish this folder as a static website (no server code).
+// GitHub Pages ignores this file.
+{
+  "name": "eden-website",
+  "compatibility_date": "2025-09-01",
+  "assets": { "directory": "." }
+}
