@@ -492,7 +492,8 @@ async function sendOnline(){
       answers:Q,beo:D,estimate:Math.round(E.total*100)/100,summary:summary(D)};
     let r=null,j={};
     try{r=await fetch(SVC+'inquiry',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});j=await r.json().catch(()=>({}));}catch(e){r=null;}
-    if(!r||r.status>=500){fileFlow('We couldn’t send your selections online just now, so here’s the other way to get them to us.');return;}
+    if(!r||r.status>=500){try{console.warn('Eden questionnaire: online sending failed',r&&r.status,j);}catch(e){}
+      fileFlow('We couldn’t send your selections online just now, so here’s the other way to get them to us.');return;}
     if(j.ok){
       wf.textContent='';
       const em=esc(String(Q['ev.email']||'').trim());
