@@ -34,7 +34,8 @@ eden-website/
 │   ├── menu-data.js            The menu as a script (GENERATED from data/menu.json, don't edit by hand)
 │   ├── country-maps.js         Map outlines and contour lines for the wine-list watermark
 │   ├── catering.js             Catering questionnaire and price estimate
-│   └── app.js                  Everything else: navigation, menu, wine browsing, iPad menu, editor, animations
+│   ├── app.js                  Everything else: navigation, menu, wine browsing, iPad menu, editor, animations
+│   └── analytics.js            Anonymous visit counter for the staff site's Analytics page (no cookies)
 ├── data/menu.json              THE MENU: source of truth for food, drinks, wine list and Supper Club page
 ├── assets/
 │   ├── images/                 Partner headshots
@@ -164,6 +165,12 @@ When a guest taps **Send my selections**, they save a small file of their answer
 
 The original stand-alone questionnaire, including the staff-only **open these answers as a BEO** tool, is in `tools/event-questionnaire-staff.html`.
 
+## Visitor statistics
+
+`js/analytics.js` sends one small, anonymous note per page view (Home, Supper Club or Catering; the site the visitor came from; and any `utm_source` / `utm_medium` / `utm_campaign` tag on the link) to the staff site's `/t` address (`staffSite` in `js/config.js`, plus `t`). The staff site adds the approximate location and saves it for **Analytics → Website traffic**, which only the Owner can see. No cookies, nothing saved in the browser, no names or IP addresses. Browsers set to Do Not Track or Global Privacy Control aren't counted, and neither is the iPad menu or a copy running on your own computer.
+
+Tip: tag the links you share so they show up by name, for example `https://edencny.com/?utm_source=instagram` in the Instagram bio or `?utm_source=newsletter` in an email.
+
 ## External services and dependencies
 
 | What | Used for | Required? |
@@ -172,6 +179,7 @@ The original stand-alone questionnaire, including the staff-only **open these an
 | Firebase SDK 10.12.2 (www.gstatic.com) | Live editing | Only when `backend: 'firebase'` |
 | Cloud Firestore and Firebase Auth | Live editing | Only when `backend: 'firebase'` |
 | OpenTable, Square gift cards, partner websites | Outbound links | No, they're links only |
+| Eden staff site (`/t`) | Anonymous visit counts | No. If it can't be reached, nothing happens |
 
 The project has no environment variables or API secrets, and none are committed.
 
