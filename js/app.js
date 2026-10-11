@@ -741,7 +741,7 @@
     pad.el.hidden=!onPad;document.body.classList.toggle('on-ipad',onPad);
     if(onPad){renderPad(menuData);padIdle();}
     padIdentity(onPad);
-    var onCater=(h==='#catering');
+    var onCater=(h==='#catering'||/^#plan-[a-f0-9]{64}$/.test(h));   // #plan-…: a guest's private questionnaire link
     var caterEl=document.getElementById('cater'),wasCater=!caterEl.hidden;
     caterEl.hidden=!onCater;document.body.classList.toggle('on-cater',onCater);
     if(onCater&&!wasCater)window.scrollTo(0,0);

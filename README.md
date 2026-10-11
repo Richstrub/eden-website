@@ -161,11 +161,11 @@ Each menu section is its own document, so an edit only sends the section that ch
 
 The form runs entirely in the visitor's browser. Answers save on their device as they go, and the estimate uses the prices built into `js/catering.js`.
 
-The top of the page lists what to know before starting (prices per person, guest minimums, the 3rd-floor room fee, and that the date isn't reserved until the BEO), and guests tick a box confirming they understand that before sending.
+The catering page (`#catering`) is a short inquiry form: steps 1 and 2 (about you, your event). **Send inquiry** sends it to the staff site's **Catering & BEOs** page through the staff site's `/inquiry` address, where bots are screened out (Cloudflare Turnstile, only shown if it needs to check; a hidden field people never see; a too-fast check; limits per connection and email address; sanity checks). The Turnstile script and the check with the staff site load only on the catering page.
 
-When a guest taps **Send my selections**, the answers go straight to the staff site (**Catering & BEOs**), through the staff site's `/inquiry` address. Bots are screened out there: Cloudflare Turnstile (only shown if it needs to check), a hidden field people never see, a too-fast check, limits per connection and per email address, and sanity checks. When email is set up on the staff site, the guest gets a **Confirm my inquiry** email; its link opens `edencny.com/#confirm-…`, which confirms it and thanks them. Setup steps are in the eden-admin README (*Online catering inquiries*). The Turnstile script and the check with the staff site only load on the catering page, so the rest of the site is unaffected.
+Our event team then emails the guest a private link, `#plan-<code>`, which opens the full questionnaire (all ten steps and the live estimate) with steps 1 and 2 already filled in. **Send my selections** sends everything back to the same inquiry; the guest can use the link again to make changes until the event becomes a BEO. Their answers also save in their browser as they go. Setup steps are in the eden-admin README (*Catering inquiries and email*).
 
-If online sending isn't set up yet, or can't be reached, the questionnaire falls back to the original method: the guest saves a small file of their answers and emails it to the addresses in `SEND_TO` at the top of `js/catering.js` (currently Tyler@edencny.com and Rich@edencny.com). The prices, menus and minimums are listed at the top of `js/catering.js` (if you change them, update the "Good to know" list in `index.html` too).
+If the staff site can't be reached, the short form offers to email the inquiry instead, and the full questionnaire falls back to saving a file to email to the addresses in `SEND_TO` at the top of `js/catering.js` (Tyler@edencny.com and Rich@edencny.com). Menus and prices are at the top of `js/catering.js`.
 
 The original stand-alone questionnaire, including the staff-only **open these answers as a BEO** tool, is in `tools/event-questionnaire-staff.html`.
 
@@ -183,7 +183,7 @@ Tip: tag the links you share so they show up by name, for example `https://edenc
 | Firebase SDK 10.12.2 (www.gstatic.com) | Live editing | Only when `backend: 'firebase'` |
 | Cloud Firestore and Firebase Auth | Live editing | Only when `backend: 'firebase'` |
 | OpenTable, Square gift cards, partner websites | Outbound links | No, they're links only |
-| Eden staff site (`/t`, `/inquiry`, `/confirm`) | Anonymous visit counts; catering questionnaires | No. If it can't be reached, visits aren't counted and the questionnaire falls back to email |
+| Eden staff site (`/t`, `/inquiry`, `/plan`) | Anonymous visit counts; catering inquiries and questionnaires | No. If it can't be reached, visits aren't counted and the questionnaire falls back to email |
 | Cloudflare Turnstile (challenges.cloudflare.com) | Bot check on the catering questionnaire | Only once switched on in the staff site; loads only on the catering page |
 
 The project has no environment variables or API secrets, and none are committed.

@@ -390,7 +390,7 @@
   <main class="pad-main" id="padMain"></main>
 </div>
 
-<div id="cater" class="cater" hidden>
+<div id="cater" class="cater q-intake" hidden>
   <section class="sp sp-hero cater-hero">
     <div class="narrow center">
       <div class="eyebrow" style="color:var(--ember-hot)">Eden Catering</div>
@@ -403,17 +403,8 @@
 <div class="q-head">
   <div class="eyebrow" style="color:var(--ember)">Catering &amp; Private Events</div>
   <h1>Plan your event</h1>
-  <p class="q-lede">Tell us about your event and the menu you have in mind. Your estimate updates as you choose. When you're done, send your selections to us, and your event manager will follow up with a banquet event order to confirm. Your answers save in this browser as you go.</p>
-  <div class="q-know">
-    <h2>Good to know before you start</h2>
-    <ul>
-      <li><b>Plated dinners</b> are $120, $135 or $165 per person; <b>dinner buffets</b> are $110, $125 or $155 per person.</li>
-      <li><b>Receptions</b> and <b>breakfast or brunch buffets</b> have a 25-guest minimum; in-suite dining for a wedding party has a 10-guest minimum.</li>
-      <li>Events in our <b>3rd Floor Event Space</b> with less than $2,500 in food include a $250 room fee.</li>
-      <li>Your estimate includes the service charge and sales tax. Bar and beverage service is priced separately by your event manager.</li>
-      <li>Your date is reserved once we confirm it with a banquet event order.</li>
-    </ul>
-  </div>
+  <p class="q-lede" id="qLede">Tell us a little about you and your event. Our event team will get back to you with a link to plan your menu and details, already filled in with what you send here.</p>
+  <p class="q-planbar" id="qPlanbar" hidden></p>
 </div>
 </div>
 
@@ -446,7 +437,7 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 3</span>Room and setup</h2>
   <div class="fields">
     <label class="f">Seating style<select data-f="rm.style"><option></option><option>Rounds</option><option>Banquet</option><option>Cocktail</option><option>Classroom</option><option>Other</option></select></label>
@@ -458,7 +449,7 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 4</span>Morning of the event</h2>
   <p class="q-note">Getting-ready food for the wedding party, or a breakfast or brunch buffet for your guests.</p>
   <div class="ask"><label class="pill"><input type="radio" name="q.morning" value="yes" data-f="q.morning"> Yes, I'm interested</label><label class="pill"><input type="radio" name="q.morning" value="no" data-f="q.morning"> No, thanks</label></div>
@@ -478,7 +469,7 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 5</span>Social hour reception</h2>
   <p class="q-note">Passed canapés and stations while guests mingle. 25-guest minimum.</p>
   <div class="ask"><label class="pill"><input type="radio" name="q.rec" value="yes" data-f="q.rec"> Yes</label><label class="pill"><input type="radio" name="q.rec" value="no" data-f="q.rec"> No</label></div>
@@ -497,7 +488,7 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 6</span>Dinner</h2>
   <p class="q-note">Choose a seated, plated dinner or a dinner buffet.</p>
   <div class="ask">
@@ -552,13 +543,13 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 7</span>Dessert</h2>
   <p class="q-note">Enter how many servings of each dessert you'd like. Most hosts order one per dinner guest. If you left the starter blank in Step 6, your dessert is served in its place.</p>
   <div class="opts" id="o-dessert"></div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 8</span>Beverages</h2>
   <p class="q-note">Beverage service is priced by your event manager and isn't included in the estimate.</p>
   <div class="fields">
@@ -573,36 +564,35 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 9</span>Allergies and dietary needs</h2>
   <p class="q-note">List any guests with a food allergy or dietary need you already know about. You can add more later.</p>
   <div class="diet-wrap"><table class="diet" id="diet"><thead><tr><th>Guest name</th><th>Allergy or restriction</th><th>Notes</th><th></th></tr></thead><tbody></tbody></table></div>
   <div class="actions"><button type="button" class="ghost" id="addDiet">Add a guest</button></div>
 </section>
 
-<section class="block">
+<section class="block q-full">
   <h2><span class="step">STEP 10</span>Anything else?</h2>
   <label class="f">Special requests, schedule details, or questions for us<textarea data-f="notes"></textarea></label>
 </section>
 
 <section class="block" id="send">
-  <h2>Send your selections</h2>
-  <p class="q-note" id="sendNote">When you're ready, we'll save a small file with your answers and give you our event team's email addresses. Attach the file to an email to us and send it. Your event manager will review your selections and follow up with a banquet event order and final pricing.</p>
-  <label class="q-ack"><input type="checkbox" id="qAck"> <span>I understand this is an estimate, and my date isn't reserved until Eden confirms it with a banquet event order.</span></label>
+  <h2 id="sendH">Send your inquiry</h2>
+  <p class="q-note" id="sendNote">Our event team will review your details and email you a private link to plan your menu, with everything above already filled in.</p>
   <div class="q-hp" aria-hidden="true"><label>Leave this field empty<input type="text" id="qHp" name="company_website" tabindex="-1" autocomplete="off"></label></div>
   <div class="q-ts" id="qTs"></div>
   <p class="warn" id="w-final"></p>
   <div class="actions">
-    <button type="button" class="big" id="sendBtn">Send my selections</button>
+    <button type="button" class="big" id="sendBtn">Send inquiry</button>
     <button type="button" class="ghost" id="clearBtn">Start over</button>
   </div>
   <div class="status" id="status" role="status"></div>
-  <p class="ver">Menu and prices as of <span id="qver"></span>.</p>
-  <p class="disclaimer">*Consuming raw or undercooked meats, poultry, seafood, shellfish, oysters, or eggs may increase your risk of foodborne illness.</p>
+  <p class="ver q-full">Menu and prices as of <span id="qver"></span>.</p>
+  <p class="disclaimer q-full">*Consuming raw or undercooked meats, poultry, seafood, shellfish, oysters, or eggs may increase your risk of foodborne illness.</p>
 </section>
 </form>
 
-<aside class="est" id="est" aria-live="polite">
+<aside class="est q-full" id="est" aria-live="polite">
   <h2>Your estimate</h2>
   <dl class="lines" id="estLines"></dl>
   <p class="empty" id="estEmpty">Your estimate appears here as you choose.</p>
