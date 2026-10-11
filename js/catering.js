@@ -353,10 +353,11 @@ function renderEstimate(){
   $('estNote').textContent='Estimate only. Final pricing is confirmed on your banquet event order.'+(E.quoted.length?` Not included: ${E.quoted.join(' and ')}, priced by your event manager.`:'');
 }
 
-function missing(){
+function missing(needEmail){
   const m=[];
   if(!Q['ev.contact'])m.push('your name');
-  if(!Q['ev.email']&&!Q['ev.phone'])m.push('an email or phone number');
+  if(needEmail&&!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(String(Q['ev.email']||'').trim()))m.push('your email address');
+  else if(!Q['ev.email']&&!Q['ev.phone'])m.push('an email or phone number');
   if(!Q['ev.date'])m.push('the event date');
   if(!num('ev.expected'))m.push('the expected number of guests');
   return m;
@@ -379,13 +380,8 @@ dlg.addEventListener('click',async e=>{
 });
 const addrHtml=()=>SEND_TO.map(a=>`<span class="addr">${esc(a)}</span>`).join('<br>');
 
-$('sendBtn').addEventListener('click',async()=>{
+async function fileFlow(note){
   const st=$('status');
-  const m=missing();
-  $('w-final').textContent=m.length?`Please add ${m.join(', ')} so we can reach you about your event.`:'';
-  const sb=$('sendBtn');
-  if(m.length&&!sb.dataset.anyway){sb.dataset.anyway='1';sb.textContent='Send anyway';return;}
-  delete sb.dataset.anyway;sb.textContent='Send my selections';
   const D=buildBEO(),E=estimate(D);
   const label=(Q['ev.name']||Q['ev.contact']||'Event').trim();
   const name=('Eden selections - '+label).replace(/[\\/:*?"<>|]+/g,'').replace(/\s+/g,' ').trim()+'.json';
@@ -413,15 +409,148 @@ $('sendBtn').addEventListener('click',async()=>{
       <li><b>Attach the file and send.</b> Your event manager will be in touch to confirm details and pricing.</li>
     </ol>
     <div class="actions"><button type="button" data-act="close">Done</button></div>`);
+  if(note)dlgBody.insertAdjacentHTML('afterbegin',`<p class="q-note dlg-note">${esc(note)}</p>`);
   st.textContent='Your answers are ready to send. Follow the steps to email them to Eden.';
+}
+
+/* ---------- Sending online (through the staff site), with bot screening ----------
+   When the staff site's inquiry service is switched on, "Send my selections" sends the answers directly.
+   Bots are screened out by Cloudflare Turnstile (only shown if it needs to check), a hidden field people
+   never see, a too-fast check, and limits on the server. If online sending isn't available, the
+   questionnaire falls back to saving a file to email, as before. */
+const CF=window.EDEN_CONFIG||{};
+const SVC=CF.staffSite?String(CF.staffSite).replace(/\/?$/,'/'):'';
+const STARTED='eden-questionnaire-started';
+function started(){let v=0;try{v=+localStorage.getItem(STARTED)||0;}catch(e){}return v;}
+function markStarted(){if(started())return;try{localStorage.setItem(STARTED,String(Date.now()));}catch(e){}}
+document.addEventListener('change',e=>{if(e.target&&(e.target.dataset.f||e.target.dataset.d))markStarted();});
+document.addEventListener('input',e=>{if(e.target&&(e.target.dataset.f||e.target.dataset.d))markStarted();});
+let online=null,onlineP=null,tsId=null,tsToken='';
+function getOnline(){
+  if(onlineP)return onlineP;
+  if(!SVC||!window.fetch)return onlineP=Promise.resolve({ready:false});
+  onlineP=fetch(SVC+'inquiry/config',{cache:'no-store'}).then(r=>r.ok?r.json():{ready:false}).catch(()=>({ready:false})).then(c=>{
+    online=c||{ready:false};
+    if(online.ready){
+      $('sendNote').textContent=online.confirm
+        ?'When you send your selections, we’ll email you a link to confirm your address. Once you click it, your selections go straight to our event team, and your event manager will follow up with a banquet event order and final pricing.'
+        :'Your selections go straight to our event team. Your event manager will review them and follow up with a banquet event order and final pricing.';
+      if(online.turnstile)loadTurnstile(online.turnstile);
+    }
+    return online;
+  });
+  return onlineP;
+}
+function loadTurnstile(key){
+  const render=()=>{try{tsId=window.turnstile.render('#qTs',{sitekey:key,appearance:'interaction-only',action:'catering',
+    callback:t=>{tsToken=t;},'expired-callback':()=>{tsToken='';},'error-callback':()=>{tsToken='';}});}catch(e){}};
+  if(window.turnstile){render();return;}
+  window.__edenTs=render;
+  const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__edenTs';sc.async=true;sc.defer=true;
+  document.head.appendChild(sc);
+}
+function waitToken(ms){return new Promise(res=>{const t0=Date.now();(function chk(){if(tsToken||Date.now()-t0>ms)return res(tsToken);setTimeout(chk,200);})();});}
+// only on the catering page, so the rest of the site loads exactly as before
+function onCater(){return location.hash==='#catering';}
+if(onCater())getOnline();
+window.addEventListener('hashchange',()=>{if(onCater())getOnline();});
+
+/* What they chose, in words, for the event team */
+const NAMES={};
+[[suite,'Morning'],[brunch,'Morning'],[stations,'Morning'],[hot,'Reception'],[cold,'Reception'],[enh,'Reception'],[salads,'Dinner'],[starters,'Dinner'],[entrees,'Dinner'],[sides,'Dinner'],[desserts,'Desserts']]
+  .forEach(([list,sec])=>list.forEach(it=>{NAMES[it.key]=[sec,clean(it.name)];}));
+function summary(D){
+  const out={},add=(sec,line)=>{(out[sec]=out[sec]||[]).push(line);};
+  if(D['rec.guests'])add('Reception',`${D['rec.guests']} guests, ${D['rec.len']==='2'?'2 hours':'1 hour'}`);
+  if(D['din.tier'])add('Dinner',`Plated dinner, $${D['din.tier']} per person, ${D['din.guests']||'?'} guests${D['din.mode']==='table'?', entrees chosen tableside':''}`);
+  if(D['bf.guests']&&Q['q.din']==='buffet')add('Dinner',`Dinner buffet${D['bf.tier']?`, $${bfPrice(+D['bf.tier'])} per person`:''}, ${D['bf.guests']} guests`);
+  Object.keys(D).forEach(k=>{
+    let m;
+    if((m=k.match(/^(.*)\.qty$/))&&NAMES[m[1]]&&!/^bv\./.test(k))add(NAMES[m[1]][0],`${NAMES[m[1]][1]} × ${D[k]}`);
+    else if((m=k.match(/^(.*)\.sel$/))&&NAMES[m[1]]&&D[k]===true)add(NAMES[m[1]][0],NAMES[m[1]][1]);
+    else if((m=k.match(/^bf\.(.*)$/))&&NAMES[m[1]]&&D[k]===true)add('Dinner',NAMES[m[1]][1]+' (buffet)');
+  });
+  if(D['din.temp']||D['bf.temp'])add('Dinner','Beef cooked '+(D['din.temp']||D['bf.temp']));
+  const bev=[];const bar=String(Q['q.bar']||'');if(bar)bev.push(bar);if(Q['q.wine'])bev.push('Wine service with dinner');if(Q['q.toast'])bev.push('Champagne toast');if(Q['q.na'])bev.push('Non-alcoholic beverages');
+  bev.forEach(b=>add('Beverages',b));
+  Q.diet.filter(r=>r&&(r.name||r.allergy||r.note)).forEach(r=>add('Allergies and dietary needs',[r.name,r.allergy,r.note].filter(Boolean).join(' · ')));
+  ['rm.style','rm.head','rm.linen','rm.decor','rm.av','rm.vendors'].forEach(k=>{if(Q[k])add('Room and setup',String(Q[k]).trim());});
+  return Object.keys(out).map(k=>[k,out[k]]);
+}
+
+async function sendOnline(){
+  const st=$('status'),sb=$('sendBtn'),wf=$('w-final');
+  const D=buildBEO(),E=estimate(D);
+  sb.disabled=true;sb.textContent='Sending…';
+  try{
+    if(online.turnstile&&!tsToken){
+      try{if(window.turnstile&&tsId!=null)window.turnstile.execute(tsId);}catch(e){}
+      await waitToken(8000);
+      if(!tsToken){wf.textContent='Please complete the quick check above the Send button, then send again.';return;}
+    }
+    const body={hp:$('qHp').value,elapsed:started()?Date.now()-started():0,token:tsToken,ack:$('qAck').checked,
+      answers:Q,beo:D,estimate:Math.round(E.total*100)/100,summary:summary(D)};
+    let r=null,j={};
+    try{r=await fetch(SVC+'inquiry',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});j=await r.json().catch(()=>({}));}catch(e){r=null;}
+    if(!r||r.status>=500){fileFlow('We couldn’t send your selections online just now, so here’s the other way to get them to us.');return;}
+    if(j.ok){
+      wf.textContent='';
+      const em=esc(String(Q['ev.email']||'').trim());
+      if(j.confirm)showDlg(`<h2 id="sendTitle">Check your email</h2>
+        <p>We sent a link to <b>${em}</b>. Click <b>Confirm my inquiry</b> in that email, and your selections go straight to our event team.</p>
+        <p class="q-note">Don’t see it in a few minutes? Check your spam or promotions folder, or email us at events@edencny.com.</p>
+        <div class="actions"><button type="button" data-act="close">Done</button></div>`);
+      else showDlg(`<h2 id="sendTitle">Thank you</h2>
+        <p>Your selections are on their way to our event team. Your event manager will be in touch to confirm details and pricing.</p>
+        <div class="actions"><button type="button" data-act="close">Done</button></div>`);
+      st.textContent=j.confirm?`Almost done: confirm your email (${String(Q['ev.email']||'').trim()}) to send your selections.`:'Sent. Thank you!';
+      return;
+    }
+    if(j.error==='verify'){tsToken='';try{if(window.turnstile&&tsId!=null)window.turnstile.reset(tsId);}catch(e){}}
+    wf.textContent=j.message||'Something went wrong. Please try again.';
+  }finally{sb.disabled=false;sb.textContent='Send my selections';}
+}
+
+$('sendBtn').addEventListener('click',async()=>{
+  const wf=$('w-final');
+  await getOnline();
+  const m=missing(!!(online&&online.ready));
+  if(!$('qAck').checked)m.push('a check in the box above the Send button');
+  if(online&&online.ready){
+    if(m.length){wf.textContent=`Please add ${m.join(', ')}.`;return;}
+    return sendOnline();
+  }
+  const sb=$('sendBtn');
+  wf.textContent=m.length?`Please add ${m.join(', ')} so we can reach you about your event.`:'';
+  if(m.length&&!sb.dataset.anyway){sb.dataset.anyway='1';sb.textContent='Send anyway';return;}
+  delete sb.dataset.anyway;sb.textContent='Send my selections';
+  fileFlow();
 });
+
+/* The guest clicked "Confirm my inquiry" in their email: edencny.com/#confirm-… */
+(function(){
+  const m=location.hash.match(/^#confirm-([a-f0-9]{40,80})$/);
+  if(!m||!SVC)return;
+  history.replaceState(null,'','#catering');   // before the page decides what to show
+  const show=html=>{const go=()=>showDlg(html);if(document.readyState==='complete')setTimeout(go,50);else window.addEventListener('load',()=>setTimeout(go,50));};
+  fetch(SVC+'confirm',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({t:m[1]})})
+    .then(r=>r.json().catch(()=>({}))).catch(()=>({error:'network'})).then(j=>{
+      if(j.ok)show(`<h2 id="sendTitle">${j.already?'Already confirmed':'Thank you'+(j.name?', '+esc(j.name):'')}</h2>
+        <p>${j.already?'We already have your selections.':'Your email is confirmed and your selections are on their way to our event team.'} Your event manager will be in touch to confirm details and pricing.</p>
+        <div class="actions"><button type="button" data-act="close">Done</button></div>`);
+      else show(`<h2 id="sendTitle">We couldn’t confirm that link</h2>
+        <p>${j.error==='expired'?'The link has expired.':'The link may be incomplete or out of date.'} Please send your selections again, or email us at events@edencny.com.</p>
+        <div class="actions"><button type="button" data-act="close">Done</button></div>`);
+    });
+})();
 
 
 $('clearBtn').addEventListener('click',()=>{
   const cb=$('clearBtn');
   if(!cb.dataset.sure){cb.dataset.sure='1';cb.textContent='Tap again to clear everything';setTimeout(()=>{delete cb.dataset.sure;cb.textContent='Start over';},4000);return;}
   delete cb.dataset.sure;cb.textContent='Start over';
-  Q={diet:[{}]};try{localStorage.removeItem(STORE);}catch(e){}
+  Q={diet:[{}]};try{localStorage.removeItem(STORE);localStorage.removeItem(STARTED);}catch(e){}
+  $('qAck').checked=false;
   document.querySelectorAll('[data-f]').forEach(el=>{if(el.type==='radio'||el.type==='checkbox')el.checked=false;else if(el.tagName==='SELECT')el.selectedIndex=0;else el.value='';});
   renderDiet();update();$('status').textContent='Answers cleared.';$('w-final').textContent='';
 });

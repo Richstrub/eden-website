@@ -161,7 +161,11 @@ Each menu section is its own document, so an edit only sends the section that ch
 
 The form runs entirely in the visitor's browser. Answers save on their device as they go, and the estimate uses the prices built into `js/catering.js`.
 
-When a guest taps **Send my selections**, they save a small file of their answers and email it to the addresses in `SEND_TO` at the top of `js/catering.js` (currently Tyler@edencny.com and Rich@edencny.com). **Submissions aren't delivered automatically. There's no server.** To receive them directly, connect a form service (Formspree, Netlify Forms, Basin) or a small serverless function. The prices, menus and minimums are listed at the top of `js/catering.js`.
+The top of the page lists what to know before starting (prices per person, guest minimums, the 3rd-floor room fee, and that the date isn't reserved until the BEO), and guests tick a box confirming they understand that before sending.
+
+When a guest taps **Send my selections**, the answers go straight to the staff site (**Catering & BEOs**), through the staff site's `/inquiry` address. Bots are screened out there: Cloudflare Turnstile (only shown if it needs to check), a hidden field people never see, a too-fast check, limits per connection and per email address, and sanity checks. When email is set up on the staff site, the guest gets a **Confirm my inquiry** email; its link opens `edencny.com/#confirm-…`, which confirms it and thanks them. Setup steps are in the eden-admin README (*Online catering inquiries*). The Turnstile script and the check with the staff site only load on the catering page, so the rest of the site is unaffected.
+
+If online sending isn't set up yet, or can't be reached, the questionnaire falls back to the original method: the guest saves a small file of their answers and emails it to the addresses in `SEND_TO` at the top of `js/catering.js` (currently Tyler@edencny.com and Rich@edencny.com). The prices, menus and minimums are listed at the top of `js/catering.js` (if you change them, update the "Good to know" list in `index.html` too).
 
 The original stand-alone questionnaire, including the staff-only **open these answers as a BEO** tool, is in `tools/event-questionnaire-staff.html`.
 
@@ -179,14 +183,14 @@ Tip: tag the links you share so they show up by name, for example `https://edenc
 | Firebase SDK 10.12.2 (www.gstatic.com) | Live editing | Only when `backend: 'firebase'` |
 | Cloud Firestore and Firebase Auth | Live editing | Only when `backend: 'firebase'` |
 | OpenTable, Square gift cards, partner websites | Outbound links | No, they're links only |
-| Eden staff site (`/t`) | Anonymous visit counts | No. If it can't be reached, nothing happens |
+| Eden staff site (`/t`, `/inquiry`, `/confirm`) | Anonymous visit counts; catering questionnaires | No. If it can't be reached, visits aren't counted and the questionnaire falls back to email |
+| Cloudflare Turnstile (challenges.cloudflare.com) | Bot check on the catering questionnaire | Only once switched on in the staff site; loads only on the catering page |
 
 The project has no environment variables or API secrets, and none are committed.
 
 ## Known limitations
 
 - **The wine-list watermark maps are simplified.** The country outlines and contour lines are hand-built approximations, and the region markers show general areas, not survey-accurate boundaries. A wine from a region not listed in `js/country-maps.js` shows the country outline without a marker. Add the region's coordinates there to fix it.
-- **Catering submissions aren't automatic.** Guests email their file (see above).
 - **The iPad menu is a web app, not an App Store app.** It runs in Safari in full-screen mode.
 
 ## Upload this project to GitHub

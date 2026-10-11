@@ -404,6 +404,16 @@
   <div class="eyebrow" style="color:var(--ember)">Catering &amp; Private Events</div>
   <h1>Plan your event</h1>
   <p class="q-lede">Tell us about your event and the menu you have in mind. Your estimate updates as you choose. When you're done, send your selections to us, and your event manager will follow up with a banquet event order to confirm. Your answers save in this browser as you go.</p>
+  <div class="q-know">
+    <h2>Good to know before you start</h2>
+    <ul>
+      <li><b>Plated dinners</b> are $120, $135 or $165 per person; <b>dinner buffets</b> are $110, $125 or $155 per person.</li>
+      <li><b>Receptions</b> and <b>breakfast or brunch buffets</b> have a 25-guest minimum; in-suite dining for a wedding party has a 10-guest minimum.</li>
+      <li>Events in our <b>3rd Floor Event Space</b> with less than $2,500 in food include a $250 room fee.</li>
+      <li>Your estimate includes the service charge and sales tax. Bar and beverage service is priced separately by your event manager.</li>
+      <li>Your date is reserved once we confirm it with a banquet event order.</li>
+    </ul>
+  </div>
 </div>
 </div>
 
@@ -577,7 +587,10 @@
 
 <section class="block" id="send">
   <h2>Send your selections</h2>
-  <p class="q-note">When you're ready, we'll save a small file with your answers and give you our event team's email addresses. Attach the file to an email to us and send it. Your event manager will review your selections and follow up with a banquet event order and final pricing.</p>
+  <p class="q-note" id="sendNote">When you're ready, we'll save a small file with your answers and give you our event team's email addresses. Attach the file to an email to us and send it. Your event manager will review your selections and follow up with a banquet event order and final pricing.</p>
+  <label class="q-ack"><input type="checkbox" id="qAck"> <span>I understand this is an estimate, and my date isn't reserved until Eden confirms it with a banquet event order.</span></label>
+  <div class="q-hp" aria-hidden="true"><label>Leave this field empty<input type="text" id="qHp" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+  <div class="q-ts" id="qTs"></div>
   <p class="warn" id="w-final"></p>
   <div class="actions">
     <button type="button" class="big" id="sendBtn">Send my selections</button>
