@@ -434,7 +434,7 @@ function started(){let v=0;try{v=+localStorage.getItem(STARTED)||0;}catch(e){}re
 function markStarted(){if(started())return;try{localStorage.setItem(STARTED,String(Date.now()));}catch(e){}}
 document.addEventListener('change',e=>{if(e.target&&(e.target.dataset.f||e.target.dataset.d))markStarted();});
 document.addEventListener('input',e=>{if(e.target&&(e.target.dataset.f||e.target.dataset.d))markStarted();});
-let online=null,onlineP=null,tsId=null,tsToken='';
+let online=null,onlineP=null,tsId=null,tsToken='',tsErr='',tsAsked=false;
 function getOnline(){
   if(onlineP)return onlineP;
   if(!SVC||!window.fetch)return onlineP=Promise.resolve({ready:false});
@@ -447,10 +447,10 @@ function getOnline(){
 }
 function loadTurnstile(key){
   const render=()=>{try{tsId=window.turnstile.render('#qTs',{sitekey:key,appearance:'interaction-only',action:'catering',
-    callback:t=>{tsToken=t;},'expired-callback':()=>{tsToken='';},'error-callback':()=>{tsToken='';}});}catch(e){}};
+    callback:t=>{tsToken=t;tsErr='';},'expired-callback':()=>{tsToken='';},'error-callback':c=>{tsToken='';tsErr=String(c||'error');return true;}});}catch(e){tsErr='render';}};
   if(window.turnstile){render();return;}
   window.__edenTs=render;
-  const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__edenTs';sc.async=true;sc.defer=true;
+  const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__edenTs';sc.async=true;sc.defer=true;sc.onerror=()=>{tsErr='load';};
   document.head.appendChild(sc);
 }
 function waitToken(ms){return new Promise(res=>{const t0=Date.now();(function chk(){if(tsToken||Date.now()-t0>ms)return res(tsToken);setTimeout(chk,200);})();});}
@@ -515,12 +515,17 @@ function intakeMail(note){
 
 async function sendIntake(){
   const st=$('status'),wf=$('w-final');
-  if(online.turnstile&&!tsToken){
+  // Cloudflare's quick "are you a person" check. A guest is never stuck here: if the check can't run on their
+  // device (blocked, failed to load, error) the inquiry is still sent and our team reviews it.
+  if(online.turnstile&&!tsToken&&!tsErr){
     try{if(window.turnstile&&tsId!=null)window.turnstile.execute(tsId);}catch(e){}
+    st.textContent='Sending…';
     await waitToken(8000);
-    if(!tsToken){wf.textContent='Please complete the quick check above the Send button, then send again.';return;}
+    const box=$('qTs'),shown=!!(box&&box.querySelector('iframe')&&box.offsetHeight>20);
+    if(!tsToken&&!tsErr&&shown&&!tsAsked){tsAsked=true;st.textContent='';wf.textContent='Please tick the box above the Send button, then press Send again.';return;}
   }
-  const {r,j}=await post('inquiry',{hp:$('qHp').value,elapsed:started()?Date.now()-started():0,token:tsToken,answers:intakeAnswers()});
+  st.textContent='Sending…';
+  const {r,j}=await post('inquiry',{hp:$('qHp').value,elapsed:started()?Date.now()-started():0,token:tsToken,tsErr:tsToken?'':(tsErr||'none'),answers:intakeAnswers()});
   if(!r||r.status>=500){intakeMail('We couldn’t send your inquiry online just now, so here’s how to email it to us instead.');return;}
   if(j.ok){
     wf.textContent='';
