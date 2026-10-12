@@ -519,6 +519,7 @@ body.on-cater > section{display:none}
 .note a{border-bottom:1px solid var(--line);color:var(--ink)}
 
 footer{background:var(--ink);color:var(--soft-dark);padding:72px 40px calc(40px + env(safe-area-inset-bottom,0px));text-align:center}
+footer .foot-mark{display:block;margin:-10px auto 0;width:84px;height:84px}
 footer .wordmark{color:var(--ivory);display:inline-block;margin-bottom:14px}
 footer .tag{font-family:var(--serif);font-style:italic;font-size:1.1rem}
 footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin:28px 0 44px}
