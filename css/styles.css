@@ -564,3 +564,4 @@ footer small{font-size:.74rem;letter-spacing:.08em}
 #cater .q-ts:empty{display:none}
 #cater .q-ts{margin:10px 0 0}
 #cater .dlg-note{display:block;margin:0 0 12px;padding:8px 10px;background:var(--q-soft);border-radius:6px;color:var(--q-ink)}
+@media (min-width:821px){.visit.visit-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin-left:auto;margin-right:auto}}
