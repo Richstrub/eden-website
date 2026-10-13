@@ -526,6 +526,9 @@ footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;marg
 footer nav a{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase}
 footer nav a:hover{color:var(--ivory)}
 footer small{font-size:.74rem;letter-spacing:.08em}
+footer .foot-mail{color:inherit;white-space:nowrap;text-decoration:underline;text-decoration-color:rgba(243,238,229,.3);text-underline-offset:3px}
+footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
+@media (max-width:600px){footer .foot-sep{display:none}footer .foot-mail{display:table;margin:6px auto 0}}
 
 @media (max-width:1080px){
   nav.main,.reserve-top{display:none}
