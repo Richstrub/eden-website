@@ -526,6 +526,21 @@ footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;marg
 footer nav a{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase}
 footer nav a:hover{color:var(--ivory)}
 footer small{font-size:.74rem;letter-spacing:.08em}
+footer .foot-join{max-width:480px;margin:-8px auto 44px}
+footer .foot-join-t{font-family:var(--serif);font-size:1.5rem;color:var(--ivory);margin-bottom:6px}
+footer .foot-join-s{font-size:.86rem;line-height:1.6;margin:0 0 16px}
+footer #joinForm{display:flex;border:1px solid rgba(243,238,229,.28)}
+footer #joinForm input[type=email]{flex:1;min-width:0;background:none;border:0;padding:13px 16px;font:inherit;font-size:16px;color:var(--ivory);outline:none;border-radius:0;-webkit-appearance:none;appearance:none}
+footer #joinForm input[type=email]::placeholder{color:rgba(243,238,229,.45)}
+footer #joinForm:focus-within{border-color:var(--ember-hot)}
+footer #joinForm button{flex:none;background:var(--ivory);color:var(--ink);border:0;padding:0 24px;font:inherit;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;cursor:pointer}
+footer #joinForm button:hover{background:#fff}
+footer #joinForm button:disabled{opacity:.6}
+footer .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+footer .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+footer .foot-join-msg{min-height:1.2em;margin:10px 0 0;font-size:.84rem}
+footer .foot-join-msg.ok{color:var(--ivory)}
+footer .foot-join-msg.err{color:#f0a58b}
 footer .foot-mail{color:inherit;white-space:nowrap;text-decoration:underline;text-decoration-color:rgba(243,238,229,.3);text-underline-offset:3px}
 footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
 @media (max-width:600px){footer .foot-sep{display:none}footer .foot-mail{display:table;margin:6px auto 0}}

@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261013b">
+<link rel="stylesheet" href="css/styles.css?v=20261013c">
 </head>
 <body>
 
@@ -632,6 +632,17 @@
     <a href="#supper">Eden × James Beard</a>
     <a href="#contact">Contact</a>
   </nav>
+  <div class="foot-join" id="join">
+    <div class="foot-join-t">Join our list</div>
+    <p class="foot-join-s">Seasonal menus, events and Eden &times; James Beard dinners, a few times a season.</p>
+    <form id="joinForm" novalidate>
+      <label class="sr" for="joinEmail">Your email</label>
+      <input id="joinEmail" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Join</button>
+    </form>
+    <p class="foot-join-msg" id="joinMsg" role="status"></p>
+  </div>
   <small>118 E. Genesee St., Syracuse, NY 13202 &nbsp;·&nbsp; 315.991.8408<span class="foot-sep"> &nbsp;·&nbsp; </span><a class="foot-mail" href="mailto:info@edencny.com">info@edencny.com</a></small><br>
   <a href="#editor" class="edit-link" id="editLink" hidden>Edit menu</a> <a href="#ipad" class="edit-link" id="padLink">Open iPad menu</a><br>
   <small>© <span id="yr">2026</span> Eden</small>
@@ -660,5 +671,6 @@
 <script src="js/catering.js?v=20261012b"></script>
 <script src="js/app.js?v=20261012b"></script>
 <script src="js/analytics.js?v=20261012b"></script>
+<script src="js/join.js?v=20261013a"></script>
 </body>
 </html>
