@@ -212,6 +212,8 @@ function update(){
     $('alaPill').title=alaIn.disabled?'Choose the Restaurant or the 3rd Floor Event Space in Step 2 to order à la carte':'';}
   $('w-ala').textContent=alaCleared?'À la carte is only available in the Restaurant or the 3rd Floor Event Space, so your dinner choice was cleared. Please choose another, or change the location in Step 2.':'';
   const style=Q['q.din']||'';
+  // Dessert (Step 7) is offered with a plated dinner or a dinner buffet only
+  Q['q.dinMeal']=style==='plated'||style==='buffet'?'yes':'no';
   const ent=chosenEntrees(),bE=bfChosen(entrees);
   const beefList=style==='plated'?ent:style==='buffet'?bE:[];
   Q['q.hasBeef']=beefList.some(e=>/beef|strip/i.test(e.name))?'yes':'no';
@@ -220,6 +222,8 @@ function update(){
     const m=el.dataset.show.match(/^([^!=]+)(!?=)(.*)$/);const v=String(Q[m[1]]||'');
     el.hidden=m[2]==='='?v!==m[3]:(v===''||v===m[3]);
   });
+  // number the steps that are showing, so hiding Dessert doesn't leave a gap
+  let sn=0;document.querySelectorAll('#q > section.block .step').forEach(s=>{const sec=s.closest('section');if(sec.hidden||getComputedStyle(sec).display==='none')return;s.textContent='STEP '+(++sn);});
   const tier=tierNow();
   $('courses').hidden=!tier;$('tier-hint').hidden=!!tier;
   document.querySelectorAll('[data-tiers]').forEach(r=>{r.hidden=!!tier&&!r.dataset.tiers.split(',').includes(String(tier));});
@@ -329,7 +333,7 @@ function buildBEO(){
   // À la carte (Restaurant or 3rd floor only)
   if(style==='ala'&&ALA_ROOMS.includes(String(Q['ev.room']||'')))D['ev.alacarte']=true;
   // Desserts
-  desserts.forEach(d=>{const q=num(d.key+'.qty');if(q)D[d.key+'.qty']=String(q);});
+  if(style==='plated'||style==='buffet')desserts.forEach(d=>{const q=num(d.key+'.qty');if(q)D[d.key+'.qty']=String(q);});
   // Beverages
   const bar=String(Q['q.bar']||'');
   if(bar&&!/^No bar/.test(bar))D['bv.bar.qty']='1';
