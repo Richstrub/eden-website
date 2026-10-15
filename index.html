@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261015a">
+<link rel="stylesheet" href="css/styles.css?v=20261015b">
 </head>
 <body>
 
@@ -440,7 +440,7 @@
   <h2><span class="step">STEP 2</span>Your event</h2>
   <div class="fields">
     <label class="f">Event name<input data-f="ev.name" placeholder="e.g., Harper–Lee Wedding"></label>
-    <label class="f">Type of event<select data-f="ev.type"><option></option><option>Wedding</option><option>Corporate</option><option>Social</option><option>Brunch</option><option>Lunch</option><option>Dinner</option><option>Other</option></select></label>
+    <fieldset class="f wide q-types"><legend>Type of event <span class="q-hint">Click all that apply</span></legend><input type="hidden" data-f="ev.type"><div class="ask" id="evTypes"><label class="pill"><input type="checkbox" class="round" data-t="Wedding"> Wedding</label><label class="pill"><input type="checkbox" class="round" data-t="Corporate"> Corporate</label><label class="pill"><input type="checkbox" class="round" data-t="Social"> Social</label><label class="pill"><input type="checkbox" class="round" data-t="Brunch"> Brunch</label><label class="pill"><input type="checkbox" class="round" data-t="Lunch"> Lunch</label><label class="pill"><input type="checkbox" class="round" data-t="Dinner"> Dinner</label><label class="pill"><input type="checkbox" class="round" data-t="Other"> Other</label></div></fieldset>
     <label class="f">Event date<input type="date" data-f="ev.date"></label>
     <label class="f">Start time<input type="time" data-f="ev.start"></label>
     <label class="f">End time<input type="time" data-f="ev.end"></label>
@@ -675,7 +675,7 @@
 <script src="js/runtime.js"></script>
 <script src="js/country-maps.js"></script>
 <script src="js/menu-data.js"></script>
-<script src="js/catering.js?v=20261015a"></script>
+<script src="js/catering.js?v=20261015b"></script>
 <script src="js/app.js?v=20261012b"></script>
 <script src="js/analytics.js?v=20261012b"></script>
 <script src="js/join.js?v=20261013a"></script>

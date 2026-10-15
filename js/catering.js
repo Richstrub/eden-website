@@ -148,7 +148,12 @@ sides.forEach(s=>delete Q[s.key+'.sel']);
 desserts.forEach(d=>{if(Q['q.'+d.key]){if(!Q[d.key+'.qty'])Q[d.key+'.qty']=String(num('din.guests')||num('ev.expected')||'');delete Q['q.'+d.key];}});
 
 // Restore saved answers
+// Type of event: tick all that apply; kept as one line ("Wedding, Dinner") so the staff site and BEO read it as before
+const TYPE_BOXES=[...document.querySelectorAll('#evTypes [data-t]')];
+function restoreTypes(){const on=String(Q['ev.type']||'').split(/\s*,\s*/).filter(Boolean);TYPE_BOXES.forEach(b=>{b.checked=on.includes(b.dataset.t);});}
+TYPE_BOXES.forEach(b=>b.addEventListener('change',()=>{Q['ev.type']=TYPE_BOXES.filter(x=>x.checked).map(x=>x.dataset.t).join(', ');const h=document.querySelector('[data-f="ev.type"]');if(h)h.value=Q['ev.type'];update();save();}));
 function restore(){
+  restoreTypes();
   document.querySelectorAll('[data-f]').forEach(el=>{
     const v=Q[el.dataset.f];
     if(el.type==='radio')el.checked=v!==undefined&&String(v)===el.value;
@@ -621,6 +626,7 @@ $('clearBtn').addEventListener('click',()=>{
   if(!cb.dataset.sure){cb.dataset.sure='1';cb.textContent='Tap again to clear everything';setTimeout(()=>{delete cb.dataset.sure;cb.textContent='Start over';},4000);return;}
   delete cb.dataset.sure;cb.textContent='Start over';
   Q={diet:[{}]};try{localStorage.removeItem(STORE_KEY);localStorage.removeItem(STARTED);}catch(e){}
+  TYPE_BOXES.forEach(b=>{b.checked=false;});
   document.querySelectorAll('[data-f]').forEach(el=>{if(el.type==='radio'||el.type==='checkbox')el.checked=false;else if(el.tagName==='SELECT')el.selectedIndex=0;else el.value='';});
   renderDiet();update();$('status').textContent='Answers cleared.';$('w-final').textContent='';
 });
