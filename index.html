@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261013c">
+<link rel="stylesheet" href="css/styles.css?v=20261014a">
 </head>
 <body>
 
@@ -504,11 +504,18 @@
 
 <section class="block q-full">
   <h2><span class="step">STEP 6</span>Dinner</h2>
-  <p class="q-note">Choose a seated, plated dinner or a dinner buffet.</p>
+  <p class="q-note">Choose a seated, plated dinner or a dinner buffet.<span data-show="q.alaOk=yes"> In the Restaurant or the 3rd Floor Event Space, your guests can also order à la carte from our restaurant menu.</span></p>
   <div class="ask">
     <label class="pill"><input type="radio" name="q.din" value="plated" data-f="q.din"> Plated dinner</label>
     <label class="pill"><input type="radio" name="q.din" value="buffet" data-f="q.din"> Dinner buffet</label>
+    <label class="pill" data-show="q.alaOk=yes"><input type="radio" name="q.din" value="ala" data-f="q.din"> À la carte</label>
     <label class="pill"><input type="radio" name="q.din" value="no" data-f="q.din"> No dinner</label>
+  </div>
+  <p class="warn" id="w-ala"></p>
+
+  <div data-show="q.din=ala" class="sub">
+    <p class="q-note" style="margin-top:10px">Your guests order for themselves from our restaurant menu at the table. À la carte is billed on what your guests order, so it isn’t included in the estimate.</p>
+    <p class="q-callout" data-show="q.alaThird=yes"><b>Please note:</b> the 3rd Floor Event Space has a <b>$2,500 food and beverage minimum</b>. If your event’s total is under $2,500, a <b>$250 room fee</b> applies instead.</p>
   </div>
 
   <div data-show="q.din=plated" class="sub">
@@ -668,7 +675,7 @@
 <script src="js/runtime.js"></script>
 <script src="js/country-maps.js"></script>
 <script src="js/menu-data.js"></script>
-<script src="js/catering.js?v=20261012b"></script>
+<script src="js/catering.js?v=20261014a"></script>
 <script src="js/app.js?v=20261012b"></script>
 <script src="js/analytics.js?v=20261012b"></script>
 <script src="js/join.js?v=20261013a"></script>

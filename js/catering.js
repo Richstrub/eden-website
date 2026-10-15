@@ -188,7 +188,18 @@ const bfChosen=list=>{const t=bfTierNow();return list.filter(it=>Q['bf.'+it.key]
 const allMenu=[...salads,...starters,...entrees,...sides];
 const anyDessert=()=>desserts.some(d=>num(d.key+'.qty')>0);
 
+// À la carte dinner is offered only in the Restaurant and the 3rd Floor Event Space
+const ALA_ROOMS=['Restaurant',THIRD];
+let alaCleared=false;
 function update(){
+  const room=String(Q['ev.room']||'');
+  Q['q.alaOk']=ALA_ROOMS.includes(room)?'yes':'no';
+  if(Q['q.din']==='ala'&&Q['q.alaOk']!=='yes'){
+    Q['q.din']='';alaCleared=true;
+    document.querySelectorAll('[data-f="q.din"]').forEach(r=>{r.checked=false;});
+  }else if(Q['q.din'])alaCleared=false;
+  Q['q.alaThird']=Q['q.din']==='ala'&&room===THIRD?'yes':'no';
+  $('w-ala').textContent=alaCleared?'À la carte is only available in the Restaurant or the 3rd Floor Event Space, so your dinner choice was cleared. Please choose another.':'';
   const style=Q['q.din']||'';
   const ent=chosenEntrees(),bE=bfChosen(entrees);
   const beefList=style==='plated'?ent:style==='buffet'?bE:[];
@@ -264,7 +275,7 @@ function buildBEO(){
   // Timeline
   if(Q['q.arrive'])D['tl.1.time']=Q['q.arrive'];
   if(Q['q.rec']==='yes'&&Q['q.arrive'])D['tl.2.time']=Q['q.arrive'];
-  if((style==='plated'||style==='buffet')&&Q['q.seat'])D['tl.3.time']=Q['q.seat'];
+  if((style==='plated'||style==='buffet'||style==='ala')&&Q['q.seat'])D['tl.3.time']=Q['q.seat'];
   if(roomLbl){for(let i=0;i<9;i++)D[`tl.${i}.loc`]=roomLbl;D['tl.autoLoc']=roomLbl;}
   // Morning
   if(Q['q.morning']==='yes'){
@@ -304,6 +315,8 @@ function buildBEO(){
     [Q['q.bfStarch'],Q['q.bfVeg']].forEach(k=>{const it=sides.find(x=>x.key===k);if(it&&(!bt||it.t.includes(bt)))D['bf.'+k]=true;});
     if(Q['q.hasBeef']==='yes'&&Q['din.temp'])D['bf.temp']=Q['din.temp'];
   }
+  // À la carte (Restaurant or 3rd floor only)
+  if(style==='ala'&&ALA_ROOMS.includes(String(Q['ev.room']||'')))D['ev.alacarte']=true;
   // Desserts
   desserts.forEach(d=>{const q=num(d.key+'.qty');if(q)D[d.key+'.qty']=String(q);});
   // Beverages
@@ -320,6 +333,7 @@ function buildBEO(){
   const n=[];
   if(Q.notes&&String(Q.notes).trim())n.push(String(Q.notes).trim());
   const extra=[];
+  if(D['ev.alacarte'])extra.push(D['ev.third']?'Dinner: à la carte from the restaurant menu. The guest was told the 3rd Floor Event Space has a $2,500 food and beverage minimum, or a $250 room fee.':'Dinner: à la carte from the restaurant menu.');
   if(bar)extra.push(`Bar service: ${bar}.`);
   if(Q['q.rec']==='yes'&&[...hot,...cold].some(it=>Q['q.'+it.key]))extra.push('Canapé quantities were estimated from the reception guest count; please confirm.');
   if(extra.length)n.push('From the client questionnaire: '+extra.join(' '));
@@ -341,14 +355,17 @@ function estimate(D){
   const bufT=bfOn?bp*bg:0;
   const dessT=sum(desserts);
   const fb=suiteT+brunchT+canT+enhT+dinT+tableT+bufT+dessT;
-  const rental=D['ev.third']&&fb<=2500?250:0;
+  // à la carte is billed on what guests order, so the third-floor minimum can't be judged yet: shown as a reminder instead
+  const ala=!!D['ev.alacarte'];
+  const rental=D['ev.third']&&!ala&&fb<=2500?250:0;
   const svcPct=n('bill.svc'),taxPct=n('bill.tax');
   const sub=fb+attend+rental,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
   const quoted=[];
+  if(ala)quoted.push('à la carte dinner (billed on what your guests order)');
   if(['bv.bar','bv.wine','bv.toast','bv.na'].some(k=>n(k+'.qty')))quoted.push('beverage service');
   const lines=[['In-suite dining',suiteT],['Brunch and stations',brunchT],['Chef attendant fees',attend],['Reception canapés',canT],['Reception displays',enhT],
     [tier?`Plated dinner ($${tier} × ${dg})`:'Plated dinner',dinT],['Tableside entree selection',tableT],[bp?`Dinner buffet ($${bp} × ${bg})`:'Dinner buffet',bufT],
-    ['Desserts',dessT],['Third-floor room fee',rental]].filter(l=>l[1]);
+    ['Desserts',dessT],['Third-floor room fee',rental],['À la carte dinner',ala?'Billed as ordered':0],['3rd floor minimum',ala&&D['ev.third']?'$2,500, or $250 room fee':0]].filter(l=>l[1]);
   return {lines,sub,svc,tax,total,svcPct,taxPct,quoted};
 }
 function renderEstimate(){
@@ -396,7 +413,7 @@ async function fileFlow(note){
   const blob=new Blob([JSON.stringify({eden:'beo-questionnaire',v:2,version:QVER,saved:new Date().toISOString(),beo:D,answers:Q},null,1)],{type:'application/json'});
   const file=new File([blob],name,{type:'application/json'});
   const date=longDate(Q['ev.date']);
-  const style=Q['q.din']==='plated'?`Plated dinner${tierNow()?` ($${tierNow()} per person)`:''}`:Q['q.din']==='buffet'?`Dinner buffet${bfTierNow()?` ($${bfPrice(bfTierNow())} per person)`:''}`:'No dinner';
+  const style=Q['q.din']==='plated'?`Plated dinner${tierNow()?` ($${tierNow()} per person)`:''}`:Q['q.din']==='buffet'?`Dinner buffet${bfTierNow()?` ($${bfPrice(bfTierNow())} per person)`:''}`:Q['q.din']==='ala'?'À la carte from the restaurant menu':'No dinner';
   const subject=`Event selections: ${label}${date?' – '+date:''}`;
   const body=['Hi Tyler and Rich,','',`Attached are my event selections from the Eden questionnaire (file: ${name}).`,'',
     `Name: ${Q['ev.contact']||''}`,`Phone: ${Q['ev.phone']||''}`,`Email: ${Q['ev.email']||''}`,`Event: ${Q['ev.name']||''}`,`Date: ${date}`,
@@ -475,6 +492,7 @@ function summary(D){
   const out={},add=(sec,line)=>{(out[sec]=out[sec]||[]).push(line);};
   if(D['rec.guests'])add('Reception',`${D['rec.guests']} guests, ${D['rec.len']==='2'?'2 hours':'1 hour'}`);
   if(D['din.tier'])add('Dinner',`Plated dinner, $${D['din.tier']} per person, ${D['din.guests']||'?'} guests${D['din.mode']==='table'?', entrees chosen tableside':''}`);
+  if(D['ev.alacarte'])add('Dinner',D['ev.third']?'À la carte from the restaurant menu ($2,500 minimum on the 3rd floor, or $250 room fee)':'À la carte from the restaurant menu');
   if(D['bf.guests']&&Q['q.din']==='buffet')add('Dinner',`Dinner buffet${D['bf.tier']?`, $${bfPrice(+D['bf.tier'])} per person`:''}, ${D['bf.guests']} guests`);
   Object.keys(D).forEach(k=>{
     let m;
