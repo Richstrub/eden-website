@@ -409,6 +409,8 @@ body.on-cater > section{display:none}
 #cater .q-note{color:var(--q-muted);font-size:14px;margin:0 0 14px;max-width:70ch}
 #cater .warn{color:var(--q-warn);font-size:14px;margin:8px 0 0}
 #cater .warn:empty{display:none}
+#cater .pill .pill-hint{font-size:12px;color:var(--q-muted)}
+#cater .pill.off{opacity:.5;cursor:not-allowed}
 #cater .q-callout{font-size:15px;line-height:1.5;margin:4px 0 0;padding:12px 16px;background:var(--q-soft);border-left:3px solid var(--q-accent);max-width:70ch}
 #cater .fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px 16px}
 #cater .f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--q-muted)}

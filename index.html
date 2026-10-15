@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261014a">
+<link rel="stylesheet" href="css/styles.css?v=20261015a">
 </head>
 <body>
 
@@ -440,7 +440,7 @@
   <h2><span class="step">STEP 2</span>Your event</h2>
   <div class="fields">
     <label class="f">Event name<input data-f="ev.name" placeholder="e.g., Harper–Lee Wedding"></label>
-    <label class="f">Type of event<select data-f="ev.type"><option></option><option>Wedding</option><option>Corporate</option><option>Social</option><option>Other</option></select></label>
+    <label class="f">Type of event<select data-f="ev.type"><option></option><option>Wedding</option><option>Corporate</option><option>Social</option><option>Brunch</option><option>Lunch</option><option>Dinner</option><option>Other</option></select></label>
     <label class="f">Event date<input type="date" data-f="ev.date"></label>
     <label class="f">Start time<input type="time" data-f="ev.start"></label>
     <label class="f">End time<input type="time" data-f="ev.end"></label>
@@ -504,11 +504,11 @@
 
 <section class="block q-full">
   <h2><span class="step">STEP 6</span>Dinner</h2>
-  <p class="q-note">Choose a seated, plated dinner or a dinner buffet.<span data-show="q.alaOk=yes"> In the Restaurant or the 3rd Floor Event Space, your guests can also order à la carte from our restaurant menu.</span></p>
+  <p class="q-note">Choose a seated, plated dinner or a dinner buffet. In the Restaurant or the 3rd Floor Event Space, your guests can also order à la carte from our restaurant menu.</p>
   <div class="ask">
     <label class="pill"><input type="radio" name="q.din" value="plated" data-f="q.din"> Plated dinner</label>
     <label class="pill"><input type="radio" name="q.din" value="buffet" data-f="q.din"> Dinner buffet</label>
-    <label class="pill" data-show="q.alaOk=yes"><input type="radio" name="q.din" value="ala" data-f="q.din"> À la carte</label>
+    <label class="pill" id="alaPill"><input type="radio" name="q.din" value="ala" data-f="q.din"> À la carte <small class="pill-hint">Restaurant or 3rd floor only</small></label>
     <label class="pill"><input type="radio" name="q.din" value="no" data-f="q.din"> No dinner</label>
   </div>
   <p class="warn" id="w-ala"></p>
@@ -675,7 +675,7 @@
 <script src="js/runtime.js"></script>
 <script src="js/country-maps.js"></script>
 <script src="js/menu-data.js"></script>
-<script src="js/catering.js?v=20261014a"></script>
+<script src="js/catering.js?v=20261015a"></script>
 <script src="js/app.js?v=20261012b"></script>
 <script src="js/analytics.js?v=20261012b"></script>
 <script src="js/join.js?v=20261013a"></script>

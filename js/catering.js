@@ -178,6 +178,8 @@ document.addEventListener('click',e=>{
   if(Q[k]===el.value){el.checked=false;Q[k]='';update();save();}
 });
 document.addEventListener('input',onChange);
+// tapping the greyed-out à la carte option says how to unlock it
+$('alaPill').addEventListener('click',()=>{const i=$('alaPill').querySelector('input');if(i&&i.disabled)$('w-ala').textContent='À la carte is available in the Restaurant or the 3rd Floor Event Space. To choose it, set “Where would you like to hold it?” in Step 2 to one of those.';});
 document.addEventListener('change',onChange);
 
 const tierNow=()=>parseInt(Q['din.tier'])||0;
@@ -199,7 +201,11 @@ function update(){
     document.querySelectorAll('[data-f="q.din"]').forEach(r=>{r.checked=false;});
   }else if(Q['q.din'])alaCleared=false;
   Q['q.alaThird']=Q['q.din']==='ala'&&room===THIRD?'yes':'no';
-  $('w-ala').textContent=alaCleared?'À la carte is only available in the Restaurant or the 3rd Floor Event Space, so your dinner choice was cleared. Please choose another.':'';
+  // always listed, so guests know it exists; it can be chosen once the location (Step 2) is the Restaurant or the 3rd floor
+  const alaIn=document.querySelector('#alaPill input');
+  if(alaIn){alaIn.disabled=Q['q.alaOk']!=='yes';$('alaPill').classList.toggle('off',alaIn.disabled);
+    $('alaPill').title=alaIn.disabled?'Choose the Restaurant or the 3rd Floor Event Space in Step 2 to order à la carte':'';}
+  $('w-ala').textContent=alaCleared?'À la carte is only available in the Restaurant or the 3rd Floor Event Space, so your dinner choice was cleared. Please choose another, or change the location in Step 2.':'';
   const style=Q['q.din']||'';
   const ent=chosenEntrees(),bE=bfChosen(entrees);
   const beefList=style==='plated'?ent:style==='buffet'?bE:[];
