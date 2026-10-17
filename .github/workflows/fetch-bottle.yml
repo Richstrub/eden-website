@@ -1,0 +1,23 @@
+name: Fetch bottle photos (temporary)
+on:
+  push:
+    branches: [tmp-fetch-bottle]
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir out && cd out
+          B=https://www.raventos.com/api/uploads/products/images
+          H=91aa067d0b552341f823e01a7d8bc612_phpmfJdh2.jpg
+          for s in w740_h929 w1480_h1858 w1200 original; do curl -sSL -A "Mozilla/5.0" -o "rav-$s.jpg" "$B/$s/$H" || true; done
+          curl -sSL -A "Mozilla/5.0" -o rav-main.jpg "$B/w1500_h640/25be8612d68cfb0fddbd36784148fb2b_phpmlUjVH.jpg" || true
+          curl -sSL -A "Mozilla/5.0" -o rav-g1.jpg "$B/w1200/f43f573c1c81f1a7e0b669b315269338_phpiU3akE.jpg" || true
+          curl -sSL -A "Mozilla/5.0" -o rav-g2.jpg "$B/w1200/cda761a78782aa9142a82964ba910288_phpkIJsEJ.jpg" || true
+          curl -sSL -A "Mozilla/5.0" -o sk.jpg https://www.skurnik.com/wp-content/uploads/2021/07/conca-del-riu-anoia-brut-rose-de-nit-raventos-i-blanc-7.jpg || true
+          curl -sSL -A "Mozilla/5.0" -o tech.html https://www.raventos.com/collection/technical_sheet/145 || true
+          ls -la; file *
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bottle
+          path: out
