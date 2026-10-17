@@ -608,6 +608,10 @@ footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
 .wd-prod{color:var(--soft-dark);font-size:.92rem;margin:0}
 .wd-rule{width:48px;height:1px;background:var(--ember);margin:24px 0 8px}
 .wd-sec{margin-top:26px;padding:0}
+.wd-top.has-img{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:32px;align-items:center}
+.wd-bottle{margin:0;justify-self:end;width:180px}
+.wd-bottle img{display:block;width:100%;height:auto;border:1px solid var(--line-dark)}
+.wd-bottle figcaption{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-dark);margin-top:8px;text-align:center}
 .wd-sec h3{font-family:var(--sans);font-weight:400;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember-hot);margin:0 0 14px}
 .wd-about p{font-family:var(--serif);font-size:1.18rem;line-height:1.65;margin:0 0 14px;color:var(--ivory)}
 .wd-awards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
@@ -625,5 +629,5 @@ footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
 .wd-map iframe{display:block;width:100%;aspect-ratio:16/9;border:0;filter:grayscale(.35) contrast(1.05);background:#1a1e22}
 .wd-map figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--soft-dark);padding-top:10px}
 .wd-map a{color:var(--ember-hot);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem}
-@media (max-width:640px){.wd{padding:0;place-items:end stretch}.wd-card{max-height:92vh;width:100%;border-left:0;border-right:0;border-bottom:0}.wd-scroll{padding:36px 20px calc(28px + env(safe-area-inset-bottom,0px))}.wd-about p{font-size:1.08rem}}
+@media (max-width:640px){.wd{padding:0;place-items:end stretch}.wd-card{max-height:92vh;width:100%;border-left:0;border-right:0;border-bottom:0}.wd-scroll{padding:36px 20px calc(28px + env(safe-area-inset-bottom,0px))}.wd-about p{font-size:1.08rem}.wd-top.has-img{grid-template-columns:minmax(0,1fr) 96px;gap:16px;align-items:start}.wd-bottle{width:96px;margin-top:28px}.wd-bottle figcaption{font-size:.5rem;letter-spacing:.08em}}
 .pad-more{color:var(--ember);border-bottom-color:rgba(176,112,63,.4)}

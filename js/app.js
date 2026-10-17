@@ -214,7 +214,8 @@
     var facts=(D.facts||[]).map(function(f){return '<div><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd></div>'}).join('');
     var el=document.createElement('div');el.className='wd';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label',name);
     el.innerHTML='<div class="wd-card"><button type="button" class="wd-x" aria-label="Close">&times;</button><div class="wd-scroll">'+
-      '<p class="wd-eye">About this wine</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div>'+
+      '<div class="wd-top'+(D.image?' has-img':'')+'"><div class="wd-head"><p class="wd-eye">About this wine</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div></div>'+
+      (D.image?'<figure class="wd-bottle"><img src="'+esc(D.image.src)+'" alt="'+esc(D.image.alt||name)+'" width="560" height="1226" decoding="async" onerror="this.parentNode.parentNode.classList.remove(\'has-img\');this.parentNode.remove()">'+(D.image.credit?'<figcaption>'+esc(D.image.credit)+'</figcaption>':'')+'</figure>':'')+'</div>'+
       (aw?'<div class="wd-sec"><h3>Scores &amp; awards</h3><ul class="wd-awards">'+aw+'</ul></div>':'')+
       '<div class="wd-sec wd-about">'+(D.about||[]).map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'+
       (facts?'<div class="wd-sec"><h3>In the glass</h3><dl class="wd-facts">'+facts+'</dl></div>':'')+
