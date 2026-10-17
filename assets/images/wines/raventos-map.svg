@@ -1,5 +1,7 @@
 <svg class="wm" viewBox="0 0 2400 1600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Raventós i Blanc, Sant Sadurní d’Anoia">
 <image href="assets/images/wines/raventos-map.jpg" x="0" y="0" width="2400" height="1600" preserveAspectRatio="none"/>
+<defs><radialGradient id="wm-glow"><stop offset="0" stop-color="#e09a5e" stop-opacity=".34"/><stop offset=".45" stop-color="#b0703f" stop-opacity=".12"/><stop offset="1" stop-color="#b0703f" stop-opacity="0"/></radialGradient></defs>
+<circle cx="1190" cy="757" r="300" fill="url(#wm-glow)"/>
 <text class="wm-region t1" x="612" y="880" text-anchor="middle" transform="rotate(0 612 880)">Penedès</text>
 <text class="wm-region t2" x="1344" y="1184" text-anchor="middle" transform="rotate(-8 1344 1184)">Garraf</text>
 <text class="wm-region t2" x="1680" y="272" text-anchor="middle" transform="rotate(0 1680 272)">Vallès</text>

@@ -627,36 +627,37 @@ footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
 .wd-facts dd{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.35}
 .wd-map{margin:0}
 .wd-map iframe{display:block;width:100%;aspect-ratio:16/9;border:0;filter:grayscale(.35) contrast(1.05);background:#1a1e22}
-/* the engraved-style map: picture from tools/wine-map/make_map.py, lettering drawn over it in the site's serif */
-.wd-art{aspect-ratio:3/2;background:#e9dcbf;opacity:0;transition:opacity .4s ease}
+/* the engraved-style map: picture from tools/wine-map/make_map.py, lettering drawn over it in the site's own type */
+.wd-art{aspect-ratio:3/2;background:var(--ink-2);opacity:0;transition:opacity .4s ease}
 .wd-art.on{opacity:1}
 .wd-art svg{display:block;width:100%;height:auto}
-.wm text{font-family:var(--serif);fill:#3b2a1c;paint-order:stroke;stroke:rgba(238,226,198,.82);stroke-width:.16em;stroke-linejoin:round}
-.wm .wm-city{font-size:62px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
-.wm .wm-town{font-size:44px;font-weight:500}
-.wm .wm-dot{fill:#3b2a1c;stroke:rgba(238,226,198,.9);stroke-width:4}
-.wm .wm-region{font-size:58px;font-weight:400;letter-spacing:.42em;text-transform:uppercase;fill:rgba(74,52,36,.62);stroke:none}
-.wm .wm-sea{font-size:52px;font-style:italic;letter-spacing:.26em;fill:#34494d;stroke:none}
-.wm .wm-river{font-size:40px;font-style:italic;fill:#34494d}
-.wm .wm-mount{font-size:50px;font-style:italic;letter-spacing:.12em;text-transform:uppercase}
-.wm .wm-peak{fill:#3b2a1c;stroke:rgba(238,226,198,.9);stroke-width:4}
-.wm .wm-w-ring{fill:rgba(238,226,198,.55);stroke:#9b2a1c;stroke-width:6}
-.wm .wm-w-dot{fill:#9b2a1c}
-.wm .wm-w-name{font-size:62px;font-weight:500;font-style:italic;fill:#8a2216}
-.wm .wm-w-sub{font-size:40px;font-weight:500;letter-spacing:.06em}
-.wm .wm-rose-d{fill:#3b2a1c}.wm .wm-rose-l{fill:#efe4c8;stroke:#3b2a1c;stroke-width:2}
-.wm .wm-rose-c{fill:none;stroke:#3b2a1c;stroke-width:3}.wm .wm-rose-c.thin{stroke-width:1.5}
-.wm .wm-rose-n{font-size:52px;font-weight:500}
-.wm .wm-sb-d{fill:#3b2a1c}.wm .wm-sb-l{fill:#efe4c8;stroke:#3b2a1c;stroke-width:2}
-.wm .wm-sb-t{font-size:34px}.wm .wm-sb-u{font-size:36px;font-style:italic}
-.wm .wm-cart-b{fill:rgba(240,230,205,.92);stroke:#3b2a1c;stroke-width:4}.wm .wm-cart-i{fill:none;stroke:#3b2a1c;stroke-width:1.5}
-.wm .wm-cart-s{font-size:38px;letter-spacing:.3em;text-transform:uppercase;stroke:none}
-.wm .wm-cart-t{font-size:66px;font-style:italic;font-weight:500;stroke:none}
-.wm .wm-cart-s2{font-size:30px;letter-spacing:.18em;text-transform:uppercase;fill:#6b4f36;stroke:none}
-.wm .wm-band-bg{fill:#efe4c8}.wm .wm-band rect{fill:#3b2a1c}
-.wm .wm-frame{fill:none;stroke:#3b2a1c;stroke-width:3}.wm .wm-frame.thin{stroke-width:2}.wm .wm-frame.outer{stroke-width:6}
-.wm .wm-deg{font-size:28px;font-style:italic;fill:#5a4330;stroke:none}
-@media (max-width:640px){.wm .t2,.wm .wm-w-sub{display:none}.wm .wm-city{font-size:80px;letter-spacing:.08em}.wm .wm-town{font-size:72px}.wm .wm-w-name{font-size:84px}.wm .wm-sea{font-size:88px}.wm .wm-region{font-size:88px}.wm .wm-mount{font-size:76px}.wm .wm-w-ring{stroke-width:9}}
+.wm text{font-family:var(--serif);fill:var(--ivory);paint-order:stroke;stroke:rgba(15,18,21,.78);stroke-width:.18em;stroke-linejoin:round}
+.wm .wm-city{font-size:54px;font-weight:400;letter-spacing:.26em;text-transform:uppercase}
+.wm .wm-town{font-size:44px;font-weight:400;fill:rgba(243,238,229,.86)}
+.wm .wm-dot{fill:var(--ivory);stroke:var(--ink);stroke-width:4}
+.wm .wm-region{font-family:var(--sans);font-size:40px;font-weight:300;letter-spacing:.6em;text-transform:uppercase;fill:rgba(243,238,229,.3);stroke:none}
+.wm .wm-sea{font-size:54px;font-style:italic;font-weight:300;letter-spacing:.3em;fill:rgba(243,238,229,.55);stroke:none}
+.wm .wm-river{font-size:40px;font-style:italic;fill:rgba(243,238,229,.62)}
+.wm .wm-mount{font-family:var(--sans);font-size:34px;font-weight:400;letter-spacing:.42em;text-transform:uppercase;fill:rgba(243,238,229,.8)}
+.wm .wm-peak{fill:none;stroke:var(--ivory);stroke-width:3}
+.wm .wm-w-ring{fill:none;stroke:var(--ember-hot);stroke-width:4}
+.wm .wm-w-dot{fill:var(--ember-hot)}
+.wm .wm-w-name{font-size:64px;font-weight:400;font-style:italic;fill:var(--ember-hot)}
+.wm .wm-w-sub{font-family:var(--sans);font-size:28px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;fill:rgba(243,238,229,.72)}
+.wm .wm-rose-d{fill:var(--ember)}.wm .wm-rose-l{fill:var(--ink);stroke:rgba(243,238,229,.7);stroke-width:2}
+.wm .wm-rose-c{fill:none;stroke:rgba(243,238,229,.4);stroke-width:2}.wm .wm-rose-c.thin{stroke-width:1}
+.wm .wm-rose-n{font-family:var(--sans);font-size:34px;font-weight:400;letter-spacing:.2em;fill:var(--ember-hot);stroke:none}
+.wm .wm-sb-d{fill:rgba(243,238,229,.75)}.wm .wm-sb-l{fill:var(--ink);stroke:rgba(243,238,229,.75);stroke-width:2}
+.wm .wm-sb-t{font-family:var(--sans);font-size:26px;letter-spacing:.1em;fill:rgba(243,238,229,.7);stroke:none}
+.wm .wm-sb-u{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;fill:rgba(243,238,229,.6);stroke:none}
+.wm .wm-cart-b{fill:rgba(15,18,21,.88);stroke:rgba(176,112,63,.9);stroke-width:2}.wm .wm-cart-i{fill:none;stroke:rgba(176,112,63,.45);stroke-width:1.5}
+.wm .wm-cart-s{font-family:var(--sans);font-size:26px;font-weight:400;letter-spacing:.42em;text-transform:uppercase;fill:var(--ember-hot);stroke:none}
+.wm .wm-cart-t{font-size:66px;font-style:italic;font-weight:300;stroke:none}
+.wm .wm-cart-s2{font-family:var(--sans);font-size:22px;letter-spacing:.3em;text-transform:uppercase;fill:rgba(243,238,229,.6);stroke:none}
+.wm .wm-band-bg{fill:var(--ink)}.wm .wm-band rect{fill:rgba(243,238,229,.32)}
+.wm .wm-frame{fill:none;stroke:rgba(243,238,229,.32);stroke-width:2}.wm .wm-frame.thin{stroke-width:1.5}.wm .wm-frame.outer{stroke:rgba(176,112,63,.7);stroke-width:3}
+.wm .wm-deg{font-family:var(--sans);font-size:22px;letter-spacing:.14em;fill:rgba(243,238,229,.45);stroke:none}
+@media (max-width:640px){.wm .t2,.wm .wm-w-sub{display:none}.wm .wm-city{font-size:72px;letter-spacing:.12em}.wm .wm-town{font-size:72px}.wm .wm-w-name{font-size:88px}.wm .wm-sea{font-size:84px}.wm .wm-region{font-size:66px}.wm .wm-mount{font-size:56px}.wm .wm-w-ring{stroke-width:7}}
 .wd-credit{display:block;font-size:.66rem;opacity:.7;margin-top:2px}
 .wd-map figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--soft-dark);padding-top:10px}
 .wd-map a{color:var(--ember-hot);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem}

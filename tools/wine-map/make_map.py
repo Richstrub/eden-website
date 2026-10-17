@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Eden: draws an old-world engraved-style map for a wine's "About this wine" window.
+"""Eden: draws an old-world engraved-style map, in the website's charcoal, ivory and ember, for a wine's "About this wine" window.
 
-Out: <out>.jpg  the terrain, painted like an antique hand-coloured map (parchment, hill shading, contour lines,
+Out: <out>.jpg  the terrain, painted like an antique hand-coloured map (hill shading, contour lines,
                 coastline with engraved water lines, rivers)
      <out>.svg  the lettering, frame, compass rose and scale bar, drawn over the picture. The website loads this file
                 into the page so the lettering uses Eden's own typeface and stays sharp at any size.
@@ -54,10 +54,6 @@ CONFIGS = {
   }
 }
 
-PAPER = np.array([238, 226, 198], float)
-INK = '#4a3424'
-SEPIA = (0.43, 0.31, 0.18)
-WATER_INK = (0.27, 0.37, 0.40)
 
 
 def lonlat_to_tile(lng, lat, z=12):
@@ -109,54 +105,49 @@ def paint(dem, cfg, rivers, out_jpg):
   if n > 1:
     sizes = ndimage.sum(np.ones_like(dem), lab, range(1, n + 1)); keep = 1 + int(np.argmax(sizes))
     land = land | ((lab != keep) & (lab > 0))
-  # parchment
-  img = np.ones((h, w, 3)) * PAPER
-  grain = noise(h, w, 1, [(1, 2.0), (6, 3.0), (40, 5.0), (160, 7.0)])
-  img += grain[..., None] * np.array([1.0, 0.95, 0.85])
+  # Eden's palette: charcoal ground (--ink / --ink-2), ivory engraving (--ivory), a whisper of ember warmth
   yy, xx = np.mgrid[0:h, 0:w]
-  d = np.sqrt(((xx - w / 2) / (w / 2)) ** 2 + ((yy - h / 2) / (h / 2)) ** 2)
-  img *= (1 - 0.30 * np.clip(d - 0.45, 0, 1) ** 1.4)[..., None] * np.array([1.0, 0.97, 0.92])
-  stains = np.clip(noise(h, w, 7, [(90, 1.0)]) - 1.2, 0, None)
-  img -= (stains * 22)[..., None] * np.array([0.6, 0.8, 1.2])
-  # sea: pale hand-coloured wash, stronger along the coast
   dist = ndimage.distance_transform_edt(~land)
-  wash = np.where(land, 0, 0.45 + 0.55 * np.exp(-dist / 60))
-  sea_col = np.array([150, 180, 172], float)
-  img = img * (1 - 0.55 * wash[..., None]) + sea_col * (0.55 * wash[..., None])
-  # land: hill shading in sepia ink, slightly warmer lowlands, browner heights
+  land_col = np.array([35, 38, 41], float); sea_col = np.array([15, 18, 21], float)
+  img = np.where(land[..., None], land_col, sea_col).astype(float)
+  coast_glow = np.where(land, 0, np.exp(-dist / 90))          # the sea lifts a touch near the shore
+  img += coast_glow[..., None] * np.array([7, 8, 9])
+  grain = noise(h, w, 1, [(1, 1.6), (5, 1.2), (60, 2.2), (220, 3.0)])
+  img += grain[..., None] * np.array([1.0, 0.98, 0.94])
+  d = np.sqrt(((xx - w / 2) / (w / 2)) ** 2 + ((yy - h / 2) / (h / 2)) ** 2)
+  img *= (1 - 0.35 * np.clip(d - 0.5, 0, 1) ** 1.3)[..., None]
+  # hill shading: lit slopes catch ivory light, the far sides fall into shadow; heights warm slightly toward ember
   z = ndimage.gaussian_filter(dem.astype(float), 1.2)
   gy, gx = np.gradient(z, px_m)
   slope = np.arctan(1.6 * np.hypot(gx, gy)); aspect = np.arctan2(-gx, gy)
   az, alt = math.radians(315), math.radians(42)
-  shade = np.sin(alt) * np.cos(slope) + np.cos(alt) * np.sin(slope) * np.cos(az - aspect)
-  shade = np.clip(shade, 0, 1)
+  shade = np.clip(np.sin(alt) * np.cos(slope) + np.cos(alt) * np.sin(slope) * np.cos(az - aspect), 0, 1)
   dark = np.clip((np.sin(alt) - shade) / np.sin(alt), 0, 1) ** 0.9
-  hl = np.clip((shade - np.sin(alt)) / (1 - np.sin(alt)), 0, 1)
+  hl = np.clip((shade - np.sin(alt)) / (1 - np.sin(alt)), 0, 1) ** 0.8
   lm = land[..., None]
-  sep = np.array([0.42, 0.52, 0.66])
-  img = np.where(lm, img * (1 - 0.62 * dark[..., None] * sep), img)
-  img = np.where(lm, img + 10 * hl[..., None], img)
-  hyps = np.clip(dem / 1200, 0, 1)
-  tint = np.array([-4, -10, -22]) * hyps[..., None] + np.array([2, 4, -6]) * (1 - hyps[..., None])
-  img = np.where(lm, img + tint, img)
+  hyps = np.clip(dem / 1200, 0, 1)[..., None]
+  light = np.array([243, 238, 229]) * (1 - hyps * 0.35) + np.array([224, 168, 118]) * (hyps * 0.35)
+  img = np.where(lm, img * (1 - 0.55 * dark[..., None]) + light * (0.16 * hl[..., None]), img)
+  img = np.where(lm, img + hyps * np.array([10, 7, 3]), img)
   img = np.clip(img, 0, 255)
 
+  IV = (243 / 255, 238 / 255, 229 / 255)
   fig = plt.figure(figsize=(w / 100, h / 100), dpi=100)
   ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, w); ax.set_ylim(h, 0); ax.axis('off')
   ax.imshow(img.astype(np.uint8), extent=(0, w, h, 0), interpolation='bilinear')
   zc = np.where(land, z, -1)
-  ax.contour(zc, levels=np.arange(100, 1300, 100), colors=[SEPIA], linewidths=0.7, alpha=0.5)
-  ax.contour(zc, levels=np.arange(500, 1300, 500), colors=[SEPIA], linewidths=1.25, alpha=0.7)
+  ax.contour(zc, levels=np.arange(100, 1300, 100), colors=[IV], linewidths=0.6, alpha=0.13)
+  ax.contour(zc, levels=np.arange(500, 1300, 500), colors=[IV], linewidths=1.0, alpha=0.26)
   # engraved water lines parallel to the coast
   sd = ndimage.gaussian_filter(dist, 2)
   for i, dd in enumerate([6, 12, 19, 27, 36, 46, 58, 72, 90, 112, 140]):
-    ax.contour(sd, levels=[dd], colors=[WATER_INK], linewidths=max(0.45, 1.25 - i * 0.08), alpha=max(0.22, 0.8 - i * 0.055))
+    ax.contour(sd, levels=[dd], colors=[IV], linewidths=max(0.45, 1.0 - i * 0.05), alpha=max(0.05, 0.3 - i * 0.025))
   lf = ndimage.gaussian_filter(land.astype(float), 1.5)
-  ax.contour(lf, levels=[0.5], colors=['#3a2a1c'], linewidths=2.6, alpha=0.92)
+  ax.contour(lf, levels=[0.5], colors=[IV], linewidths=2.0, alpha=0.72)
   for name, pts in rivers:
     xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
     main = name in cfg['main_rivers']
-    ax.plot(xs, ys, color=WATER_INK, linewidth=1.9 if main else 0.8, alpha=0.85 if main else 0.6, solid_capstyle='round', solid_joinstyle='round')
+    ax.plot(xs, ys, color=IV, linewidth=1.7 if main else 0.7, alpha=0.5 if main else 0.2, solid_capstyle='round', solid_joinstyle='round')
   fig.savefig(out_jpg + '.png', dpi=100)
   plt.close(fig)
   im = Image.open(out_jpg + '.png').convert('RGB')
@@ -200,6 +191,9 @@ def svg(cfg, rivers):
   o = []
   o.append(f'<svg class="wm" viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of {esc(cfg["winery"]["name"])}, {esc(cfg["winery"]["sub"])}">')
   o.append(f'<image href="{cfg["img_href"]}" x="0" y="0" width="{w}" height="{h}" preserveAspectRatio="none"/>')
+  wi = cfg['winery']; gx_, gy_ = project(cfg, wi['lat'], wi['lng'])
+  o.append(f'<defs><radialGradient id="wm-glow"><stop offset="0" stop-color="#e09a5e" stop-opacity=".34"/><stop offset=".45" stop-color="#b0703f" stop-opacity=".12"/><stop offset="1" stop-color="#b0703f" stop-opacity="0"/></radialGradient></defs>')
+  o.append(f'<circle cx="{gx_:.0f}" cy="{gy_:.0f}" r="300" fill="url(#wm-glow)"/>')
   # regions, sea, rivers (behind the towns)
   for name, lat, lng, tier, rot in cfg['regions']:
     x, y = project(cfg, lat, lng)
