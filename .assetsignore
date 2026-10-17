@@ -10,3 +10,4 @@ wrangler.jsonc
 .assetsignore
 .gitignore
 .nojekyll
+tools

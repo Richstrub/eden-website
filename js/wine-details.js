@@ -1,40 +1,84 @@
-/* Eden: the longer story behind a wine, shown when a guest taps it on the website menu or the iPad menu.
- * Matched to the menu by name: every word in "match" must appear in the wine's name (vintage, accents and case don't
- * matter), so it keeps working when the menu editor changes the price or the vintage line.
- *   about   paragraphs of the in-depth description
- *   facts   [label, value] pairs (grapes, method, ageing…)
- *   awards  { score, by, note }  critics' scores and honours, newest first
- *   image   { src, alt, credit }  bottle photo, kept in assets/images/wines/ (tall and narrow, about 560 px wide)
- *   map     { lat, lng, place, art }  where the winery is; art = Eden's engraved-style map made with
- *           tools/wine-map/make_map.py (without it, a regular street map is shown)
- * Sources are listed with each wine so the details can be checked.
- */
+/* Eden: which menu bottles have an "About this wine / spirit" window. Generated; each bottle's story, facts,
+ * awards, photo and map are in assets/wines/<id>.json, loaded when a guest taps it.
+ * match: every word must appear in the menu section + name + note (accents and case don't matter); when several
+ * entries match, the one with the most words wins. */
+window.EDEN_WINE_V = '3';
 window.EDEN_WINE_DETAILS = [
-  {
-    match: 'raventos blanc nit',
-    producer: 'Raventós i Blanc',
-    region: 'Conca del Riu Anoia · Penedès, Catalonia, Spain',
-    about: [
-      'De Nit (Catalan for “of the night”) is the rosé sparkling wine of Raventós i Blanc, a family estate in Sant Sadurní d’Anoia, just west of Barcelona. The Raventós family has farmed this land since 1497. In 1872 Josep Raventós Fatjó made the first traditional-method sparkling wine in Spain from native grapes, and the family later helped create the Cava appellation.',
-      'In 2012 they left Cava to champion a stricter, place-based designation of their own, Conca del Riu Anoia: only native grape varieties, grown in the valley of the river Anoia, organic farming, and at least 18 months of aging. That is why the label reads Conca del Riu Anoia rather than Cava. Today Pepe Raventós, the 21st generation, farms the estate’s vines and woodland biodynamically, and its marine soils, full of ancient fossils, give the wines their saline edge.',
-      'The 2023 is a blend of Xarel·lo, Macabeu and Parellada, with a splash of Monastrell for its pale pink color. It is made like Champagne, with its second fermentation in the bottle, then rests 18 months on its lees before disgorging, finished Extra Brut with very little added sugar. Expect wild strawberry, red currant, citrus peel and white flowers, then red berries, blood orange and grapefruit on a fine, silky mousse with a long, saline finish.'
-    ],
-    facts: [
-      ['Grapes', '50% Xarel·lo, 34% Macabeu, 9% Parellada, 7% Monastrell'],
-      ['Method', 'Traditional method, second fermentation in bottle'],
-      ['Aging', '18 months on the lees'],
-      ['Style', 'Extra Brut (about 4 g/l), rosé'],
-      ['Alcohol', '12.15%'],
-      ['Farming', 'Certified organic, biodynamic estate']
-    ],
-    awards: [
-      { score: '93', by: 'Falstaff', note: 'Rosé Trophy Europe 2025: “a stylish food companion”' },
-      { score: '92', by: 'Robert Parker’s Wine Advocate', note: '“More than a rosé. Pleasure per dollar.”' },
-      { score: '90', by: 'Wine Spectator', note: '“A raw silk–like mousse and well-cut acidity”' },
-      { score: '', by: 'The New York Times', note: 'Eric Asimov’s 2025 holiday picks: “It’s not Champagne, but it’s delicious bubbly.”' }
-    ],
-    image: { src: 'assets/images/wines/raventos-de-nit.jpg', alt: 'A bottle of Raventós i Blanc de Nit rosé', credit: 'Photo: Raventós i Blanc' },
-    map: { lat: 41.433574, lng: 1.795787, place: 'Raventós i Blanc · Sant Sadurní d’Anoia, Catalonia', art: 'assets/images/wines/raventos-map.svg' },
-    sources: ['wine.com (winemaker notes, Wine Advocate and Wine Spectator scores)', 'falstaff.com (Rosé Trophy Europe 2025)', 'raventos.com (estate history, press)', 'skurnik.com (importer notes)']
-  }
+  {"id": "raventos-de-nit", "match": "raventos blanc nit", "kind": "wine"},
+  {"id": "bonnet-ponson-coteaux-champenois-chamery-rouge-2022", "match": "bonnet ponson chamery rouge", "kind": "wine"},
+  {"id": "hugues-godme-blanc-de-noirs-grand-cru-champagne", "match": "hugues godme blanc noirs", "kind": "wine"},
+  {"id": "krug-grande-cuvee-170eme-edition", "match": "krug grande cuvee 170eme edition", "kind": "wine"},
+  {"id": "champagne-gamet-rive-droite-blanc-de-noirs-brut", "match": "philippe gamet rive droite blanc noirs", "kind": "wine"},
+  {"id": "barraco-spumante-metodo-classico-pas-dose", "match": "barraco terre siciliane pas dose rose", "kind": "wine"},
+  {"id": "dr-konstantin-frank-celebre-semi-dry-sparkling-riesling", "match": "dr konstantin frank celebre cremant", "kind": "wine"},
+  {"id": "goose-watch-crimson-brut", "match": "goose watch crimson", "kind": "wine"},
+  {"id": "hermann-j-wiemer-extra-brut", "match": "nv hermann j wiemer vineyard seneca lake extra brut methode champenoise sparkling wine", "kind": "wine"},
+  {"id": "lakewood-vineyards-bubbly-catawba-2023", "match": "lakewood vineyards bubbly catawba rose", "kind": "wine"},
+  {"id": "living-roots-finger-lakes-pet-nat-riesling-2022", "match": "living roots pet nat", "kind": "wine"},
+  {"id": "living-roots-session-sparkling-rose", "match": "living roots session spritz rose", "kind": "wine"},
+  {"id": "rgny-white-sparkling-zero-dosage", "match": "rgny north fork long island zero dosage", "kind": "wine"},
+  {"id": "six-eighty-cellars-gruner-veltliner-pet-nat-2020", "match": "six eighty cellars gruner veltliner pet nat", "kind": "wine"},
+  {"id": "old-home-distillers-noche-straight-bourbon", "match": "bourbon old home distillers noche tequila barrel aged", "kind": "spirit"},
+  {"id": "old-home-distillers-king-mayhem-straight-rye-whiskey", "match": "rye old home distillers king mayhem straight", "kind": "spirit"},
+  {"id": "old-home-distillers-empire-american-single-malt-whiskey", "match": "malt old home distillers empire single", "kind": "spirit"},
+  {"id": "old-home-distillers-barrel-rested-gin", "match": "gin old home distillers barrel aged", "kind": "spirit"},
+  {"id": "old-home-distillers-peppershine", "match": "specialty old home distillers peppershine", "kind": "spirit"},
+  {"id": "hillrock-estate-solera-aged-bourbon", "match": "bourbon hillrock estate solera aged", "kind": "spirit"},
+  {"id": "black-dirt-apple-jack-bottled-in-bond", "match": "specialty black dirt applejack", "kind": "spirit"},
+  {"id": "taconic-distillery-rolling-hills-rum", "match": "rum taconic distillery 4 year aged", "kind": "spirit"},
+  {"id": "springbrook-hollow-adirondack-blended-straight-bourbon", "match": "bourbon springbrook distillery straight", "kind": "spirit"},
+  {"id": "springbrook-hollow-barrel-strength-adirondack-blended-straig", "match": "bourbon springbrook distillery barrel strength", "kind": "spirit"},
+  {"id": "springbrook-hollow-adirondack-straight-rye-whiskey", "match": "rye springbrook distillery straight", "kind": "spirit"},
+  {"id": "springbrook-hollow-adirondack-high-rye-straight-bourbon", "match": "rye adirondack distillery high", "kind": "spirit"},
+  {"id": "albany-distilling-co-ironweed-straight-bourbon", "match": "bourbon albany distilling co ironweed straight", "kind": "spirit"},
+  {"id": "albany-distilling-co-alb-vodka", "match": "vodka albany distilling co", "kind": "spirit"},
+  {"id": "albany-distilling-co-quackenbush-navy-strength-rum", "match": "rum albany distilling co navy strength", "kind": "spirit"},
+  {"id": "albany-distilling-co-quackenbush-still-house-original-albany", "match": "rum albany distilling co white", "kind": "spirit"},
+  {"id": "sauvage-distillery-upstate-vodka", "match": "vodka sauvage distillery apple distilled", "kind": "spirit"},
+  {"id": "fort-hamilton-double-barrel-bourbon", "match": "bourbon fort hamilton 4 year double barrel", "kind": "spirit"},
+  {"id": "fort-hamilton-single-barrel-bourbon", "match": "bourbon fort hamilton 6 year single barrel", "kind": "spirit"},
+  {"id": "fort-hamilton-double-barrel-rye", "match": "rye fort hamilton double barrel", "kind": "spirit"},
+  {"id": "fort-hamilton-single-barrel-rye", "match": "rye fort hamilton 6 year single barrel", "kind": "spirit"},
+  {"id": "fort-hamilton-fortress-vodka", "match": "vodka fort hamilton fortress", "kind": "spirit"},
+  {"id": "kings-county-distillery-straight-bourbon", "match": "bourbon kings county distillery straight", "kind": "spirit"},
+  {"id": "greenhook-ginsmiths-old-tom-gin", "match": "gin greenhook ginsmiths old tom", "kind": "spirit"},
+  {"id": "brooklyn-kura-number-fourteen-junmai-ginjo-nama", "match": "specialty brooklyn kura sake", "kind": "spirit"},
+  {"id": "pine-barrens-barrel-reserve-botanical-dry-gin", "match": "gin long island spirits pine barrens dry", "kind": "spirit"},
+  {"id": "lock-1-four-sons-toasted-coconut-whiskey", "match": "bourbon lock 1 distilling co waldron coconut", "kind": "spirit"},
+  {"id": "f-a-waldron-premier-straight-bourbon-whiskey", "match": "bourbon lock 1 distilling co the waldron 2 year straight", "kind": "spirit"},
+  {"id": "f-a-waldron-honey-bourbon", "match": "rye lock 1 distilling co waldron honey", "kind": "spirit"},
+  {"id": "lock-1-locktenders-gin", "match": "gin lock 1 distilling co locktenders lavender", "kind": "spirit"},
+  {"id": "lock-1-ryze-vodka", "match": "vodka lock 1 distilling co ryze", "kind": "spirit"},
+  {"id": "mckenzie-distillers-reserve-gin", "match": "gin finger lakes distilling mckenzie reserve dry", "kind": "spirit"},
+  {"id": "steelbound-blanco", "match": "agave steelbound blanco", "kind": "spirit"},
+  {"id": "steelbound-reposado", "match": "agave steelbound reposado", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-single-barrel-bourbon", "match": "bourbon hollerhorn 6 year single barrel", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-big-green-empire-rye", "match": "rye hollerhorn distilling big green empire", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-malt-in-motion-american-single-malt", "match": "malt hollerhorn distilling in motion single", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-ryeval-rye-vodka", "match": "vodka hollerhorn ryeval rye", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-flamed-maple", "match": "specialty hollerhorn distilling flamed maple spirit", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-pflaume-barrel-aged-plum-brandy", "match": "specialty hollerhorn distilling pflaume plum brandy", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-limoncello", "match": "digestif hollerhorn limoncello", "kind": "spirit"},
+  {"id": "the-dalmore-12-year-old-single-malt-scotch-whisky", "match": "malt dalmore 12 year single scotch", "kind": "spirit"},
+  {"id": "olujo-tequila-anejo", "match": "agave olujo anejo", "kind": "spirit"},
+  {"id": "mezcal-trascendente-espadin-joven", "match": "agave trascendente joven mezcal", "kind": "spirit"},
+  {"id": "maison-rouge-vs-cognac", "match": "specialty maison rogue cognac", "kind": "spirit"},
+  {"id": "batavia-arrack-van-oosten", "match": "specialty batavia arrack van oosten", "kind": "spirit"},
+  {"id": "pisco-mistral", "match": "specialty compania pisquera de chile pisco mistral", "kind": "spirit"},
+  {"id": "john-d-taylors-velvet-falernum", "match": "specialty john d taylor s velvet falernum liqueur", "kind": "spirit"},
+  {"id": "contratto-fernet", "match": "digestif fernet contratto", "kind": "spirit"},
+  {"id": "enrico-toro-centuca-72", "match": "digestif enrico toro centuca", "kind": "spirit"},
+  {"id": "amaro-montenegro", "match": "digestif montenegro amaro", "kind": "spirit"},
+  {"id": "savory-james-cream-sherry", "match": "digestif savory james sherry", "kind": "wine"},
+  {"id": "caffo-amaretto", "match": "digestif fratelli caffo amaretto", "kind": "spirit"},
+  {"id": "january-spirits-amaro", "match": "digestif january spirits amaro", "kind": "spirit"},
+  {"id": "cocchi-dopo-teatro-vermouth-amaro", "match": "digestif cocchi dopo teatro vermouth amaro", "kind": "spirit"},
+  {"id": "cardamaro-vino-amaro", "match": "digestif cardamaro amaro", "kind": "spirit"},
+  {"id": "cappelletti-amaro-sfumato-rabarbaro", "match": "digestif sfumato rabarbaro amaro", "kind": "spirit"},
+  {"id": "alta-gradazione-amario", "match": "digestif amario", "kind": "spirit"},
+  {"id": "francoli-antico-fernet-noveis", "match": "digestif luigi francoli fernet", "kind": "spirit"},
+  {"id": "bepi-tosolini-grappa-artigiana-cividina", "match": "digestif cividina grappa", "kind": "spirit"},
+  {"id": "boomsma-claerkampster-cloosterbitter", "match": "digestif boomsma cloosterbitter herbal bitter", "kind": "spirit"},
+  {"id": "dolin-genepy-le-chamois", "match": "digestif dolin genepy liqueur", "kind": "spirit"},
+  {"id": "alpe-genepy-herbetet", "match": "digestif alpe genepy liqueur", "kind": "spirit"}
 ];

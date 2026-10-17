@@ -190,49 +190,90 @@
     if(!it.pair||isWine(it))return '';
     return '<div class="'+c+'-pair"><span class="'+c+'-pair-label">Pairing</span><span class="'+c+'-pair-wine">'+esc(it.pair)+'</span>'+(it.pairPrice?'<span class="'+c+'-pair-price">'+esc(it.pairPrice)+' glass</span>':'')+'</div>';
   }
-  /* the story behind a wine (js/wine-details.js): matched by name; tapping the wine opens it */
-  function wNorm(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]+/g,' ')}
-  function wineDetail(name){
-    var L=window.EDEN_WINE_DETAILS||[],n=' '+wNorm(name)+' ';
-    for(var i=0;i<L.length;i++){if(wNorm(L[i].match).split(/\s+/).filter(Boolean).every(function(w){return n.indexOf(' '+w+' ')!==-1}))return i}
-    return -1;
+  /* the story behind a wine or spirit. js/wine-details.js is a small index ({id, match, kind}); a bottle's full story is
+     assets/wines/<id>.json, fetched when a guest taps it. Matched on the menu section + name + note, every word of
+     "match" must appear; when several entries match, the most specific (most words) wins. */
+  function wNorm(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]+/g,' ')}
+  var wdMemo={};
+  function wineDetail(it,sec){
+    var L=window.EDEN_WINE_DETAILS||[];if(!L.length||!it)return -1;
+    var n=' '+wNorm([sec||'',it.name,it.desc||''].join(' ')).replace(/\s+/g,' ')+' ';
+    if(n in wdMemo)return wdMemo[n];
+    var best=-1,bw=0;
+    for(var i=0;i<L.length;i++){
+      var ws=wNorm(L[i].match).split(/\s+/).filter(Boolean);
+      if(ws.length>bw&&ws.every(function(w){return n.indexOf(' '+w+' ')!==-1})){best=i;bw=ws.length}
+    }
+    return (wdMemo[n]=best);
   }
-  function moreAttr(it){var i=wineDetail(it.name);return i<0?'':' data-more="'+i+'" tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': more about this wine"'}
-  function moreHint(it,c){return wineDetail(it.name)<0?'':'<span class="'+c+'-more">About this wine &rsaquo;</span>'}
-  var wdOpen=null;
-  function closeWine(){if(!wdOpen)return;var w=wdOpen;wdOpen=null;w.el.classList.remove('on');document.removeEventListener('keydown',w.key);setTimeout(function(){w.el.remove()},250);if(w.back&&w.back.focus)try{w.back.focus({preventScroll:true})}catch(e){}}
-  function openWine(i,name,from){
-    var D=(window.EDEN_WINE_DETAILS||[])[i];if(!D)return;
+  function wKind(i){var e=(window.EDEN_WINE_DETAILS||[])[i];return e&&e.kind==='spirit'?'spirit':'wine'}
+  function moreAttr(it,sec){var i=wineDetail(it,sec);return i<0?'':' data-more="'+i+'" tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': more about this '+wKind(i)+'"'}
+  function moreHint(it,c,sec){var i=wineDetail(it,sec);return i<0?'':'<span class="'+c+'-more">About this '+wKind(i)+' &rsaquo;</span>'}
+  var wdOpen=null,wdCache={},wdWant=0;
+  function closeWine(){wdWant++;if(!wdOpen)return;var w=wdOpen;wdOpen=null;w.el.classList.remove('on');document.removeEventListener('keydown',w.key);setTimeout(function(){w.el.remove()},250);if(w.back&&w.back.focus)try{w.back.focus({preventScroll:true})}catch(e){}}
+  function wineData(i){
+    var e=(window.EDEN_WINE_DETAILS||[])[i];if(!e)return Promise.reject();
+    if(e.about)return Promise.resolve(e);            // full entry kept inline
+    if(!wdCache[e.id])wdCache[e.id]=fetch('assets/wines/'+encodeURIComponent(e.id)+'.json?v='+(window.EDEN_WINE_V||'')).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(x){delete wdCache[e.id];throw x});
+    return wdCache[e.id];
+  }
+  function startWine(i,name,from){var want=++wdWant;wineData(i).then(function(D){if(want===wdWant)openWine(D,name,from)},function(){})}
+  // pin the bottle's producer on a region map (assets/images/wines/maps/*.svg carry their area in data-bbox)
+  function pinMap(svg,m,D){
+    var b=(svg.getAttribute('data-bbox')||'').split(' ').map(Number),vb=svg.viewBox.baseVal;if(b.length!==4||!vb)return;
+    var x=(m.lng-b[0])/(b[2]-b[0])*vb.width,y=(b[3]-m.lat)/(b[3]-b[1])*vb.height,NS='http://www.w3.org/2000/svg';
+    function mk(tag,a,txt){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);if(txt)e.textContent=txt;return e}
+    var left=x>vb.width*0.62,g=mk('g',{'class':'wmap-winery'});
+    var glow=mk('circle',{cx:x,cy:y,r:300,fill:'url(#wmap-glow)','class':'wmap-glow'});
+    var name=mk('text',{x:x,y:y,dx:(left?-0.75:0.75)+'em',dy:'-0.15em','text-anchor':left?'end':'start','class':'wmap-w-name'},m.label||D.producer||'');
+    var sub=m.town?mk('text',{x:x,y:y,dx:(left?-1.2:1.2)+'em',dy:'1.25em','text-anchor':left?'end':'start','class':'wmap-w-sub'},m.town):null;
+    g.appendChild(mk('circle',{cx:x,cy:y,r:22,'class':'wmap-w-ring'}));g.appendChild(mk('circle',{cx:x,cy:y,r:8,'class':'wmap-w-dot'}));g.appendChild(name);if(sub)g.appendChild(sub);
+    var under=svg.querySelector('.wmap-labels');svg.insertBefore(glow,under);svg.appendChild(g);
+    try{ // the name runs off the map: put it on the other side
+      var nb=name.getBBox();
+      if(!left&&nb.x+nb.width>vb.width-30){[name,sub].forEach(function(t,k){if(!t)return;t.setAttribute('text-anchor','end');t.setAttribute('dx',(k?-1.2:-0.75)+'em')})}
+      else if(left&&nb.x<30){[name,sub].forEach(function(t,k){if(!t)return;t.setAttribute('text-anchor','start');t.setAttribute('dx',(k?1.2:0.75)+'em')})}
+    }catch(e){}
+    // keep the producer's name clear: hide map labels it would cover
+    try{
+      var boxes=[name.getBBox()];if(sub)boxes.push(sub.getBBox());boxes.push({x:x-40,y:y-40,width:80,height:80});
+      [].forEach.call(svg.querySelectorAll('.wmap-labels > g, .wmap-labels > text, .wmap-cart, .wmap-rose, .wmap-scale'),function(l){var r=l.getBBox();
+        if(boxes.some(function(q){return r.x<q.x+q.width&&r.x+r.width>q.x&&r.y<q.y+q.height&&r.y+r.height>q.y}))l.style.display='none'});
+    }catch(e){}
+  }
+  function openWine(D,menuName,from){
     closeWine();
-    var m=D.map,mapH='';
+    var name=D.title||menuName,kind=D.kind==='spirit'?'spirit':'wine';
+    var m=D.map,mapH='',osm='';
     if(m&&m.lat!=null){
       var dx=0.06,dy=0.035,bbox=[m.lng-dx,m.lat-dy,m.lng+dx,m.lat+dy].join(',');
-      var osm='<iframe title="Map: '+esc(m.place||D.producer)+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+m.lat+','+m.lng+'"></iframe>';
-      // m.art: Eden's own engraved-style map (tools/wine-map/make_map.py), loaded into the page so its lettering uses the site's typeface
+      osm='<iframe title="Map: '+esc(m.place||D.producer)+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+m.lat+','+m.lng+'"></iframe>';
+      // m.art: Eden's own engraved-style map (tools/wine-map), loaded into the page so its lettering uses the site's typeface
       mapH='<figure class="wd-map">'+(m.art?'<div class="wd-art" data-art="'+esc(m.art)+'"></div>':osm)+
-        '<figcaption><span>'+esc(m.place||D.producer)+(m.art?'<small class="wd-credit">Rivers © OpenStreetMap contributors · elevation: AWS Terrain Tiles</small>':'')+'</span>'+(document.body.classList.contains('on-ipad')?'':'<a href="https://www.google.com/maps/search/?api=1&amp;query='+m.lat+','+m.lng+'" target="_blank" rel="noopener">Open in Maps</a>')+'</figcaption></figure>';
+        '<figcaption><span>'+esc(m.place||D.producer)+(m.art?'<small class="wd-credit">Map data © OpenStreetMap contributors · elevation: AWS Terrain Tiles</small>':'')+'</span>'+(document.body.classList.contains('on-ipad')?'':'<a href="https://www.google.com/maps/search/?api=1&amp;query='+m.lat+','+m.lng+'" target="_blank" rel="noopener">Open in Maps</a>')+'</figcaption></figure>';
     }
-    var aw=(D.awards||[]).map(function(a){return '<li><span class="wd-score'+(a.score?'':' txt')+'">'+(a.score?esc(a.score)+'<small>pts</small>':'&#9733;')+'</span><span class="wd-aw"><b>'+esc(a.by)+'</b>'+(a.note?'<span>'+esc(a.note)+'</span>':'')+'</span></li>'}).join('');
+    var aw=(D.awards||[]).map(function(a){var pts=/^\d{2,3}\+?$/.test(a.score||'');return '<li><span class="wd-score'+(pts?'':a.score?' word':' txt')+'">'+(pts?esc(a.score)+'<small>pts</small>':a.score?esc(a.score):'&#9733;')+'</span><span class="wd-aw"><b>'+esc(a.by)+'</b>'+(a.note?'<span>'+esc(a.note)+'</span>':'')+'</span></li>'}).join('');
     var facts=(D.facts||[]).map(function(f){return '<div><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd></div>'}).join('');
+    var im=D.image;
     var el=document.createElement('div');el.className='wd';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label',name);
     el.innerHTML='<div class="wd-card"><button type="button" class="wd-x" aria-label="Close">&times;</button><div class="wd-scroll">'+
-      '<div class="wd-top'+(D.image?' has-img':'')+'"><div class="wd-head"><p class="wd-eye">About this wine</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div></div>'+
-      (D.image?'<figure class="wd-bottle"><img src="'+esc(D.image.src)+'" alt="'+esc(D.image.alt||name)+'" width="560" height="1226" decoding="async" onerror="this.parentNode.parentNode.classList.remove(\'has-img\');this.parentNode.remove()">'+(D.image.credit?'<figcaption>'+esc(D.image.credit)+'</figcaption>':'')+'</figure>':'')+'</div>'+
+      '<div class="wd-top'+(im?' has-img':'')+'"><div class="wd-head"><p class="wd-eye">About this '+kind+'</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div></div>'+
+      (im?'<figure class="wd-bottle"><img src="'+esc(im.src)+'" alt="'+esc(im.alt||name)+'" width="'+(im.w||560)+'" height="'+(im.h||1226)+'" decoding="async" onerror="this.parentNode.parentNode.classList.remove(\'has-img\');this.parentNode.remove()">'+(im.credit?'<figcaption>'+esc(im.credit)+'</figcaption>':'')+'</figure>':'')+'</div>'+
       (aw?'<div class="wd-sec"><h3>Scores &amp; awards</h3><ul class="wd-awards">'+aw+'</ul></div>':'')+
       '<div class="wd-sec wd-about">'+(D.about||[]).map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'+
-      (facts?'<div class="wd-sec"><h3>In the glass</h3><dl class="wd-facts">'+facts+'</dl></div>':'')+
+      (facts?'<div class="wd-sec"><h3>'+(kind==='spirit'?'In the bottle':'In the glass')+'</h3><dl class="wd-facts">'+facts+'</dl></div>':'')+
       (mapH?'<div class="wd-sec"><h3>Where it’s made</h3>'+mapH+'</div>':'')+
       '</div></div>';
     document.body.appendChild(el);
     var art=el.querySelector('.wd-art');
-    if(art)fetch(art.getAttribute('data-art')).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(!/^\s*<svg[\s>]/.test(t))throw 0;art.innerHTML=t;art.classList.add('on')}).catch(function(){art.outerHTML=osm});
+    if(art)fetch(art.getAttribute('data-art')).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(!/^\s*<svg[\s>]/.test(t))throw 0;art.innerHTML=t;var svg=art.querySelector('svg');if(svg&&svg.getAttribute('data-bbox'))pinMap(svg,m,D);art.classList.add('on')}).catch(function(){if(art.parentNode)art.outerHTML=osm});
     var key=function(e){if(e.key==='Escape')closeWine()};
     wdOpen={el:el,key:key,back:from};
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.wd-x'))closeWine()});
     document.addEventListener('keydown',key);
     requestAnimationFrame(function(){el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true})});
   }
-  document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-more]');if(!t)return;var nm=t.querySelector('.mi-name,.pad-name');openWine(+t.getAttribute('data-more'),nm?nm.textContent:'',t)});
+  document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-more]');if(!t)return;var nm=t.querySelector('.mi-name,.pad-name');startWine(+t.getAttribute('data-more'),nm?nm.textContent:'',t)});
   document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute&&e.target.getAttribute('data-more')!=null){e.preventDefault();e.target.click()}});
   function groupsHTML(groups,idp){
     var h='';
@@ -242,10 +283,10 @@
       if(g.note)h+='<p class="mg-note">'+esc(g.note)+'</p>';
       h+='<ul class="ml">';
       items.forEach(function(it){
-        h+='<li class="mi'+(wineDetail(it.name)<0?'':' has-more')+'"'+moreAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
+        h+='<li class="mi'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+='<div class="mi-src">'+esc(it.src)+'</div>';
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
-        h+=moreHint(it,'mi');
+        h+=moreHint(it,'mi',g.title);
         h+=pairHTML(it,'mi');
         h+='</li>';
       });
@@ -469,10 +510,10 @@
       if(g.note)h+='<p class="pad-note">'+esc(g.note)+'</p>';
       if(big)h+='<div class="pad-items">';
       items.forEach(function(it){
-        h+='<div class="pad-item'+(wineDetail(it.name)<0?'':' has-more')+'"'+moreAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
+        h+='<div class="pad-item'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+='<div class="pad-src">'+esc(it.src)+'</div>';
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
-        h+=moreHint(it,'pad');
+        h+=moreHint(it,'pad',g.title);
         h+=pairHTML(it,'pad');
         h+='</div>';
       });
