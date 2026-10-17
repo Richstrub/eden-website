@@ -8,7 +8,11 @@ BROWSER = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (K
 geo = {}
 for g in job.get('geocode', []):
   res = None
-  for q in [g.get('address'), g.get('q2')]:
+  a = g.get('address') or ''
+  import re
+  parts = [x.strip() for x in a.split(',') if x.strip() and not re.search(r'(?i)building|floor|suite|unit|#|s/n|km ', x)]
+  simple = ', '.join(parts)
+  for q in [a, simple, ', '.join(parts[-3:]) if len(parts) > 3 else None, g.get('q2')]:
     if not q: continue
     try:
       u = 'https://nominatim.openstreetmap.org/search?' + urllib.parse.urlencode({'format': 'json', 'limit': 1, 'q': q})
