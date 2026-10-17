@@ -347,6 +347,9 @@ def main():
   for r in regions:
     if only and r['id'] not in only: continue
     d = os.path.join(data, r['id'])
+    if not r.get('z'):
+      try: r['z'] = {x['id']: x['z'] for x in json.load(open(os.path.join(data, 'regions-z.json')))}[r['id']]
+      except Exception: pass
     try:
       dem = load_dem(d, r)
       rivers, places, lakes_raw = read_osm(d, r)

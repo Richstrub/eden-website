@@ -48,11 +48,13 @@ def main():
     z = r.get('z') or zoom_for(r['bbox']); r['z'] = z
     tl = tiles((W - pad, S - pad, E + pad, N + pad), z)
     print(r['id'], 'zoom', z, len(tl), 'tiles')
-    for x, y in tl:
-      f = os.path.join(d, 'tiles', f'{z}_{x}_{y}.png')
-      if os.path.exists(f): continue
+    def one(t):
+      x, y = t; f = os.path.join(d, 'tiles', f'{z}_{x}_{y}.png')
+      if os.path.exists(f): return
       b = get(f'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png')
       if b: open(f, 'wb').write(b)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(16) as ex: list(ex.map(one, tl))
     if os.path.exists(os.path.join(d, 'osm.json')): continue
     bb = f'{S - pad},{W - pad},{N + pad},{E + pad}'
     q = (f'[out:json][timeout:180];('
@@ -67,7 +69,7 @@ def main():
         open(os.path.join(d, 'osm.json'), 'wb').write(b); break
       time.sleep(5)
     time.sleep(3)
-  json.dump(regions, open(sys.argv[1], 'w'), indent=1)
+  json.dump(regions, open(os.path.join(root, 'regions-z.json'), 'w'), indent=1)
 
 
 if __name__ == '__main__':
