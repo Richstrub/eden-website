@@ -4,7 +4,7 @@ data/barbados 56 tiles 92100 osm
 data/brooklyn-new-york-city 80 tiles 2564390 osm
 data/calabria 80 tiles 197439 osm
 data/capital-region 70 tiles 3098289 osm
-data/central-new-york 70 tiles  osm
+data/central-new-york 70 tiles 5065519 osm
 data/central-valleys-of-oaxaca 54 tiles 505333 osm
 data/cognac 88 tiles 1603655 osm
 data/elqui-valley 70 tiles 304209 osm
