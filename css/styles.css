@@ -592,3 +592,38 @@ footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
 #cater .q-ts{margin:10px 0 0}
 #cater .dlg-note{display:block;margin:0 0 12px;padding:8px 10px;background:var(--q-soft);border-radius:6px;color:var(--q-ink)}
 @media (min-width:821px){.visit.visit-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin-left:auto;margin-right:auto}}
+/* a wine's story (tap a wine with details on the menu or the iPad menu) */
+.has-more{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.has-more:focus-visible{outline:1px solid var(--ember-hot);outline-offset:4px}
+.mi-more,.pad-more{display:inline-block;margin-top:8px;font-family:var(--sans);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ember-hot);border-bottom:1px solid rgba(224,154,94,.4);padding-bottom:2px}
+.has-more:hover .mi-more{border-bottom-color:var(--ember-hot)}
+.wd{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:16px;background:rgba(7,8,10,.72);opacity:0;transition:opacity .25s ease;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.wd.on{opacity:1}
+.wd-card{position:relative;width:min(760px,100%);max-height:min(88vh,980px);display:grid;grid-template-rows:minmax(0,1fr);background:var(--ink);color:var(--ivory);border:1px solid var(--line-dark);box-shadow:0 30px 80px rgba(0,0,0,.5);transform:translateY(14px);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.wd.on .wd-card{transform:none}
+.wd-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:44px 48px 40px}
+.wd-x{position:absolute;top:10px;right:12px;z-index:2;width:44px;height:44px;border:0;background:none;color:var(--ivory);font-size:2rem;line-height:1;cursor:pointer;font-family:var(--serif)}
+.wd-eye{font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ember-hot);margin:0 0 10px}
+.wd-name{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.12;margin:0 0 10px;padding-right:30px}
+.wd-prod{color:var(--soft-dark);font-size:.92rem;margin:0}
+.wd-rule{width:48px;height:1px;background:var(--ember);margin:24px 0 8px}
+.wd-sec{margin-top:26px;padding:0}
+.wd-sec h3{font-family:var(--sans);font-weight:400;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember-hot);margin:0 0 14px}
+.wd-about p{font-family:var(--serif);font-size:1.18rem;line-height:1.65;margin:0 0 14px;color:var(--ivory)}
+.wd-awards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.wd-awards li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;border:1px solid var(--line-dark);padding:14px 16px}
+.wd-score{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1px solid var(--ember);font-family:var(--serif);font-size:1.6rem;line-height:1;color:var(--ivory)}
+.wd-score small{display:block;font-family:var(--sans);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-dark);margin-top:-6px}
+.wd-score.txt{font-size:1.2rem;color:var(--ember-hot)}
+.wd-aw{display:grid;gap:3px}
+.wd-aw b{font-weight:400;font-size:.95rem}
+.wd-aw span{font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.35;color:var(--soft-dark)}
+.wd-facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px 22px;margin:0}
+.wd-facts dt{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-dark);margin-bottom:3px}
+.wd-facts dd{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.35}
+.wd-map{margin:0}
+.wd-map iframe{display:block;width:100%;aspect-ratio:16/9;border:0;filter:grayscale(.35) contrast(1.05);background:#1a1e22}
+.wd-map figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--soft-dark);padding-top:10px}
+.wd-map a{color:var(--ember-hot);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem}
+@media (max-width:640px){.wd{padding:0;place-items:end stretch}.wd-card{max-height:92vh;width:100%;border-left:0;border-right:0;border-bottom:0}.wd-scroll{padding:36px 20px calc(28px + env(safe-area-inset-bottom,0px))}.wd-about p{font-size:1.08rem}}
+.pad-more{color:var(--ember);border-bottom-color:rgba(176,112,63,.4)}

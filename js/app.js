@@ -190,6 +190,45 @@
     if(!it.pair||isWine(it))return '';
     return '<div class="'+c+'-pair"><span class="'+c+'-pair-label">Pairing</span><span class="'+c+'-pair-wine">'+esc(it.pair)+'</span>'+(it.pairPrice?'<span class="'+c+'-pair-price">'+esc(it.pairPrice)+' glass</span>':'')+'</div>';
   }
+  /* the story behind a wine (js/wine-details.js): matched by name; tapping the wine opens it */
+  function wNorm(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]+/g,' ')}
+  function wineDetail(name){
+    var L=window.EDEN_WINE_DETAILS||[],n=' '+wNorm(name)+' ';
+    for(var i=0;i<L.length;i++){if(wNorm(L[i].match).split(/\s+/).filter(Boolean).every(function(w){return n.indexOf(' '+w+' ')!==-1}))return i}
+    return -1;
+  }
+  function moreAttr(it){var i=wineDetail(it.name);return i<0?'':' data-more="'+i+'" tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': more about this wine"'}
+  function moreHint(it,c){return wineDetail(it.name)<0?'':'<span class="'+c+'-more">About this wine &rsaquo;</span>'}
+  var wdOpen=null;
+  function closeWine(){if(!wdOpen)return;var w=wdOpen;wdOpen=null;w.el.classList.remove('on');document.removeEventListener('keydown',w.key);setTimeout(function(){w.el.remove()},250);if(w.back&&w.back.focus)try{w.back.focus({preventScroll:true})}catch(e){}}
+  function openWine(i,name,from){
+    var D=(window.EDEN_WINE_DETAILS||[])[i];if(!D)return;
+    closeWine();
+    var m=D.map,mapH='';
+    if(m&&m.lat!=null){
+      var dx=0.06,dy=0.035,bbox=[m.lng-dx,m.lat-dy,m.lng+dx,m.lat+dy].join(',');
+      mapH='<figure class="wd-map"><iframe title="Map: '+esc(m.place||D.producer)+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+m.lat+','+m.lng+'"></iframe>'+
+        '<figcaption><span>'+esc(m.place||D.producer)+'</span>'+(document.body.classList.contains('on-ipad')?'':'<a href="https://www.google.com/maps/search/?api=1&amp;query='+m.lat+','+m.lng+'" target="_blank" rel="noopener">Open in Maps</a>')+'</figcaption></figure>';
+    }
+    var aw=(D.awards||[]).map(function(a){return '<li><span class="wd-score'+(a.score?'':' txt')+'">'+(a.score?esc(a.score)+'<small>pts</small>':'&#9733;')+'</span><span class="wd-aw"><b>'+esc(a.by)+'</b>'+(a.note?'<span>'+esc(a.note)+'</span>':'')+'</span></li>'}).join('');
+    var facts=(D.facts||[]).map(function(f){return '<div><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd></div>'}).join('');
+    var el=document.createElement('div');el.className='wd';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label',name);
+    el.innerHTML='<div class="wd-card"><button type="button" class="wd-x" aria-label="Close">&times;</button><div class="wd-scroll">'+
+      '<p class="wd-eye">About this wine</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div>'+
+      (aw?'<div class="wd-sec"><h3>Scores &amp; awards</h3><ul class="wd-awards">'+aw+'</ul></div>':'')+
+      '<div class="wd-sec wd-about">'+(D.about||[]).map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'+
+      (facts?'<div class="wd-sec"><h3>In the glass</h3><dl class="wd-facts">'+facts+'</dl></div>':'')+
+      (mapH?'<div class="wd-sec"><h3>Where it’s made</h3>'+mapH+'</div>':'')+
+      '</div></div>';
+    document.body.appendChild(el);
+    var key=function(e){if(e.key==='Escape')closeWine()};
+    wdOpen={el:el,key:key,back:from};
+    el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.wd-x'))closeWine()});
+    document.addEventListener('keydown',key);
+    requestAnimationFrame(function(){el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true})});
+  }
+  document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-more]');if(!t)return;var nm=t.querySelector('.mi-name,.pad-name');openWine(+t.getAttribute('data-more'),nm?nm.textContent:'',t)});
+  document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute&&e.target.getAttribute('data-more')!=null){e.preventDefault();e.target.click()}});
   function groupsHTML(groups,idp){
     var h='';
     groups.forEach(function(g,gi){
@@ -198,9 +237,10 @@
       if(g.note)h+='<p class="mg-note">'+esc(g.note)+'</p>';
       h+='<ul class="ml">';
       items.forEach(function(it){
-        h+='<li class="mi"'+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
+        h+='<li class="mi'+(wineDetail(it.name)<0?'':' has-more')+'"'+moreAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+='<div class="mi-src">'+esc(it.src)+'</div>';
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
+        h+=moreHint(it,'mi');
         h+=pairHTML(it,'mi');
         h+='</li>';
       });
@@ -424,9 +464,10 @@
       if(g.note)h+='<p class="pad-note">'+esc(g.note)+'</p>';
       if(big)h+='<div class="pad-items">';
       items.forEach(function(it){
-        h+='<div class="pad-item"'+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
+        h+='<div class="pad-item'+(wineDetail(it.name)<0?'':' has-more')+'"'+moreAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+='<div class="pad-src">'+esc(it.src)+'</div>';
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
+        h+=moreHint(it,'pad');
         h+=pairHTML(it,'pad');
         h+='</div>';
       });
@@ -461,7 +502,7 @@
   }
   function padIdle(){ // after 3 quiet minutes, return to the first page for the next guest
     clearTimeout(pad.idle);
-    pad.idle=setTimeout(function(){if(pad.el.hidden)return;pad.tab=null;pad.wineMode='style';renderPad(menuData);document.getElementById('padMain').scrollTop=0},180000);
+    pad.idle=setTimeout(function(){if(pad.el.hidden)return;closeWine();pad.tab=null;pad.wineMode='style';renderPad(menuData);document.getElementById('padMain').scrollTop=0},180000);
   }
   ['pointerdown','touchstart','scroll','wheel'].forEach(function(ev){pad.el.addEventListener(ev,padIdle,{passive:true,capture:true})});
   (function(){var taps=[];document.getElementById('padBrand').addEventListener('click',function(){

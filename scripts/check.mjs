@@ -30,7 +30,7 @@ function walk(dir, out = []) {
 }
 
 console.log('Required files');
-for (const f of ['index.html', 'css/styles.css', 'js/config.js', 'js/runtime.js', 'js/country-maps.js', 'js/menu-data.js', 'js/catering.js', 'js/app.js', 'js/analytics.js', 'js/join.js', 'data/menu.json', 'README.md', '.gitignore', '.nojekyll']) {
+for (const f of ['index.html', 'css/styles.css', 'js/config.js', 'js/runtime.js', 'js/country-maps.js', 'js/menu-data.js', 'js/wine-details.js', 'js/catering.js', 'js/app.js', 'js/analytics.js', 'js/join.js', 'data/menu.json', 'README.md', '.gitignore', '.nojekyll']) {
   existsSync(join(root, f)) ? ok(f) : fail('missing ' + f);
 }
 
@@ -41,7 +41,7 @@ const refs = [...html.matchAll(/\b(?:src|href)="([^"#][^"]*)"/g)].map(m => m[1])
   .filter(u => !/^(https?:|mailto:|tel:|data:|\/\/)/.test(u)).map(u => u.split('?')[0]);
 for (const r of new Set(refs)) existsSync(join(root, r)) ? ok(r) : fail('index.html references a missing file: ' + r);
 const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(m => m[1].split('?')[0]);
-const order = ['js/config.js', 'js/runtime.js', 'js/country-maps.js', 'js/menu-data.js', 'js/catering.js', 'js/app.js', 'js/analytics.js', 'js/join.js'];
+const order = ['js/config.js', 'js/runtime.js', 'js/country-maps.js', 'js/menu-data.js', 'js/wine-details.js', 'js/catering.js', 'js/app.js', 'js/analytics.js', 'js/join.js'];
 JSON.stringify(scripts) === JSON.stringify(order) ? ok('scripts load in the right order') : fail('script order should be ' + order.join(', '));
 
 console.log('JavaScript syntax');
