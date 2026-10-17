@@ -207,8 +207,10 @@
     var m=D.map,mapH='';
     if(m&&m.lat!=null){
       var dx=0.06,dy=0.035,bbox=[m.lng-dx,m.lat-dy,m.lng+dx,m.lat+dy].join(',');
-      mapH='<figure class="wd-map"><iframe title="Map: '+esc(m.place||D.producer)+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+m.lat+','+m.lng+'"></iframe>'+
-        '<figcaption><span>'+esc(m.place||D.producer)+'</span>'+(document.body.classList.contains('on-ipad')?'':'<a href="https://www.google.com/maps/search/?api=1&amp;query='+m.lat+','+m.lng+'" target="_blank" rel="noopener">Open in Maps</a>')+'</figcaption></figure>';
+      var osm='<iframe title="Map: '+esc(m.place||D.producer)+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+m.lat+','+m.lng+'"></iframe>';
+      // m.art: Eden's own engraved-style map (tools/wine-map/make_map.py), loaded into the page so its lettering uses the site's typeface
+      mapH='<figure class="wd-map">'+(m.art?'<div class="wd-art" data-art="'+esc(m.art)+'"></div>':osm)+
+        '<figcaption><span>'+esc(m.place||D.producer)+(m.art?'<small class="wd-credit">Rivers © OpenStreetMap contributors · elevation: AWS Terrain Tiles</small>':'')+'</span>'+(document.body.classList.contains('on-ipad')?'':'<a href="https://www.google.com/maps/search/?api=1&amp;query='+m.lat+','+m.lng+'" target="_blank" rel="noopener">Open in Maps</a>')+'</figcaption></figure>';
     }
     var aw=(D.awards||[]).map(function(a){return '<li><span class="wd-score'+(a.score?'':' txt')+'">'+(a.score?esc(a.score)+'<small>pts</small>':'&#9733;')+'</span><span class="wd-aw"><b>'+esc(a.by)+'</b>'+(a.note?'<span>'+esc(a.note)+'</span>':'')+'</span></li>'}).join('');
     var facts=(D.facts||[]).map(function(f){return '<div><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd></div>'}).join('');
@@ -222,6 +224,8 @@
       (mapH?'<div class="wd-sec"><h3>Where it’s made</h3>'+mapH+'</div>':'')+
       '</div></div>';
     document.body.appendChild(el);
+    var art=el.querySelector('.wd-art');
+    if(art)fetch(art.getAttribute('data-art')).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(!/^\s*<svg[\s>]/.test(t))throw 0;art.innerHTML=t;art.classList.add('on')}).catch(function(){art.outerHTML=osm});
     var key=function(e){if(e.key==='Escape')closeWine()};
     wdOpen={el:el,key:key,back:from};
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.wd-x'))closeWine()});

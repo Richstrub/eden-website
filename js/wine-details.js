@@ -5,7 +5,8 @@
  *   facts   [label, value] pairs (grapes, method, ageing…)
  *   awards  { score, by, note }  critics' scores and honours, newest first
  *   image   { src, alt, credit }  bottle photo, kept in assets/images/wines/ (tall and narrow, about 560 px wide)
- *   map     { lat, lng, place }  where the winery is
+ *   map     { lat, lng, place, art }  where the winery is; art = Eden's engraved-style map made with
+ *           tools/wine-map/make_map.py (without it, a regular street map is shown)
  * Sources are listed with each wine so the details can be checked.
  */
 window.EDEN_WINE_DETAILS = [
@@ -33,7 +34,7 @@ window.EDEN_WINE_DETAILS = [
       { score: '', by: 'The New York Times', note: 'Eric Asimov’s 2025 holiday picks: “It’s not Champagne, but it’s delicious bubbly.”' }
     ],
     image: { src: 'assets/images/wines/raventos-de-nit.jpg', alt: 'A bottle of Raventós i Blanc de Nit rosé', credit: 'Photo: Raventós i Blanc' },
-    map: { lat: 41.433574, lng: 1.795787, place: 'Raventós i Blanc · Sant Sadurní d’Anoia, Catalonia' },
+    map: { lat: 41.433574, lng: 1.795787, place: 'Raventós i Blanc · Sant Sadurní d’Anoia, Catalonia', art: 'assets/images/wines/raventos-map.svg' },
     sources: ['wine.com (winemaker notes, Wine Advocate and Wine Spectator scores)', 'falstaff.com (Rosé Trophy Europe 2025)', 'raventos.com (estate history, press)', 'skurnik.com (importer notes)']
   }
 ];

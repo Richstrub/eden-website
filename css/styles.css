@@ -627,6 +627,37 @@ footer .foot-mail:hover{color:var(--ivory);text-decoration-color:currentColor}
 .wd-facts dd{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.35}
 .wd-map{margin:0}
 .wd-map iframe{display:block;width:100%;aspect-ratio:16/9;border:0;filter:grayscale(.35) contrast(1.05);background:#1a1e22}
+/* the engraved-style map: picture from tools/wine-map/make_map.py, lettering drawn over it in the site's serif */
+.wd-art{aspect-ratio:3/2;background:#e9dcbf;opacity:0;transition:opacity .4s ease}
+.wd-art.on{opacity:1}
+.wd-art svg{display:block;width:100%;height:auto}
+.wm text{font-family:var(--serif);fill:#3b2a1c;paint-order:stroke;stroke:rgba(238,226,198,.82);stroke-width:.16em;stroke-linejoin:round}
+.wm .wm-city{font-size:62px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.wm .wm-town{font-size:44px;font-weight:500}
+.wm .wm-dot{fill:#3b2a1c;stroke:rgba(238,226,198,.9);stroke-width:4}
+.wm .wm-region{font-size:58px;font-weight:400;letter-spacing:.42em;text-transform:uppercase;fill:rgba(74,52,36,.62);stroke:none}
+.wm .wm-sea{font-size:52px;font-style:italic;letter-spacing:.26em;fill:#34494d;stroke:none}
+.wm .wm-river{font-size:40px;font-style:italic;fill:#34494d}
+.wm .wm-mount{font-size:50px;font-style:italic;letter-spacing:.12em;text-transform:uppercase}
+.wm .wm-peak{fill:#3b2a1c;stroke:rgba(238,226,198,.9);stroke-width:4}
+.wm .wm-w-ring{fill:rgba(238,226,198,.55);stroke:#9b2a1c;stroke-width:6}
+.wm .wm-w-dot{fill:#9b2a1c}
+.wm .wm-w-name{font-size:62px;font-weight:500;font-style:italic;fill:#8a2216}
+.wm .wm-w-sub{font-size:40px;font-weight:500;letter-spacing:.06em}
+.wm .wm-rose-d{fill:#3b2a1c}.wm .wm-rose-l{fill:#efe4c8;stroke:#3b2a1c;stroke-width:2}
+.wm .wm-rose-c{fill:none;stroke:#3b2a1c;stroke-width:3}.wm .wm-rose-c.thin{stroke-width:1.5}
+.wm .wm-rose-n{font-size:52px;font-weight:500}
+.wm .wm-sb-d{fill:#3b2a1c}.wm .wm-sb-l{fill:#efe4c8;stroke:#3b2a1c;stroke-width:2}
+.wm .wm-sb-t{font-size:34px}.wm .wm-sb-u{font-size:36px;font-style:italic}
+.wm .wm-cart-b{fill:rgba(240,230,205,.92);stroke:#3b2a1c;stroke-width:4}.wm .wm-cart-i{fill:none;stroke:#3b2a1c;stroke-width:1.5}
+.wm .wm-cart-s{font-size:38px;letter-spacing:.3em;text-transform:uppercase;stroke:none}
+.wm .wm-cart-t{font-size:66px;font-style:italic;font-weight:500;stroke:none}
+.wm .wm-cart-s2{font-size:30px;letter-spacing:.18em;text-transform:uppercase;fill:#6b4f36;stroke:none}
+.wm .wm-band-bg{fill:#efe4c8}.wm .wm-band rect{fill:#3b2a1c}
+.wm .wm-frame{fill:none;stroke:#3b2a1c;stroke-width:3}.wm .wm-frame.thin{stroke-width:2}.wm .wm-frame.outer{stroke-width:6}
+.wm .wm-deg{font-size:28px;font-style:italic;fill:#5a4330;stroke:none}
+@media (max-width:640px){.wm .t2,.wm .wm-w-sub{display:none}.wm .wm-city{font-size:80px;letter-spacing:.08em}.wm .wm-town{font-size:72px}.wm .wm-w-name{font-size:84px}.wm .wm-sea{font-size:88px}.wm .wm-region{font-size:88px}.wm .wm-mount{font-size:76px}.wm .wm-w-ring{stroke-width:9}}
+.wd-credit{display:block;font-size:.66rem;opacity:.7;margin-top:2px}
 .wd-map figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--soft-dark);padding-top:10px}
 .wd-map a{color:var(--ember-hot);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem}
 @media (max-width:640px){.wd{padding:0;place-items:end stretch}.wd-card{max-height:92vh;width:100%;border-left:0;border-right:0;border-bottom:0}.wd-scroll{padding:36px 20px calc(28px + env(safe-area-inset-bottom,0px))}.wd-about p{font-size:1.08rem}.wd-top.has-img{grid-template-columns:minmax(0,1fr) 96px;gap:16px;align-items:start}.wd-bottle{width:96px;margin-top:28px}.wd-bottle figcaption{font-size:.5rem;letter-spacing:.08em}}
