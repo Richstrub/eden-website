@@ -2,10 +2,13 @@ name: Fetch bottle photos (temporary)
 on:
   push:
     branches: [tmp-fetch-bottle]
+permissions:
+  contents: write
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: |
           mkdir out && cd out
           B=https://www.raventos.com/api/uploads/products/images
@@ -17,7 +20,6 @@ jobs:
           curl -sSL -A "Mozilla/5.0" -o sk.jpg https://www.skurnik.com/wp-content/uploads/2021/07/conca-del-riu-anoia-brut-rose-de-nit-raventos-i-blanc-7.jpg || true
           curl -sSL -A "Mozilla/5.0" -o tech.html https://www.raventos.com/collection/technical_sheet/145 || true
           ls -la; file *
-      - uses: actions/upload-artifact@v4
-        with:
-          name: bottle
-          path: out
+      - run: |
+          git config user.name bot; git config user.email bot@users.noreply.github.com
+          git add -f out && git commit -m "fetched [skip ci]" && git push
