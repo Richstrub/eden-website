@@ -63,11 +63,20 @@ def main():
          f'way["natural"="water"]["name"]({bb});'
          f'relation["natural"="water"]["name"]({bb});'
          f');out geom;')
-    for host in OVERPASS:
-      b = get(host, urllib.parse.urlencode({'data': q}).encode(), tries=2)
-      if b and b.lstrip().startswith(b'{'):
-        open(os.path.join(d, 'osm.json'), 'wb').write(b); break
-      time.sleep(5)
+    def ask(q):
+      for host in OVERPASS:
+        b = get(host, urllib.parse.urlencode({'data': q}).encode(), tries=2, timeout=300)
+        if b and b.lstrip().startswith(b'{'): return json.loads(b)
+        time.sleep(5)
+    res = ask(q)
+    if res is None:   # big lakes can make one query too heavy: ask in pieces
+      els = []
+      for part in (f'way["waterway"="river"]({bb});node["place"~"^(city|town|village)$"]["name"]({bb});',
+                   f'way["natural"="water"]["name"]({bb});', f'relation["natural"="water"]["name"]({bb});'):
+        r_ = ask(f'[out:json][timeout:300];({part});out geom;')
+        if r_: els += r_.get('elements', [])
+      res = {'elements': els}
+    json.dump(res, open(os.path.join(d, 'osm.json'), 'w'))
     time.sleep(3)
   json.dump(regions, open(os.path.join(root, 'regions-z.json'), 'w'), indent=1)
 

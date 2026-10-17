@@ -105,10 +105,12 @@ def paint(r, dem, rivers, lakes_raw, out_jpg):
   W, S, E, N = r['bbox']
   px_m = (E - W) * 111320 * math.cos(math.radians((S + N) / 2)) / W_PX
   sl = r.get('sea_level', 0.5)
-  land = ndimage.gaussian_filter((dem > sl).astype(float), 3.5) > 0.5
+  P = 40   # work on an edge-padded copy so the map's border doesn't read as a coastline
+  dp = np.pad(dem, P, mode='edge')
+  land = ndimage.gaussian_filter((dp > sl).astype(float), 3.5) > 0.5
   land = ndimage.binary_closing(land, iterations=10)
-  land = ndimage.binary_opening(land, iterations=4) | (dem > sl + 6)
-  land = ndimage.binary_fill_holes(land)
+  land = ndimage.binary_opening(land, iterations=4) | (dp > sl + 6)
+  land = ndimage.binary_fill_holes(land)[P:-P, P:-P]
   lab, n = ndimage.label(~land)
   if n > 1:   # keep only open water that is big or touches the edge; the rest is land below sea level
     edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]])))
@@ -217,7 +219,7 @@ def svg(r, land, sea, lakes, rivers, places):
   # reserved: title box (top left), compass and scale bar (bottom right)
   title = r['title']; tw = max(470, len(title) * 66 * 0.42 + 90)
   cart = (70, 70, 70 + tw, 270); boxes.add(cart)
-  bar_km = [k for k in (1, 2, 5, 10, 20, 25, 50, 100, 200) if k * km_px >= W_PX * 0.16][0]
+  bar_km = [k for k in (1, 2, 4, 10, 20, 40, 50, 100, 200) if k * km_px >= W_PX * 0.16][0]
   bar_w = bar_km * km_px; sx, sy = W_PX - 95 - bar_w, H_PX - 78
   boxes.add((sx - 30, sy - 50, W_PX - 60, H_PX - 20))
   cx, cy, R = W_PX - 95 - bar_w / 2, sy - 230, 105
