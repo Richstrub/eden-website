@@ -51,6 +51,7 @@ CONFIGS = {
     'main_rivers': ('Riu Anoia', "l'Anoia", 'Riu Llobregat', 'el Llobregat', 'Riu Foix', 'Riu de Foix', 'Foix', 'Riu de Bitlles'),
     'compass': (2185, 1245, 115),
     'scale_bar': (1690, 1528),
+    'frame': False,
   }
 }
 
@@ -243,41 +244,42 @@ def svg(cfg, rivers):
            f'<text class="wm-cart-s" x="305" y="132" text-anchor="middle">{esc(c[0])}</text>'
            f'<text class="wm-cart-t" x="305" y="196" text-anchor="middle">{esc(c[1])}</text>'
            f'<text class="wm-cart-s2" x="305" y="236" text-anchor="middle">{esc(c[2])}</text></g>')
-  # frame: outer rule, checkered degree band (every 5 minutes), inner rule
-  b0, b1 = 12, 32
-  band = []
-  def segs_along(v0, v1, step):
-    a = math.floor(v0 / step) * step; out = []
-    while a < v1:
-      out.append((max(a, v0), min(a + step, v1), int(round(a / step)) % 2)); a += step
-    return out
-  for a, b_, k in segs_along(W, E, 5 / 60):
-    if not k: continue
-    x0 = b1 + (a - W) / (E - W) * (w - 2 * b1); x1 = b1 + (b_ - W) / (E - W) * (w - 2 * b1)
-    band.append(f'<rect x="{x0:.1f}" y="{b0}" width="{x1-x0:.1f}" height="{b1-b0}"/><rect x="{x0:.1f}" y="{h-b1}" width="{x1-x0:.1f}" height="{b1-b0}"/>')
-  for a, b_, k in segs_along(S, N, 5 / 60):
-    if not k: continue
-    y1 = b1 + (N - a) / (N - S) * (h - 2 * b1); y0 = b1 + (N - b_) / (N - S) * (h - 2 * b1)
-    band.append(f'<rect x="{b0}" y="{y0:.1f}" width="{b1-b0}" height="{y1-y0:.1f}"/><rect x="{w-b1}" y="{y0:.1f}" width="{b1-b0}" height="{y1-y0:.1f}"/>')
-  o.append(f'<path class="wm-band-bg" fill-rule="evenodd" d="M{b0} {b0}H{w-b0}V{h-b0}H{b0}Z M{b1} {b1}V{h-b1}H{w-b1}V{b1}Z"/>')
-  o.append(f'<g class="wm-band">{"".join(band)}</g>')
-  o.append(f'<rect x="{b0}" y="{b0}" width="{w-2*b0}" height="{h-2*b0}" class="wm-frame"/><rect x="{b1}" y="{b1}" width="{w-2*b1}" height="{h-2*b1}" class="wm-frame thin"/>'
-           f'<rect x="3" y="3" width="{w-6}" height="{h-6}" class="wm-frame outer"/>')
-  # degree labels every 10 minutes, just inside the frame
-  def dm(v, pos, neg):
-    d = int(abs(v)); m = int(round((abs(v) - d) * 60))
-    if m == 60: d += 1; m = 0
-    return f'{d}°{m:02d}′ {pos if v >= 0 else neg}'
-  k = math.ceil(W * 6) / 6
-  while k < E - 0.02:
-    x = b1 + (k - W) / (E - W) * (w - 2 * b1)
-    if x > 140 and x < w - 140: o.append(f'<text class="wm-deg t2" x="{x:.0f}" y="{b1 + 34}" text-anchor="middle">{dm(k, "E", "W")}</text>')
-    k += 1 / 6
-  k = math.ceil(S * 6) / 6
-  while k < N - 0.02:
-    y = b1 + (N - k) / (N - S) * (h - 2 * b1)
-    if y > 300 and y < h - 120: o.append(f'<text class="wm-deg t2" x="{b1 + 14}" y="{y:.0f}" dy="0.35em">{dm(k, "N", "S")}</text>')
-    k += 1 / 6
+  if cfg.get('frame'):   # checkered border and degree marks (off: the map sits edge to edge in the window)
+    # frame: outer rule, checkered degree band (every 5 minutes), inner rule
+    b0, b1 = 12, 32
+    band = []
+    def segs_along(v0, v1, step):
+      a = math.floor(v0 / step) * step; out = []
+      while a < v1:
+        out.append((max(a, v0), min(a + step, v1), int(round(a / step)) % 2)); a += step
+      return out
+    for a, b_, k in segs_along(W, E, 5 / 60):
+      if not k: continue
+      x0 = b1 + (a - W) / (E - W) * (w - 2 * b1); x1 = b1 + (b_ - W) / (E - W) * (w - 2 * b1)
+      band.append(f'<rect x="{x0:.1f}" y="{b0}" width="{x1-x0:.1f}" height="{b1-b0}"/><rect x="{x0:.1f}" y="{h-b1}" width="{x1-x0:.1f}" height="{b1-b0}"/>')
+    for a, b_, k in segs_along(S, N, 5 / 60):
+      if not k: continue
+      y1 = b1 + (N - a) / (N - S) * (h - 2 * b1); y0 = b1 + (N - b_) / (N - S) * (h - 2 * b1)
+      band.append(f'<rect x="{b0}" y="{y0:.1f}" width="{b1-b0}" height="{y1-y0:.1f}"/><rect x="{w-b1}" y="{y0:.1f}" width="{b1-b0}" height="{y1-y0:.1f}"/>')
+    o.append(f'<path class="wm-band-bg" fill-rule="evenodd" d="M{b0} {b0}H{w-b0}V{h-b0}H{b0}Z M{b1} {b1}V{h-b1}H{w-b1}V{b1}Z"/>')
+    o.append(f'<g class="wm-band">{"".join(band)}</g>')
+    o.append(f'<rect x="{b0}" y="{b0}" width="{w-2*b0}" height="{h-2*b0}" class="wm-frame"/><rect x="{b1}" y="{b1}" width="{w-2*b1}" height="{h-2*b1}" class="wm-frame thin"/>'
+             f'<rect x="3" y="3" width="{w-6}" height="{h-6}" class="wm-frame outer"/>')
+    # degree labels every 10 minutes, just inside the frame
+    def dm(v, pos, neg):
+      d = int(abs(v)); m = int(round((abs(v) - d) * 60))
+      if m == 60: d += 1; m = 0
+      return f'{d}°{m:02d}′ {pos if v >= 0 else neg}'
+    k = math.ceil(W * 6) / 6
+    while k < E - 0.02:
+      x = b1 + (k - W) / (E - W) * (w - 2 * b1)
+      if x > 140 and x < w - 140: o.append(f'<text class="wm-deg t2" x="{x:.0f}" y="{b1 + 34}" text-anchor="middle">{dm(k, "E", "W")}</text>')
+      k += 1 / 6
+    k = math.ceil(S * 6) / 6
+    while k < N - 0.02:
+      y = b1 + (N - k) / (N - S) * (h - 2 * b1)
+      if y > 300 and y < h - 120: o.append(f'<text class="wm-deg t2" x="{b1 + 14}" y="{y:.0f}" dy="0.35em">{dm(k, "N", "S")}</text>')
+      k += 1 / 6
   o.append('</svg>')
   return '\n'.join(o)
 
