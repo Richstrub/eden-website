@@ -1,0 +1,421 @@
+{
+ "anthony-road-rose-of-cabernet-franc-2022": {
+  "ok": true,
+  "bytes": 33059,
+  "ext": ".jpg"
+ },
+ "antonio-vallana-e-figlio-boca-2018": {
+  "ok": true,
+  "bytes": 96651,
+  "ext": ".jpg"
+ },
+ "argyle-willamette-valley-pinot-noir-2023": {
+  "ok": true,
+  "bytes": 30725,
+  "ext": ".jpg"
+ },
+ "bideona-viura-de-cabezadas-rioja-alavesa-2023": {
+  "ok": true,
+  "bytes": 27348,
+  "ext": ".webp"
+ },
+ "bideona-las-parcelas-blanco-rioja-alavesa-2021": {
+  "ok": true,
+  "bytes": 23258,
+  "ext": ".webp"
+ },
+ "los-bermejos-malvasia-volcanica-seco-2024": {
+  "ok": true,
+  "bytes": 248179,
+  "ext": ".jpg"
+ },
+ "brotherhood-new-york-premium-selection-merlot-2017": {
+  "ok": true,
+  "bytes": 9740,
+  "ext": ".jpg"
+ },
+ "brotherhood-ruby-port-new-york-state-nv": {
+  "ok": true,
+  "bytes": 22449,
+  "ext": ".jpg"
+ },
+ "bruno-giacosa-nebbiolo-dalba-2023": {
+  "ok": true,
+  "bytes": 2992590,
+  "ext": ".png"
+ },
+ "cantina-terlano-pinot-bianco-tradition-2023": {
+  "ok": true,
+  "bytes": 36530,
+  "ext": ".webp"
+ },
+ "cathiard-vineyard-founding-brothers-napa-valley-red-2021": {
+  "ok": true,
+  "bytes": 2278,
+  "ext": ".webp"
+ },
+ "chateau-combel-la-serre-au-cerisier-cahors-2021": {
+  "ok": true,
+  "bytes": 18750,
+  "ext": ".jpg"
+ },
+ "chateau-coutet-2016-barsac-premier-cru-classe": {
+  "ok": true,
+  "bytes": 325216,
+  "ext": ".jpg"
+ },
+ "chateau-de-sales-2020-pomerol": {
+  "ok": true,
+  "bytes": 217499,
+  "ext": ".png"
+ },
+ "chateau-gloria-2016-saint-julien": {
+  "ok": true,
+  "bytes": 28845,
+  "ext": ".jpg"
+ },
+ "chateau-grand-puy-lacoste-2018": {
+  "ok": true,
+  "bytes": 36045,
+  "ext": ".jpg"
+ },
+ "chateau-grand-puy-lacoste-2010": {
+  "ok": true,
+  "bytes": 17825,
+  "ext": ".jpg"
+ },
+ "chateau-kirwan-2015": {
+  "ok": true,
+  "bytes": 1726,
+  "ext": ".webp"
+ },
+ "chateau-lafayette-reneau-semi-dry-riesling-2019": {
+  "ok": true,
+  "bytes": 528083,
+  "ext": ".png"
+ },
+ "chateau-lafayette-reneau-unoaked-chardonnay-2021": {
+  "ok": true,
+  "bytes": 17008,
+  "ext": ".jpg"
+ },
+ "chateau-meyney-saint-estephe-2018": {
+  "ok": true,
+  "bytes": 35056,
+  "ext": ".png"
+ },
+ "chateau-meyney-saint-estephe-2010": {
+  "ok": true,
+  "bytes": 240579,
+  "ext": ".jpg"
+ },
+ "le-pauillac-de-pichon-baron-2019": {
+  "ok": true,
+  "bytes": 207196,
+  "ext": ".png"
+ },
+ "chateau-pontet-canet-pauillac-2016": {
+  "ok": true,
+  "bytes": 157459,
+  "ext": ".png"
+ },
+ "chateau-pontet-canet-pauillac-2005": {
+  "ok": true,
+  "bytes": 45020,
+  "ext": ".webp"
+ },
+ "chateau-smith-haut-lafitte-rouge-2015": {
+  "ok": true,
+  "bytes": 7883,
+  "ext": ".jpg"
+ },
+ "chateau-talbot-saint-julien-2010": {
+  "ok": true,
+  "bytes": 2034,
+  "ext": ".webp"
+ },
+ "chiara-condello-le-lucciole-romagna-sangiovese-predappio-ris": {
+  "ok": true,
+  "bytes": 192487,
+  "ext": ".jpg"
+ },
+ "craggy-range-te-muna-sauvignon-blanc-2025": {
+  "ok": true,
+  "bytes": 36828,
+  "ext": ".webp"
+ },
+ "day-wines-johan-vineyard-pinot-noir-2021": {
+  "ok": true,
+  "bytes": 7664,
+  "ext": ".jpg"
+ },
+ "deep-down-sauvignon-blanc-2024": {
+  "ok": true,
+  "bytes": 294322,
+  "ext": ".png"
+ },
+ "domaine-belargus-anjou-noir-2022": {
+  "ok": true,
+  "bytes": 33792,
+  "ext": ".webp"
+ },
+ "domaine-de-vaufuget-vouvray-reserve-du-naufraget-2023": {
+  "ok": true,
+  "bytes": 2326,
+  "ext": ".webp"
+ },
+ "domaine-de-la-chevalerie-bourgueil-chevalerie-2019": {
+  "ok": false,
+  "error": "<urlopen error [Errno 101] Network is unreachable>"
+ },
+ "domaine-du-closel-chateau-des-vaults-savennieres-clos-du-pap": {
+  "ok": true,
+  "bytes": 95337,
+  "ext": ".png"
+ },
+ "domaine-filliatreau-saumur-champigny-la-grande-vignolle-2023": {
+  "ok": true,
+  "bytes": 333586,
+  "ext": ".jpg"
+ },
+ "domaine-leseurre-finger-lakes-cuvee-classique-dry-riesling-2": {
+  "ok": true,
+  "bytes": 22254,
+  "ext": ".jpg"
+ },
+ "domaine-leseurre-finger-lakes-barrel-select-cabernet-franc-2": {
+  "ok": true,
+  "bytes": 1822,
+  "ext": ".webp"
+ },
+ "famille-isabel-ferrando-domaine-saint-prefert-chateauneuf-du": {
+  "ok": true,
+  "bytes": 60019,
+  "ext": ".png"
+ },
+ "domaine-saumaize-michelin-pouilly-fuisse-1er-cru-sur-la-roch": {
+  "ok": true,
+  "bytes": 349836,
+  "ext": ".png"
+ },
+ "donnafugata-sul-vulcano-etna-rosso-2022": {
+  "ok": true,
+  "bytes": 2630,
+  "ext": ".webp"
+ },
+ "dr-konstantin-frank-rkatsiteli-2024": {
+  "ok": true,
+  "bytes": 557016,
+  "ext": ".png"
+ },
+ "dr-konstantin-frank-gruner-veltliner-2023": {
+  "ok": true,
+  "bytes": 547744,
+  "ext": ".png"
+ },
+ "dr-konstantin-frank-amber-rkatsiteli-2023": {
+  "ok": true,
+  "bytes": 108908,
+  "ext": ".jpg"
+ },
+ "dr-konstantin-frank-hilda-chardonnay-2021": {
+  "ok": true,
+  "bytes": 498670,
+  "ext": ".png"
+ },
+ "dr-konstantin-frank-margrit-dry-riesling-2024": {
+  "ok": true,
+  "bytes": 610165,
+  "ext": ".png"
+ },
+ "dr-konstantin-frank-cabernet-sauvignon-2023": {
+  "ok": true,
+  "bytes": 547736,
+  "ext": ".png"
+ },
+ "dr-konstantin-frank-merlot-2022": {
+  "ok": true,
+  "bytes": 122041,
+  "ext": ".jpg"
+ },
+ "dr-konstantin-frank-blaufrankisch-2020": {
+  "ok": true,
+  "bytes": 135250,
+  "ext": ".jpg"
+ },
+ "eguren-ugarte-rioja-reserva-2017": {
+  "ok": true,
+  "bytes": 19916,
+  "ext": ".jpg"
+ },
+ "eguren-ugarte-cincuenta-rioja-2017": {
+  "ok": true,
+  "bytes": 2002,
+  "ext": ".webp"
+ },
+ "el-enemigo-malbec-2022": {
+  "ok": true,
+  "bytes": 16896,
+  "ext": ".webp"
+ },
+ "gran-enemigo-2020": {
+  "ok": true,
+  "bytes": 154181,
+  "ext": ".png"
+ },
+ "empire-estate-dry-riesling-reserve-2019": {
+  "ok": true,
+  "bytes": 36114,
+  "ext": ".webp"
+ },
+ "zuccardi-poligonos-del-valle-de-uco-gualtallary-malbec-2020": {
+  "ok": true,
+  "bytes": 185118,
+  "ext": ".png"
+ },
+ "forge-cellars-classique-pinot-noir-2024": {
+  "ok": true,
+  "bytes": 31735,
+  "ext": ".jpg"
+ },
+ "forge-cellars-willow-cabernet-franc-2024": {
+  "ok": true,
+  "bytes": 92490,
+  "ext": ".webp"
+ },
+ "i-vini-di-giovanni-vermentuzzo-2024": {
+  "ok": true,
+  "bytes": 36532,
+  "ext": ".webp"
+ },
+ "giuseppe-nada-barbaresco-casot-2020": {
+  "ok": true,
+  "bytes": 38244,
+  "ext": ".webp"
+ },
+ "glenora-wine-cellars-cabernet-sauvignon-2023": {
+  "ok": true,
+  "bytes": 38342,
+  "ext": ".jpg"
+ },
+ "glenora-wine-cellars-port": {
+  "ok": true,
+  "bytes": 47438,
+  "ext": ".png"
+ },
+ "goldschmidt-vineyard-singing-tree-chardonnay-2023": {
+  "ok": true,
+  "bytes": 93814,
+  "ext": ".webp"
+ },
+ "goldschmidt-vineyard-singing-tree-reserve-chardonnay-dutton": {
+  "ok": true,
+  "bytes": 2690,
+  "ext": ".webp"
+ },
+ "nick-goldschmidt-boulder-bank-sauvignon-blanc-fitzroy-vineya": {
+  "ok": true,
+  "bytes": 2030,
+  "ext": ".webp"
+ },
+ "nick-goldschmidt-fidelity-the-railyard-zinfandel-alexander-v": {
+  "ok": true,
+  "bytes": 1728,
+  "ext": ".webp"
+ },
+ "chelsea-goldschmidt-guidestone-rise-merlot-alexander-valley": {
+  "ok": true,
+  "bytes": 1822,
+  "ext": ".webp"
+ },
+ "katherine-goldschmidt-stonemason-hill-cabernet-sauvignon-ale": {
+  "ok": true,
+  "bytes": 74654,
+  "ext": ".webp"
+ },
+ "goldschmidt-vineyard-ultimatum-double-rock-cabernet-sauvigno": {
+  "ok": true,
+  "bytes": 4888,
+  "ext": ".jpg"
+ },
+ "heart-hands-chardonnay-2020": {
+  "ok": true,
+  "bytes": 4441,
+  "ext": ".jpg"
+ },
+ "heart-hands-mo-chuisle-estate-reserve-pinot-noir-2021": {
+  "ok": true,
+  "bytes": 72284,
+  "ext": ".jpg"
+ },
+ "hermann-j-wiemer-dry-riesling-2021": {
+  "ok": true,
+  "bytes": 31937,
+  "ext": ".jpg"
+ },
+ "hermann-j-wiemer-flower-day-riesling-2024": {
+  "ok": true,
+  "bytes": 34158,
+  "ext": ".jpg"
+ },
+ "hermann-j-wiemer-hjw-vineyard-riesling-2023": {
+  "ok": true,
+  "bytes": 100303,
+  "ext": ".jpg"
+ },
+ "hermann-j-wiemer-magdalena-vineyard-cabernet-franc-2023": {
+  "ok": true,
+  "bytes": 113935,
+  "ext": ".jpg"
+ },
+ "hiruzta-hondarrabi-zuri-getariako-txakolina-2022": {
+  "ok": true,
+  "bytes": 12679,
+  "ext": ".jpg"
+ },
+ "hiruzta-getariako-txakolina-rosado-2024": {
+  "ok": true,
+  "bytes": 1554,
+  "ext": ".webp"
+ },
+ "inazio-urruzola-getariako-txakolina-2024": {
+  "ok": true,
+  "bytes": 158846,
+  "ext": ".png"
+ },
+ "inspire-moore-rhythm-gruner-veltliner-2019": {
+  "ok": true,
+  "bytes": 43946,
+  "ext": ".jpg"
+ },
+ "domaine-jean-manciat-macon-charnay-2023": {
+  "ok": true,
+  "bytes": 65436,
+  "ext": ".webp"
+ },
+ "jean-paul-brun-domaine-des-terres-dorees-cote-de-brouilly-20": {
+  "ok": true,
+  "bytes": 140648,
+  "ext": ".jpg"
+ },
+ "jolie-laide-barsotti-vineyard-rose-2024": {
+  "ok": true,
+  "bytes": 16117,
+  "ext": ".jpg"
+ },
+ "vermillion-by-helen-keplinger-red-blend-2022": {
+  "ok": true,
+  "bytes": 35340,
+  "ext": ".jpg"
+ },
+ "lakewood-vineyards-gigliotti-vineyards-pinot-gris-2023": {
+  "ok": true,
+  "bytes": 11968,
+  "ext": ".jpg"
+ },
+ "lakewood-vineyards-port-2020": {
+  "ok": true,
+  "bytes": 19132,
+  "ext": ".jpg"
+ }
+}
