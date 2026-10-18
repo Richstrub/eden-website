@@ -273,6 +273,30 @@
     document.addEventListener('keydown',key);
     requestAnimationFrame(function(){el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true})});
   }
+  /* ---------- Apple-style panels under the hero ---------- */
+  function supperTile(sp){
+    var t=document.getElementById('tSupTitle');if(!t||!sp)return;
+    if(sp.title)t.innerHTML=esc(sp.title).replace(/ × /,' <span>×</span> ').replace(/Friends of the James Beard Foundation/,'James Beard');
+    if(sp.eyebrow)document.getElementById('tSupEye').textContent=sp.eyebrow;
+    if(sp.date)document.getElementById('tSupSub').textContent=sp.date.replace(/\s*·\s*Seatings.*$/i,'');
+    var cs=(sp.courses||[]).filter(function(c){return !c.hidden&&c.name}).slice(0,6);
+    if(cs.length)document.getElementById('tSupCourses').innerHTML=cs.map(function(c){return '<li>'+esc(c.name)+'</li>'}).join('');
+    var cta=document.getElementById('tSupCta');
+    if(sp.ctaUrl){cta.href=/^https?:\/\//.test(sp.ctaUrl)?sp.ctaUrl:'https://'+sp.ctaUrl;if(sp.ctaLabel&&sp.ctaLabel.length<18)cta.textContent=sp.ctaLabel}
+  }
+  (function(){
+    var els=document.querySelectorAll('.rv');
+    if(!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){els.forEach(function(e){e.classList.add('in')});return}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-open-bio]');
+    if(b){var p=document.querySelector('.portrait-btn[data-bio="'+b.getAttribute('data-open-bio')+'"]');if(p)p.click();return}
+    var w=e.target.closest&&e.target.closest('a[data-tab]');
+    if(w){var want=w.getAttribute('data-tab');setTimeout(function(){var t=[].filter.call(document.querySelectorAll('#menu .tab'),function(x){return x.textContent.trim()===want})[0];if(t)t.click()},60)}
+  });
+
   /* ---------- the partners: tap a portrait for their story (edited on the staff site: Owner > Partner stories, saved in site/team) ---------- */
   var TEAM_DEFAULT={
     rich:{story:"Rich Strub is Eden’s executive chef and a founding partner. He found his calling in the kitchen of a farm-to-table restaurant and teaching kitchen in Vermont, and brought that way of cooking with him to Syracuse, where the farmers he met soon became his friends.\n\nBefore Eden opened in August 2019, Rich spent two years rebuilding the dining room at 118 East Genesee Street, one of Syracuse’s first steel-framed buildings. He tore out the floors, built the eight-ton hearth and made nearly all of the furniture himself; a graphic designer by training, from Champlain College, he shaped how the room looks as much as how it eats.\n\nEverything at Eden is cooked over that wood fire, which he calls “a living thing.” His menu changes with each harvest and names the farm behind every dish, because, in his words, “I like to buy stuff from people who work as hard as we do, and I like to know where it comes from.” Under his direction Eden has earned the Wine Spectator Restaurant Award and, in 2026, hosted its first Friends of James Beard Benefit dinner."},
@@ -445,6 +469,7 @@
     function txt(id,v){var el=document.getElementById(id);if(el)el.textContent=v||''}
     txt('spEyebrow',sp.eyebrow);txt('spDate',sp.date);txt('spIntro',sp.intro);txt('spMenuHeading',sp.menuHeading);txt('spRes',sp.resText);
     document.getElementById('spTitle').innerHTML=esc(sp.title).replace(' × ',' <span>×</span> ');
+    supperTile(sp);
     var h='',n=0;
     (sp.courses||[]).forEach(function(c){
       if(c.hidden||!c.name)return;n++;
