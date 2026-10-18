@@ -273,6 +273,32 @@
     document.addEventListener('keydown',key);
     requestAnimationFrame(function(){el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true})});
   }
+  /* ---------- the partners: tap a portrait for their story (edited on the staff site: Owner > Partner stories, saved in site/team) ---------- */
+  var TEAM_DEFAULT={
+    rich:{story:"Rich Strub is Eden’s executive chef and a founding partner. He found his calling in the kitchen of a farm-to-table restaurant and teaching kitchen in Vermont, and brought that way of cooking with him to Syracuse, where the farmers he met soon became his friends.\n\nBefore Eden opened in August 2019, Rich spent two years rebuilding the dining room at 118 East Genesee Street, one of Syracuse’s first steel-framed buildings. He tore out the floors, built the eight-ton hearth and made nearly all of the furniture himself; a graphic designer by training, from Champlain College, he shaped how the room looks as much as how it eats.\n\nEverything at Eden is cooked over that wood fire, which he calls “a living thing.” His menu changes with each harvest and names the farm behind every dish, because, in his words, “I like to buy stuff from people who work as hard as we do, and I like to know where it comes from.” Under his direction Eden has earned the Wine Spectator Restaurant Award and, in 2026, hosted its first Friends of James Beard Benefit dinner."},
+    adam:{story:''},eve:{story:''}
+  };
+  var teamDoc=null;
+  function bioFor(k){var d=teamDoc&&teamDoc[k];return d&&typeof d.story==='string'?d.story:(teamDoc?'':(TEAM_DEFAULT[k]||{}).story||'')}
+  function openBio(btn){
+    closeWine();
+    var m=btn.closest('.member'),k=btn.getAttribute('data-bio'),img=btn.querySelector('img');
+    var name=(m.querySelector('h3')||{}).textContent||'',role=(m.querySelector('.eyebrow')||{}).textContent||'';
+    var paras=bioFor(k).split(/\n\s*\n/).map(function(x){return x.trim()}).filter(Boolean);
+    var el=document.createElement('div');el.className='wd wd-bio';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label',name);
+    el.innerHTML='<div class="wd-card"><button type="button" class="wd-x" aria-label="Close">&times;</button><div class="wd-scroll">'+
+      '<div class="wd-top has-img"><div class="wd-head"><p class="wd-eye">'+esc(role)+'</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">Eden · Syracuse, New York</p><div class="wd-rule"></div></div>'+
+      '<figure class="wd-bottle wd-portrait"><img src="'+esc(img.getAttribute('src'))+'" alt="'+esc(img.alt)+'" decoding="async"></figure></div>'+
+      (paras.length?'<div class="wd-sec wd-about">'+paras.map(function(p){return '<p>'+esc(p).replace(/\n/g,'<br>')+'</p>'}).join('')+'</div>':'')+
+      '</div></div>';
+    document.body.appendChild(el);
+    var key=function(e){if(e.key==='Escape')closeWine()};
+    wdOpen={el:el,key:key,back:btn};
+    el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.wd-x'))closeWine()});
+    document.addEventListener('keydown',key);
+    requestAnimationFrame(function(){el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true})});
+  }
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-bio]');if(b)openBio(b)});
   document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-more]');if(!t)return;var nm=t.querySelector('.mi-name,.pad-name');startWine(+t.getAttribute('data-more'),nm?nm.textContent:'',t)});
   document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute&&e.target.getAttribute('data-more')!=null){e.preventDefault();e.target.click()}});
   function groupsHTML(groups,idp){
@@ -858,6 +884,7 @@
         db.collection('site/menu/groups').onSnapshot(function(q){
           var g={};q.docs.forEach(function(doc){g[doc.id]=doc.data()});store.groups=g;store.have.groups=true;applyStore(q.metadata.hasPendingWrites);
         },function(){});
+        db.doc('site/team').onSnapshot(function(snap){teamDoc=snap.exists?snap.data():null},function(){});
         db.doc('site/supper').onSnapshot(function(snap){
           store.have.supper=true;store.supper=snap.exists?snap.data():undefined;applyStore(snap.metadata.hasPendingWrites);
         },function(){});
