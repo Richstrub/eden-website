@@ -1,219 +1,129 @@
 {
- "millbrook-hunt-country-red": {
-  "lat": 41.8397334,
-  "lng": -73.6846647,
-  "q": "26 Wing Rd, Millbrook, NY 12545, USA",
-  "display": "Millbrook Winery, 26, Wing Road, Village of Millbrook, Town of Washington, Dutchess County, New York, 12545, United States",
-  "type": "yes"
- },
- "millbrook-pinot-noir-2024": {
-  "lat": 41.8397334,
-  "lng": -73.6846647,
-  "q": "26 Wing Rd, Millbrook, NY 12545, USA",
-  "display": "Millbrook Winery, 26, Wing Road, Village of Millbrook, Town of Washington, Dutchess County, New York, 12545, United States",
-  "type": "yes"
- },
- "domaine-eden-cabernet-sauvignon-2019": {
-  "lat": 37.2519315,
-  "lng": -122.0477915,
-  "q": "23000 Congress Springs Rd, Saratoga, CA 95070, USA",
-  "display": "Big Basin Way, Saratoga, Santa Clara County, California, 95070, United States",
+ "stags-leap-winery-the-leap-cabernet-sauvignon-2020": {
+  "lat": 38.3034323,
+  "lng": -122.2772705,
+  "q": "6150 Silverado Trail, Napa, CA 94558, USA",
+  "display": "Silverado Trail, Napa, Napa County, California, 94558, United States",
   "type": "primary"
  },
- "domaine-eden-pinot-noir-2019": {
-  "lat": 37.2519315,
-  "lng": -122.0477915,
-  "q": "23000 Congress Springs Rd, Saratoga, CA 95070, USA",
-  "display": "Big Basin Way, Saratoga, Santa Clara County, California, 95070, United States",
-  "type": "primary"
- },
- "nicolas-jay-own-rooted-pinot-noir-2022": {
-  "lat": 45.300347,
-  "lng": -122.972751,
-  "q": "Newberg, OR 97132, USA",
-  "display": "Newberg, Yamhill County, Oregon, 97132, United States",
-  "type": "administrative"
- },
- "domaine-olga-raffault-chinon-blanc-chenin-des-picasses-2021": {
-  "lat": 47.2088145,
-  "lng": 0.1293683,
-  "q": "1 rue des Caillis, 37420 Savigny-en-V\u00e9ron, France",
-  "display": "Rue des Caillis, Roguinet, Savigny-en-V\u00e9ron, Chinon, Indre-et-Loire, Centre-Val de Loire, France m\u00e9tropolitaine, 37420, France",
-  "type": "unclassified"
- },
- "domaine-olga-raffault-chinon-les-picasses-2020": {
-  "lat": 47.2088145,
-  "lng": 0.1293683,
-  "q": "1 rue des Caillis, 37420 Savigny-en-V\u00e9ron, France",
-  "display": "Rue des Caillis, Roguinet, Savigny-en-V\u00e9ron, Chinon, Indre-et-Loire, Centre-Val de Loire, France m\u00e9tropolitaine, 37420, France",
-  "type": "unclassified"
- },
- "domaine-olga-raffault-chinon-les-picasses-2019": {
-  "lat": 47.2088145,
-  "lng": 0.1293683,
-  "q": "1 rue des Caillis, 37420 Savigny-en-V\u00e9ron, France",
-  "display": "Rue des Caillis, Roguinet, Savigny-en-V\u00e9ron, Chinon, Indre-et-Loire, Centre-Val de Loire, France m\u00e9tropolitaine, 37420, France",
-  "type": "unclassified"
- },
- "osmote-riesling-2022": {
-  "lat": 42.4200726,
-  "lng": -76.8488463,
-  "q": "Burdett, NY 14818, USA",
-  "display": "Burdett, Town of Hector, Schuyler County, New York, United States",
-  "type": "administrative"
- },
- "osmote-seneca-lake-chardonnay-2024": {
-  "lat": 42.4200726,
-  "lng": -76.8488463,
-  "q": "Burdett, NY 14818, USA",
-  "display": "Burdett, Town of Hector, Schuyler County, New York, United States",
-  "type": "administrative"
- },
- "jayson-by-pahlmeyer-napa-valley-red-2021": {
-  "lat": 38.355531,
-  "lng": -122.2700406,
-  "q": "1761 Atlas Peak Rd, Napa, CA 94558, USA",
-  "display": "Pahlmeyer Winery, 1761, Atlas Peak Road, Vichy Springs, Napa County, California, 94558, United States",
+ "standing-stone-vineyards-teinturier-saperavi-2023": {
+  "lat": 42.5432867,
+  "lng": -76.8745962,
+  "q": "9934 State Route 414, Hector, NY 14841, USA",
+  "display": "Standing Stone Vineyards, 9934, State Route 414, Caywood, Town of Lodi, Seneca County, New York, 14841, United States",
   "type": "winery"
  },
- "pardas-pur-xarello-2021": {
-  "lat": 41.446818,
-  "lng": 1.7288827,
-  "q": "08775 Torrelavit, Barcelona, Spain",
-  "display": "08775, Torrelavit, Alt Pened\u00e8s, Barcelona, Catalunya, Espa\u00f1a",
+ "stefan-muller-niedermenniger-herrenberg-riesling-feinherb-20": {
+  "lat": 49.6837654,
+  "lng": 6.6418822,
+  "q": "St.-Ursula-Str. 1a, 54329 Konz-Krettnach, Germany",
+  "display": "1a, St.-Ursula-Stra\u00dfe, Krettnach, Niedermennig/Obermennig/Krettnach, Konz, Landkreis Trier-Saarburg, Rheinland-Pfalz, 54329, Deutschland",
+  "type": "yes"
+ },
+ "taylor-fladgate-fine-ruby-port": {
+  "lat": 41.1343402,
+  "lng": -8.6144032,
+  "q": "Rua do Choupelo 250, 4400-088 Vila Nova de Gaia, Portugal",
+  "display": "Taylor's, 250, Rua do Choupelo, Devesas, Santa Marinha, Vila Nova de Gaia, Porto, 4400-088, Portugal",
+  "type": "alcohol"
+ },
+ "tenuta-de-angelis-rosso-piceno-2024": {
+  "lat": 42.8960653,
+  "lng": 13.6999748,
+  "q": "Tenuta De Angelis, Castel di Lama, Marche",
+  "display": "Tenuta de Angelis, 10, Strada Provinciale 43 Mezzina, Tose, Castel di Lama, Ascoli Piceno, Marche, 63082, Italia",
+  "type": "winery"
+ },
+ "thomas-fogarty-monterey-county-gewurztraminer-2015": {
+  "lat": 37.3877614,
+  "lng": -122.2663767,
+  "q": "19501 Skyline Blvd, Woodside, CA 94062, USA",
+  "display": "Skyline Boulevard, Sky Londa, Woodside, San Mateo County, California, 94061, United States",
+  "type": "secondary"
+ },
+ "txomin-etxaniz-getariako-txakolina-rose-2016": {
+  "lat": 43.2923074,
+  "lng": -2.1945417,
+  "q": "Eitzaga Auzoa 13, 20808 Getaria, Gipuzkoa, Spain",
+  "display": "13, Eitzaga auzoa, Eitzaga, Getaria, Gipuzkoa, Euskadi, 20808, Espa\u00f1a",
+  "type": "house"
+ },
+ "ulacia-getariako-txakolina-2024": null,
+ "vietti-barbera-dalba-trevie-2022": {
+  "lat": 44.6241083,
+  "lng": 7.9789234,
+  "q": "Piazza Vittorio Veneto 5, 12060 Castiglione Falletto CN, Italy",
+  "display": "Cantina Vietti, 5, Piazza Vittorio Veneto, Castiglione Falletto, Cuneo, Piemonte, 12065, Italia",
+  "type": "wine"
+ },
+ "vina-zorzal-garnacha-blanca-2022": {
+  "lat": 42.1137896,
+  "lng": -1.7905822,
+  "q": "31591 Corella, Navarra, Spain",
+  "display": "31591, Corella, Ribera / Erribera, Navarra, Navarra / Nafarroa, Espa\u00f1a",
   "type": "postcode"
  },
- "pellegrini-vineyards-stainless-steel-chardonnay-2020": {
-  "lat": 41.0106563,
-  "lng": -72.4850859,
-  "q": "Cutchogue, NY 11935, USA",
-  "display": "Cutchogue, Town of Southold, Suffolk County, New York, 11935, United States",
-  "type": "village"
+ "vina-zorzal-cuatro-del-cuatro-graciano-2021": {
+  "lat": 42.1137896,
+  "lng": -1.7905822,
+  "q": "31591 Corella, Navarra, Spain",
+  "display": "31591, Corella, Ribera / Erribera, Navarra, Navarra / Nafarroa, Espa\u00f1a",
+  "type": "postcode"
  },
- "ravines-dry-riesling-2020": {
-  "lat": 42.8446166,
-  "lng": -77.0010185,
-  "q": "400 Barracks Rd, Geneva, NY 14456, USA",
-  "display": "400, Barracks Road, Town of Geneva, Ontario County, New York, 14456, United States",
-  "type": "yes"
+ "vina-zorzal-malayeto-garnacha-2021": {
+  "lat": 42.1137896,
+  "lng": -1.7905822,
+  "q": "31591 Corella, Navarra, Spain",
+  "display": "31591, Corella, Ribera / Erribera, Navarra, Navarra / Nafarroa, Espa\u00f1a",
+  "type": "postcode"
  },
- "ravines-cabernet-franc-2022": {
-  "lat": 42.8446166,
-  "lng": -77.0010185,
-  "q": "400 Barracks Rd, Geneva, NY 14456, USA",
-  "display": "400, Barracks Road, Town of Geneva, Ontario County, New York, 14456, United States",
-  "type": "yes"
+ "wagner-vineyards-vidal-blanc-ice-wine-2021": {
+  "lat": 42.5711922,
+  "lng": -76.8588342,
+  "q": "9322 State Route 414, Lodi, NY 14860, USA",
+  "display": "9322, State Route 414, Caywood, Town of Lodi, Seneca County, New York, 14860, United States",
+  "type": "parking"
  },
- "red-tail-ridge-rtr-estate-vineyard-blaufrankisch-2023": {
-  "lat": 42.6603037,
-  "lng": -77.0540989,
-  "q": "Penn Yan, NY 14527, USA",
-  "display": "Village of Penn Yan, Town of Milo, Yates County, New York, 14527, United States",
-  "type": "administrative"
- },
- "rgny-sauvignon-blanc-semillon-2021": {
-  "lat": 40.9822796,
-  "lng": -72.5897625,
-  "q": "6025 Sound Ave, Riverhead, NY 11901, USA",
-  "display": "6025, Sound Avenue, Northville, Town of Riverhead, Suffolk County, New York, 11901, United States",
-  "type": "house"
- },
- "rgny-viognier-2021": {
-  "lat": 40.9822796,
-  "lng": -72.5897625,
-  "q": "6025 Sound Ave, Riverhead, NY 11901, USA",
-  "display": "6025, Sound Avenue, Northville, Town of Riverhead, Suffolk County, New York, 11901, United States",
-  "type": "house"
- },
- "rgny-scielo-sauvignon-blanc-2022": {
-  "lat": 40.9822796,
-  "lng": -72.5897625,
-  "q": "6025 Sound Ave, Riverhead, NY 11901, USA",
-  "display": "6025, Sound Avenue, Northville, Town of Riverhead, Suffolk County, New York, 11901, United States",
-  "type": "house"
- },
- "rgny-scielo-rose": {
-  "lat": 40.9822796,
-  "lng": -72.5897625,
-  "q": "6025 Sound Ave, Riverhead, NY 11901, USA",
-  "display": "6025, Sound Avenue, Northville, Town of Riverhead, Suffolk County, New York, 11901, United States",
-  "type": "house"
- },
- "rgny-scielo-tinto-2019": {
-  "lat": 40.9822796,
-  "lng": -72.5897625,
-  "q": "6025 Sound Ave, Riverhead, NY 11901, USA",
-  "display": "6025, Sound Avenue, Northville, Town of Riverhead, Suffolk County, New York, 11901, United States",
-  "type": "house"
- },
- "rombauer-twin-rivers-vineyard-el-dorado-zinfandel-2022": {
-  "lat": 38.4811843,
-  "lng": -120.847692,
-  "q": "Plymouth, CA 95669, USA",
-  "display": "Plymouth, Amador County, California, United States",
-  "type": "administrative"
- },
- "roncus-friulano-isonzo-del-friuli-2016": {
-  "lat": 45.9418632,
-  "lng": 13.5178766,
-  "q": "Via Mazzini 26, 34070 Capriva del Friuli (GO), Italy",
-  "display": "26, Via Giuseppe Mazzini, Russiz di Sotto, Capriva del Friuli, Gorizia, Friuli-Venezia Giulia, 34070, Italia",
-  "type": "house"
- },
- "ryan-william-vineyard-finger-lakes-chardonnay-2019": {
-  "lat": 42.4345989,
-  "lng": -76.8622064,
-  "q": "4156 NY-414, Burdett, NY 14818, USA",
-  "display": "4156, State Route 414, Hector, Town of Hector, Schuyler County, New York, 14818, United States",
-  "type": "house"
- },
- "ryan-william-vineyard-seneca-lake-dry-riesling-2019": {
-  "lat": 42.4345989,
-  "lng": -76.8622064,
-  "q": "4156 NY-414, Burdett, NY 14818, USA",
-  "display": "4156, State Route 414, Hector, Town of Hector, Schuyler County, New York, 14818, United States",
-  "type": "house"
- },
- "ryan-william-vineyard-seneca-lake-dry-gewurztraminer-2017": {
-  "lat": 42.4345989,
-  "lng": -76.8622064,
-  "q": "4156 NY-414, Burdett, NY 14818, USA",
-  "display": "4156, State Route 414, Hector, Town of Hector, Schuyler County, New York, 14818, United States",
-  "type": "house"
- },
- "ryan-william-vineyard-finger-lakes-merlot-2020": {
-  "lat": 42.4345989,
-  "lng": -76.8622064,
-  "q": "4156 NY-414, Burdett, NY 14818, USA",
-  "display": "4156, State Route 414, Hector, Town of Hector, Schuyler County, New York, 14818, United States",
-  "type": "house"
- },
- "saint-clair-family-estate-marlborough-sauvignon-blanc-2024": {
-  "lat": -41.4731698,
-  "lng": 173.9015931,
-  "q": "Rapaura, Blenheim 7273, New Zealand",
-  "display": "Rapaura School, 349, Hammerichs Road, Blenheim, Marlborough District, Marlborough, 7273, New Zealand / Aotearoa",
-  "type": "school"
- },
- "silver-thread-vineyard-finger-lakes-gewurztraminer-2021": {
-  "lat": 42.5630198,
-  "lng": -76.8780157,
-  "q": "1401 Caywood Rd, Lodi, NY 14860, USA",
-  "display": "Caywood Shores Road, Town of Lodi, Seneca County, New York, 14860, United States",
-  "type": "residential"
- },
- "six-eighty-cellars-concrete-tulip-gruner-veltliner-2020": {
-  "lat": 42.723052,
-  "lng": -76.7634158,
-  "q": "3050 Swick Rd, Ovid, NY 14521, USA",
-  "display": "680 Cellars, 3050, Swick Road, Poplar Beach, Town of Romulus, Town of Ovid, Seneca County, New York, 14521, United States",
+ "wolffer-estate-cabernet-franc-2023": {
+  "lat": 40.9450248,
+  "lng": -72.2775222,
+  "q": "139 Sagg Road, Sagaponack, NY 11962, USA",
+  "display": "Wolffer Estate Vineyards, 139, Sagg Road, Village of Sagaponack, Town of Southampton, Suffolk County, New York, 11962, United States",
   "type": "winery"
  },
- "six-eighty-cellars-chenin-blanc-2024": {
-  "lat": 42.723052,
-  "lng": -76.7634158,
-  "q": "3050 Swick Rd, Ovid, NY 14521, USA",
-  "display": "680 Cellars, 3050, Swick Road, Poplar Beach, Town of Romulus, Town of Ovid, Seneca County, New York, 14521, United States",
+ "wolffer-estate-cabernet-franc-2019": {
+  "lat": 40.9450248,
+  "lng": -72.2775222,
+  "q": "139 Sagg Road, Sagaponack, NY 11962, USA",
+  "display": "Wolffer Estate Vineyards, 139, Sagg Road, Village of Sagaponack, Town of Southampton, Suffolk County, New York, 11962, United States",
+  "type": "winery"
+ },
+ "wolffer-estate-fatalis-fatum-2020": {
+  "lat": 40.9450248,
+  "lng": -72.2775222,
+  "q": "139 Sagg Road, Sagaponack, NY 11962, USA",
+  "display": "Wolffer Estate Vineyards, 139, Sagg Road, Village of Sagaponack, Town of Southampton, Suffolk County, New York, 11962, United States",
+  "type": "winery"
+ },
+ "wolffer-estate-the-grapes-of-roth-merlot-2020": {
+  "lat": 40.9450248,
+  "lng": -72.2775222,
+  "q": "139 Sagg Road, Sagaponack, NY 11962, USA",
+  "display": "Wolffer Estate Vineyards, 139, Sagg Road, Village of Sagaponack, Town of Southampton, Suffolk County, New York, 11962, United States",
+  "type": "winery"
+ },
+ "finca-wolffer-malbec-2024": {
+  "lat": -33.1287155,
+  "lng": -68.8998027,
+  "q": "Cochabamba 7801, Agrelo, Luj\u00e1n de Cuyo, Mendoza, Argentina",
+  "display": "Cochabamba, Jard\u00edn Agrelo, Agrelo, Distrito Agrelo, Departamento Luj\u00e1n de Cuyo, Mendoza, 5509, Argentina",
+  "type": "residential"
+ },
+ "wolffer-estate-diosa-late-harvest-2021": {
+  "lat": 40.9450248,
+  "lng": -72.2775222,
+  "q": "139 Sagg Road, Sagaponack, NY 11962, USA",
+  "display": "Wolffer Estate Vineyards, 139, Sagg Road, Village of Sagaponack, Town of Southampton, Suffolk County, New York, 11962, United States",
   "type": "winery"
  }
 }

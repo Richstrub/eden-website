@@ -1,117 +1,96 @@
 {
- "millbrook-pinot-noir-2024": {
+ "stags-leap-winery-the-leap-cabernet-sauvignon-2020": {
   "ok": true,
-  "bytes": 24828,
-  "ext": ".jpg"
- },
- "domaine-eden-cabernet-sauvignon-2019": {
-  "ok": true,
-  "bytes": 363056,
-  "ext": ".jpg"
- },
- "domaine-eden-pinot-noir-2019": {
-  "ok": true,
-  "bytes": 348145,
-  "ext": ".jpg"
- },
- "nicolas-jay-own-rooted-pinot-noir-2022": {
-  "ok": true,
-  "bytes": 32454,
+  "bytes": 18304,
   "ext": ".webp"
  },
- "domaine-olga-raffault-chinon-blanc-chenin-des-picasses-2021": {
+ "standing-stone-vineyards-teinturier-saperavi-2023": {
   "ok": true,
-  "bytes": 188924,
+  "bytes": 35382,
   "ext": ".jpg"
  },
- "domaine-olga-raffault-chinon-les-picasses-2020": {
+ "stefan-muller-niedermenniger-herrenberg-riesling-feinherb-20": {
   "ok": true,
-  "bytes": 85464,
-  "ext": ".webp"
- },
- "domaine-olga-raffault-chinon-les-picasses-2019": {
-  "ok": true,
-  "bytes": 20676,
+  "bytes": 132097,
   "ext": ".jpg"
  },
- "osmote-riesling-2022": {
+ "taylor-fladgate-fine-ruby-port": {
   "ok": true,
-  "bytes": 16308,
-  "ext": ".webp"
- },
- "jayson-by-pahlmeyer-napa-valley-red-2021": {
-  "ok": true,
-  "bytes": 20520,
-  "ext": ".jpg"
- },
- "pardas-pur-xarello-2021": {
-  "ok": true,
-  "bytes": 192094,
+  "bytes": 134223,
   "ext": ".png"
  },
- "ravines-dry-riesling-2020": {
+ "tenuta-de-angelis-rosso-piceno-2024": {
   "ok": true,
-  "bytes": 11267,
+  "bytes": 410524,
   "ext": ".jpg"
  },
- "ravines-cabernet-franc-2022": {
+ "thomas-fogarty-monterey-county-gewurztraminer-2015": {
+  "ok": false,
+  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)>"
+ },
+ "txomin-etxaniz-getariako-txakolina-rose-2016": {
   "ok": true,
-  "bytes": 30942,
+  "bytes": 130558,
   "ext": ".jpg"
  },
- "red-tail-ridge-rtr-estate-vineyard-blaufrankisch-2023": {
+ "ulacia-getariako-txakolina-2024": {
   "ok": true,
-  "bytes": 40876,
+  "bytes": 43774,
   "ext": ".webp"
  },
- "rgny-sauvignon-blanc-semillon-2021": {
+ "vietti-barbera-dalba-trevie-2022": {
   "ok": true,
-  "bytes": 1784,
+  "bytes": 29526,
   "ext": ".webp"
  },
- "rgny-viognier-2021": {
+ "vina-zorzal-garnacha-blanca-2022": {
   "ok": true,
-  "bytes": 1570,
-  "ext": ".webp"
- },
- "rgny-scielo-sauvignon-blanc-2022": {
-  "ok": true,
-  "bytes": 45709,
+  "bytes": 156265,
   "ext": ".jpg"
  },
- "rgny-scielo-rose": {
+ "vina-zorzal-cuatro-del-cuatro-graciano-2021": {
   "ok": true,
-  "bytes": 1214,
-  "ext": ".webp"
- },
- "rgny-scielo-tinto-2019": {
-  "ok": true,
-  "bytes": 37068,
+  "bytes": 138694,
   "ext": ".jpg"
  },
- "rombauer-twin-rivers-vineyard-el-dorado-zinfandel-2022": {
+ "vina-zorzal-malayeto-garnacha-2021": {
   "ok": true,
-  "bytes": 31266,
+  "bytes": 105717,
+  "ext": ".jpg"
+ },
+ "wagner-vineyards-vidal-blanc-ice-wine-2021": {
+  "ok": true,
+  "bytes": 221602,
   "ext": ".png"
  },
- "saint-clair-family-estate-marlborough-sauvignon-blanc-2024": {
+ "wolffer-estate-cabernet-franc-2023": {
   "ok": true,
-  "bytes": 120816,
-  "ext": ".png"
- },
- "silver-thread-vineyard-finger-lakes-gewurztraminer-2021": {
-  "ok": true,
-  "bytes": 11883,
+  "bytes": 3499870,
   "ext": ".jpg"
  },
- "six-eighty-cellars-concrete-tulip-gruner-veltliner-2020": {
+ "wolffer-estate-cabernet-franc-2019": {
   "ok": true,
-  "bytes": 190647,
-  "ext": ".png"
+  "bytes": 3499870,
+  "ext": ".jpg"
  },
- "six-eighty-cellars-chenin-blanc-2024": {
+ "wolffer-estate-fatalis-fatum-2020": {
   "ok": true,
-  "bytes": 41823,
+  "bytes": 103780,
+  "ext": ".jpg"
+ },
+ "wolffer-estate-the-grapes-of-roth-merlot-2020": {
+  "ok": true,
+  "bytes": 212349,
+  "ext": ".jpg"
+ },
+ "finca-wolffer-malbec-2024": {
+  "ok": true,
+  "bytes": 42424,
+  "ext": ".webp"
+ },
+ "wolffer-estate-diosa-late-harvest-2021": {
+  "ok": true,
+  "bytes": 52933,
   "ext": ".jpg"
  }
 }
