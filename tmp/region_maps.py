@@ -217,7 +217,7 @@ def svg(r, land, sea, lakes, rivers, places):
   boxes = Boxes(); o = []; labels = []
   inside = lambda q: q[0] > 50 and q[2] < W_PX - 50 and q[1] > 50 and q[3] < H_PX - 50
   # reserved: title box (top left), compass and scale bar (bottom right)
-  title = r['title']; tw = max(470, len(title) * 66 * 0.42 + 90)
+  title = r['title']; tw = max(470, len(title) * 66 * 0.42 + 90, len(r.get('sub', '')) * 20.5 + 90)
   cart = (70, 70, 70 + tw, 270); boxes.add(cart)
   bar_km = [k for k in (1, 2, 4, 10, 20, 40, 50, 100, 200) if k * km_px >= W_PX * 0.16][0]
   bar_w = bar_km * km_px; sx, sy = W_PX - 95 - bar_w, H_PX - 78
