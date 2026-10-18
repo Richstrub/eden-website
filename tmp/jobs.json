@@ -1,976 +1,271 @@
 {
  "geocode": [
   {
-   "id": "abbia-nova-san-giovanni-passerina-del-frusinate-2022",
-   "address": "Piglio, 03010 Province of Frosinone, Lazio, Italy (street address not found)",
-   "q2": "Abbia N\u00f2va (Daniele & Pierluca Proietti), Piglio, Lazio"
+   "id": "lamoreaux-landing-block-137-merlot-2021",
+   "address": "9224 State Route 414, Lodi, NY 14860, USA",
+   "q2": "Lamoreaux Landing Wine Cellars, Lodi, New York"
   },
   {
-   "id": "alain-corcia-pommard-les-vignots-2018",
-   "address": "Savigny-l\u00e8s-Beaune, 21420 C\u00f4te-d\u2019Or, France (n\u00e9gociant base; street address not found)",
-   "q2": "Alain Corcia, Savigny-l\u00e8s-Beaune, Burgundy"
+   "id": "lamoreaux-landing-riesling-ice-wine-2019",
+   "address": "9224 State Route 414, Lodi, NY 14860, USA",
+   "q2": "Lamoreaux Landing Wine Cellars, Lodi, New York"
   },
   {
-   "id": "anthony-road-rose-of-cabernet-franc-2022",
-   "address": "1020 Anthony Rd, Penn Yan, NY 14527, USA",
-   "q2": "Anthony Road Wine Company, Penn Yan, New York"
+   "id": "lieb-cellars-estate-sauvignon-blanc-2023",
+   "address": "13050 Oregon Road, Cutchogue, NY 11935, USA",
+   "q2": "Lieb Cellars (Rooted North, formerly Suhru & Lieb Vineyards), Cutchogue, New York"
   },
   {
-   "id": "antonio-vallana-e-figlio-boca-2018",
-   "address": "Via Mazzini 3, 28014 Maggiora (NO), Piedmont, Italy",
-   "q2": "Antonio Vallana e Figlio, Maggiora, Piedmont"
+   "id": "lieb-cellars-estate-merlot-2022",
+   "address": "13050 Oregon Road, Cutchogue, NY 11935, USA",
+   "q2": "Lieb Cellars (Rooted North, formerly Suhru & Lieb Vineyards), Cutchogue, New York"
   },
   {
-   "id": "argyle-willamette-valley-pinot-noir-2023",
-   "address": "691 OR-99W, Dundee, OR 97115, USA",
-   "q2": "Argyle Winery, Dundee, Oregon"
+   "id": "living-roots-finger-lakes-pinot-gris-2021",
+   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
+   "q2": "Living Roots Wine & Co., Rochester, New York"
   },
   {
-   "id": "atwater-estate-vineyards-skin-ferment-gewurztraminervignoles",
-   "address": "5055 State Route 414, Burdett, NY 14818, USA",
-   "q2": "Atwater Estate Vineyards, Burdett, New York"
+   "id": "living-roots-finger-lakes-gewurztraminer-2020",
+   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
+   "q2": "Living Roots Wine & Co., Rochester, New York"
   },
   {
-   "id": "bet-the-farm-gamay-noir-2024",
-   "address": "4204 Krums Corners Rd, Trumansburg, NY 14886, USA",
-   "q2": "Bet the Farm Winery, Trumansburg, New York"
+   "id": "living-roots-finger-lakes-late-harvest-vidal-2019",
+   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
+   "q2": "Living Roots Wine & Co., Rochester, New York"
   },
   {
-   "id": "bideona-viura-de-cabezadas-rioja-alavesa-2023",
-   "address": "Carretera de Samaniego km 0, 01307 Villabuena de \u00c1lava (Eskuernaga), \u00c1lava, Spain",
-   "q2": "Bideona, Villabuena de \u00c1lava, Rioja Alavesa"
+   "id": "living-roots-finger-lakes-ramato-pinot-gris-2024",
+   "address": "8560 County Road 87, Hammondsport, NY 14840, USA",
+   "q2": "Living Roots Wine & Co., Hammondsport, New York"
   },
   {
-   "id": "bideona-las-parcelas-blanco-rioja-alavesa-2021",
-   "address": "Carretera de Samaniego km 0, 01307 Villabuena de \u00c1lava (Eskuernaga), \u00c1lava, Spain",
-   "q2": "Bideona, Villabuena de \u00c1lava, Rioja Alavesa"
+   "id": "living-roots-finger-lakes-red-rizza-2022",
+   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
+   "q2": "Living Roots Wine & Co., Rochester, New York"
   },
   {
-   "id": "los-bermejos-malvasia-volcanica-seco-2024",
-   "address": "Camino a Los Bermejos 7, 35550 San Bartolom\u00e9, Lanzarote, Las Palmas, Spain",
-   "q2": "Bodegas Los Bermejos, San Bartolom\u00e9, Lanzarote"
+   "id": "living-roots-finger-lakes-blaufrankisch-2024",
+   "address": "8560 County Road 87, Hammondsport, NY 14840, USA",
+   "q2": "Living Roots Wine & Co., Hammondsport, New York"
   },
   {
-   "id": "brotherhood-new-york-premium-selection-dry-rose-2024",
-   "address": "100 Brotherhood Plaza Dr, Washingtonville, NY 10992, USA",
-   "q2": "Brotherhood, America\u2019s Oldest Winery, Washingtonville, New York"
+   "id": "living-roots-finger-lakes-cabernet-franc-2023",
+   "address": "8560 County Road 87, Hammondsport, NY 14840, USA",
+   "q2": "Living Roots Wine & Co., Hammondsport, New York"
   },
   {
-   "id": "brotherhood-new-york-premium-selection-merlot-2017",
-   "address": "100 Brotherhood Plaza Dr, Washingtonville, NY 10992, USA",
-   "q2": "Brotherhood, America\u2019s Oldest Winery, Washingtonville, New York"
+   "id": "living-roots-adelaide-hills-cabernet-tannat-2021",
+   "address": "159 Tynan Road, Kuitpo, SA 5201, Australia",
+   "q2": "Living Roots Wine & Co., Kuitpo, Adelaide Hills"
   },
   {
-   "id": "brotherhood-ruby-port-new-york-state-nv",
-   "address": "100 Brotherhood Plaza Dr, Washingtonville, NY 10992, USA",
-   "q2": "Brotherhood, America\u2019s Oldest Winery, Washingtonville, New York"
+   "id": "living-roots-adelaide-hills-from-the-hills-shiraz-2020",
+   "address": "159 Tynan Road, Kuitpo, SA 5201, Australia",
+   "q2": "Living Roots Wine & Co., Kuitpo, Adelaide Hills"
   },
   {
-   "id": "bruno-giacosa-nebbiolo-dalba-2023",
-   "address": "Via XX Settembre 52, 12052 Neive (CN), Italy",
-   "q2": "Bruno Giacosa, Neive, Piedmont"
+   "id": "luke-wahluke-slope-merlot-2022",
+   "address": "Evergreen Family Wines production facility, Mattawa, WA 99349, USA",
+   "q2": "LUKE, Mattawa, Washington"
   },
   {
-   "id": "buttonwood-grove-gewurztraminer-finger-lakes-2022",
-   "address": "5986 State Route 89, Romulus, NY 14541, USA",
-   "q2": "Buttonwood Grove Winery, Romulus, New York"
+   "id": "luke-wahluke-slope-cabernet-sauvignon-2021",
+   "address": "Evergreen Family Wines production facility, Mattawa, WA 99349, USA",
+   "q2": "LUKE, Mattawa, Washington"
   },
   {
-   "id": "cantina-ortaccio-bianco-dritto-procanico-2022",
-   "address": "Cantina Ortaccio, Latera (VT), 01010 Lazio, Italy",
-   "q2": "Cantina Ortaccio, Latera, Lazio"
+   "id": "luke-reserve-syrah-stone-tree-vineyard-2018",
+   "address": "Evergreen Family Wines production facility, Mattawa, WA 99349, USA",
+   "q2": "LUKE, Mattawa, Washington"
   },
   {
-   "id": "cantina-terlano-pinot-bianco-tradition-2023",
-   "address": "Via Silberleiten 7, 39018 Terlano (BZ), Italy",
-   "q2": "Cantina Terlano (Kellerei Terlan), Terlano, South Tyrol"
+   "id": "m-chapoutier-cote-rotie-les-becasses-2020",
+   "address": "18 Avenue du Docteur Paul Durand, 26600 Tain-l\u2019Hermitage, France",
+   "q2": "M. Chapoutier, Tain-l\u2019Hermitage, France"
   },
   {
-   "id": "cathiard-vineyard-founding-brothers-napa-valley-red-2021",
-   "address": "1978 West Zinfandel Lane, St. Helena, CA 94574, USA",
-   "q2": "Cathiard Vineyard, St. Helena, California"
+   "id": "m-chapoutier-crozes-hermitage-sicamor-2023",
+   "address": "18 Avenue du Docteur Paul Durand, 26600 Tain-l\u2019Hermitage, France",
+   "q2": "M. Chapoutier, Tain-l\u2019Hermitage, France"
   },
   {
-   "id": "chateau-combel-la-serre-au-cerisier-cahors-2021",
-   "address": "314 Route des Roques, Lieu-dit Cournou, 46140 Saint-Vincent-Rive-d\u2019Olt, France",
-   "q2": "Ch\u00e2teau Combel-La-Serre (Julien and Sophie Ilbert), Saint-Vincent-Rive-d\u2019Olt, Lot"
+   "id": "maloof-fancy-free-white-blend-nemarniki-vineyard-2023",
+   "address": "No Clos Radio, 6200 NW Gales Creek Rd, Forest Grove, OR 97116, USA",
+   "q2": "Maloof Wines (Ross & Bee Maloof), Forest Grove, Oregon"
   },
   {
-   "id": "chateau-coutet-2016-barsac-premier-cru-classe",
-   "address": "Ch\u00e2teau Coutet, 33720 Barsac, France",
-   "q2": "Ch\u00e2teau Coutet, Barsac, Gironde"
+   "id": "maloof-pinot-gris-thistle-dundee-hills-2022",
+   "address": "No Clos Radio, 6200 NW Gales Creek Rd, Forest Grove, OR 97116, USA",
+   "q2": "Maloof Wines (Ross & Bee Maloof), Forest Grove, Oregon"
   },
   {
-   "id": "chateau-de-sales-2020-pomerol",
-   "address": "11 Chemin de Sales, 33500 Libourne, France",
-   "q2": "Ch\u00e2teau de Sales, Libourne (Pomerol), Gironde"
+   "id": "maloof-where-ya-pjs-at-2024",
+   "address": "No Clos Radio, 6200 NW Gales Creek Rd, Forest Grove, OR 97116, USA",
+   "q2": "Maloof Wines (Ross & Bee Maloof), Forest Grove, Oregon"
   },
   {
-   "id": "chateau-gloria-2016-saint-julien",
-   "address": "Ch\u00e2teau Gloria, 33250 Saint-Julien-Beychevelle, France",
-   "q2": "Ch\u00e2teau Gloria (Domaines Henri Martin), Saint-Julien-Beychevelle, Gironde"
+   "id": "marco-sara-ribolla-gialla-friuli-colli-orientali-2023",
+   "address": "Via dei Monti 3a, Savorgnano del Torre, 33040 Povoletto UD, Italy",
+   "q2": "Marco Sara, Savorgnano del Torre, Friuli"
   },
   {
-   "id": "chateau-grand-puy-lacoste-2018",
-   "address": "Ch\u00e2teau Grand-Puy-Lacoste, 33250 Pauillac, France",
-   "q2": "Ch\u00e2teau Grand-Puy-Lacoste, Pauillac, France"
+   "id": "markus-molitor-haus-klosterberg-riesling-2023",
+   "address": "Haus Klosterberg, 54470 Bernkastel-Wehlen, Germany",
+   "q2": "Weingut Markus Molitor, Haus Klosterberg, Wehlen"
   },
   {
-   "id": "chateau-grand-puy-lacoste-2010",
-   "address": "Ch\u00e2teau Grand-Puy-Lacoste, 33250 Pauillac, France",
-   "q2": "Ch\u00e2teau Grand-Puy-Lacoste, Pauillac, France"
+   "id": "massican-pinot-grigio-2024",
+   "address": "Napa, CA 94558, USA (Massican has no winery or tasting room of its own; no public street address found)",
+   "q2": "Massican, Napa, California"
   },
   {
-   "id": "chateau-kirwan-2015",
-   "address": "Ch\u00e2teau Kirwan, Chemin de Kirwan, 33460 Cantenac, Margaux, France",
-   "q2": "Ch\u00e2teau Kirwan, Cantenac, Margaux, France"
+   "id": "merum-priorati-desti-2022",
+   "address": "Carretera a Falset (T-740) km 9.3, 43739 Porrera, Tarragona, Spain",
+   "q2": "Merum Priorati, Porrera, Priorat"
   },
   {
-   "id": "chateau-lafayette-reneau-semi-dry-riesling-2019",
-   "address": "5081 NY-414, Hector, NY 14841, USA",
-   "q2": "Chateau LaFayette Reneau, Hector, New York"
+   "id": "merum-priorati-inici-2022",
+   "address": "Carretera a Falset (T-740) km 9.3, 43739 Porrera, Tarragona, Spain",
+   "q2": "Merum Priorati, Porrera, Priorat"
   },
   {
-   "id": "chateau-lafayette-reneau-unoaked-chardonnay-2021",
-   "address": "5081 NY-414, Hector, NY 14841, USA",
-   "q2": "Chateau LaFayette Reneau, Hector, New York"
+   "id": "michele-chiarlo-le-orme-barbera-dasti-2022",
+   "address": "Strada Statale Nizza\u2013Canelli 99, 14042 Calamandrana AT, Italy",
+   "q2": "Michele Chiarlo, Calamandrana, Piedmont"
   },
   {
-   "id": "chateau-lafayette-reneau-pinot-noir-2019",
-   "address": "5081 NY-414, Hector, NY 14841, USA",
-   "q2": "Chateau LaFayette Reneau, Hector, New York"
+   "id": "millbrook-proprietors-special-reserve-chardonnay-2021",
+   "address": "26 Wing Road, Millbrook, NY 12545, USA",
+   "q2": "Millbrook Vineyards & Winery, Millbrook, New York"
   },
   {
-   "id": "chateau-lafayette-reneau-syrah-2019",
-   "address": "5081 NY-414, Hector, NY 14841, USA",
-   "q2": "Chateau LaFayette Reneau, Hector, New York"
-  },
-  {
-   "id": "chateau-meyney-saint-estephe-2018",
-   "address": "Ch\u00e2teau Meyney, 33180 Saint-Est\u00e8phe, France",
-   "q2": "Ch\u00e2teau Meyney, Saint-Est\u00e8phe, France"
-  },
-  {
-   "id": "chateau-meyney-saint-estephe-2010",
-   "address": "Ch\u00e2teau Meyney, 33180 Saint-Est\u00e8phe, France",
-   "q2": "Ch\u00e2teau Meyney, Saint-Est\u00e8phe, France"
-  },
-  {
-   "id": "le-pauillac-de-pichon-baron-2019",
-   "address": "Ch\u00e2teau Pichon Baron, Route des Ch\u00e2teaux (D2), 33250 Pauillac, France",
-   "q2": "Ch\u00e2teau Pichon Baron, Pauillac, France"
-  },
-  {
-   "id": "chateau-pontet-canet-pauillac-2016",
-   "address": "Ch\u00e2teau Pontet-Canet, 33250 Pauillac, France",
-   "q2": "Ch\u00e2teau Pontet-Canet, Pauillac, France"
-  },
-  {
-   "id": "chateau-pontet-canet-pauillac-2005",
-   "address": "Ch\u00e2teau Pontet-Canet, 33250 Pauillac, France",
-   "q2": "Ch\u00e2teau Pontet-Canet, Pauillac, France"
-  },
-  {
-   "id": "chateau-smith-haut-lafitte-rouge-2015",
-   "address": "Ch\u00e2teau Smith Haut Lafitte, 4 Chemin de Bourran, 33650 Martillac, France",
-   "q2": "Ch\u00e2teau Smith Haut Lafitte, Martillac, France"
-  },
-  {
-   "id": "chateau-talbot-saint-julien-2010",
-   "address": "Ch\u00e2teau Talbot, 33250 Saint-Julien-Beychevelle, France",
-   "q2": "Ch\u00e2teau Talbot, Saint-Julien-Beychevelle, France"
-  },
-  {
-   "id": "chiara-condello-le-lucciole-romagna-sangiovese-predappio-ris",
-   "address": "Via Lucchina 27, 47016 Predappio (FC), Italy",
-   "q2": "Chiara Condello, Predappio, Italy"
-  },
-  {
-   "id": "col-dei-venti-lampio-langhe-nebbiolo-2018",
-   "address": "Strada San Lazzaro 14, 12053 Castiglione Tinella CN, Italy",
-   "q2": "Col dei Venti, Castiglione Tinella, Piedmont"
-  },
-  {
-   "id": "craggy-range-te-muna-sauvignon-blanc-2025",
-   "address": "Te Muna Road, Martinborough 5781, New Zealand (winery and cellar door: 253 Waimarama Road, Havelock North 4294)",
-   "q2": "Craggy Range, Martinborough, New Zealand"
-  },
-  {
-   "id": "damiani-wine-cellars-cabernet-franc-2023",
-   "address": "4704 NY-414, Burdett, NY 14818, USA",
-   "q2": "Damiani Wine Cellars, Burdett, New York"
-  },
-  {
-   "id": "day-wines-babycheeks-rose-2022",
-   "address": "21160 OR-99W, Dundee, OR 97115, USA",
-   "q2": "Day Wines, Dundee, Oregon"
-  },
-  {
-   "id": "day-wines-johan-vineyard-pinot-noir-2021",
-   "address": "21160 OR-99W, Dundee, OR 97115, USA",
-   "q2": "Day Wines, Dundee, Oregon"
-  },
-  {
-   "id": "deep-down-sauvignon-blanc-2024",
-   "address": "Ashmore Farm, southern Wairau Valley, Marlborough, New Zealand (no public winery street address found)",
-   "q2": "Deep Down, Wairau Valley, Marlborough"
-  },
-  {
-   "id": "domaine-belargus-anjou-noir-2022",
-   "address": "19 rue Saint-Vincent, Saint-Lambert-du-Lattay, 49750 Val-du-Layon, France",
-   "q2": "Domaine Belargus, Saint-Lambert-du-Lattay, Anjou"
-  },
-  {
-   "id": "domaine-cyrot-buthiau-pommard-2023",
-   "address": "2 ruelle Richebourg, 21630 Pommard, France",
-   "q2": "Domaine Cyrot-Buthiau, Pommard, Burgundy"
-  },
-  {
-   "id": "domaine-de-vaufuget-vouvray-reserve-du-naufraget-2023",
-   "address": "Ch\u00e2teau de la Roche, 37530 Charg\u00e9, France",
-   "q2": "Domaine de Vaufuget (Maison Pierre Chainier), Charg\u00e9 (Amboise), Loire Valley"
-  },
-  {
-   "id": "domaine-de-la-chevalerie-bourgueil-chevalerie-2019",
-   "address": "7 rue du Peu Muleau, 37140 Restign\u00e9, France",
-   "q2": "Domaine de la Chevalerie, Restign\u00e9, Loire Valley"
-  },
-  {
-   "id": "domaine-du-closel-chateau-des-vaults-savennieres-clos-du-pap",
-   "address": "1 place du Mail, 49170 Savenni\u00e8res, France",
-   "q2": "Domaine du Closel \u2013 Ch\u00e2teau des Vaults, Savenni\u00e8res, Loire Valley"
-  },
-  {
-   "id": "domaine-filliatreau-saumur-champigny-la-grande-vignolle-2023",
-   "address": "1 ruelle des Fosses de Chaintres, Dampierre-sur-Loire, 49400 Saumur, France",
-   "q2": "Domaine Filliatreau, Chaintres, Saumur"
-  },
-  {
-   "id": "domaine-leseurre-finger-lakes-cuvee-classique-gewurztraminer",
-   "address": "13920 State Route 54, Hammondsport, NY 14840, USA",
-   "q2": "Domaine LeSeurre, Hammondsport, New York"
-  },
-  {
-   "id": "domaine-leseurre-finger-lakes-cuvee-classique-dry-riesling-2",
-   "address": "13920 State Route 54, Hammondsport, NY 14840, USA",
-   "q2": "Domaine LeSeurre, Hammondsport, New York"
-  },
-  {
-   "id": "domaine-leseurre-finger-lakes-barrel-select-cabernet-franc-2",
-   "address": "13920 State Route 54, Hammondsport, NY 14840, USA",
-   "q2": "Domaine LeSeurre, Hammondsport, New York"
-  },
-  {
-   "id": "famille-isabel-ferrando-domaine-saint-prefert-chateauneuf-du",
-   "address": "425 chemin Saint Pr\u00e9fert, Quartier des Serres, 84230 Ch\u00e2teauneuf-du-Pape, France",
-   "q2": "Famille Isabel Ferrando \u2013 Domaine Saint-Pr\u00e9fert, Ch\u00e2teauneuf-du-Pape"
-  },
-  {
-   "id": "domaine-saumaize-michelin-pouilly-fuisse-1er-cru-sur-la-roch",
-   "address": "51 Impasse du Puits, Le Martelet, 71960 Vergisson, France",
-   "q2": "Domaine Saumaize-Michelin, Vergisson, Burgundy"
-  },
-  {
-   "id": "domaine-trapet-rochelandet-gevrey-chambertin-1er-cru-bel-air",
-   "address": "9 bis Rue du Chambertin, 21220 Gevrey-Chambertin, France",
-   "q2": "Domaine Trapet-Rochelandet, Gevrey-Chambertin, Burgundy"
-  },
-  {
-   "id": "donnafugata-sul-vulcano-etna-rosso-2022",
-   "address": "Contrada Statella, 95036 Randazzo CT, Italy",
-   "q2": "Donnafugata, Randazzo, Sicily"
-  },
-  {
-   "id": "dr-konstantin-frank-rkatsiteli-2024",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-gruner-veltliner-2023",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-amber-rkatsiteli-2023",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-hilda-chardonnay-2021",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-margrit-dry-riesling-2024",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-cabernet-sauvignon-2023",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-merlot-2022",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "dr-konstantin-frank-blaufrankisch-2020",
-   "address": "9749 Middle Rd, Hammondsport, NY 14840, USA",
-   "q2": "Dr. Konstantin Frank Winery, Hammondsport, New York"
-  },
-  {
-   "id": "eguren-ugarte-rioja-reserva-2017",
-   "address": "Ctra. A-124, Km 61, 01309 P\u00e1ganos-Laguardia, \u00c1lava, Spain",
-   "q2": "Bodegas Eguren Ugarte, P\u00e1ganos, Laguardia, Spain"
-  },
-  {
-   "id": "eguren-ugarte-cincuenta-rioja-2017",
-   "address": "Ctra. A-124, Km 61, 01309 P\u00e1ganos-Laguardia, \u00c1lava, Spain",
-   "q2": "Bodegas Eguren Ugarte, P\u00e1ganos, Laguardia, Spain"
-  },
-  {
-   "id": "el-enemigo-malbec-2022",
-   "address": "Videla Aranda 7008, Chachingo (Cruz de Piedra), Maip\u00fa, Mendoza, Argentina",
-   "q2": "El Enemigo (Bodega Aleanna), Chachingo, Maip\u00fa, Mendoza"
-  },
-  {
-   "id": "gran-enemigo-2020",
-   "address": "Videla Aranda 7008, Chachingo (Cruz de Piedra), Maip\u00fa, Mendoza, Argentina",
-   "q2": "El Enemigo (Bodega Aleanna), Chachingo, Maip\u00fa, Mendoza"
-  },
-  {
-   "id": "empire-estate-dry-riesling-reserve-2019",
-   "address": "3675 Tichenor Rd, Hector, NY 14841, USA",
-   "q2": "Empire Estate, Hector, New York"
-  },
-  {
-   "id": "zuccardi-poligonos-del-valle-de-uco-gualtallary-malbec-2020",
-   "address": "Costa Canal Uco s/n, Paraje Altamira, San Carlos, Mendoza, Argentina",
-   "q2": "Familia Zuccardi, Paraje Altamira, Mendoza"
-  },
-  {
-   "id": "forge-cellars-classique-pinot-noir-2024",
-   "address": "3775 Mathews Road, Burdett, NY 14818, USA",
-   "q2": "Forge Cellars, Burdett, New York"
-  },
-  {
-   "id": "forge-cellars-willow-cabernet-franc-2024",
-   "address": "3775 Mathews Road, Burdett, NY 14818, USA",
-   "q2": "Forge Cellars, Burdett, New York"
-  },
-  {
-   "id": "forge-cellars-caywood-vineyard-cabernet-franc-2023",
-   "address": "3775 Mathews Road, Burdett, NY 14818, USA",
-   "q2": "Forge Cellars, Burdett, New York"
-  },
-  {
-   "id": "i-vini-di-giovanni-vermentuzzo-2024",
-   "address": "Pianello, 06134 Perugia PG, Italy",
-   "q2": "Giovanni Battista Mesina (I Vini di Giovanni), Pianello, Umbria"
-  },
-  {
-   "id": "giuseppe-nada-barbaresco-casot-2020",
-   "address": "Via Casot, 12050 Treiso CN, Italy",
-   "q2": "Giuseppe Nada, Treiso, Piedmont"
-  },
-  {
-   "id": "glenora-wine-cellars-cabernet-sauvignon-2023",
-   "address": "5435 State Route 14, Dundee, NY 14837, USA",
-   "q2": "Glenora Wine Cellars, Dundee, New York"
-  },
-  {
-   "id": "glenora-wine-cellars-port",
-   "address": "5435 State Route 14, Dundee, NY 14837, USA",
-   "q2": "Glenora Wine Cellars, Dundee, New York"
-  },
-  {
-   "id": "goldschmidt-vineyard-singing-tree-chardonnay-2023",
-   "address": "631 Healdsburg Ave, Healdsburg, CA 95448, USA",
-   "q2": "Goldschmidt Vineyards, Healdsburg, California"
-  },
-  {
-   "id": "goldschmidt-vineyard-singing-tree-reserve-chardonnay-dutton",
-   "address": "631 Healdsburg Ave, Healdsburg, CA 95448, USA",
-   "q2": "Goldschmidt Vineyards, Healdsburg, California"
-  },
-  {
-   "id": "nick-goldschmidt-boulder-bank-sauvignon-blanc-fitzroy-vineya",
-   "address": "Fitzroy Vineyard, 184 Rapaura Road, Rapaura, Blenheim 7273, New Zealand",
-   "q2": "Goldschmidt Vineyards (Boulder Bank), Rapaura, Marlborough"
-  },
-  {
-   "id": "nick-goldschmidt-fidelity-the-railyard-zinfandel-alexander-v",
-   "address": "631 Healdsburg Ave, Healdsburg, CA 95448, USA",
-   "q2": "Goldschmidt Vineyards, Healdsburg, California"
-  },
-  {
-   "id": "chelsea-goldschmidt-guidestone-rise-merlot-alexander-valley",
-   "address": "631 Healdsburg Ave, Healdsburg, CA 95448, USA",
-   "q2": "Goldschmidt Vineyards, Healdsburg, California"
-  },
-  {
-   "id": "katherine-goldschmidt-stonemason-hill-cabernet-sauvignon-ale",
-   "address": "631 Healdsburg Ave, Healdsburg, CA 95448, USA",
-   "q2": "Goldschmidt Vineyards, Healdsburg, California"
-  },
-  {
-   "id": "goldschmidt-vineyard-ultimatum-double-rock-cabernet-sauvigno",
-   "address": "631 Healdsburg Ave, Healdsburg, CA 95448, USA",
-   "q2": "Goldschmidt Vineyards, Healdsburg, California"
-  },
-  {
-   "id": "grace-tyler-estate-winery-la-crescent-2025",
-   "address": "1180 NY-49, Constantia, NY 13044, USA",
-   "q2": "Grace Tyler Estate Winery, Constantia, New York"
-  },
-  {
-   "id": "grace-tyler-estate-winery-chardonnay-2022",
-   "address": "1180 NY-49, Constantia, NY 13044, USA",
-   "q2": "Grace Tyler Estate Winery, Constantia, New York"
-  },
-  {
-   "id": "grace-tyler-estate-winery-skin-fermented-la-crescent-2022",
-   "address": "1180 NY-49, Constantia, NY 13044, USA",
-   "q2": "Grace Tyler Estate Winery, Constantia, New York"
-  },
-  {
-   "id": "grace-tyler-estate-winery-baco-noir-2023",
-   "address": "1180 NY-49, Constantia, NY 13044, USA",
-   "q2": "Grace Tyler Estate Winery, Constantia, New York"
-  },
-  {
-   "id": "hazlitt-1852-vineyards-meritage-2021",
-   "address": "5712 NY-414, Hector, NY 14841, USA",
-   "q2": "Hazlitt 1852 Vineyards, Hector, New York"
-  },
-  {
-   "id": "heart-hands-petite-arvine-2022",
-   "address": "4162 State Route 90, Union Springs, NY 13160, USA",
-   "q2": "Heart & Hands Wine Company, Union Springs, New York"
-  },
-  {
-   "id": "heart-hands-aligote-2022",
-   "address": "4162 State Route 90, Union Springs, NY 13160, USA",
-   "q2": "Heart & Hands Wine Company, Union Springs, New York"
-  },
-  {
-   "id": "heart-hands-chardonnay-2020",
-   "address": "4162 State Route 90, Union Springs, NY 13160, USA",
-   "q2": "Heart & Hands Wine Company, Union Springs, New York"
-  },
-  {
-   "id": "heart-hands-higgins-vineyard-estate-pinot-noir-2021",
-   "address": "4162 State Route 90, Union Springs, NY 13160, USA",
-   "q2": "Heart & Hands Wine Company, Union Springs, New York"
-  },
-  {
-   "id": "heart-hands-mo-chuisle-estate-reserve-pinot-noir-2021",
-   "address": "4162 State Route 90, Union Springs, NY 13160, USA",
-   "q2": "Heart & Hands Wine Company, Union Springs, New York"
-  },
-  {
-   "id": "hermann-j-wiemer-dry-riesling-2021",
-   "address": "3962 NY-14, Dundee, NY 14837, USA",
-   "q2": "Hermann J. Wiemer Vineyard, Dundee, New York"
-  },
-  {
-   "id": "hermann-j-wiemer-flower-day-riesling-2024",
-   "address": "3962 NY-14, Dundee, NY 14837, USA",
-   "q2": "Hermann J. Wiemer Vineyard, Dundee, New York"
-  },
-  {
-   "id": "hermann-j-wiemer-hjw-vineyard-riesling-2023",
-   "address": "3962 NY-14, Dundee, NY 14837, USA",
-   "q2": "Hermann J. Wiemer Vineyard, Dundee, New York"
-  },
-  {
-   "id": "hermann-j-wiemer-magdalena-vineyard-cabernet-franc-2023",
-   "address": "3962 NY-14, Dundee, NY 14837, USA",
-   "q2": "Hermann J. Wiemer Vineyard, Dundee, New York"
-  },
-  {
-   "id": "hiruzta-hondarrabi-zuri-getariako-txakolina-2022",
-   "address": "Barrio Jaizubia 266, 20280 Hondarribia, Gipuzkoa, Spain",
-   "q2": "Hiruzta, Hondarribia, Basque Country"
-  },
-  {
-   "id": "hiruzta-getariako-txakolina-rosado-2024",
-   "address": "Barrio Jaizubia 266, 20280 Hondarribia, Gipuzkoa, Spain",
-   "q2": "Hiruzta, Hondarribia, Basque Country"
-  },
-  {
-   "id": "inazio-urruzola-getariako-txakolina-2024",
-   "address": "Arana Bailara 18, 20494 Alkiza, Gipuzkoa, Spain",
-   "q2": "Inazio Urruzola, Alkiza, Basque Country"
-  },
-  {
-   "id": "inazio-urruzola-naturala-hernio-getariako-txakolina-2022",
-   "address": "Arana Bailara 18, 20494 Alkiza, Gipuzkoa, Spain",
-   "q2": "Inazio Urruzola, Alkiza, Basque Country"
-  },
-  {
-   "id": "inspire-moore-rhythm-gruner-veltliner-2019",
-   "address": "197 North Main Street, Naples, NY 14512, USA",
-   "q2": "Inspire Moore Winery, Naples, New York"
-  },
-  {
-   "id": "domaine-jean-manciat-macon-charnay-2023",
-   "address": "557 Chemin des G\u00e9rards, 71850 Charnay-l\u00e8s-M\u00e2con, France",
-   "q2": "Domaine Jean Manciat, Charnay-l\u00e8s-M\u00e2con, Burgundy"
-  },
-  {
-   "id": "jean-paul-brun-domaine-des-terres-dorees-cote-de-brouilly-20",
-   "address": "565 Route d\u2019Alix, 69380 Charnay, France",
-   "q2": "Domaine des Terres Dor\u00e9es (Jean-Paul Brun), Charnay, Beaujolais"
-  },
-  {
-   "id": "jolie-laide-barsotti-vineyard-rose-2024",
-   "address": "Sebastopol, CA 95472, USA (winery; street address unconfirmed)",
-   "q2": "Jolie-Laide Wines, Sebastopol, California"
-  },
-  {
-   "id": "vermillion-by-helen-keplinger-red-blend-2022",
-   "address": "926 Franklin Street, Napa, CA 94559, USA (former Keplinger tasting salon)",
-   "q2": "Keplinger Wines (Helen Keplinger), Napa, California"
-  },
-  {
-   "id": "lakewood-vineyards-gigliotti-vineyards-pinot-gris-2023",
-   "address": "4024 NY State Route 14, Watkins Glen, NY 14891, USA",
-   "q2": "Lakewood Vineyards, Watkins Glen, New York"
-  },
-  {
-   "id": "lakewood-vineyards-lemberger-2021",
-   "address": "4024 NY State Route 14, Watkins Glen, NY 14891, USA",
-   "q2": "Lakewood Vineyards, Watkins Glen, New York"
-  },
-  {
-   "id": "lakewood-vineyards-port-2020",
-   "address": "4024 NY State Route 14, Watkins Glen, NY 14891, USA",
-   "q2": "Lakewood Vineyards, Watkins Glen, New York"
+   "id": "millbrook-proprietors-special-reserve-tocai-friulano-2023",
+   "address": "26 Wing Road, Millbrook, NY 12545, USA",
+   "q2": "Millbrook Vineyards & Winery, Millbrook, New York"
   }
  ],
  "images": [
   {
-   "id": "anthony-road-rose-of-cabernet-franc-2022",
-   "url": "https://cellar.db.wine/attachments/397cc578-478c-43d1-a8d4-232b93d95a1e/89c83c9b488d8021682b1b2ad053357514b245b847ebd283ada2c7f546c7b455.jpg",
-   "page": "https://anthony-road.db.wine/wines/WN-XTVMFSBGN/"
+   "id": "lamoreaux-landing-block-137-merlot-2021",
+   "url": "https://cellar.db.wine/attachments/5fc75baf-b35d-4f64-9989-705ef41ba197/972a195515478366d0fcf8f6284a437eb852e98b0d001026df24f8d674d14c8c.png",
+   "page": "https://newyork.guides.winefolly.com/wineries/lamoreaux-landing-wine-cellars/wines/merlot-block-137/"
   },
   {
-   "id": "antonio-vallana-e-figlio-boca-2018",
-   "url": "https://www.skurnik.com/wp-content/uploads/2018/07/boca-antonio-vallana-3.jpg",
-   "page": "https://www.skurnik.com/sku/boca-antonio-vallana-3/"
+   "id": "lamoreaux-landing-riesling-ice-wine-2019",
+   "url": "https://cellar.db.wine/attachments/3191cdc0-9809-45a0-8392-788d7d14e212/d6122d7d338d8a10691f001865fa1e306956d3552399cfeb4dd3c4f62f12172e.jpg",
+   "page": "https://newyork.guides.winefolly.com/wineries/lamoreaux-landing-wine-cellars/wines/riesling-ice-wine/"
   },
   {
-   "id": "argyle-willamette-valley-pinot-noir-2023",
-   "url": "https://images.jjbuckley.com/Vintage/279163/thumb_463x1162_2021-6706-375.jpg",
-   "page": "https://www.jjbuckley.com/wine/2021-argyle-pinot-noir-willamette-valley/2021-6706-375"
+   "id": "lieb-cellars-estate-sauvignon-blanc-2023",
+   "url": "https://cellar.db.wine/attachments/88db305a-741d-4fac-8ccd-f819662ec9d0/fafb45d188c2b1857066de738d7c9d22c05ff594a325f039dafb06a3c7bfd75f.png",
+   "page": "https://suhru.db.wine/wines/WN-ISQOURDTN/"
   },
   {
-   "id": "bideona-viura-de-cabezadas-rioja-alavesa-2023",
-   "url": "https://vinonueva.com/cdn/shop/files/Photoroom_042_20260102_162026_1200x.jpg?v=1767390552",
-   "page": "https://vinonueva.com/products/bideona-rioja-viura-cabezadas-2023"
+   "id": "lieb-cellars-estate-merlot-2022",
+   "url": "https://cellar.db.wine/attachments/4aeeb9ee-bb2a-4f92-9b47-3a24d12f8689/815c2490a872c8d01f870122dc7c67cf3a01b0dfda51dd3c91435ea6f1c83c5e.png",
+   "page": "https://suhru.db.wine/wines/WN-EAMJFVIRT/"
   },
   {
-   "id": "bideona-las-parcelas-blanco-rioja-alavesa-2021",
-   "url": "https://www.npwines.com/cdn/shop/files/LasParcelasBlanco_1200x1200.png?v=1736258307",
-   "page": "https://npwines.com/products/bideona-las-parcelas-blanco-rioja-alavesa-2021-419-40-case"
+   "id": "living-roots-finger-lakes-pinot-gris-2021",
+   "url": "https://cellar.db.wine/attachments/0cd37be5-29cb-469e-919b-d1959852856a/021546671614b4e6c18c6e0d92a7956e1d79126bb78a63c2d94cc5a74c9f3e91.jpg",
+   "page": "https://living-roots.db.wine/wines/WN-ZCUSERAKI/"
   },
   {
-   "id": "los-bermejos-malvasia-volcanica-seco-2024",
-   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Bermejo_Malvasia_Ecologica-NV.jpg?itok=OTggQI9L",
-   "page": "https://www.bowlerwine.com/producer/bermejos"
+   "id": "living-roots-finger-lakes-late-harvest-vidal-2019",
+   "url": "https://cellar.db.wine/attachments/6b3ea0e8-9d5e-4aef-96b6-9e3c69db91e3/19c7abba35ced2cb6f249b9260d2cc1c1c7549c30c0ef02280d32880da6b1d17.jpg",
+   "page": "https://living-roots.db.wine/wines/WN-VYZQBUWTA/"
   },
   {
-   "id": "brotherhood-new-york-premium-selection-merlot-2017",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/01/5c31bbe-0-0.jpg",
-   "page": "https://www.saratogawine.com/Brotherhood-Merlot-750ml.html"
+   "id": "living-roots-finger-lakes-red-rizza-2022",
+   "url": "https://cellar.db.wine/attachments/a96c1eac-7d2d-4220-960c-2eb29b9e5059/a5ea5ba61738211c87c2f3a0ed4dcf79e800d872c490d421a5354fd038afdb1c.jpg",
+   "page": "https://living-roots.db.wine/wines/WN-CFEBIAKYT/"
   },
   {
-   "id": "brotherhood-ruby-port-new-york-state-nv",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/01/01d606b-0-0.jpg",
-   "page": "https://www.saratogawine.com/product/brotherhood-port-ruby-nv-750ml/"
+   "id": "living-roots-finger-lakes-cabernet-franc-2023",
+   "url": "https://cellar.db.wine/attachments/cde27bca-502d-400e-9ac6-6a9bd8bebf98/6a3ef249c9d8e840defcd8e675d8500047dabc157c0d1f0b0a5414e45029fac8.png",
+   "page": "https://living-roots.db.wine/wines/WN-BMDKZCXIF/"
   },
   {
-   "id": "bruno-giacosa-nebbiolo-dalba-2023",
-   "url": "https://www.foliowine.com/wp-content/uploads/2019/05/NebbioloDAlba_NV_web.png",
-   "page": "https://www.foliowine.com/wine/bruno-giacosa-nebbiolo-dalba"
+   "id": "living-roots-adelaide-hills-cabernet-tannat-2021",
+   "url": "https://cellar.db.wine/attachments/0e67dd2e-94ae-4372-bd37-17a7c560ef98/3dcb8df76411f5adeb3eb8dedc44cb2eee2e904eb34fe945c7b934a374404373.jpg",
+   "page": "https://living-roots.db.wine/wines/WN-CXLWTZEUB/"
   },
   {
-   "id": "cantina-terlano-pinot-bianco-tradition-2023",
-   "url": "https://hedonism.co.uk/cdn/shop/files/HED26812.jpg?v=1781916455&width=1200",
-   "page": "https://www.hedonism.co.uk/product/terlano-tradition-pinot-bianco-2023"
+   "id": "living-roots-adelaide-hills-from-the-hills-shiraz-2020",
+   "url": "https://cellar.db.wine/attachments/85dbcf83-76e7-4e4c-8c02-21da6c003558/d768b28f90adcb2f95cd7f610176061d12a29aed231518fc498f35a93fa59b74.jpg",
+   "page": "https://living-roots.db.wine/wines/WN-YPWKLJOHZ/"
   },
   {
-   "id": "cathiard-vineyard-founding-brothers-napa-valley-red-2021",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72496_bottle.jpg.webp?itok=viyXVfCm",
-   "page": "https://mtouton.com/products/usa/california/napa-valley/72496-2021/cathiard-vineyard-founding-brothers-red-wine-napa"
+   "id": "luke-wahluke-slope-merlot-2022",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/13806_bottle.jpg.webp?itok=uWHv8VKc",
+   "page": "https://www.mtouton.com/products/usa/washington/whaluke-slope/13806-2022/luke-wines-merlot-wahluke-slope"
   },
   {
-   "id": "chateau-combel-la-serre-au-cerisier-cahors-2021",
-   "url": "https://louisdressner.com/uploads/images/wine/13_May_2020/2054/ee/f3/eef34d4d196c1708adf4e5d781fb642b.jpg",
-   "page": "https://louisdressner.com/producers/ch%C3%A2teau+combel+la+serre"
+   "id": "luke-wahluke-slope-cabernet-sauvignon-2021",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/13779_bottle.jpg.webp?itok=Xoe4ViH2",
+   "page": "https://www.mtouton.com/products/usa/washington/columbia-valley/13779-2021/luke-wines-cabernet-sauvignon-wahluke-slope"
   },
   {
-   "id": "chateau-coutet-2016-barsac-premier-cru-classe",
-   "url": "https://assets.wine.com/winecom/image/upload/xkxsdw3lvherfqoysvaa.jpg",
-   "page": "https://www.wine.com/product/chateau-coutet-375ml-half-bottle-2016/202296"
+   "id": "luke-reserve-syrah-stone-tree-vineyard-2018",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72724_bottle.jpg.webp?itok=V6RqP8mW",
+   "page": "https://www.mtouton.com/products/usa/washington/columbia-valley/72724-2018/luke-wines-syrah-reserve"
   },
   {
-   "id": "chateau-de-sales-2020-pomerol",
-   "url": "https://mmdusa.b-cdn.net/assets/uploads/bottleshots/_large/chateau-de-sales-bottle-shot-5588-1680801259.png",
-   "page": "https://mmdusa.net/portfolio/chateau-de-sales/chateau-de-sales/2020"
+   "id": "m-chapoutier-cote-rotie-les-becasses-2020",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/14336_bottle.jpg.webp?itok=vLYAw0CP",
+   "page": "https://www.mtouton.com/products/france/rhone-valley/cote-rotie/14336-2020/chapoutier-cote-rotie-les-becasses"
   },
   {
-   "id": "chateau-gloria-2016-saint-julien",
-   "url": "https://assets.wine.com/winecom/image/upload/wgpbqmdyzq4sugvc4uwc.jpg",
-   "page": "https://wine.com/product/chateau-gloria-2016/153278"
+   "id": "m-chapoutier-crozes-hermitage-sicamor-2023",
+   "url": "https://www.foliowine.com/wp-content/uploads/2021/08/Sicamore-Red-NV-Bottle.png",
+   "page": "https://www.foliowine.com/wine/m-chapoutier-sicamor"
   },
   {
-   "id": "chateau-grand-puy-lacoste-2018",
-   "url": "https://images.jjbuckley.com/Vintage/265084/thumb_463x1162_2018-361-750.jpg",
-   "page": "https://www.jjbuckley.com/wine/2018-grand-puy-lacoste-bordeaux-blend/2018-361-750"
+   "id": "maloof-pinot-gris-thistle-dundee-hills-2022",
+   "url": "https://primalwine.com/cdn/shop/files/maloof-thistle-pinot-gris-oregon-natural-wine-primal-wine.jpg?v=1718498773&width=1200",
+   "page": "https://primalwine.com/products/thistle-pinot-gris-maloof"
   },
   {
-   "id": "chateau-grand-puy-lacoste-2010",
-   "url": "https://cdn.klwines.com/images/skus/1146796x.jpg",
-   "page": "https://www.klwines.com/p/i?i=1146796"
+   "id": "maloof-where-ya-pjs-at-2024",
+   "url": "https://primalwine.com/cdn/shop/files/where-ya-pjs-at-pinot-gris-maloof-deslop.png?v=1784585058&width=1200",
+   "page": "https://primalwine.com/products/where-ya-pjs-at-pinot-gris-maloof"
   },
   {
-   "id": "chateau-kirwan-2015",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/1586_bottle.jpg.webp?itok=gNESD2m_",
-   "page": "https://www.mtouton.com/products/france/bordeaux/margaux/1586-2015/chateau-kirwan"
+   "id": "marco-sara-ribolla-gialla-friuli-colli-orientali-2023",
+   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/RIBOLLA_GIALLA_Front-1.jpg?itok=vFhgNJsz",
+   "page": "https://www.bowlerwine.com/producer/marco-sara"
   },
   {
-   "id": "chateau-lafayette-reneau-semi-dry-riesling-2019",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/01/43c5428-0-0.png",
-   "page": "https://www.saratogawine.com/?p=435962"
+   "id": "markus-molitor-haus-klosterberg-riesling-2023",
+   "url": "https://www.gourmethunters.com/web/image/product.template/85408/image_1024?unique=229575f",
+   "page": "https://www.gourmethunters.com/en_CH/Markus+Molitor+Haus+Klosterberg+Riesling+2023"
   },
   {
-   "id": "chateau-lafayette-reneau-unoaked-chardonnay-2021",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/03/ecb156a-0-0.jpg",
-   "page": "https://www.saratogawine.com/?p=510641"
+   "id": "massican-pinot-grigio-2024",
+   "url": "https://sf.flatiron-wines.com/cdn/shop/files/Bottle-of-Massican-Pinot-Grigio-2024-White-Wine-Flatiron-SF_f1e6e8a8.jpg?v=1772751681&width=1500",
+   "page": "https://sf.flatiron-wines.com/products/massican-pinot-grigio-2024-750ml"
   },
   {
-   "id": "chateau-meyney-saint-estephe-2018",
-   "url": "https://meyney.fr/wp-content/uploads/2022/10/chateau-meyney-1.png",
-   "page": "https://meyney.fr/nos-vins/"
+   "id": "merum-priorati-desti-2022",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/97280_2021_bottle.jpg.webp?itok=r-qi9I0T",
+   "page": "https://www.mtouton.com/products/spain/catalunya/priorat/97280-2022/merum-priorati-priorat-desti"
   },
   {
-   "id": "chateau-meyney-saint-estephe-2010",
-   "url": "https://assets.wine.com/winecom/image/upload/121326fbs.jpg",
-   "page": "https://www.wine.com/product/Chateau-Meyney-2010/121326"
+   "id": "merum-priorati-inici-2022",
+   "url": "https://assets.wine.com/winecom/image/upload/d3oogrv723xftdsbafeb.jpg",
+   "page": "https://www.wine.com/product/merum-priorati-inici-2022/4120071"
   },
   {
-   "id": "le-pauillac-de-pichon-baron-2019",
-   "url": "https://d1crpzzl9gcqwz.cloudfront.net/images/c_220x790_pauillac2019.png",
-   "page": "https://lecellier.kork.ca/en/wineries/chateau-pichon-baron/pauillac-de-pichon-baron/2020"
+   "id": "michele-chiarlo-le-orme-barbera-dasti-2022",
+   "url": "https://www.superiore.de/out/pictures/generated/product/1/05222722/normal/xl/michele-chiarlo-piemont-le-orme-barbera-d-asti-docg-2022-05222722.jpg",
+   "page": "https://www.superiore.de/en/wine/piedmont/michele-chiarlo/le-orme-barbera-d-asti-docg-2022.html"
   },
   {
-   "id": "chateau-pontet-canet-pauillac-2016",
-   "url": "https://www.bordeaux-tradition.com/wp-content/uploads/2018/02/pontet-canet.png",
-   "page": "https://www.bordeaux-tradition.com/?p=1386660"
-  },
-  {
-   "id": "chateau-pontet-canet-pauillac-2005",
-   "url": "https://hedonism.co.uk/cdn/shop/files/HED0728.jpg?v=1781900508&width=1200",
-   "page": "https://hedonism.co.uk/product/pontet-canet-2005"
-  },
-  {
-   "id": "chateau-smith-haut-lafitte-rouge-2015",
-   "url": "https://www.uncorked.co.uk/sites/default/files/primary-images/SMHLR15A.jpg",
-   "page": "https://www.uncorked.co.uk/wine-list/2015-smith-haut-lafitte-rouge-pessac-smhlr15a"
-  },
-  {
-   "id": "chateau-talbot-saint-julien-2010",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/1651_bottle2.jpg.webp?itok=-IwhW5O9",
-   "page": "https://www.mtouton.com/products/france/bordeaux/saint-julien/1651-2010/chateau-talbot"
-  },
-  {
-   "id": "chiara-condello-le-lucciole-romagna-sangiovese-predappio-ris",
-   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Le_Lucciole_front_0.jpg?itok=q8dvPNOf",
-   "page": "https://bowlerwine.com/taxonomy/term/2042"
-  },
-  {
-   "id": "craggy-range-te-muna-sauvignon-blanc-2025",
-   "url": "https://craggyrange.com/cdn/shop/files/te_muna_sauvignon_blanc.png?v=1764116911",
-   "page": "https://craggyrange.com/products/2025-sauvignon-blanc-te-muna"
-  },
-  {
-   "id": "day-wines-johan-vineyard-pinot-noir-2021",
-   "url": "https://www.hamptonswineshoppe.com/cdn/shop/files/images_63470460-4f72-49f5-b9a2-dc837444da1a.jpg?v=1784758772",
-   "page": "https://www.hamptonswineshoppe.com/collections/new-arrivals/products/9512-day-wines-johan-vineyards-pinot-noir"
-  },
-  {
-   "id": "deep-down-sauvignon-blanc-2024",
-   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Deep_Down_Sauvignon_Blkanc.png?itok=g-Xa4Uhp",
-   "page": "https://www.bowlerwine.com/taxonomy/term/2087"
-  },
-  {
-   "id": "domaine-belargus-anjou-noir-2022",
-   "url": "https://closcachet.com.au/cdn/shop/files/Belargus_-_Anjou_Noire_1024x1024.png?v=1722482776",
-   "page": "https://closcachet.com.au/products/domaine-belargus-anjou-noir"
-  },
-  {
-   "id": "domaine-de-vaufuget-vouvray-reserve-du-naufraget-2023",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/52_2020_bottle.jpg.webp?itok=jgmZlUiW",
-   "page": "https://www.mtouton.com/products/france/loire-valley/vouvray/52-2025/reserve-du-naufraget-vouvray"
-  },
-  {
-   "id": "domaine-de-la-chevalerie-bourgueil-chevalerie-2019",
-   "url": "https://divineloire.fr/en/wp-content/uploads/2020/03/domaine-chevalerie-chevalerie.png",
-   "page": "https://www.divineloire.fr/en/boutique/domaine-de-la-chevalerie-chevalerie-2/"
-  },
-  {
-   "id": "domaine-du-closel-chateau-des-vaults-savennieres-clos-du-pap",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/04/2273186-0-0.png",
-   "page": "https://www.saratogawine.com/product/domaine-du-closel-savennieres-clos-du-papillon-2022-750ml/"
-  },
-  {
-   "id": "domaine-filliatreau-saumur-champigny-la-grande-vignolle-2023",
-   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Grande_Vignolle.jpg?itok=ukG34loZ",
-   "page": "https://www.bowlerwine.com/wine-or-spirit/saumur-champigny-la-grande-vignolle/2023"
-  },
-  {
-   "id": "domaine-leseurre-finger-lakes-cuvee-classique-dry-riesling-2",
-   "url": "https://assets.wine.com/winecom/image/upload/e_trim/w_400,h_800,c_fit,q_auto:best,fl_progressive/qbk5fzld3ot8pfyiv71j.jpg",
-   "page": "https://www.wine.com/list/wine/domaine-leseurre/other-us/white-wine/wilfred-wong-of-winecom/7155-121575-106840-125-206"
-  },
-  {
-   "id": "domaine-leseurre-finger-lakes-barrel-select-cabernet-franc-2",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72238_bottle.jpg.webp?itok=6j7kUvSK",
-   "page": "https://mtouton.com/products/usa/new-york/finger-lakes/72238-2018/domaine-le-seurre-cabernet-franc-barrel-select"
-  },
-  {
-   "id": "famille-isabel-ferrando-domaine-saint-prefert-chateauneuf-du",
-   "url": "https://api.frw.co.uk/media-lv2/product-images/products/612ec28001000000000597dd/030d3dd8-41c7-4a40-a7ba-20e51e6ad9be_thumbnail.jpeg",
-   "page": "https://www.frw.co.uk/product/612ec28001000000000597dd/2021-chateauneuf-du-pape-famille-isabel-ferrando"
-  },
-  {
-   "id": "domaine-saumaize-michelin-pouilly-fuisse-1er-cru-sur-la-roch",
-   "url": "https://www.bowlerwine.com/sites/default/files/styles/50_pct/public/wine/field_content_image/Pouilly-Fuisse_Clos_sur_la_Roche.png?itok=-kcbWObZ",
-   "page": "https://www.bowlerwine.com/node/15549"
-  },
-  {
-   "id": "donnafugata-sul-vulcano-etna-rosso-2022",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/83444_bottle.jpg.webp?itok=eBbFZR2I",
-   "page": "https://www.mtouton.com/products/italy/sicily/etna-rosso-doc/83444-2022/donnafugata-sul-vulcano"
-  },
-  {
-   "id": "dr-konstantin-frank-rkatsiteli-2024",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2021/02/Dr-Konstantin-Frank-2025-Rkatsiteli-Bottle-Image-2WP.png",
-   "page": "https://drfrankwines.com/?p=4941"
-  },
-  {
-   "id": "dr-konstantin-frank-gruner-veltliner-2023",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/07/Dr-Konstantin-Frank-2025-Gruner-Veltliner-Bottle-Image-2WP.png",
-   "page": "https://www.drfrankwines.com/?p=2275"
-  },
-  {
-   "id": "dr-konstantin-frank-amber-rkatsiteli-2023",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/12/Dr-Konstantin-Frank-2024-Amber-Rkatsiteli-Bottle-Image-Card.jpg",
-   "page": "https://www.drfrankwines.com/our-wines/"
-  },
-  {
-   "id": "dr-konstantin-frank-hilda-chardonnay-2021",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/07/Dr-Konstantin-Frank-2025-Hilda-Chardonnay-Bottle-Image-2WP.png",
-   "page": "https://drfrankwines.com/?p=2277"
-  },
-  {
-   "id": "dr-konstantin-frank-margrit-dry-riesling-2024",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/07/Dr-Konstantin-Frank-2024-Margrit-Dry-Riesling-Bottle-Image-2WP.png",
-   "page": "https://drfrankwines.com/?p=2308"
-  },
-  {
-   "id": "dr-konstantin-frank-cabernet-sauvignon-2023",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/07/Dr-Konstantin-Frank-2023-Cabernet-Sauvignon-Bottle-Image-2WP.png",
-   "page": "https://www.drfrankwines.com/wine/cabernet-sauvignon/"
-  },
-  {
-   "id": "dr-konstantin-frank-merlot-2022",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/07/Dr-Konstantin-Frank-2022-Merlot-Bottle-Image-Card.jpg",
-   "page": "https://www.drfrankwines.com/our-wines/"
-  },
-  {
-   "id": "dr-konstantin-frank-blaufrankisch-2020",
-   "url": "https://www.drfrankwines.com/wp-content/uploads/2020/07/Dr-Konstantin-Frank-2024-Blaufrankisch-Bottle-Image-Card.jpg",
-   "page": "https://www.drfrankwines.com/our-wines/"
-  },
-  {
-   "id": "eguren-ugarte-rioja-reserva-2017",
-   "url": "https://assets.wine.com/winecom/image/upload/w_600,h_400,dpr_2.0,c_fit,q_auto:good,fl_progressive/qalswniyfyl5q3qlclxp.jpg",
-   "page": "https://www.wine.com/product/eguren-ugarte-reserva-2017/2262478"
-  },
-  {
-   "id": "eguren-ugarte-cincuenta-rioja-2017",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/98114_2016_bottle.jpg.webp?itok=gQKIjBsN",
-   "page": "https://www.mtouton.com/products/spain/rioja/rioja/98114-2017/eguren-ugarte-cincuenta-rioja"
-  },
-  {
-   "id": "el-enemigo-malbec-2022",
-   "url": "https://www.wine-republic.co.uk/cdn/shop/files/2022-Malbec-El-Enemigo_1200x1200.png?v=1762288191",
-   "page": "https://www.wine-republic.co.uk/products/2022-malbec-el-enemigo"
-  },
-  {
-   "id": "gran-enemigo-2020",
-   "url": "https://www.bodeboca.fr/sites/default/files/wines/2025-10/bot-gran-enemigo-2020.png",
-   "page": "https://bodeboca.fr/vino/gran-enemigo-2020"
-  },
-  {
-   "id": "empire-estate-dry-riesling-reserve-2019",
-   "url": "https://vervewine.com/cdn/shop/products/file_81149eaa-f6a7-4982-9bd6-0fdfd508132b_1200x1200.png?v=1667420947",
-   "page": "https://vervewine.com/products/empire-estate-riesling-reserve-finger-lakes-2019"
-  },
-  {
-   "id": "zuccardi-poligonos-del-valle-de-uco-gualtallary-malbec-2020",
-   "url": "https://static.wineaccess.com/media/optimized/images/products/2023/04/2020_Zuccardi_Poligonos_Malbec_Gualtallary_Mendoza_Botleshot/a8ea0625d66046109ef9ed2c5f2664e5.png",
-   "page": "https://www.wineaccess.com/catalog/2020-zuccardi-poligonos-malbec-gualtallary-mendoza_d4b51072-c905-4eea-ba15-9ff91d97f02d/"
-  },
-  {
-   "id": "forge-cellars-classique-pinot-noir-2024",
-   "url": "https://assets.wine.com/winecom/image/upload/355138.jpg",
-   "page": "https://www.wine.com/product/forge-cellars-classique-pinot-noir-2015/355138"
-  },
-  {
-   "id": "forge-cellars-willow-cabernet-franc-2024",
-   "url": "https://nyc.flatiron-wines.com/cdn/shop/files/Forge-Cellars-Willow-Cabernet-Franc-2024-Red-Wine-Flatiron-Wines-Spirits-New-York.jpg?v=1778251653&width=1500",
-   "page": "https://nyc.flatiron-wines.com/products/forge-cellars-willow-cabernet-franc-2024-750ml"
-  },
-  {
-   "id": "i-vini-di-giovanni-vermentuzzo-2024",
-   "url": "https://primalwine.com/cdn/shop/files/vermentuzzo-bianco-giovanni-mesina-vermentino-italy-natural-wine.jpg?v=1780688811&width=1200",
-   "page": "https://primalwine.com/products/vermentuzzo-bianco-giovanni-mesina-vermentino-italy-natural-wine"
-  },
-  {
-   "id": "giuseppe-nada-barbaresco-casot-2020",
-   "url": "https://sommselect.com/cdn/shop/files/2020GiuseppeNada_BarbarescoCasot.png?v=1761676873",
-   "page": "https://sommselect.com/products/2020-giuseppe-nada-barbaresco-casotsomm2510-gna20bar-750"
-  },
-  {
-   "id": "glenora-wine-cellars-cabernet-sauvignon-2023",
-   "url": "https://www.tastings.com/Product-Images/Wine/2026/6_6_2026/258413_z.jpg",
-   "page": "https://www.tastings.com/Wine-Review/Glenora-Wine-Cellars-2023-Cabernet-Sauvignon-Finger-Lakes-USA-06-06-2026.aspx"
-  },
-  {
-   "id": "glenora-wine-cellars-port",
-   "url": "https://www.glenora.com/assets/images/products/large/Port.png",
-   "page": "https://www.glenora.com/product/Port"
-  },
-  {
-   "id": "goldschmidt-vineyard-singing-tree-chardonnay-2023",
-   "url": "https://www.winedispensary.com/cdn/shop/files/Goldschmidt_Vineyards_Singing_Tree_Chardonnay_Russian_River_Valley_California_2024.png?v=1763512947",
-   "page": "https://www.winedispensary.com/products/goldschmidt-vineyards-singing-tree-chardonnay-russian-river-valley-usa"
-  },
-  {
-   "id": "goldschmidt-vineyard-singing-tree-reserve-chardonnay-dutton",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72418_2021_bottle.jpg.webp?itok=7GkPfoML",
-   "page": "https://do.mtouton.com/products/usa/california/russian-river-valley/72418-2021/goldschmidt-reserve-singing-tree-chardonnay"
-  },
-  {
-   "id": "nick-goldschmidt-boulder-bank-sauvignon-blanc-fitzroy-vineya",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72070_bottle.jpg.webp?itok=jgdsEsyP",
-   "page": "https://do.mtouton.com/products/new-zealand/marlborough/72070-2025/nick-goldschmidt-boulder-bank-sauvignon-blanc-fitzroy"
-  },
-  {
-   "id": "nick-goldschmidt-fidelity-the-railyard-zinfandel-alexander-v",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72417_bottle.jpg.webp?itok=ZF7LXsrq",
-   "page": "https://www.mtouton.com/products/usa/california/alexander-valley/72417-2023/nick-goldschmidt-zinfandel-fidelity"
-  },
-  {
-   "id": "chelsea-goldschmidt-guidestone-rise-merlot-alexander-valley",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72066_bottle.jpg.webp?itok=nyVKrur4",
-   "page": "https://mtouton.com/products/usa/california/alexander-valley/72066-2022/chelsea-goldschmidt-merlot-guidestone-rise"
-  },
-  {
-   "id": "katherine-goldschmidt-stonemason-hill-cabernet-sauvignon-ale",
-   "url": "https://www.winedispensary.com/cdn/shop/files/Katherine_Goldschmidt_Stonemason_Hill_Cabernet_Sauvignon_Alexander_Valley_California_2023.png?v=1763512049",
-   "page": "https://www.winedispensary.com/products/katherine-goldschmidt-stonemason-hill-cabernet-sauvignon-alexander-valley-usa"
-  },
-  {
-   "id": "goldschmidt-vineyard-ultimatum-double-rock-cabernet-sauvigno",
-   "url": "https://old.mtouton.com/sites/default/files/styles/item_card_label_detail/public/infosys/bottles/72629_bottle.jpg?itok=WvxMDAP-",
-   "page": "https://old.mtouton.com/products/usa/california/napa-valley/72629-2018/katherine-goldschmidt-cabernet-sauvignon-ultimatum-2pk"
-  },
-  {
-   "id": "heart-hands-chardonnay-2020",
-   "url": "https://decanter-prod-aws1-timeincuk-net.s3.eu-west-1.amazonaws.com/media/images/2020-chardonnay-600h-1704830917513-66c4dcebaf11a.jpeg",
-   "page": "https://decanter.com/wine-reviews/usa/new-york-state/heart-hands-wine-company-chardonnay-finger-lakes-2020-86162"
-  },
-  {
-   "id": "heart-hands-mo-chuisle-estate-reserve-pinot-noir-2021",
-   "url": "https://vinepair.com/wp-content/uploads/2023/03/btb-pinot-noir-2023-heart-hands-mo-chuisle-social.jpg",
-   "page": "https://vinepair.com/review/heart-hands-mo-chuisle/"
-  },
-  {
-   "id": "hermann-j-wiemer-dry-riesling-2021",
-   "url": "https://www.skurnik.com/wp-content/uploads/2020/07/riesling-dry-hermann-j-wiemer-2.jpeg",
-   "page": "https://www.skurnik.com/sku/riesling-dry-hermann-j-wiemer-2-2-3-2-2-2-3-2-2-2-2-2"
-  },
-  {
-   "id": "hermann-j-wiemer-flower-day-riesling-2024",
-   "url": "https://www.skurnik.com/wp-content/uploads/2019/07/riesling-flower-day-hermann-j-wiemer-2.jpeg",
-   "page": "https://www.skurnik.com/sku/riesling-flower-day-hermann-j-wiemer-3/"
-  },
-  {
-   "id": "hermann-j-wiemer-hjw-vineyard-riesling-2023",
-   "url": "https://www.skurnik.com/wp-content/uploads/2021/07/riesling-hjw-vyd-hermann-j-wiemer-2.jpg",
-   "page": "https://www.skurnik.com/sku/riesling-hjw-vyd-hermann-j-wiemer-2-2-2-3-2-2-2-4/"
-  },
-  {
-   "id": "hermann-j-wiemer-magdalena-vineyard-cabernet-franc-2023",
-   "url": "https://www.skurnik.com/wp-content/uploads/2020/07/cabernet-franc-magdalena-vyd-hermann-j-wiemer-2.jpg",
-   "page": "https://www.skurnik.com/sku/cabernet-franc-magdalena-vyd-hermann-j-wiemer-2-2-2-2-2-2-2-4/"
-  },
-  {
-   "id": "hiruzta-hondarrabi-zuri-getariako-txakolina-2022",
-   "url": "https://assets.wine.com/winecom/image/upload/b8jqjfdykx4p3f8uj3pl.jpg",
-   "page": "https://www.wine.com/product/hiruzta-txakoli-2022/1253985"
-  },
-  {
-   "id": "hiruzta-getariako-txakolina-rosado-2024",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/97166_bottle.jpg.webp?itok=vEGrJBvj",
-   "page": "https://mtouton.com/products/spain/97166-2024/hiruzta-hondarrabi-zuri-beltza-getariako-txakolina"
-  },
-  {
-   "id": "inazio-urruzola-getariako-txakolina-2024",
-   "url": "https://static.wineaccess.com/media/optimized/images/products/2025/09/2024_Inazio_Urruzola_Blanco_Getariako_Txakolina_Spain_Bottleshot/6699fe4de66e67efa0cd267990631a80.png",
-   "page": "https://www.wineaccess.com/catalog/2024-inazio-urruzola-blanco-getariako-txakolina-spain_ba20e71e-83d4-4e99-9ff5-85b266e37bcf"
-  },
-  {
-   "id": "inspire-moore-rhythm-gruner-veltliner-2019",
-   "url": "https://www.marketviewliquor.com/mm5/graphics/00000001/INSPIREMOORERHYTHM.jpg",
-   "page": "https://www.marketviewliquor.com/product/inspire-moore-rhythm-gruner-veltliner-750-ml"
-  },
-  {
-   "id": "domaine-jean-manciat-macon-charnay-2023",
-   "url": "https://dandm.com/cdn/shop/files/f0abbd5e-e3be-48e7-8203-70e13adbf339_be72036f_c42b68fb1140614a56daf1a4f6e6e2d075b13adf_WIN-3181.png?v=1771891986",
-   "page": "https://dandm.com/products/manciat-macon-charnay-franclieu-2023"
-  },
-  {
-   "id": "jean-paul-brun-domaine-des-terres-dorees-cote-de-brouilly-20",
-   "url": "https://www.astorwines.com/images/items/30996.jpg",
-   "page": "https://astorwines.com/item/30996"
-  },
-  {
-   "id": "jolie-laide-barsotti-vineyard-rose-2024",
-   "url": "https://www.astorwines.com/images/items/52743.jpg",
-   "page": "https://www.astorwines.com/item/52743"
-  },
-  {
-   "id": "vermillion-by-helen-keplinger-red-blend-2022",
-   "url": "https://finevines.com/assets/img/wines/vermillion-helen-keplinger-wines-vermillion-red-blend-2022.jpg",
-   "page": "https://finevines.com/wines/vermillion-helen-keplinger-wines-vermillion-red-blend-2022/"
-  },
-  {
-   "id": "lakewood-vineyards-gigliotti-vineyards-pinot-gris-2023",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/04/d65e7a1-0-0.jpg",
-   "page": "https://www.saratogawine.com/product/lakewood-pinot-gris-2024-750ml/"
-  },
-  {
-   "id": "lakewood-vineyards-port-2020",
-   "url": "https://www.marketviewliquor.com/mm5/graphics/00000001/LAKEWOODPORT.jpg",
-   "page": "https://www.marketviewliquor.com/product/lakewood-vineyards-finger-lakes-port-750-ml"
+   "id": "millbrook-proprietors-special-reserve-chardonnay-2021",
+   "url": "https://www.saratogawine.com/wp-content/uploads/2024/02/53b1bfc-0-0.png",
+   "page": "https://www.saratogawine.com/product/millbrook-chardonnay-proprietors-special-reserve-2024-750ml/"
   }
  ]
 }
