@@ -1,122 +1,117 @@
 {
- "lamoreaux-landing-block-137-merlot-2021": {
+ "millbrook-pinot-noir-2024": {
   "ok": true,
-  "bytes": 25819,
+  "bytes": 24828,
+  "ext": ".jpg"
+ },
+ "domaine-eden-cabernet-sauvignon-2019": {
+  "ok": true,
+  "bytes": 363056,
+  "ext": ".jpg"
+ },
+ "domaine-eden-pinot-noir-2019": {
+  "ok": true,
+  "bytes": 348145,
+  "ext": ".jpg"
+ },
+ "nicolas-jay-own-rooted-pinot-noir-2022": {
+  "ok": true,
+  "bytes": 32454,
+  "ext": ".webp"
+ },
+ "domaine-olga-raffault-chinon-blanc-chenin-des-picasses-2021": {
+  "ok": true,
+  "bytes": 188924,
+  "ext": ".jpg"
+ },
+ "domaine-olga-raffault-chinon-les-picasses-2020": {
+  "ok": true,
+  "bytes": 85464,
+  "ext": ".webp"
+ },
+ "domaine-olga-raffault-chinon-les-picasses-2019": {
+  "ok": true,
+  "bytes": 20676,
+  "ext": ".jpg"
+ },
+ "osmote-riesling-2022": {
+  "ok": true,
+  "bytes": 16308,
+  "ext": ".webp"
+ },
+ "jayson-by-pahlmeyer-napa-valley-red-2021": {
+  "ok": true,
+  "bytes": 20520,
+  "ext": ".jpg"
+ },
+ "pardas-pur-xarello-2021": {
+  "ok": true,
+  "bytes": 192094,
   "ext": ".png"
  },
- "lamoreaux-landing-riesling-ice-wine-2019": {
+ "ravines-dry-riesling-2020": {
   "ok": true,
-  "bytes": 24025,
+  "bytes": 11267,
   "ext": ".jpg"
  },
- "lieb-cellars-estate-sauvignon-blanc-2023": {
+ "ravines-cabernet-franc-2022": {
   "ok": true,
-  "bytes": 232425,
+  "bytes": 30942,
+  "ext": ".jpg"
+ },
+ "red-tail-ridge-rtr-estate-vineyard-blaufrankisch-2023": {
+  "ok": true,
+  "bytes": 40876,
+  "ext": ".webp"
+ },
+ "rgny-sauvignon-blanc-semillon-2021": {
+  "ok": true,
+  "bytes": 1784,
+  "ext": ".webp"
+ },
+ "rgny-viognier-2021": {
+  "ok": true,
+  "bytes": 1570,
+  "ext": ".webp"
+ },
+ "rgny-scielo-sauvignon-blanc-2022": {
+  "ok": true,
+  "bytes": 45709,
+  "ext": ".jpg"
+ },
+ "rgny-scielo-rose": {
+  "ok": true,
+  "bytes": 1214,
+  "ext": ".webp"
+ },
+ "rgny-scielo-tinto-2019": {
+  "ok": true,
+  "bytes": 37068,
+  "ext": ".jpg"
+ },
+ "rombauer-twin-rivers-vineyard-el-dorado-zinfandel-2022": {
+  "ok": true,
+  "bytes": 31266,
   "ext": ".png"
  },
- "lieb-cellars-estate-merlot-2022": {
+ "saint-clair-family-estate-marlborough-sauvignon-blanc-2024": {
   "ok": true,
-  "bytes": 156133,
+  "bytes": 120816,
   "ext": ".png"
  },
- "living-roots-finger-lakes-pinot-gris-2021": {
+ "silver-thread-vineyard-finger-lakes-gewurztraminer-2021": {
   "ok": true,
-  "bytes": 30499,
+  "bytes": 11883,
   "ext": ".jpg"
  },
- "living-roots-finger-lakes-late-harvest-vidal-2019": {
+ "six-eighty-cellars-concrete-tulip-gruner-veltliner-2020": {
   "ok": true,
-  "bytes": 29076,
-  "ext": ".jpg"
- },
- "living-roots-finger-lakes-red-rizza-2022": {
-  "ok": true,
-  "bytes": 30181,
-  "ext": ".jpg"
- },
- "living-roots-finger-lakes-cabernet-franc-2023": {
-  "ok": true,
-  "bytes": 215470,
+  "bytes": 190647,
   "ext": ".png"
  },
- "living-roots-adelaide-hills-cabernet-tannat-2021": {
+ "six-eighty-cellars-chenin-blanc-2024": {
   "ok": true,
-  "bytes": 24299,
+  "bytes": 41823,
   "ext": ".jpg"
- },
- "living-roots-adelaide-hills-from-the-hills-shiraz-2020": {
-  "ok": true,
-  "bytes": 27295,
-  "ext": ".jpg"
- },
- "luke-wahluke-slope-merlot-2022": {
-  "ok": true,
-  "bytes": 2016,
-  "ext": ".webp"
- },
- "luke-wahluke-slope-cabernet-sauvignon-2021": {
-  "ok": true,
-  "bytes": 1956,
-  "ext": ".webp"
- },
- "luke-reserve-syrah-stone-tree-vineyard-2018": {
-  "ok": true,
-  "bytes": 2252,
-  "ext": ".webp"
- },
- "m-chapoutier-cote-rotie-les-becasses-2020": {
-  "ok": true,
-  "bytes": 2670,
-  "ext": ".webp"
- },
- "m-chapoutier-crozes-hermitage-sicamor-2023": {
-  "ok": true,
-  "bytes": 1267927,
-  "ext": ".png"
- },
- "maloof-pinot-gris-thistle-dundee-hills-2022": {
-  "ok": true,
-  "bytes": 23964,
-  "ext": ".webp"
- },
- "maloof-where-ya-pjs-at-2024": {
-  "ok": true,
-  "bytes": 34050,
-  "ext": ".webp"
- },
- "marco-sara-ribolla-gialla-friuli-colli-orientali-2023": {
-  "ok": true,
-  "bytes": 203259,
-  "ext": ".jpg"
- },
- "markus-molitor-haus-klosterberg-riesling-2023": {
-  "ok": true,
-  "bytes": 34454,
-  "ext": ".webp"
- },
- "massican-pinot-grigio-2024": {
-  "ok": true,
-  "bytes": 90676,
-  "ext": ".webp"
- },
- "merum-priorati-desti-2022": {
-  "ok": true,
-  "bytes": 2320,
-  "ext": ".webp"
- },
- "merum-priorati-inici-2022": {
-  "ok": true,
-  "bytes": 30328,
-  "ext": ".jpg"
- },
- "michele-chiarlo-le-orme-barbera-dasti-2022": {
-  "ok": true,
-  "bytes": 116377,
-  "ext": ".jpg"
- },
- "millbrook-proprietors-special-reserve-chardonnay-2021": {
-  "ok": true,
-  "bytes": 149266,
-  "ext": ".png"
  }
 }
