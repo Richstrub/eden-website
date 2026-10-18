@@ -1,271 +1,276 @@
 {
  "geocode": [
   {
-   "id": "lamoreaux-landing-block-137-merlot-2021",
-   "address": "9224 State Route 414, Lodi, NY 14860, USA",
-   "q2": "Lamoreaux Landing Wine Cellars, Lodi, New York"
-  },
-  {
-   "id": "lamoreaux-landing-riesling-ice-wine-2019",
-   "address": "9224 State Route 414, Lodi, NY 14860, USA",
-   "q2": "Lamoreaux Landing Wine Cellars, Lodi, New York"
-  },
-  {
-   "id": "lieb-cellars-estate-sauvignon-blanc-2023",
-   "address": "13050 Oregon Road, Cutchogue, NY 11935, USA",
-   "q2": "Lieb Cellars (Rooted North, formerly Suhru & Lieb Vineyards), Cutchogue, New York"
-  },
-  {
-   "id": "lieb-cellars-estate-merlot-2022",
-   "address": "13050 Oregon Road, Cutchogue, NY 11935, USA",
-   "q2": "Lieb Cellars (Rooted North, formerly Suhru & Lieb Vineyards), Cutchogue, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-pinot-gris-2021",
-   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
-   "q2": "Living Roots Wine & Co., Rochester, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-gewurztraminer-2020",
-   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
-   "q2": "Living Roots Wine & Co., Rochester, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-late-harvest-vidal-2019",
-   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
-   "q2": "Living Roots Wine & Co., Rochester, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-ramato-pinot-gris-2024",
-   "address": "8560 County Road 87, Hammondsport, NY 14840, USA",
-   "q2": "Living Roots Wine & Co., Hammondsport, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-red-rizza-2022",
-   "address": "1255 University Ave, Suite 100, Rochester, NY 14607, USA",
-   "q2": "Living Roots Wine & Co., Rochester, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-blaufrankisch-2024",
-   "address": "8560 County Road 87, Hammondsport, NY 14840, USA",
-   "q2": "Living Roots Wine & Co., Hammondsport, New York"
-  },
-  {
-   "id": "living-roots-finger-lakes-cabernet-franc-2023",
-   "address": "8560 County Road 87, Hammondsport, NY 14840, USA",
-   "q2": "Living Roots Wine & Co., Hammondsport, New York"
-  },
-  {
-   "id": "living-roots-adelaide-hills-cabernet-tannat-2021",
-   "address": "159 Tynan Road, Kuitpo, SA 5201, Australia",
-   "q2": "Living Roots Wine & Co., Kuitpo, Adelaide Hills"
-  },
-  {
-   "id": "living-roots-adelaide-hills-from-the-hills-shiraz-2020",
-   "address": "159 Tynan Road, Kuitpo, SA 5201, Australia",
-   "q2": "Living Roots Wine & Co., Kuitpo, Adelaide Hills"
-  },
-  {
-   "id": "luke-wahluke-slope-merlot-2022",
-   "address": "Evergreen Family Wines production facility, Mattawa, WA 99349, USA",
-   "q2": "LUKE, Mattawa, Washington"
-  },
-  {
-   "id": "luke-wahluke-slope-cabernet-sauvignon-2021",
-   "address": "Evergreen Family Wines production facility, Mattawa, WA 99349, USA",
-   "q2": "LUKE, Mattawa, Washington"
-  },
-  {
-   "id": "luke-reserve-syrah-stone-tree-vineyard-2018",
-   "address": "Evergreen Family Wines production facility, Mattawa, WA 99349, USA",
-   "q2": "LUKE, Mattawa, Washington"
-  },
-  {
-   "id": "m-chapoutier-cote-rotie-les-becasses-2020",
-   "address": "18 Avenue du Docteur Paul Durand, 26600 Tain-l\u2019Hermitage, France",
-   "q2": "M. Chapoutier, Tain-l\u2019Hermitage, France"
-  },
-  {
-   "id": "m-chapoutier-crozes-hermitage-sicamor-2023",
-   "address": "18 Avenue du Docteur Paul Durand, 26600 Tain-l\u2019Hermitage, France",
-   "q2": "M. Chapoutier, Tain-l\u2019Hermitage, France"
-  },
-  {
-   "id": "maloof-fancy-free-white-blend-nemarniki-vineyard-2023",
-   "address": "No Clos Radio, 6200 NW Gales Creek Rd, Forest Grove, OR 97116, USA",
-   "q2": "Maloof Wines (Ross & Bee Maloof), Forest Grove, Oregon"
-  },
-  {
-   "id": "maloof-pinot-gris-thistle-dundee-hills-2022",
-   "address": "No Clos Radio, 6200 NW Gales Creek Rd, Forest Grove, OR 97116, USA",
-   "q2": "Maloof Wines (Ross & Bee Maloof), Forest Grove, Oregon"
-  },
-  {
-   "id": "maloof-where-ya-pjs-at-2024",
-   "address": "No Clos Radio, 6200 NW Gales Creek Rd, Forest Grove, OR 97116, USA",
-   "q2": "Maloof Wines (Ross & Bee Maloof), Forest Grove, Oregon"
-  },
-  {
-   "id": "marco-sara-ribolla-gialla-friuli-colli-orientali-2023",
-   "address": "Via dei Monti 3a, Savorgnano del Torre, 33040 Povoletto UD, Italy",
-   "q2": "Marco Sara, Savorgnano del Torre, Friuli"
-  },
-  {
-   "id": "markus-molitor-haus-klosterberg-riesling-2023",
-   "address": "Haus Klosterberg, 54470 Bernkastel-Wehlen, Germany",
-   "q2": "Weingut Markus Molitor, Haus Klosterberg, Wehlen"
-  },
-  {
-   "id": "massican-pinot-grigio-2024",
-   "address": "Napa, CA 94558, USA (Massican has no winery or tasting room of its own; no public street address found)",
-   "q2": "Massican, Napa, California"
-  },
-  {
-   "id": "merum-priorati-desti-2022",
-   "address": "Carretera a Falset (T-740) km 9.3, 43739 Porrera, Tarragona, Spain",
-   "q2": "Merum Priorati, Porrera, Priorat"
-  },
-  {
-   "id": "merum-priorati-inici-2022",
-   "address": "Carretera a Falset (T-740) km 9.3, 43739 Porrera, Tarragona, Spain",
-   "q2": "Merum Priorati, Porrera, Priorat"
-  },
-  {
-   "id": "michele-chiarlo-le-orme-barbera-dasti-2022",
-   "address": "Strada Statale Nizza\u2013Canelli 99, 14042 Calamandrana AT, Italy",
-   "q2": "Michele Chiarlo, Calamandrana, Piedmont"
-  },
-  {
-   "id": "millbrook-proprietors-special-reserve-chardonnay-2021",
-   "address": "26 Wing Road, Millbrook, NY 12545, USA",
+   "id": "millbrook-hunt-country-red",
+   "address": "26 Wing Rd, Millbrook, NY 12545, USA",
    "q2": "Millbrook Vineyards & Winery, Millbrook, New York"
   },
   {
-   "id": "millbrook-proprietors-special-reserve-tocai-friulano-2023",
-   "address": "26 Wing Road, Millbrook, NY 12545, USA",
+   "id": "millbrook-pinot-noir-2024",
+   "address": "26 Wing Rd, Millbrook, NY 12545, USA",
    "q2": "Millbrook Vineyards & Winery, Millbrook, New York"
+  },
+  {
+   "id": "domaine-eden-cabernet-sauvignon-2019",
+   "address": "23000 Congress Springs Rd, Saratoga, CA 95070, USA",
+   "q2": "Mount Eden Vineyards (Domaine Eden), Saratoga, California"
+  },
+  {
+   "id": "domaine-eden-pinot-noir-2019",
+   "address": "23000 Congress Springs Rd, Saratoga, CA 95070, USA",
+   "q2": "Mount Eden Vineyards (Domaine Eden), Saratoga, California"
+  },
+  {
+   "id": "nicolas-jay-own-rooted-pinot-noir-2022",
+   "address": "11905 NE Dudley Rd, Newberg, OR 97132, USA",
+   "q2": "Nicolas-Jay, Dundee Hills, Oregon"
+  },
+  {
+   "id": "domaine-olga-raffault-chinon-blanc-chenin-des-picasses-2021",
+   "address": "1 rue des Caillis, 37420 Savigny-en-V\u00e9ron, France",
+   "q2": "Domaine Olga Raffault, Savigny-en-V\u00e9ron, France"
+  },
+  {
+   "id": "domaine-olga-raffault-chinon-les-picasses-2020",
+   "address": "1 rue des Caillis, 37420 Savigny-en-V\u00e9ron, France",
+   "q2": "Domaine Olga Raffault, Savigny-en-V\u00e9ron, France"
+  },
+  {
+   "id": "domaine-olga-raffault-chinon-les-picasses-2019",
+   "address": "1 rue des Caillis, 37420 Savigny-en-V\u00e9ron, France",
+   "q2": "Domaine Olga Raffault, Savigny-en-V\u00e9ron, France"
+  },
+  {
+   "id": "osmote-riesling-2022",
+   "address": "3879 Marcia Ln, Burdett, NY 14818, USA",
+   "q2": "Osmote, Burdett, New York"
+  },
+  {
+   "id": "osmote-seneca-lake-chardonnay-2024",
+   "address": "3879 Marcia Ln, Burdett, NY 14818, USA",
+   "q2": "Osmote, Burdett, New York"
+  },
+  {
+   "id": "jayson-by-pahlmeyer-napa-valley-red-2021",
+   "address": "1761 Atlas Peak Rd, Napa, CA 94558, USA",
+   "q2": "Pahlmeyer, Napa, California"
+  },
+  {
+   "id": "pardas-pur-xarello-2021",
+   "address": "Finca Can Comas, s/n, 08775 Torrelavit, Barcelona, Spain",
+   "q2": "Celler Pardas, Torrelavit, Catalonia"
+  },
+  {
+   "id": "pellegrini-vineyards-stainless-steel-chardonnay-2020",
+   "address": "23005 Main Rd, Cutchogue, NY 11935, USA",
+   "q2": "Pellegrini Vineyards, Cutchogue, New York"
+  },
+  {
+   "id": "ravines-dry-riesling-2020",
+   "address": "400 Barracks Rd, Geneva, NY 14456, USA",
+   "q2": "Ravines Wine Cellars, Geneva, New York"
+  },
+  {
+   "id": "ravines-cabernet-franc-2022",
+   "address": "400 Barracks Rd, Geneva, NY 14456, USA",
+   "q2": "Ravines Wine Cellars, Geneva, New York"
+  },
+  {
+   "id": "red-tail-ridge-rtr-estate-vineyard-blaufrankisch-2023",
+   "address": "846 State Route 14, Penn Yan, NY 14527, USA",
+   "q2": "Red Tail Ridge Winery, Penn Yan, New York"
+  },
+  {
+   "id": "rgny-sauvignon-blanc-semillon-2021",
+   "address": "6025 Sound Ave, Riverhead, NY 11901, USA",
+   "q2": "RGNY, Riverhead, New York"
+  },
+  {
+   "id": "rgny-viognier-2021",
+   "address": "6025 Sound Ave, Riverhead, NY 11901, USA",
+   "q2": "RGNY, Riverhead, New York"
+  },
+  {
+   "id": "rgny-scielo-sauvignon-blanc-2022",
+   "address": "6025 Sound Ave, Riverhead, NY 11901, USA",
+   "q2": "RGNY, Riverhead, New York"
+  },
+  {
+   "id": "rgny-scielo-rose",
+   "address": "6025 Sound Ave, Riverhead, NY 11901, USA",
+   "q2": "RGNY, Riverhead, New York"
+  },
+  {
+   "id": "rgny-scielo-tinto-2019",
+   "address": "6025 Sound Ave, Riverhead, NY 11901, USA",
+   "q2": "RGNY, Riverhead, New York"
+  },
+  {
+   "id": "rombauer-twin-rivers-vineyard-el-dorado-zinfandel-2022",
+   "address": "12225 Steiner Rd, Plymouth, CA 95669, USA",
+   "q2": "Rombauer Vineyards, Plymouth, California"
+  },
+  {
+   "id": "roncus-friulano-isonzo-del-friuli-2016",
+   "address": "Via Mazzini 26, 34070 Capriva del Friuli (GO), Italy",
+   "q2": "Ronc\u00fas, Capriva del Friuli, Italy"
+  },
+  {
+   "id": "ryan-william-vineyard-finger-lakes-chardonnay-2019",
+   "address": "4156 NY-414, Burdett, NY 14818, USA",
+   "q2": "Ryan William Vineyard, Burdett, New York"
+  },
+  {
+   "id": "ryan-william-vineyard-seneca-lake-dry-riesling-2019",
+   "address": "4156 NY-414, Burdett, NY 14818, USA",
+   "q2": "Ryan William Vineyard, Burdett, New York"
+  },
+  {
+   "id": "ryan-william-vineyard-seneca-lake-dry-gewurztraminer-2017",
+   "address": "4156 NY-414, Burdett, NY 14818, USA",
+   "q2": "Ryan William Vineyard, Burdett, New York"
+  },
+  {
+   "id": "ryan-william-vineyard-finger-lakes-merlot-2020",
+   "address": "4156 NY-414, Burdett, NY 14818, USA",
+   "q2": "Ryan William Vineyard, Burdett, New York"
+  },
+  {
+   "id": "saint-clair-family-estate-marlborough-sauvignon-blanc-2024",
+   "address": "13 Selmes Road, RD3, Rapaura, Blenheim 7273, New Zealand",
+   "q2": "Saint Clair Family Estate, Rapaura, Marlborough"
+  },
+  {
+   "id": "silver-thread-vineyard-finger-lakes-gewurztraminer-2021",
+   "address": "1401 Caywood Rd, Lodi, NY 14860, USA",
+   "q2": "Silver Thread Vineyard, Lodi, New York"
+  },
+  {
+   "id": "six-eighty-cellars-concrete-tulip-gruner-veltliner-2020",
+   "address": "3050 Swick Rd, Ovid, NY 14521, USA",
+   "q2": "Six Eighty Cellars, Ovid, New York"
+  },
+  {
+   "id": "six-eighty-cellars-chenin-blanc-2024",
+   "address": "3050 Swick Rd, Ovid, NY 14521, USA",
+   "q2": "Six Eighty Cellars, Ovid, New York"
   }
  ],
  "images": [
   {
-   "id": "lamoreaux-landing-block-137-merlot-2021",
-   "url": "https://cellar.db.wine/attachments/5fc75baf-b35d-4f64-9989-705ef41ba197/972a195515478366d0fcf8f6284a437eb852e98b0d001026df24f8d674d14c8c.png",
-   "page": "https://newyork.guides.winefolly.com/wineries/lamoreaux-landing-wine-cellars/wines/merlot-block-137/"
+   "id": "millbrook-pinot-noir-2024",
+   "url": "https://www.saratogawine.com/wp-content/uploads/2024/01/0c3b373-0-0.jpg",
+   "page": "https://www.saratogawine.com/Millbrook/"
   },
   {
-   "id": "lamoreaux-landing-riesling-ice-wine-2019",
-   "url": "https://cellar.db.wine/attachments/3191cdc0-9809-45a0-8392-788d7d14e212/d6122d7d338d8a10691f001865fa1e306956d3552399cfeb4dd3c4f62f12172e.jpg",
-   "page": "https://newyork.guides.winefolly.com/wineries/lamoreaux-landing-wine-cellars/wines/riesling-ice-wine/"
+   "id": "domaine-eden-cabernet-sauvignon-2019",
+   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Domaine_Eden_Cab.jpg?itok=VamN1Fgn",
+   "page": "https://www.bowlerwine.com/taxonomy/term/1607"
   },
   {
-   "id": "lieb-cellars-estate-sauvignon-blanc-2023",
-   "url": "https://cellar.db.wine/attachments/88db305a-741d-4fac-8ccd-f819662ec9d0/fafb45d188c2b1857066de738d7c9d22c05ff594a325f039dafb06a3c7bfd75f.png",
-   "page": "https://suhru.db.wine/wines/WN-ISQOURDTN/"
+   "id": "domaine-eden-pinot-noir-2019",
+   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Domaine_Eden_PN.jpg?itok=1w7gm79B",
+   "page": "https://www.bowlerwine.com/taxonomy/term/1607"
   },
   {
-   "id": "lieb-cellars-estate-merlot-2022",
-   "url": "https://cellar.db.wine/attachments/4aeeb9ee-bb2a-4f92-9b47-3a24d12f8689/815c2490a872c8d01f870122dc7c67cf3a01b0dfda51dd3c91435ea6f1c83c5e.png",
-   "page": "https://suhru.db.wine/wines/WN-EAMJFVIRT/"
+   "id": "nicolas-jay-own-rooted-pinot-noir-2022",
+   "url": "https://hedonism.co.uk/cdn/shop/files/HED28014.jpg?v=1781902197&width=3840",
+   "page": "https://hedonism.co.uk/product/nicolas-jay-own-rooted-pinot-noir-2022"
   },
   {
-   "id": "living-roots-finger-lakes-pinot-gris-2021",
-   "url": "https://cellar.db.wine/attachments/0cd37be5-29cb-469e-919b-d1959852856a/021546671614b4e6c18c6e0d92a7956e1d79126bb78a63c2d94cc5a74c9f3e91.jpg",
-   "page": "https://living-roots.db.wine/wines/WN-ZCUSERAKI/"
+   "id": "domaine-olga-raffault-chinon-blanc-chenin-des-picasses-2021",
+   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/Le_Chenin_des_Picasses_0.jpg?itok=IF1R2HRZ",
+   "page": "https://www.bowlerwine.com/producer/raffault-domaine-olga"
   },
   {
-   "id": "living-roots-finger-lakes-late-harvest-vidal-2019",
-   "url": "https://cellar.db.wine/attachments/6b3ea0e8-9d5e-4aef-96b6-9e3c69db91e3/19c7abba35ced2cb6f249b9260d2cc1c1c7549c30c0ef02280d32880da6b1d17.jpg",
-   "page": "https://living-roots.db.wine/wines/WN-VYZQBUWTA/"
+   "id": "domaine-olga-raffault-chinon-les-picasses-2020",
+   "url": "https://nyc.flatiron-wines.com/cdn/shop/files/Olga-Raffault-Chinon-Les-Picasses-2020-Red-Wine-Flatiron-Wines-Spirits-New-York.jpg?v=1768402403&width=1214",
+   "page": "https://nyc.flatiron-wines.com/products/olga-raffault-chinon-les-picasses-2020-750ml"
   },
   {
-   "id": "living-roots-finger-lakes-red-rizza-2022",
-   "url": "https://cellar.db.wine/attachments/a96c1eac-7d2d-4220-960c-2eb29b9e5059/a5ea5ba61738211c87c2f3a0ed4dcf79e800d872c490d421a5354fd038afdb1c.jpg",
-   "page": "https://living-roots.db.wine/wines/WN-CFEBIAKYT/"
+   "id": "domaine-olga-raffault-chinon-les-picasses-2019",
+   "url": "https://louisdressner.com/uploads/images/wine/19_May_2020/1945/17/3b/173b933308d18ebfdf414b50b7d6f0b3.jpg",
+   "page": "https://louisdressner.com/producers/Raffault"
   },
   {
-   "id": "living-roots-finger-lakes-cabernet-franc-2023",
-   "url": "https://cellar.db.wine/attachments/cde27bca-502d-400e-9ac6-6a9bd8bebf98/6a3ef249c9d8e840defcd8e675d8500047dabc157c0d1f0b0a5414e45029fac8.png",
-   "page": "https://living-roots.db.wine/wines/WN-BMDKZCXIF/"
+   "id": "osmote-riesling-2022",
+   "url": "https://www.totalwine.com/dynamic/x1000,sq/images/2126273728/2126273728-1-fr.png",
+   "page": "https://www.totalwine.com/wine/white-wine/chardonnay/osmote-riesling-seneca-lake/p/2126273728"
   },
   {
-   "id": "living-roots-adelaide-hills-cabernet-tannat-2021",
-   "url": "https://cellar.db.wine/attachments/0e67dd2e-94ae-4372-bd37-17a7c560ef98/3dcb8df76411f5adeb3eb8dedc44cb2eee2e904eb34fe945c7b934a374404373.jpg",
-   "page": "https://living-roots.db.wine/wines/WN-CXLWTZEUB/"
+   "id": "jayson-by-pahlmeyer-napa-valley-red-2021",
+   "url": "https://assets.wine.com/winecom/image/upload/cduvshcljfaw4idztbjb.jpg",
+   "page": "https://www.wine.com/product/pahlmeyer-jayson-red-2021/1487100"
   },
   {
-   "id": "living-roots-adelaide-hills-from-the-hills-shiraz-2020",
-   "url": "https://cellar.db.wine/attachments/85dbcf83-76e7-4e4c-8c02-21da6c003558/d768b28f90adcb2f95cd7f610176061d12a29aed231518fc498f35a93fa59b74.jpg",
-   "page": "https://living-roots.db.wine/wines/WN-YPWKLJOHZ/"
+   "id": "pardas-pur-xarello-2021",
+   "url": "https://www.bodeboca.pt/sites/default/files/wines/2025-05/bot-pur-xarel-lo-2021.png",
+   "page": "https://www.bodeboca.pt/vinho/pur-xarello-2021"
   },
   {
-   "id": "luke-wahluke-slope-merlot-2022",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/13806_bottle.jpg.webp?itok=uWHv8VKc",
-   "page": "https://www.mtouton.com/products/usa/washington/whaluke-slope/13806-2022/luke-wines-merlot-wahluke-slope"
+   "id": "ravines-dry-riesling-2020",
+   "url": "https://media.liquormax.com/eq4rxnkvcouvc1anfqqhe/ravines-dry-riesling.jpg",
+   "page": "https://www.lisasliquorbarn.com/wine/white-wine/riesling/ravines-dry-riesling-750ml"
   },
   {
-   "id": "luke-wahluke-slope-cabernet-sauvignon-2021",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/13779_bottle.jpg.webp?itok=Xoe4ViH2",
-   "page": "https://www.mtouton.com/products/usa/washington/columbia-valley/13779-2021/luke-wines-cabernet-sauvignon-wahluke-slope"
+   "id": "ravines-cabernet-franc-2022",
+   "url": "https://assets.wine.com/winecom/image/upload/pkwgzlcdmpk34sj4hmjq.jpg",
+   "page": "https://www.wine.com/product/ravines-cabernet-franc-2022/1997358"
   },
   {
-   "id": "luke-reserve-syrah-stone-tree-vineyard-2018",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/72724_bottle.jpg.webp?itok=V6RqP8mW",
-   "page": "https://www.mtouton.com/products/usa/washington/columbia-valley/72724-2018/luke-wines-syrah-reserve"
+   "id": "red-tail-ridge-rtr-estate-vineyard-blaufrankisch-2023",
+   "url": "https://nyc.flatiron-wines.com/cdn/shop/files/Red-Tail-Ridge-Finger-Lakes-Blaufrankisch-RTR-Vineyard-2022-Red-Wine-Flatiron-Wines-Spirits-New-York_6730dc6f.jpg?v=1768493185&width=1500",
+   "page": "https://nyc.flatiron-wines.com/products/red-tail-ridge-finger-lakes-blaufrankisch-2022-750ml"
   },
   {
-   "id": "m-chapoutier-cote-rotie-les-becasses-2020",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/14336_bottle.jpg.webp?itok=vLYAw0CP",
-   "page": "https://www.mtouton.com/products/france/rhone-valley/cote-rotie/14336-2020/chapoutier-cote-rotie-les-becasses"
+   "id": "rgny-sauvignon-blanc-semillon-2021",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/14755_bottle.jpg.webp?itok=LLHY49e7",
+   "page": "https://mtouton.com/products/usa/new-york/14755-2021/rgny-sauvignon-blanc-semillon"
   },
   {
-   "id": "m-chapoutier-crozes-hermitage-sicamor-2023",
-   "url": "https://www.foliowine.com/wp-content/uploads/2021/08/Sicamore-Red-NV-Bottle.png",
-   "page": "https://www.foliowine.com/wine/m-chapoutier-sicamor"
+   "id": "rgny-viognier-2021",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/14753_bottle.jpg.webp?itok=nnhEeATs",
+   "page": "https://www.mtouton.com/products/usa/new-york/north-fork-long-island/14753-2021/rgny-viognier"
   },
   {
-   "id": "maloof-pinot-gris-thistle-dundee-hills-2022",
-   "url": "https://primalwine.com/cdn/shop/files/maloof-thistle-pinot-gris-oregon-natural-wine-primal-wine.jpg?v=1718498773&width=1200",
-   "page": "https://primalwine.com/products/thistle-pinot-gris-maloof"
+   "id": "rgny-scielo-sauvignon-blanc-2022",
+   "url": "https://assets.wine.com/winecom/image/upload/slaoszgsf1rx0anes4sx.jpg",
+   "page": "https://www.wine.com/list/wine/rgny/other u.s./james-suckling/7155-124563-106840-208"
   },
   {
-   "id": "maloof-where-ya-pjs-at-2024",
-   "url": "https://primalwine.com/cdn/shop/files/where-ya-pjs-at-pinot-gris-maloof-deslop.png?v=1784585058&width=1200",
-   "page": "https://primalwine.com/products/where-ya-pjs-at-pinot-gris-maloof"
+   "id": "rgny-scielo-rose",
+   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/14796_bottle.jpg.webp?itok=nh3-XI47",
+   "page": "https://mtouton.com/products/usa/new-york/14796-2022/rgny-scielo-rose"
   },
   {
-   "id": "marco-sara-ribolla-gialla-friuli-colli-orientali-2023",
-   "url": "https://www.bowlerwine.com/sites/default/files/styles/100_pct/public/wine/field_content_image/RIBOLLA_GIALLA_Front-1.jpg?itok=vFhgNJsz",
-   "page": "https://www.bowlerwine.com/producer/marco-sara"
+   "id": "rgny-scielo-tinto-2019",
+   "url": "https://assets.wine.com/winecom/image/upload/vtfznmcawpfewhfqeyad.jpg",
+   "page": "https://www.wine.com/list/wine/rgny/other u.s./vintage-2019/7155-124563-106840-384"
   },
   {
-   "id": "markus-molitor-haus-klosterberg-riesling-2023",
-   "url": "https://www.gourmethunters.com/web/image/product.template/85408/image_1024?unique=229575f",
-   "page": "https://www.gourmethunters.com/en_CH/Markus+Molitor+Haus+Klosterberg+Riesling+2023"
+   "id": "rombauer-twin-rivers-vineyard-el-dorado-zinfandel-2022",
+   "url": "https://www.saratogawine.com/wp-content/uploads/2026/07/cb158fa.png",
+   "page": "https://www.saratogawine.com/product/rombauer-vineyards-zinfandel-twin-rivers-vineyard-2022-750ml/"
   },
   {
-   "id": "massican-pinot-grigio-2024",
-   "url": "https://sf.flatiron-wines.com/cdn/shop/files/Bottle-of-Massican-Pinot-Grigio-2024-White-Wine-Flatiron-SF_f1e6e8a8.jpg?v=1772751681&width=1500",
-   "page": "https://sf.flatiron-wines.com/products/massican-pinot-grigio-2024-750ml"
+   "id": "saint-clair-family-estate-marlborough-sauvignon-blanc-2024",
+   "url": "https://d3ndhk0owogeeq.cloudfront.net/images/c_220x790_pbw---saint-clair-sauvignon-blanc-origin-18.png",
+   "page": "https://frechette.kork.ca/qc/en/our-wineries/saint-clair-family-estate/origin-sauvignon-blanc/2024/10382639"
   },
   {
-   "id": "merum-priorati-desti-2022",
-   "url": "https://www.mtouton.com/sites/default/files/styles/products_image/public/infosys/bottles/97280_2021_bottle.jpg.webp?itok=r-qi9I0T",
-   "page": "https://www.mtouton.com/products/spain/catalunya/priorat/97280-2022/merum-priorati-priorat-desti"
+   "id": "silver-thread-vineyard-finger-lakes-gewurztraminer-2021",
+   "url": "https://assets.wine.com/winecom/image/upload/s3snf2guikiw6p8l8myb.jpg",
+   "page": "https://www.wine.com/product/silver-thread-gewurztraminer-2021/1000256"
   },
   {
-   "id": "merum-priorati-inici-2022",
-   "url": "https://assets.wine.com/winecom/image/upload/d3oogrv723xftdsbafeb.jpg",
-   "page": "https://www.wine.com/product/merum-priorati-inici-2022/4120071"
+   "id": "six-eighty-cellars-concrete-tulip-gruner-veltliner-2020",
+   "url": "https://cellar.db.wine/attachments/077b00a7-66ed-4b76-a30b-a21366c14c30/e5b63f59a3b91b6b9b588a9f6b2f4d078cee1cb08ce697da94dc418063a8ed53.png",
+   "page": "https://newyork.guides.winefolly.com/wineries/six-eighty-cellars/wines/gruner-veltliner-concrete-tulip/"
   },
   {
-   "id": "michele-chiarlo-le-orme-barbera-dasti-2022",
-   "url": "https://www.superiore.de/out/pictures/generated/product/1/05222722/normal/xl/michele-chiarlo-piemont-le-orme-barbera-d-asti-docg-2022-05222722.jpg",
-   "page": "https://www.superiore.de/en/wine/piedmont/michele-chiarlo/le-orme-barbera-d-asti-docg-2022.html"
-  },
-  {
-   "id": "millbrook-proprietors-special-reserve-chardonnay-2021",
-   "url": "https://www.saratogawine.com/wp-content/uploads/2024/02/53b1bfc-0-0.png",
-   "page": "https://www.saratogawine.com/product/millbrook-chardonnay-proprietors-special-reserve-2024-750ml/"
+   "id": "six-eighty-cellars-chenin-blanc-2024",
+   "url": "https://www.marketviewliquor.com/mm5/graphics/00000001/SIXEIGHTYCELLARSCHENINBLNC.jpg",
+   "page": "https://www.marketviewliquor.com/product/six-eighty-cellars-chenin-blanc-750ml"
   }
  ]
 }
