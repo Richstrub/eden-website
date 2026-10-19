@@ -1,0 +1,49 @@
+[
+ {
+  "id": "wester-ross-salmon",
+  "q": "Ardmair, Ullapool, IV26 2TN, United Kingdom",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 57.9351683,
+    "lng": -5.1965202,
+    "name": "Ardmair Point Touring Park, A835, Morefield, Ullapool, Highland, Alba / Scotland, IV26 2TN, United Kingdom",
+    "type": "camp_site",
+    "class": "tourism"
+   },
+   {
+    "lat": 57.9345731,
+    "lng": -5.196637,
+    "name": "Ardmair Point Cafe, A835, Morefield, Ullapool, Highland, Alba / Scotland, IV26 2TN, United Kingdom",
+    "type": "restaurant",
+    "class": "amenity"
+   }
+  ]
+ },
+ {
+  "id": "wester-ross-salmon",
+  "q": "Ardmair, Ullapool, IV26 2TN, United Kingdom",
+  "provider": "census",
+  "results": []
+ },
+ {
+  "id": "wester-ross-salmon",
+  "q": "Ardmair, Highland, Scotland",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 57.9328174,
+    "lng": -5.1949881,
+    "name": "Ardmair, Highland, Alba / Scotland, IV26 2TN, United Kingdom",
+    "type": "hamlet",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "wester-ross-salmon",
+  "q": "Ardmair, Highland, Scotland",
+  "provider": "census",
+  "results": []
+ }
+]
