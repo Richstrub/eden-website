@@ -17,3 +17,9 @@ To add regions:
 
 Needs numpy, scipy, matplotlib and Pillow. Map data © OpenStreetMap contributors (ODbL); elevation: Mapzen /
 AWS Terrain Tiles.
+
+## Sea lochs and fjords (coastline from OpenStreetMap)
+Where the elevation data misses narrow sea lochs (e.g. Loch Broom in Wester Ross), give the region
+`"sea_mask": "data/<id>/sea.npy"` and `"sea_seeds": [[lat, lng], …]` (points in open water), and run
+`python3 coast.py regions.json` after `fetch_data.py`: it draws OSM's coastline and flood-fills the sea from the seeds.
+`"close"` / `"open"` (default 10 / 4) set how much the elevation-based coastline is smoothed.

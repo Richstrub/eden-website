@@ -13,7 +13,7 @@ optional: sea (name for open water), sea_level (metres; land below it counts as 
 Usage: python3 tools/wine-map/region_maps.py regions.json <data folder from fetch_data.py> <out folder> [ids…]
 Needs numpy, scipy, matplotlib and Pillow.
 """
-import json, math, os, sys
+import json, os, math, os, sys
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage
@@ -108,8 +108,9 @@ def paint(r, dem, rivers, lakes_raw, out_jpg):
   P = 40   # work on an edge-padded copy so the map's border doesn't read as a coastline
   dp = np.pad(dem, P, mode='edge')
   land = ndimage.gaussian_filter((dp > sl).astype(float), 3.5) > 0.5
-  land = ndimage.binary_closing(land, iterations=10)
-  land = ndimage.binary_opening(land, iterations=4) | (dp > sl + 6)
+  ci, oi = r.get('close', 10), r.get('open', 4)   # smaller numbers keep narrow sea lochs and fjords open
+  land = ndimage.binary_closing(land, iterations=ci) if ci else land
+  land = (ndimage.binary_opening(land, iterations=oi) if oi else land) | (dp > sl + 6)
   land = ndimage.binary_fill_holes(land)[P:-P, P:-P]
   lab, n = ndimage.label(~land)
   if n > 1:   # keep only open water that is big or touches the edge; the rest is land below sea level
@@ -118,6 +119,8 @@ def paint(r, dem, rivers, lakes_raw, out_jpg):
     for k in range(1, n + 1):
       if k not in edge and sizes[k - 1] < 0.01 * W_PX * H_PX: land[lab == k] = True
   sea = ~land
+  if r.get('sea_mask') and os.path.exists(r['sea_mask']):   # coastline from OpenStreetMap (tmp/coast.py)
+    sea = np.load(r['sea_mask']); land = ~sea
   # lakes (named OSM water bigger than a speck at this scale)
   lake_mask = Image.new('L', (W_PX, H_PX), 0); dr = ImageDraw.Draw(lake_mask); lakes = []
   for name, rs in lakes_raw:
