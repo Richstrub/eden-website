@@ -34,6 +34,7 @@ data/langhe-piedmont 99 tiles 837191 osm
 data/lanzarote 63 tiles 62955 osm
 data/lazio 88 tiles 573059 osm
 data/long-island 88 tiles 1221239 osm
+data/manhattan 88 tiles 845660 osm
 data/marlborough 80 tiles 1166558 osm
 data/medoc 108 tiles 4063229 osm
 data/mendoza 63 tiles 453783 osm
