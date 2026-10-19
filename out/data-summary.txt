@@ -8,11 +8,13 @@ data/brooklyn-new-york-city 80 tiles 2564390 osm
 data/cahors-the-lot-valley 88 tiles 817728 osm
 data/calabria 80 tiles 197439 osm
 data/capital-region 70 tiles 3098289 osm
+data/casco-bay 80 tiles 2818344 osm
 data/central-new-york 70 tiles  osm
 data/central-valleys-of-oaxaca 54 tiles 505333 osm
 data/cognac 88 tiles 1603655 osm
 data/columbia-valley-washington 88 tiles 563894 osm
 data/cote-de-beaune 117 tiles 2449577 osm
+data/eastern-lake-ontario 80 tiles 3123505 osm
 data/elqui-valley 70 tiles 304209 osm
 data/emilia-romagna 80 tiles 1034859 osm
 data/finger-lakes 48 tiles 1673346 osm
@@ -62,6 +64,7 @@ data/touraine-loire-valley-2 99 tiles 2014586 osm
 data/trentino 99 tiles 2045779 osm
 data/uco-valley 63 tiles 322715 osm
 data/wairarapa-new-zealand 80 tiles 1315552 osm
+data/wayne-county-ohio 80 tiles 1044210 osm
 data/western-new-york 80 tiles 782012 osm
 data/western-sicily 70 tiles 299398 osm
 data/willamette-valley 120 tiles 2433199 osm
