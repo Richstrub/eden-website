@@ -1,46 +1,16 @@
 [
  {
-  "id": "eastern-lake-ontario",
-  "title": "Eastern Lake Ontario",
-  "sub": "Oswego County \u00b7 New York",
+  "id": "atlanta",
+  "title": "Atlanta",
+  "sub": "Georgia",
   "bbox": [
-   -76.41684,
-   43.367,
-   -75.62316,
-   43.753
+   -84.74606,
+   33.607,
+   -84.05394,
+   33.993
   ],
   "members": [
-   "grindstone-farm"
-  ],
-  "sea": "Lake Ontario"
- },
- {
-  "id": "wayne-county-ohio",
-  "title": "Wayne County",
-  "sub": "Ohio",
-  "bbox": [
-   -82.31988,
-   40.607,
-   -81.56012,
-   40.993
-  ],
-  "members": [
-   "certified-angus-beef"
+   "grills-by-demant"
   ]
- },
- {
-  "id": "casco-bay",
-  "title": "Casco Bay",
-  "sub": "Portland \u00b7 Maine",
-  "bbox": [
-   -70.6175,
-   43.467,
-   -69.8225,
-   43.853
-  ],
-  "members": [
-   "browne-trading-co"
-  ],
-  "sea": "Casco Bay"
  }
 ]
