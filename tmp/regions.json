@@ -12,6 +12,9 @@
   "members": [
    "wester-ross-salmon"
   ],
-  "sea": "The Minch"
+  "sea": "The Minch",
+  "sea_level": 3,
+  "close": 2,
+  "open": 2
  }
 ]

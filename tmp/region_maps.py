@@ -108,8 +108,9 @@ def paint(r, dem, rivers, lakes_raw, out_jpg):
   P = 40   # work on an edge-padded copy so the map's border doesn't read as a coastline
   dp = np.pad(dem, P, mode='edge')
   land = ndimage.gaussian_filter((dp > sl).astype(float), 3.5) > 0.5
-  land = ndimage.binary_closing(land, iterations=10)
-  land = ndimage.binary_opening(land, iterations=4) | (dp > sl + 6)
+  ci, oi = r.get('close', 10), r.get('open', 4)   # smaller numbers keep narrow sea lochs and fjords open
+  land = ndimage.binary_closing(land, iterations=ci) if ci else land
+  land = (ndimage.binary_opening(land, iterations=oi) if oi else land) | (dp > sl + 6)
   land = ndimage.binary_fill_holes(land)[P:-P, P:-P]
   lab, n = ndimage.label(~land)
   if n > 1:   # keep only open water that is big or touches the edge; the rest is land below sea level
