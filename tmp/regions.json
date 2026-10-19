@@ -1,16 +1,17 @@
 [
  {
-  "id": "atlanta",
-  "title": "Atlanta",
-  "sub": "Georgia",
+  "id": "manhattan",
+  "title": "Manhattan",
+  "sub": "New York City",
   "bbox": [
-   -84.74606,
-   33.607,
-   -84.05394,
-   33.993
+   -74.18167,
+   40.645,
+   -73.78833,
+   40.845
   ],
   "members": [
-   "grills-by-demant"
-  ]
+   "james-beard-foundation"
+  ],
+  "sea": "Upper New York Bay"
  }
 ]
