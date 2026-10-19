@@ -1,0 +1,82 @@
+[
+ {
+  "id": "grindstone-farm",
+  "q": "780 County Route 28, Pulaski, NY 13142"
+ },
+ {
+  "id": "fresh-herbs-of-fabius",
+  "q": "1535 Ridge Rd, Fabius, NY 13063"
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "5779 Lebanon Center Rd, Earlville, NY 13332 (Town of Lebanon, Madison County)"
+ },
+ {
+  "id": "dutch-hill-maple",
+  "q": "1275 Woodmancy Rd, Tully, NY 13159"
+ },
+ {
+  "id": "hillside-farm",
+  "q": "4358 Crains Mills Rd, Truxton, NY 13158"
+ },
+ {
+  "id": "sorrell-hill-milk-co",
+  "q": "7283 East Sorrell Hill Rd, Baldwinsville, NY 13027"
+ },
+ {
+  "id": "certified-angus-beef",
+  "q": "206 Riffel Rd, Wooster, OH 44691"
+ },
+ {
+  "id": "browne-trading-co",
+  "q": "262 Commercial St, Portland, ME 04101"
+ },
+ {
+  "id": "james-beard-foundation",
+  "q": "167 W 12th St, New York, NY 10011"
+ },
+ {
+  "id": "kitchen-literacy-project",
+  "q": "Salt City Market, 484 S Salina St, Syracuse, NY 13202"
+ },
+ {
+  "id": "grills-by-demant",
+  "q": "1014 Sampler Way, Suite B, Atlanta, GA 30344"
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "5779 Lebanon Center Rd, Earlville, NY"
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "Lebanon Center Rd, Lebanon, Madison County, NY"
+ },
+ {
+  "id": "dutch-hill-maple",
+  "q": "1275 Woodmancy Rd, Tully, NY"
+ },
+ {
+  "id": "certified-angus-beef",
+  "q": "206 Riffel Rd, Wooster, OH"
+ },
+ {
+  "id": "sorrell-hill-milk-co",
+  "q": "7283 E Sorrell Hill Rd, Baldwinsville, NY"
+ },
+ {
+  "id": "fresh-herbs-of-fabius",
+  "q": "1535 Ridge Rd, Fabius, NY"
+ },
+ {
+  "id": "grindstone-farm",
+  "q": "780 County Route 28, Pulaski, NY"
+ },
+ {
+  "id": "hillside-farm",
+  "q": "4358 Crains Mills Rd, Truxton, NY"
+ },
+ {
+  "id": "james-beard-foundation",
+  "q": "167 W 12th St, New York, NY"
+ }
+]
