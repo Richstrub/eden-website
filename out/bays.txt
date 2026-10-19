@@ -1,0 +1,1 @@
+bays: [('way', 'Loch Broom'), ('way', 'Loch Broom'), ('way', 'Loch Broom'), ('way', 'Loch Broom'), ('relation', 'Gruinard Bay'), ('relation', 'Loch Gairloch'), ('relation', 'An Geodha Mòr')]
