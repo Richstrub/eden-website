@@ -1,6 +1,7 @@
 data/abruzzo 88 tiles 1463293 osm
 data/adelaide-hills 70 tiles 743456 osm
 data/alto-piemonte 48 tiles 4093316 osm
+data/atlanta 72 tiles 2926753 osm
 data/barbados 56 tiles 92100 osm
 data/basque-country 88 tiles 1343751 osm
 data/beaujolais 70 tiles 9935074 osm
