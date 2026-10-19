@@ -13,7 +13,7 @@ optional: sea (name for open water), sea_level (metres; land below it counts as 
 Usage: python3 tools/wine-map/region_maps.py regions.json <data folder from fetch_data.py> <out folder> [ids…]
 Needs numpy, scipy, matplotlib and Pillow.
 """
-import json, math, os, sys
+import json, os, math, os, sys
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage
@@ -119,6 +119,8 @@ def paint(r, dem, rivers, lakes_raw, out_jpg):
     for k in range(1, n + 1):
       if k not in edge and sizes[k - 1] < 0.01 * W_PX * H_PX: land[lab == k] = True
   sea = ~land
+  if r.get('sea_mask') and os.path.exists(r['sea_mask']):   # coastline from OpenStreetMap (tmp/coast.py)
+    sea = np.load(r['sea_mask']); land = ~sea
   # lakes (named OSM water bigger than a speck at this scale)
   lake_mask = Image.new('L', (W_PX, H_PX), 0); dr = ImageDraw.Draw(lake_mask); lakes = []
   for name, rs in lakes_raw:

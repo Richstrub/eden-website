@@ -13,8 +13,17 @@
    "wester-ross-salmon"
   ],
   "sea": "The Minch",
-  "sea_level": 3,
-  "close": 2,
-  "open": 2
+  "sea_level": 0.5,
+  "sea_mask": "data/wester-ross/sea.npy",
+  "sea_seeds": [
+   [
+    58.03,
+    -5.8
+   ],
+   [
+    57.99,
+    -5.55
+   ]
+  ]
  }
 ]
