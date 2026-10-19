@@ -1,0 +1,555 @@
+[
+ {
+  "id": "grindstone-farm",
+  "q": "780 County Route 28, Pulaski, NY 13142",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 43.506824,
+    "lng": -76.107457,
+    "name": "780, County Route 28, Town of Richland, Town of Albion, Oswego County, New York, 13142, United States",
+    "type": "greenhouse",
+    "class": "building"
+   },
+   {
+    "lat": 43.5065621,
+    "lng": -76.1079888,
+    "name": "780, County Route 28, Town of Richland, Town of Albion, Oswego County, New York, 13142, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "grindstone-farm",
+  "q": "780 County Route 28, Pulaski, NY 13142",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 43.506773139796,
+    "lng": -76.108770267431,
+    "name": "780 CO RTE 28, PULASKI, NY, 13142",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "fresh-herbs-of-fabius",
+  "q": "1535 Ridge Rd, Fabius, NY 13063",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.8450532,
+    "lng": -75.981907,
+    "name": "1535, Ridge Road, Village of Fabius, Town of Fabius, Town of Pompey, Onondaga County, New York, 13063, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "fresh-herbs-of-fabius",
+  "q": "1535 Ridge Rd, Fabius, NY 13063",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.845366549269,
+    "lng": -75.98174178842,
+    "name": "1535 RIDGE RD, FABIUS, NY, 13063",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "5779 Lebanon Center Rd, Earlville, NY 13332 (Town of Lebanon, Madison County)",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.7853145,
+    "lng": -75.6157479,
+    "name": "5779, Lebanon Center Road, Lebanon Center, Town of Lebanon, Madison County, New York, 13332, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "5779 Lebanon Center Rd, Earlville, NY 13332 (Town of Lebanon, Madison County)",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.785067816234,
+    "lng": -75.615773790595,
+    "name": "5779 LEBANON CENTER RD, EARLVILLE, NY, 13332",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "dutch-hill-maple",
+  "q": "1275 Woodmancy Rd, Tully, NY 13159",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.8312074,
+    "lng": -76.1580498,
+    "name": "1275, Woodmancy Road, Town of Tully, Onondaga County, New York, 13159, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "dutch-hill-maple",
+  "q": "1275 Woodmancy Rd, Tully, NY 13159",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.831549838089,
+    "lng": -76.157635050876,
+    "name": "1275 WOODMANCY RD, TULLY, NY, 13159",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "hillside-farm",
+  "q": "4358 Crains Mills Rd, Truxton, NY 13158",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.710052,
+    "lng": -75.98876,
+    "name": "4358, Crains Mills Road, Crains Mills, Town of Truxton, Cortland County, New York, 13158, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "hillside-farm",
+  "q": "4358 Crains Mills Rd, Truxton, NY 13158",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.710073196331,
+    "lng": -75.988668461956,
+    "name": "4358 CRAINS MILLS RD, TRUXTON, NY, 13158",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "sorrell-hill-milk-co",
+  "q": "7283 East Sorrell Hill Rd, Baldwinsville, NY 13027",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 43.1223244,
+    "lng": -76.348512,
+    "name": "7283, East Sorrell Hill Road, Town of Van Buren, Onondaga County, New York, 13027, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "sorrell-hill-milk-co",
+  "q": "7283 East Sorrell Hill Rd, Baldwinsville, NY 13027",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 43.121652941034,
+    "lng": -76.348209892355,
+    "name": "7283 E SORRELL HILL RD, BALDWINSVILLE, NY, 13027",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "certified-angus-beef",
+  "q": "206 Riffel Rd, Wooster, OH 44691",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 40.8512423,
+    "lng": -81.9439715,
+    "name": "206, Riffel Road, Wooster, Wayne Township, Wayne County, Ohio, 44691, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "certified-angus-beef",
+  "q": "206 Riffel Rd, Wooster, OH 44691",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 40.851267394687,
+    "lng": -81.944027765402,
+    "name": "206 RIFFEL RD, WOOSTER, OH, 44691",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "browne-trading-co",
+  "q": "262 Commercial St, Portland, ME 04101",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 43.654179,
+    "lng": -70.2549881,
+    "name": "Browne Trading Market, 262, Commercial Street, Old Port, Portland, Cumberland County, Maine, 04101, United States",
+    "type": "seafood;wine",
+    "class": "shop"
+   }
+  ]
+ },
+ {
+  "id": "browne-trading-co",
+  "q": "262 Commercial St, Portland, ME 04101",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 43.654403940816,
+    "lng": -70.254899628899,
+    "name": "262 COMMERCIAL ST, PORTLAND, ME, 04101",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "james-beard-foundation",
+  "q": "167 W 12th St, New York, NY 10011",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 40.737057,
+    "lng": -73.9998706,
+    "name": "167, West 12th Street, Greenwich Village, Manhattan, New York County, New York, 10011, United States",
+    "type": "apartments",
+    "class": "building"
+   }
+  ]
+ },
+ {
+  "id": "james-beard-foundation",
+  "q": "167 W 12th St, New York, NY 10011",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 40.736985345782,
+    "lng": -73.999910694285,
+    "name": "167 W 12TH ST, NEW YORK, NY, 10011",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "kitchen-literacy-project",
+  "q": "Salt City Market, 484 S Salina St, Syracuse, NY 13202",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 43.0443749,
+    "lng": -76.1528415,
+    "name": "Salt City Market, 484, South Salina Street, Downtown, City of Syracuse, Onondaga County, New York, 13202, United States",
+    "type": "mall",
+    "class": "shop"
+   }
+  ]
+ },
+ {
+  "id": "kitchen-literacy-project",
+  "q": "Salt City Market, 484 S Salina St, Syracuse, NY 13202",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 43.044829625532,
+    "lng": -76.152336732904,
+    "name": "484 S SALINA ST, SYRACUSE, NY, 13202",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "grills-by-demant",
+  "q": "1014 Sampler Way, Suite B, Atlanta, GA 30344",
+  "provider": "nominatim",
+  "results": []
+ },
+ {
+  "id": "grills-by-demant",
+  "q": "1014 Sampler Way, Suite B, Atlanta, GA 30344",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 33.695656489515,
+    "lng": -84.423176006989,
+    "name": "1014 SAMPLER WAY, ATLANTA, GA, 30344",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "5779 Lebanon Center Rd, Earlville, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.7853145,
+    "lng": -75.6157479,
+    "name": "5779, Lebanon Center Road, Lebanon Center, Town of Lebanon, Madison County, New York, 13332, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "5779 Lebanon Center Rd, Earlville, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.785067816234,
+    "lng": -75.615773790595,
+    "name": "5779 LEBANON CENTER RD, EARLVILLE, NY, 13332",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "Lebanon Center Rd, Lebanon, Madison County, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.7846106,
+    "lng": -75.6067077,
+    "name": "Lebanon Center Road, Lebanon Center, Town of Lebanon, Madison County, New York, 13332, United States",
+    "type": "residential",
+    "class": "highway"
+   }
+  ]
+ },
+ {
+  "id": "fruit-of-the-fungi",
+  "q": "Lebanon Center Rd, Lebanon, Madison County, NY",
+  "provider": "census",
+  "results": []
+ },
+ {
+  "id": "dutch-hill-maple",
+  "q": "1275 Woodmancy Rd, Tully, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.8312074,
+    "lng": -76.1580498,
+    "name": "1275, Woodmancy Road, Town of Tully, Onondaga County, New York, 13159, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "dutch-hill-maple",
+  "q": "1275 Woodmancy Rd, Tully, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.831549838089,
+    "lng": -76.157635050876,
+    "name": "1275 WOODMANCY RD, TULLY, NY, 13159",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "certified-angus-beef",
+  "q": "206 Riffel Rd, Wooster, OH",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 40.8512413,
+    "lng": -81.9438093,
+    "name": "206, Riffel Road, Wooster, Wayne Township, Wayne County, Ohio, 44691, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "certified-angus-beef",
+  "q": "206 Riffel Rd, Wooster, OH",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 40.851267394687,
+    "lng": -81.944027765402,
+    "name": "206 RIFFEL RD, WOOSTER, OH, 44691",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "sorrell-hill-milk-co",
+  "q": "7283 E Sorrell Hill Rd, Baldwinsville, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 43.1223244,
+    "lng": -76.348512,
+    "name": "7283, East Sorrell Hill Road, Town of Van Buren, Onondaga County, New York, 13027, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "sorrell-hill-milk-co",
+  "q": "7283 E Sorrell Hill Rd, Baldwinsville, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 43.121652941034,
+    "lng": -76.348209892355,
+    "name": "7283 E SORRELL HILL RD, BALDWINSVILLE, NY, 13027",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "fresh-herbs-of-fabius",
+  "q": "1535 Ridge Rd, Fabius, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.8450532,
+    "lng": -75.981907,
+    "name": "1535, Ridge Road, Village of Fabius, Town of Fabius, Town of Pompey, Onondaga County, New York, 13063, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "fresh-herbs-of-fabius",
+  "q": "1535 Ridge Rd, Fabius, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.845366549269,
+    "lng": -75.98174178842,
+    "name": "1535 RIDGE RD, FABIUS, NY, 13063",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "grindstone-farm",
+  "q": "780 County Route 28, Pulaski, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 43.506824,
+    "lng": -76.107457,
+    "name": "780, County Route 28, Town of Richland, Town of Albion, Oswego County, New York, 13142, United States",
+    "type": "greenhouse",
+    "class": "building"
+   },
+   {
+    "lat": 43.5065621,
+    "lng": -76.1079888,
+    "name": "780, County Route 28, Town of Richland, Town of Albion, Oswego County, New York, 13142, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "grindstone-farm",
+  "q": "780 County Route 28, Pulaski, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 43.506773139796,
+    "lng": -76.108770267431,
+    "name": "780 CO RTE 28, PULASKI, NY, 13142",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "hillside-farm",
+  "q": "4358 Crains Mills Rd, Truxton, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 42.710052,
+    "lng": -75.98876,
+    "name": "4358, Crains Mills Road, Crains Mills, Town of Truxton, Cortland County, New York, 13158, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "hillside-farm",
+  "q": "4358 Crains Mills Rd, Truxton, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 42.710073196331,
+    "lng": -75.988668461956,
+    "name": "4358 CRAINS MILLS RD, TRUXTON, NY, 13158",
+    "type": "census"
+   }
+  ]
+ },
+ {
+  "id": "james-beard-foundation",
+  "q": "167 W 12th St, New York, NY",
+  "provider": "nominatim",
+  "results": [
+   {
+    "lat": 40.737057,
+    "lng": -73.9998706,
+    "name": "167, West 12th Street, Greenwich Village, Manhattan, New York County, New York, 10011, United States",
+    "type": "apartments",
+    "class": "building"
+   },
+   {
+    "lat": 40.753378,
+    "lng": -73.3376199,
+    "name": "167, West 12th Street, Deer Park, Town of Babylon, Suffolk County, New York, 11729, United States",
+    "type": "house",
+    "class": "place"
+   },
+   {
+    "lat": 42.1267211,
+    "lng": -76.8265826,
+    "name": "167, West 12th Street, Village of Elmira Heights, Town of Horseheads, Chemung County, New York, 14903, United States",
+    "type": "house",
+    "class": "place"
+   }
+  ]
+ },
+ {
+  "id": "james-beard-foundation",
+  "q": "167 W 12th St, New York, NY",
+  "provider": "census",
+  "results": [
+   {
+    "lat": 40.736985345782,
+    "lng": -73.999910694285,
+    "name": "167 W 12TH ST, NEW YORK, NY, 10011",
+    "type": "census"
+   }
+  ]
+ }
+]
