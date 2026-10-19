@@ -304,12 +304,12 @@
   document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute&&e.target.getAttribute('data-more')!=null){e.preventDefault();e.target.click()}});
   /* ---------- Our Partners: each card opens a window with their story and a map (assets/partners/<id>.json) ---------- */
   var ptCache={};
-  function openPartner(card){
+  function openPartner(card,from){
     var id=card.getAttribute('data-partner');if(!id)return;
     var links=[].map.call(card.querySelectorAll('.links a[href]:not(.pt-more)'),function(a){return [a.textContent.trim(),a.getAttribute('href')]});
     if(!ptCache[id])ptCache[id]=fetch('assets/partners/'+encodeURIComponent(id)+'.json?v='+(window.EDEN_PARTNERS_V||'1')).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(x){delete ptCache[id];throw x});
     var want=++wdWant;
-    ptCache[id].then(function(D){if(want!==wdWant)return;D=JSON.parse(JSON.stringify(D));D.kind='partner';if(links.length)D.links=links;openWine(D,(card.querySelector('h3')||{}).textContent,card.querySelector('.pt-more')||card)},function(){});
+    ptCache[id].then(function(D){if(want!==wdWant)return;D=JSON.parse(JSON.stringify(D));D.kind='partner';if(links.length)D.links=links;openWine(D,(card.querySelector('h3')||{}).textContent,from||card.querySelector('.pt-more')||card)},function(){});
   }
   document.addEventListener('click',function(e){
     var c=e.target.closest&&e.target.closest('.partner[data-partner]');if(!c)return;
@@ -317,6 +317,30 @@
     e.preventDefault();openPartner(c);
   });
   document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('partner')&&e.target.hasAttribute('data-partner')){e.preventDefault();openPartner(e.target)}});
+  // the menu: a dish's farm or producer that's one of our partners links to their window (story + map).
+  // Partners come from the Partners section's cards, so a partner added there is linked on the menu automatically.
+  function prodKey(n){return String(n||'').split('·')[0].normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\bfarms\b/g,'farm').replace(/\bcompany\b/g,'co').replace(/[^a-z0-9]+/g,' ').trim()}
+  var partnerKeys=null;
+  function partnerFor(src){
+    if(!src)return null;
+    if(!partnerKeys){partnerKeys=[];[].forEach.call(document.querySelectorAll('.partner[data-partner]'),function(c){
+      var names=[(c.querySelector('h3')||{}).textContent].concat((c.getAttribute('data-also')||'').split('|'));
+      names.forEach(function(n){var k=prodKey(n);if(k)partnerKeys.push({k:k,id:c.getAttribute('data-partner')})})});
+      partnerKeys.sort(function(a,b){return b.k.length-a.k.length})}
+    var sk=' '+String(src).split(/\s*[,&+\/]\s*|\s+and\s+/).map(prodKey).join(' | ')+' ';
+    for(var i=0;i<partnerKeys.length;i++){if(sk.indexOf(' '+partnerKeys[i].k+' ')!==-1)return partnerKeys[i].id}
+    return null;
+  }
+  function srcHTML(src,cls){
+    var id=partnerFor(src);
+    if(!id)return '<div class="'+cls+'">'+esc(src)+'</div>';
+    return '<div class="'+cls+'"><a class="src-link" href="#partners" role="button" data-partner-open="'+esc(id)+'" aria-haspopup="dialog" aria-label="'+esc(src)+': about this partner and where they are">'+esc(src)+'<svg class="src-pin" viewBox="0 0 12 16" width="9" height="12" aria-hidden="true"><path d="M6 0C2.7 0 0 2.6 0 5.9 0 10.3 6 16 6 16s6-5.7 6-10.1C12 2.6 9.3 0 6 0zm0 8.2A2.3 2.3 0 1 1 6 3.6a2.3 2.3 0 0 1 0 4.6z" fill="currentColor"/></svg></a></div>';
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('[data-partner-open]');if(!a)return;
+    e.preventDefault();e.stopPropagation();
+    var c=document.querySelector('.partner[data-partner="'+a.getAttribute('data-partner-open')+'"]');if(c)openPartner(c,a);
+  },true);
   function groupsHTML(groups,idp){
     var h='';
     groups.forEach(function(g,gi){
@@ -326,7 +350,7 @@
       h+='<ul class="ml">';
       items.forEach(function(it){
         h+='<li class="mi'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
-        if(it.src)h+='<div class="mi-src">'+esc(it.src)+'</div>';
+        if(it.src)h+=srcHTML(it.src,'mi-src');
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'mi',g.title);
         h+=pairHTML(it,'mi');
@@ -553,7 +577,7 @@
       if(big)h+='<div class="pad-items">';
       items.forEach(function(it){
         h+='<div class="pad-item'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
-        if(it.src)h+='<div class="pad-src">'+esc(it.src)+'</div>';
+        if(it.src)h+=srcHTML(it.src,'pad-src');
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'pad',g.title);
         h+=pairHTML(it,'pad');

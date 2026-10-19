@@ -701,3 +701,9 @@ footer .social{color:var(--ivory)}
 .wd-links{display:flex;flex-wrap:wrap;gap:12px 22px;padding-top:20px;border-top:1px solid var(--line-dark)}
 .wd-links a{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ember-hot);border-bottom:1px solid rgba(224,154,94,.4);padding-bottom:3px}
 .wd-links a:hover{color:var(--ivory);border-color:var(--ivory)}
+
+/* menu: a partner's name links to their window (story + map) */
+.src-link{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:currentColor;cursor:pointer;transition:color .25s}
+.src-link:hover,.src-link:focus-visible{color:var(--ember);text-decoration-style:solid}
+.on-dark .src-link:hover,.on-dark .src-link:focus-visible{color:var(--ivory)}
+.src-pin{display:inline-block;margin-left:5px;vertical-align:-1px;opacity:.75}
