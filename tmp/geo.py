@@ -4,7 +4,7 @@ for x in q:
     for prov in ['nominatim', 'census']:
         try:
             if prov == 'nominatim':
-                u = 'https://nominatim.openstreetmap.org/search?' + urllib.parse.urlencode({'q': x['q'], 'format': 'jsonv2', 'limit': 3, 'countrycodes': 'us', 'addressdetails': 0})
+                u = 'https://nominatim.openstreetmap.org/search?' + urllib.parse.urlencode({'q': x['q'], 'format': 'jsonv2', 'limit': 3, 'addressdetails': 0})
                 r = json.load(urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'eden-site-partners/1.0 (info@edencny.com)'}), timeout=30))
                 res = [{'lat': float(a['lat']), 'lng': float(a['lon']), 'name': a.get('display_name'), 'type': a.get('type'), 'class': a.get('category')} for a in r]
                 time.sleep(1.2)

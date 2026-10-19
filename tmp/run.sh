@@ -1,4 +1,6 @@
 set -x
-rm -rf out; mkdir -p out
-curl -s "https://qmblccwyxbpvziiwrlne.supabase.co/rest/v1/site_docs?select=path,data&path=like.site/*" -H "apikey: sb_publishable_Nbp1K_Co8tDVB-jNjBRs3w_D40qm4Mg" -o out/site-docs.json
-ls -la out
+rm -rf out; mkdir -p out/maps
+pip install -q numpy scipy matplotlib pillow
+python3 tmp/geo.py
+python3 tmp/fetch_data.py tmp/regions.json data
+python3 tmp/region_maps.py tmp/regions.json data out/maps

@@ -1,17 +1,17 @@
 [
  {
-  "id": "manhattan",
-  "title": "Manhattan",
-  "sub": "New York City",
+  "id": "wester-ross",
+  "title": "Wester Ross",
+  "sub": "Northwest Highlands \u00b7 Scotland",
   "bbox": [
-   -74.18167,
-   40.645,
-   -73.78833,
-   40.845
+   -5.84056,
+   57.667,
+   -4.75944,
+   58.053
   ],
   "members": [
-   "james-beard-foundation"
+   "wester-ross-salmon"
   ],
-  "sea": "Upper New York Bay"
+  "sea": "The Minch"
  }
 ]
