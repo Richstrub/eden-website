@@ -243,7 +243,7 @@
   }
   function openWine(D,menuName,from){
     closeWine();
-    var name=D.title||menuName,kind=D.kind==='spirit'?'spirit':'wine';
+    var name=D.title||menuName,kind=D.kind==='spirit'?'spirit':D.kind==='partner'?'partner':'wine';
     var m=D.map,mapH='',osm='';
     if(m&&m.lat!=null){
       var dx=0.06,dy=0.035,bbox=[m.lng-dx,m.lat-dy,m.lng+dx,m.lat+dy].join(',');
@@ -257,16 +257,17 @@
     var im=D.image;
     var el=document.createElement('div');el.className='wd';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label',name);
     el.innerHTML='<div class="wd-card"><button type="button" class="wd-x" aria-label="Close">&times;</button><div class="wd-scroll">'+
-      '<div class="wd-top'+(im?' has-img':'')+'"><div class="wd-head"><p class="wd-eye">About this '+kind+'</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div></div>'+
+      '<div class="wd-top'+(im?' has-img':'')+'"><div class="wd-head"><p class="wd-eye">'+(kind==='partner'?'Our partners · '+esc(D.category||''):'About this '+kind)+'</p><h2 class="wd-name">'+esc(name)+'</h2><p class="wd-prod">'+esc([D.producer,D.region].filter(Boolean).join(' · '))+'</p><div class="wd-rule"></div></div>'+
       (im?'<figure class="wd-bottle"><img src="'+esc(im.src)+'" alt="'+esc(im.alt||name)+'" width="'+(im.w||560)+'" height="'+(im.h||1226)+'" decoding="async" onerror="this.parentNode.parentNode.classList.remove(\'has-img\');this.parentNode.remove()">'+(im.credit?'<figcaption>'+esc(im.credit)+'</figcaption>':'')+'</figure>':'')+'</div>'+
       (aw?'<div class="wd-sec"><h3>Scores &amp; awards</h3><ul class="wd-awards">'+aw+'</ul></div>':'')+
       '<div class="wd-sec wd-about">'+(D.about||[]).map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'+
-      (facts?'<div class="wd-sec"><h3>'+(kind==='spirit'?'In the bottle':'In the glass')+'</h3><dl class="wd-facts">'+facts+'</dl></div>':'')+
-      (mapH?'<div class="wd-sec"><h3>Where it’s made</h3>'+mapH+'</div>':'')+
+      (facts?'<div class="wd-sec"><h3>'+(kind==='spirit'?'In the bottle':kind==='partner'?'At a glance':'In the glass')+'</h3><dl class="wd-facts">'+facts+'</dl></div>':'')+
+      (mapH?'<div class="wd-sec"><h3>'+(kind==='partner'?'Where they are':'Where it’s made')+'</h3>'+mapH+'</div>':'')+
+      (D.links&&D.links.length?'<div class="wd-sec wd-links">'+D.links.map(function(l){return '<a href="'+esc(l[1])+'" target="_blank" rel="noopener">'+esc(l[0])+'</a>'}).join('')+'</div>':'')+
       '</div></div>';
     document.body.appendChild(el);
     var art=el.querySelector('.wd-art');
-    if(art)fetch(art.getAttribute('data-art')).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(!/^\s*<svg[\s>]/.test(t))throw 0;art.innerHTML=t;var svg=art.querySelector('svg');if(svg&&svg.getAttribute('data-bbox'))pinMap(svg,m,D);art.classList.add('on')}).catch(function(){if(art.parentNode)art.outerHTML=osm});
+    if(art)fetch(art.getAttribute('data-art')).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(!/^\s*<svg[\s>]/.test(t))throw 0;art.innerHTML=t;var svg=art.querySelector('svg');if(svg&&D.kind==='partner')[].forEach.call(svg.querySelectorAll('text'),function(t){if(/^Where it’s made$/i.test(t.textContent.trim()))t.textContent='Where they are'});if(svg&&svg.getAttribute('data-bbox'))pinMap(svg,m,D);art.classList.add('on')}).catch(function(){if(art.parentNode)art.outerHTML=osm});
     var key=function(e){if(e.key==='Escape')closeWine()};
     wdOpen={el:el,key:key,back:from};
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.wd-x'))closeWine()});
@@ -301,6 +302,21 @@
   document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-bio]');if(b)openBio(b)});
   document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-more]');if(!t)return;var nm=t.querySelector('.mi-name,.pad-name');startWine(+t.getAttribute('data-more'),nm?nm.textContent:'',t)});
   document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute&&e.target.getAttribute('data-more')!=null){e.preventDefault();e.target.click()}});
+  /* ---------- Our Partners: each card opens a window with their story and a map (assets/partners/<id>.json) ---------- */
+  var ptCache={};
+  function openPartner(card){
+    var id=card.getAttribute('data-partner');if(!id)return;
+    var links=[].map.call(card.querySelectorAll('.links a[href]:not(.pt-more)'),function(a){return [a.textContent.trim(),a.getAttribute('href')]});
+    if(!ptCache[id])ptCache[id]=fetch('assets/partners/'+encodeURIComponent(id)+'.json?v='+(window.EDEN_PARTNERS_V||'1')).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(x){delete ptCache[id];throw x});
+    var want=++wdWant;
+    ptCache[id].then(function(D){if(want!==wdWant)return;D=JSON.parse(JSON.stringify(D));D.kind='partner';if(links.length)D.links=links;openWine(D,(card.querySelector('h3')||{}).textContent,card.querySelector('.pt-more')||card)},function(){});
+  }
+  document.addEventListener('click',function(e){
+    var c=e.target.closest&&e.target.closest('.partner[data-partner]');if(!c)return;
+    if(e.target.closest('a[href]:not(.pt-more)'))return;   // their website and social links still go straight there
+    e.preventDefault();openPartner(c);
+  });
+  document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('partner')&&e.target.hasAttribute('data-partner')){e.preventDefault();openPartner(e.target)}});
   function groupsHTML(groups,idp){
     var h='';
     groups.forEach(function(g,gi){

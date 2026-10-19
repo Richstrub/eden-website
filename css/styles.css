@@ -692,3 +692,12 @@ footer .social{color:var(--ivory)}
 .drawer #fire{position:fixed}
 @media (max-height:780px){.drawer{gap:16px}.drawer > a:not(.btn){font-size:1.75rem}.drawer:not([hidden])::before{display:none}}
 @media (max-height:700px){.drawer{gap:10px;padding-top:calc(98px + env(safe-area-inset-top,0px))}.drawer > a:not(.btn){font-size:1.55rem}.drawer .social-drawer{margin:2px 0}}
+/* Our Partners: cards open a window with their story and a map */
+.partner[data-partner]{cursor:pointer}
+.partner .links a.pt-more{color:var(--ember);border-bottom-color:rgba(176,112,63,.45)}
+.partner .links a.pt-more::after{content:" →"}
+@media (hover:hover){.partner[data-partner]:hover h3{color:var(--ember)}}
+.partner h3{transition:color .3s}
+.wd-links{display:flex;flex-wrap:wrap;gap:12px 22px;padding-top:20px;border-top:1px solid var(--line-dark)}
+.wd-links a{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ember-hot);border-bottom:1px solid rgba(224,154,94,.4);padding-bottom:3px}
+.wd-links a:hover{color:var(--ivory);border-color:var(--ivory)}
