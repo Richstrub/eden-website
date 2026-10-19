@@ -685,3 +685,10 @@ footer .social{color:var(--ivory)}
 .drawer .social-drawer{margin:6px 0 4px;color:var(--ivory)}
 .drawer .social-drawer a{font-size:inherit;letter-spacing:0;padding:0}
 @media (max-width:1100px) and (min-width:821px){.visit:not(.visit-2){grid-template-columns:repeat(2,minmax(0,1fr))}.visit > div:nth-child(2){border-right:0}.visit > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+/* phone menu: always start below the header, center when there's room, scroll when there isn't */
+.drawer{justify-content:flex-start;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:calc(104px + env(safe-area-inset-top,0px)) 16px calc(36px + env(safe-area-inset-bottom,0px))}
+.drawer > a:first-of-type{margin-top:auto}
+.drawer > a.btn{margin-bottom:auto}
+.drawer #fire{position:fixed}
+@media (max-height:780px){.drawer{gap:16px}.drawer > a:not(.btn){font-size:1.75rem}.drawer:not([hidden])::before{display:none}}
+@media (max-height:700px){.drawer{gap:10px;padding-top:calc(98px + env(safe-area-inset-top,0px))}.drawer > a:not(.btn){font-size:1.55rem}.drawer .social-drawer{margin:2px 0}}
