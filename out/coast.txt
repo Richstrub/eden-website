@@ -1,0 +1,3 @@
+overpass https://overpass-api.de/api/interpreter HTTP Error 502: Bad Gateway
+coastline ways: 480
+sea share: 0.265
