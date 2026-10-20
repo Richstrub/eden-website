@@ -759,3 +759,46 @@ footer .social{color:var(--ivory)}
 @media (max-width:380px){.hx-sub{letter-spacing:.14em;font-size:.56rem}}
 @media (max-width:640px){.hx-heat{height:62%}.hx-glow{width:260vw}.hx-glow-2{width:160vw;bottom:-18%}}
 @media (prefers-reduced-motion:reduce){.hx *,.hx *::before{animation:none!important;opacity:1!important;transform:none!important}.hx .hx-spark-3{opacity:0!important}.hx-heat{filter:none}.hx-fx{display:none}}
+
+/* Hero: the fire line (date · the wood · fire number) */
+.hx-status{display:flex;justify-content:space-between;align-items:baseline;gap:12px 32px;flex-wrap:wrap;width:min(760px,100%);margin:clamp(40px,7vh,72px) auto 0;padding-top:16px;border-top:1px solid rgba(243,238,229,.16);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,238,229,.6);opacity:0;animation:hxIn 1.4s 2.1s ease forwards;font-variant-numeric:tabular-nums}
+.hx-status b{font-weight:400;color:var(--ember-hot)}
+@media (max-width:640px){.hx-status{flex-direction:column;align-items:center;gap:10px;letter-spacing:.18em;font-size:.58rem}}
+
+/* Partners: the partner wall. Each name in its own voice, four columns, hairline rules */
+#partners{background:var(--ivory);color:var(--ink)}
+#partners .pw-head{display:flex;flex-direction:column;gap:14px;max-width:760px}
+#partners .pw-head .eyebrow{color:#8a5226}
+#partners .pw-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,5.6vw,4.25rem);line-height:1.05;margin:0}
+#partners .pw-head p{font-size:1.06rem;line-height:1.7;color:#3a3d40;max-width:62ch;margin:0}
+#partners .tabs{display:none}
+#partners .pw-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:64px;border-top:1px solid rgba(15,18,21,.16)}
+#partners .pw-wall .panel,#partners .pw-wall .panel[hidden]{display:flex!important;flex-direction:column;gap:30px;padding:28px 24px 36px;min-width:0;opacity:1!important;transform:none!important}
+#partners .pw-wall .panel:nth-child(3n+1){padding-left:0}
+#partners .pw-wall .panel:not(:nth-child(3n+1)){border-left:1px solid rgba(15,18,21,.16)}
+#partners .pw-wall .panel:nth-child(n+4){border-top:1px solid rgba(15,18,21,.16)}
+#partners .pw-label{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;font-weight:400;color:#8a5226}
+#partners .partner{padding:0;border:0;display:flex;flex-direction:column;gap:6px;opacity:1;transform:none}
+#partners .partner h3{margin:0;font-family:var(--serif);font-weight:400;line-height:1.04;color:var(--ink)}
+#partners .partner .loc{margin:2px 0 0;font-size:.62rem;letter-spacing:.26em;color:#8a5226}
+#partners .partner > p{display:none}
+#partners .partner .links{gap:6px 14px;margin-top:6px}
+#partners .partner .links a{font-size:.56rem;letter-spacing:.22em;color:#5a5650;border-bottom-color:rgba(15,18,21,.18)}
+#partners .partner .links a.pt-more{color:#8a5226}
+#partners .partner .links a:hover{color:var(--ink);border-color:var(--ink)}
+#partners .pw-s1 h3{font-size:clamp(2rem,3vw,2.6rem);font-weight:500}
+#partners .pw-s2 h3{font-size:clamp(1.6rem,2.3vw,1.95rem);font-style:italic;font-weight:300}
+#partners .pw-s3 h3{font-family:var(--sans);font-size:.95rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;line-height:1.35}
+#partners .pw-s4 h3{font-size:clamp(1.4rem,2vw,1.65rem)}
+#partners .pw-s4 h3 i{font-style:italic;font-weight:300}
+@media (hover:hover){#partners .partner[data-partner]:hover h3{color:#8a5226}}
+#partners .pw-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 24px;flex-wrap:wrap;margin-top:36px;padding-top:22px;border-top:1px solid rgba(15,18,21,.16)}
+#partners .pw-foot p{margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.6vw,2.75rem);line-height:1}
+#partners .pw-foot span{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#8a5226}
+@media (max-width:900px){#partners .pw-wall{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #partners .pw-wall .panel:nth-child(n){padding-left:24px;border-left:1px solid rgba(15,18,21,.16);border-top:0}
+  #partners .pw-wall .panel:nth-child(2n+1){padding-left:0;border-left:0}
+  #partners .pw-wall .panel:nth-child(n+3){border-top:1px solid rgba(15,18,21,.16)}}
+@media (max-width:560px){#partners .pw-wall{grid-template-columns:1fr}
+  #partners .pw-wall .panel:nth-child(n),#partners .pw-wall .panel[hidden]{padding-left:0;padding-right:0;border-left:0}
+  #partners .pw-wall .panel:nth-child(n+2){border-top:1px solid rgba(15,18,21,.16)}}

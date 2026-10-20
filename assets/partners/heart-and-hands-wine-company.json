@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Heart & Hands Wine Company",
+ "category": "Vine",
+ "producer": "Union Springs, NY",
+ "region": "",
+ "about": [
+  "Heart & Hands is the Cayuga Lake winery of Tom and Susan Higgins, who went looking for limestone before they went looking for land. Tom, a Finger Lakes native, left a technology career for wine, working at Zachy’s, at Château La Lagune in Bordeaux and in local cellars. In 2007 the couple bought a gentle slope above Carr’s Cove on the lake’s eastern shore, just north of Union Springs, and planted their first vines in 2010. Today they make about 2,000 cases a year of cool-climate wines.",
+  "Eden pours five of their wines. Find them on the wine list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Union Springs · Cayuga Lake, Finger Lakes, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "5 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 42.839791,
+  "lng": -76.693282,
+  "place": "Heart & Hands Wine Company · Union Springs, New York",
+  "label": "Heart & Hands Wine Company",
+  "town": "Union Springs, New York",
+  "art": "assets/images/wines/maps/finger-lakes.svg"
+ },
+ "sources": [
+  "https://decanter.com/wine-reviews/usa/new-york-state/heart-hands-wine-company-chardonnay-finger-lakes-2020-86162",
+  "https://heartandhandswine.com/16466-2/",
+  "https://heartandhandswine.com/2020-reviewed-wines/",
+  "https://heartandhandswine.com/2021-reviewed-wines/",
+  "https://heartandhandswine.com/2022-reviewed-wines/",
+  "https://heartandhandswine.com/about-us-2/",
+  "https://heartandhandswine.com/contact/",
+  "https://heartandhandswine.com/estate-vineyard-2/"
+ ]
+}

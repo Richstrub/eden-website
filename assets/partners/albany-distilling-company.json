@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Albany Distilling Company",
+ "category": "Still",
+ "producer": "Albany, NY",
+ "region": "",
+ "about": [
+  "Albany Distilling Company calls itself the first licensed distillery in Albany since Prohibition. Teachers John Curtin and Matthew Jager opened it in 2011 in a small space on Montgomery Street, beside the Albany Pump Station and close to where the Quackenbush Still House, the city’s first distillery, operated in the mid-1700s. Curtin and co-owner Rick Sicari have since grown it into a much larger production house on Third Street, with a bar and bottle shop downtown.",
+  "Eden pours four of their spirits. Find them on the spirits list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Albany · Capital Region, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "4 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 42.733032,
+  "lng": -73.70671,
+  "place": "Albany Distilling Company · Albany, New York",
+  "label": "Albany Distilling Company",
+  "town": "Albany, New York",
+  "art": "assets/images/wines/maps/capital-region.svg"
+ },
+ "sources": [
+  "https://bowlerwine.com/node/7489",
+  "https://thewhiskeywash.com/american-whiskey/whiskey-review-round-up-albany-distilling/",
+  "https://www.americanrumreport.com/albany-distilling-company",
+  "https://www.bowlerwine.com/producer/albany-distilling-co",
+  "https://www.bowlerwine.com/wine-or-spirit/alb-vodka/nv",
+  "https://www.bowlerwine.com/wine-or-spirit/ironweed-bourbon/nv",
+  "https://www.bowlerwine.com/wine-or-spirit/quackenbush-still-house-original-rum/nv",
+  "https://www.iloveny.com/listing/albany-distilling-co-inc/32259/"
+ ]
+}

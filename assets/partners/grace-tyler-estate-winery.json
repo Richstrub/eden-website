@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Grace Tyler Estate Winery",
+ "category": "Vine",
+ "producer": "Constantia, NY",
+ "region": "",
+ "about": [
+  "Grace Tyler Estate Winery is Richard and Elizabeth Hamilton’s farm winery on the north shore of Oneida Lake in Constantia. They bought the land in 2012, harvested their first grapes in 2017 and opened in 2018. Their tasting room is built from aspen cut on the site, it is open year-round and can be reached by snowmobile trail. They grow and work with grapes that can survive Oswego County winters.",
+  "Eden pours four of their wines. Find them on the wine list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Constantia · Oswego County, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "4 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 43.246353,
+  "lng": -75.981884,
+  "place": "Grace Tyler Estate Winery · Constantia, New York",
+  "label": "Grace Tyler Estate Winery",
+  "town": "Constantia, New York",
+  "art": "assets/images/wines/maps/central-new-york.svg"
+ },
+ "sources": [
+  "https://bafybeiemxf5abjwjbikoz4mc3a3dla6ual3jsgpdr4cjr3oz3evfyavhwq.ipfs.4everland.io/wiki/Baco_1.html",
+  "https://cnybj.com/owners-of-winery-in-constantia-honored-for-entrepreneurship-by-operation-oswego-county/amp",
+  "https://enology.umn.edu/sites/enology.umn.edu/files/2023-08/2023_iccwc_awards.pdf",
+  "https://mnhardy.umn.edu/la-crescent",
+  "https://patents.google.com/patent/USPP14617",
+  "https://visitoswegocounty.com/2024/06/25/five-reasons-to-visit-grace-tyler-estate-winery/",
+  "https://visitoswegocounty.com/directory/grace-tyler-estate-winery/",
+  "https://wandercuse.com/wineries-in-oswego-county-you-should-visit-this-summer/"
+ ]
+}

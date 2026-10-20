@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Dr. Konstantin Frank Winery",
+ "category": "Vine",
+ "producer": "Hammondsport, NY",
+ "region": "",
+ "about": [
+  "Konstantin Frank Winery was founded on Keuka Lake in 1962 by a Ukrainian-born viticulturist who insisted, against the conventional wisdom of the day, that European vinifera grapes could survive Finger Lakes winters. Four generations on, the family has kept pushing into new varieties. In 2006 Frank’s grandson Fred bought land on the east side of Seneca Lake in Hector and began planting Grüner Veltliner, Austria’s signature white grape, building what is now one of the largest plantings of it in the United States.",
+  "Eden pours nine of their wines. Find them on the wine list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Hammondsport · Finger Lakes, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "9 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 42.473572,
+  "lng": -77.184069,
+  "place": "Dr. Konstantin Frank Winery · Hammondsport, New York",
+  "label": "Dr. Konstantin Frank Winery",
+  "town": "Hammondsport, New York",
+  "art": "assets/images/wines/maps/finger-lakes.svg"
+ },
+ "sources": [
+  "https://cnycentral.com/amazing-america/amazing-america-250-bottling-the-american-dream-history-of-dr-konstantin-frank-winery",
+  "https://decanter.com/wine-reviews/usa/new-york-state/dr-konstantin-frank-winery-gruener-veltliner-finger-lakes-86143",
+  "https://drfrankwines.com/?p=2277",
+  "https://drfrankwines.com/?p=2308",
+  "https://en.wikipedia.org/wiki/Konstantin_Frank",
+  "https://www.drfrankwines.com/?p=2030",
+  "https://www.drfrankwines.com/?p=2275",
+  "https://www.drfrankwines.com/?p=4285"
+ ]
+}

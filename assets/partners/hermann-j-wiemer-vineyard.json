@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Hermann J. Wiemer Vineyard",
+ "category": "Vine",
+ "producer": "Dundee, NY",
+ "region": "",
+ "about": [
+  "Wiemer grew up in Bernkastel on Germany’s Mosel, where his father ran a vine-grafting research station and taught him to graft Riesling onto American rootstock. He came to New York in 1965, saw the Mosel in Seneca Lake’s steep slopes and cool climate, and in 1973 bought a farm on the lake’s west shore near Dundee. His winery opened in 1979 and became one of the pioneers of Finger Lakes Riesling. Since 2007 it has been run by his former apprentice Fred Merwarth and partner Oskar Bynke.",
+  "Eden pours five of their wines. Find them on the wine list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Dundee · Seneca Lake, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "5 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 42.523404,
+  "lng": -76.976631,
+  "place": "Hermann J. Wiemer Vineyard · Dundee, New York",
+  "label": "Hermann J. Wiemer Vineyard",
+  "town": "Dundee, New York",
+  "art": "assets/images/wines/maps/finger-lakes.svg"
+ },
+ "sources": [
+  "https://en.wikipedia.org/wiki/Hermann_J._Wiemer",
+  "https://www.skurnik.com/producer/hermann-j-wiemer-vineyard/",
+  "https://www.skurnik.com/sku/cabernet-franc-magdalena-vyd-hermann-j-wiemer-2-2-2-2-2-2-2-4/",
+  "https://www.skurnik.com/sku/riesling-dry-hermann-j-wiemer-2-2-3-2-2-2-3-2-2-2-2-2",
+  "https://www.skurnik.com/sku/riesling-extra-brut-hermann-j-wiemer-2-2",
+  "https://www.skurnik.com/sku/riesling-flower-day-hermann-j-wiemer-3/",
+  "https://www.skurnik.com/sku/riesling-hjw-vyd-hermann-j-wiemer-2-2-2-3-2-2-2-4/",
+  "https://www.wiemer.com/"
+ ]
+}

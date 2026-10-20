@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Fort Hamilton Distillery",
+ "category": "Still",
+ "producer": "Brooklyn, NY",
+ "region": "",
+ "about": [
+  "Fort Hamilton Distillery was founded in 2016 by Alex Clark, a British-born bartender who spent years in New York’s classic-cocktail scene, and his wife, Amy Grindeland. Their mission was to bring back New York’s earliest whiskey style, rye, and the distillery takes its name from Fort Hamilton at the southern tip of Brooklyn, itself named for Alexander Hamilton. Since 2020 the company has had its own distillery and tasting room on the second floor of a converted warehouse in Industry City, on the Sunset Park waterfront.",
+  "Eden pours five of their spirits. Find them on the spirits list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Industry City, Sunset Park · Brooklyn, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "5 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 40.657617,
+  "lng": -74.007321,
+  "place": "Fort Hamilton Distillery · Industry City, Brooklyn, New York",
+  "label": "Fort Hamilton Distillery",
+  "town": "Industry City, Brooklyn, New York",
+  "art": "assets/images/wines/maps/brooklyn-new-york-city.svg"
+ },
+ "sources": [
+  "https://greenegrapewine.com/products/fortress-vodka",
+  "https://greenegrapewine.com/products/single-barrel-rye-whiskey",
+  "https://nyc.flatiron-wines.com/collections/fort-hamilton/products/for-hamilton-2-years-old-double-barrel-a-blend-of-straight-bourbon-whiskeys-nv-750ml",
+  "https://skurnik.com/sku/rye-whiskey-double-barrel-fort-hamilton",
+  "https://skurnik.com/sku/rye-whiskey-fort-hamilton",
+  "https://skurnik.com/sku/single-barrel-bourbon-fort-hamilton-strapped",
+  "https://thedailypour.com/?p=83996",
+  "https://wanderlog.com/place/details/7533828/fort-hamilton-distillery--tasting-room"
+ ]
+}

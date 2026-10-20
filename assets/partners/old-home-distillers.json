@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Old Home Distillers",
+ "category": "Still",
+ "producer": "Lebanon, NY",
+ "region": "",
+ "about": [
+  "Old Home Distillers is a family farm distillery on historic Campbell Road in Lebanon, Madison County, southeast of Syracuse. Jerry and Marlene Carvell founded it in 2015 in a hundred-year-old stable they converted into a stillhouse, and their sons Aaron and Adam help run it. Everything is made on the farm from New York-grown ingredients, from the corn whiskey that started the business to the bourbons, ryes and gins that followed.",
+  "Eden pours five of their spirits. Find them on the spirits list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Lebanon · Madison County, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "5 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 42.766691,
+  "lng": -75.654965,
+  "place": "Old Home Distillers · Lebanon, New York",
+  "label": "Old Home Distillers",
+  "town": "Lebanon, New York",
+  "art": "assets/images/wines/maps/central-new-york.svg"
+ },
+ "sources": [
+  "https://bigfrog104.com/polly-old-home-distillers/",
+  "https://nydistilled.com/distilleries/old-home-distillers/",
+  "https://oldhome.distilleryspirits.com/",
+  "https://oldhome.distilleryspirits.com/product.aspx?item=BRG_PH",
+  "https://oldhome.distilleryspirits.com/product.aspx?item=KING750",
+  "https://oldhome.distilleryspirits.com/product.aspx?item=NOC750",
+  "https://oldhome.distilleryspirits.com/product.aspx?item=PS_PH",
+  "https://oldhome.distilleryspirits.com/product.aspx?item=SMW_PH"
+ ]
+}

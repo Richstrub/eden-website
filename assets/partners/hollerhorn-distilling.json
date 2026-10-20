@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Hollerhorn Distilling",
+ "category": "Still",
+ "producer": "Naples, NY",
+ "region": "",
+ "about": [
+  "Hollerhorn Distilling is Karl and Melissa Neubauer’s family operation in the hills outside Naples, at the head of Canandaigua Lake, opened in 2018 and rebuilt after a fire in 2022. Karl makes every spirit himself, drawing on years of study with master distillers and a family tradition of Austrian schnapps.",
+  "Eden pours seven of their spirits. Find them on the spirits list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Naples · Finger Lakes, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "7 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 42.616065,
+  "lng": -77.403025,
+  "place": "Hollerhorn Distilling · Naples, New York",
+  "label": "Hollerhorn Distilling",
+  "town": "Naples, New York",
+  "art": "assets/images/wines/maps/finger-lakes.svg"
+ },
+ "sources": [
+  "https://digital-release.rochesterfirst.com/news/features/hollerhorn-distilling-opens-remedy-room/amp/",
+  "https://jawbreaker.transistor.fm/episodes/savoring-tradition-how-hollerhorn-distilling-turns-maple-syrup-into-high-proof-spirits",
+  "https://roccitymag.com/culture/water-of-life-17966890",
+  "https://thefallswineroom.com/products/hollerhorn-distilling-vodka-ryeval",
+  "https://waterstreetwinesandspirits.com/shop/hollerhorn-distilling-big-green-empire-rye/?v=0b3b97fa6688",
+  "https://whiskyadvocate.com/best-empire-rye-new-york/",
+  "https://woodmizer.com/us/articles/hollerhorn",
+  "https://www.hollerhorn.com/new-page-3"
+ ]
+}

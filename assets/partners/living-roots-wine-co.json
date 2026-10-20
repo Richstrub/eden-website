@@ -1,0 +1,40 @@
+{
+ "kind": "partner",
+ "title": "Living Roots Wine & Co.",
+ "category": "Vine",
+ "producer": "Hammondsport, NY",
+ "region": "",
+ "about": [
+  "Living Roots Wine & Co. is the winery of Sebastian and Colleen Hardy, founded in 2016 and split between the Finger Lakes and South Australia. Seb is a sixth-generation winemaker: his ancestor Thomas Hardy arrived in South Australia in 1850 and planted some of its first vines, and his father, Geoff Hardy, planted K1, the first vineyard in Kuitpo, a cool, high subregion at the southern end of the Adelaide Hills. Colleen, from the Rochester area, met Seb while working a vintage in Australia. In 2023 Halliday’s Wine Companion named Living Roots Australia’s Best New Winery.",
+  "Eden pours eleven of their wines. Find them on the wine list in our menu."
+ ],
+ "facts": [
+  [
+   "Where",
+   "Hammondsport · Keuka Lake, Finger Lakes, New York"
+  ],
+  [
+   "Pouring at Eden",
+   "11 bottlings"
+  ]
+ ],
+ "awards": [],
+ "map": {
+  "lat": 43.150806,
+  "lng": -77.569108,
+  "place": "Living Roots Finger Lakes · Hammondsport, New York",
+  "label": "Living Roots Wine & Co.",
+  "town": "Hammondsport, New York",
+  "art": "assets/images/wines/maps/finger-lakes-2.svg"
+ },
+ "sources": [
+  "https://ca.winecompanion.com.au/resources/awards/2023-winners/2023-major-winners/best-new-winery-2023",
+  "https://fingerlakeswinealliance.com/the-25-best-orange-wines-for-2025/",
+  "https://lisasliquorbarn.com/wine/champagne-sparkling-wine/sparkling-wine/2022-living-roots-pet-nat-sawmill-creek-riesling-750ml",
+  "https://living-roots.db.wine/",
+  "https://living-roots.db.wine/wines/",
+  "https://living-roots.db.wine/wines/WN-BKTGALUXO/",
+  "https://living-roots.db.wine/wines/WN-BMDKZCXIF/",
+  "https://living-roots.db.wine/wines/WN-CFEBIAKYT/"
+ ]
+}

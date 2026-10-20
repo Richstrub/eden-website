@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261020a">
+<link rel="stylesheet" href="css/styles.css?v=20261020b">
 </head>
 <body>
 
@@ -92,6 +92,7 @@
       <a class="hx-btn" href="https://www.opentable.com/r/eden-syracuse" target="_blank" rel="noopener">Reserve a table</a>
       <a class="hx-link" href="#menu">Tonight’s menu</a>
     </div>
+    <div class="hx-status" id="hxStatus" aria-live="polite"><span id="hxDate">Syracuse, New York</span><span>The fire: <b id="hxWood">Ash &amp; Maple</b></span><span id="hxNo">Fire No. —</span></div>
   </div>
   <a class="hx-down" href="#about" aria-label="Scroll to About"><span></span></a>
 </section>
@@ -156,10 +157,9 @@
 
 <section id="partners">
   <div class="wrap">
-    <div class="center narrow">
-      <div class="eyebrow" style="color:var(--ember)">Our Partners</div>
-      <div class="rule"></div>
-      <h2>Soil, pasture, sea &amp; community</h2>
+    <div class="pw-head">
+      <div class="eyebrow">Our Partners</div>
+      <h2>Many hands. One table.</h2>
     </div>
 
     <div class="tabs" role="tablist" aria-label="Partner categories">
@@ -169,8 +169,11 @@
       <button class="tab" id="tab-community" role="tab" aria-selected="false" aria-controls="community" data-tab="community">Community</button>
     </div>
 
+    <div class="pw-wall">
+
     <div class="panel" id="soil" role="tabpanel" aria-labelledby="tab-soil">
-      <article class="partner" data-partner="grindstone-farm">
+      <span class="pw-label">Soil</span>
+      <article class="partner pw-s1" data-partner="grindstone-farm">
         <h3>Grindstone Farm</h3>
         <div class="eyebrow loc">Pulaski, NY</div>
         <p>Richard de Graff and his wife, Vic, have farmed in Pulaski for 45 years, 38 of them certified organic, with Anna Joy Corson as their lead gardener. Midway between Syracuse and Watertown, they grow organic vegetables, berries, herbs and tree fruit, and sell through their CSA, an on-farm market and farmers markets across Central New York.</p>
@@ -181,8 +184,8 @@
           <a href="https://www.instagram.com/grindstone_farm/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="fresh-herbs-of-fabius">
-        <h3>Fresh Herbs of Fabius</h3>
+      <article class="partner pw-s4" data-partner="fresh-herbs-of-fabius">
+        <h3>Fresh Herbs <i>of Fabius</i></h3>
         <div class="eyebrow loc">Fabius, NY · (315) 683-5159</div>
         <p>Producers of gourmet vegetables, edible flowers, and microgreens since 2000, delivering to all points between Utica and Auburn. Microgreens and flowers available all year.</p>
         <div class="links">
@@ -191,7 +194,7 @@
           <a href="https://www.instagram.com/neviusken/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="fruit-of-the-fungi">
+      <article class="partner pw-s2" data-partner="fruit-of-the-fungi">
         <h3>Fruit of the Fungi</h3>
         <div class="eyebrow loc">Lebanon, NY</div>
         <p>KC and Kristi Mangine began growing shiitake on logs in 2008 and went full time in 2015. Today they grow certified organic shiitake, lion's mane, oyster, maitake, beech, chestnut and reishi mushrooms, all on wood using sawdust from local mills. Find them year-round at the CNY Regional Market's Saturday farmers market.</p>
@@ -199,7 +202,7 @@
           <a class="pt-more" href="#partners" role="button" aria-label="Fruit of the Fungi: their story and where they are">Their story &amp; map</a>
         </div>
       </article>
-      <article class="partner" data-partner="dutch-hill-maple">
+      <article class="partner pw-s3" data-partner="dutch-hill-maple">
         <h3>Dutch Hill Maple</h3>
         <div class="eyebrow loc">Tully, NY</div>
         <p>Making maple syrup in the hills of southern Onondaga County since 1968, Dutch Hill is a family operation now led by Nate and Cristy Williams; Nate grew up sugaring with his father and brother. From their new sugarhouse on Woodmancy Road they produce pure and aged maple syrup, maple cream and maple sugar, and are NYS Grown &amp; Certified. Visit during New York's Maple Weekends to taste it at the source.</p>
@@ -212,8 +215,9 @@
       </article>
     </div>
 
-    <div class="panel" id="pasture" role="tabpanel" aria-labelledby="tab-pasture" hidden>
-      <article class="partner" data-partner="hillside-farm" data-also="Hillside Farms">
+    <div class="panel" id="pasture" role="tabpanel" aria-labelledby="tab-pasture">
+      <span class="pw-label">Pasture</span>
+      <article class="partner pw-s3" data-partner="hillside-farm" data-also="Hillside Farms">
         <h3>Hillside Farm</h3>
         <div class="eyebrow loc">Truxton, NY</div>
         <p>Alexa and Jacob Newton raise beef, pork, chickens and turkeys in the hills of Cortland County. Their birds live in shelters that move across the pasture so they can graze and forage outdoors, and the Newtons process their poultry right on the farm.</p>
@@ -223,8 +227,8 @@
           <a href="https://www.instagram.com/_hillside.farms/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="sorrell-hill-milk-co" data-also="Sorrell Hill Farm|2 Kids Goat Farm">
-        <h3>Sorrell Hill Milk Co.</h3>
+      <article class="partner pw-s4" data-partner="sorrell-hill-milk-co" data-also="Sorrell Hill Farm|2 Kids Goat Farm">
+        <h3>Sorrell Hill <i>Milk Co.</i></h3>
         <div class="eyebrow loc">Baldwinsville, NY</div>
         <p>Sara and Josh Kerrick met showing cows at the Cayuga County Fair. In 2025 they opened Sorrell Hill Milk Co., an on-farm creamery at 2 Kids Goat Farm. They're home to the CregoCrest Registered Holsteins and make creamline milk and fresh cheese from both cow and goat milk, with every animal in the small herd known by name.</p>
         <div class="links">
@@ -234,7 +238,7 @@
           <a href="https://www.instagram.com/sorrellhillmilkco/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="certified-angus-beef">
+      <article class="partner pw-s2" data-partner="certified-angus-beef">
         <h3>Certified Angus Beef</h3>
         <div class="eyebrow loc">Wooster, OH</div>
         <p>Founded in 1978 by ranchers working with an Ohio State University meat scientist, the Certified Angus Beef brand judges every cut against 10 quality standards. It is the source of the Ember Roasted NY Strip we cook over the hearth.</p>
@@ -247,8 +251,9 @@
       </article>
     </div>
 
-    <div class="panel" id="sea" role="tabpanel" aria-labelledby="tab-sea" hidden>
-      <article class="partner" data-partner="browne-trading-co">
+    <div class="panel" id="sea" role="tabpanel" aria-labelledby="tab-sea">
+      <span class="pw-label">Sea</span>
+      <article class="partner pw-s3" data-partner="browne-trading-co">
         <h3>Browne Trading Co.</h3>
         <div class="eyebrow loc">Portland, ME</div>
         <p>Committed to the purchase and supply of responsibly sourced seafood, meeting customers' needs without compromising the future health of our oceans' fish.</p>
@@ -259,7 +264,7 @@
           <a href="https://www.instagram.com/brownetradingco/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="wester-ross-salmon" data-also="Wester Ross|Wester Ross Fisheries">
+      <article class="partner pw-s1" data-partner="wester-ross-salmon" data-also="Wester Ross|Wester Ross Fisheries">
         <h3>Wester Ross Salmon</h3>
         <div class="eyebrow loc">Ullapool, Scotland</div>
         <p>Founded in 1977 near Ullapool, Wester Ross is one of the oldest salmon farms in Scotland. Its Atlantic salmon are fed and tended by hand in small pens in the tidal sea lochs of the northwest Highlands: Loch Kanaird, Loch Broom and Little Loch Broom.</p>
@@ -272,8 +277,102 @@
       </article>
     </div>
 
-    <div class="panel" id="community" role="tabpanel" aria-labelledby="tab-community" hidden>
-      <article class="partner" data-partner="james-beard-foundation">
+    <div class="panel" id="vine" role="tabpanel">
+      <span class="pw-label">Vine</span>
+      <article class="partner pw-s1" data-partner="dr-konstantin-frank-winery" data-also="Dr. Konstantin Frank Winery">
+        <h3>Dr. Konstantin Frank Winery</h3>
+        <div class="eyebrow loc">Hammondsport, NY</div>
+        <p>Konstantin Frank Winery was founded on Keuka Lake in 1962 by a Ukrainian-born viticulturist who insisted, against the conventional wisdom of the day, that European vinifera grapes could survive Finger Lakes winters. Four generations on, the family has kept pushing into new varieties. In 2006 Frank’s grandson Fred bought land on the east side of Seneca Lake in Hector and began planting Grüner Veltliner, Austria’s signature white grape, building what is now one of the largest plantings of it in the United States.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Dr. Konstantin Frank Winery: their story and where they are">Their story &amp; map</a>
+          <a href="https://www.drfrankwines.com/" target="_blank" rel="noopener">Website</a>
+        </div>
+      </article>
+      <article class="partner pw-s3" data-partner="hermann-j-wiemer-vineyard" data-also="Hermann J. Wiemer Vineyard">
+        <h3>Hermann J. Wiemer Vineyard</h3>
+        <div class="eyebrow loc">Dundee, NY</div>
+        <p>Wiemer grew up in Bernkastel on Germany’s Mosel, where his father ran a vine-grafting research station and taught him to graft Riesling onto American rootstock. He came to New York in 1965, saw the Mosel in Seneca Lake’s steep slopes and cool climate, and in 1973 bought a farm on the lake’s west shore near Dundee. His winery opened in 1979 and became one of the pioneers of Finger Lakes Riesling. Since 2007 it has been run by his former apprentice Fred Merwarth and partner Oskar Bynke.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Hermann J. Wiemer Vineyard: their story and where they are">Their story &amp; map</a>
+          <a href="https://wiemer.com/" target="_blank" rel="noopener">Website</a>
+        </div>
+      </article>
+      <article class="partner pw-s2" data-partner="heart-and-hands-wine-company" data-also="Heart &amp; Hands Wine Company">
+        <h3>Heart &amp; Hands Wine Company</h3>
+        <div class="eyebrow loc">Union Springs, NY</div>
+        <p>Heart &amp; Hands is the Cayuga Lake winery of Tom and Susan Higgins, who went looking for limestone before they went looking for land. Tom, a Finger Lakes native, left a technology career for wine, working at Zachy’s, at Château La Lagune in Bordeaux and in local cellars. In 2007 the couple bought a gentle slope above Carr’s Cove on the lake’s eastern shore, just north of Union Springs, and planted their first vines in 2010. Today they make about 2,000 cases a year of cool-climate wines.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Heart &amp; Hands Wine Company: their story and where they are">Their story &amp; map</a>
+          <a href="https://heartandhandswine.com/" target="_blank" rel="noopener">Website</a>
+        </div>
+      </article>
+      <article class="partner pw-s4" data-partner="living-roots-wine-co" data-also="Living Roots Wine &amp; Co.">
+        <h3>Living Roots Wine &amp; Co.</h3>
+        <div class="eyebrow loc">Hammondsport, NY</div>
+        <p>Living Roots Wine &amp; Co. is the winery of Sebastian and Colleen Hardy, founded in 2016 and split between the Finger Lakes and South Australia. Seb is a sixth-generation winemaker: his ancestor Thomas Hardy arrived in South Australia in 1850 and planted some of its first vines, and his father, Geoff Hardy, planted K1, the first vineyard in Kuitpo, a cool, high subregion at the southern end of the Adelaide Hills. Colleen, from the Rochester area, met Seb while working a vintage in Australia. In 2023 Halliday’s Wine Companion named Living Roots Australia’s Best New Winery.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Living Roots Wine &amp; Co.: their story and where they are">Their story &amp; map</a>
+        </div>
+      </article>
+      <article class="partner pw-s2" data-partner="grace-tyler-estate-winery" data-also="Grace Tyler Estate Winery">
+        <h3>Grace Tyler Estate Winery</h3>
+        <div class="eyebrow loc">Constantia, NY</div>
+        <p>Grace Tyler Estate Winery is Richard and Elizabeth Hamilton’s farm winery on the north shore of Oneida Lake in Constantia. They bought the land in 2012, harvested their first grapes in 2017 and opened in 2018. Their tasting room is built from aspen cut on the site, it is open year-round and can be reached by snowmobile trail. They grow and work with grapes that can survive Oswego County winters.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Grace Tyler Estate Winery: their story and where they are">Their story &amp; map</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="panel" id="still" role="tabpanel">
+      <span class="pw-label">Still</span>
+      <article class="partner pw-s3" data-partner="lock-1-distilling-company" data-also="Lock 1 Distilling Company">
+        <h3>Lock 1 Distilling Company</h3>
+        <div class="eyebrow loc">Phoenix, NY</div>
+        <p>Lock 1 Distilling Company is a family farm distillery in Phoenix, the Oswego County village where the Oswego Canal begins its run north from the Erie Canal toward Lake Ontario. Cousins Brenden Backus, Stephen Dates and Kevin Dates opened it in 2015 across from the canal’s Lock 1, and built most of their equipment themselves in Backus’s fabrication shop.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Lock 1 Distilling Company: their story and where they are">Their story &amp; map</a>
+          <a href="https://l1dc.com/" target="_blank" rel="noopener">Website</a>
+        </div>
+      </article>
+      <article class="partner pw-s1" data-partner="old-home-distillers" data-also="Old Home Distillers">
+        <h3>Old Home Distillers</h3>
+        <div class="eyebrow loc">Lebanon, NY</div>
+        <p>Old Home Distillers is a family farm distillery on historic Campbell Road in Lebanon, Madison County, southeast of Syracuse. Jerry and Marlene Carvell founded it in 2015 in a hundred-year-old stable they converted into a stillhouse, and their sons Aaron and Adam help run it. Everything is made on the farm from New York-grown ingredients, from the corn whiskey that started the business to the bourbons, ryes and gins that followed.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Old Home Distillers: their story and where they are">Their story &amp; map</a>
+        </div>
+      </article>
+      <article class="partner pw-s2" data-partner="hollerhorn-distilling" data-also="Hollerhorn Distilling">
+        <h3>Hollerhorn Distilling</h3>
+        <div class="eyebrow loc">Naples, NY</div>
+        <p>Hollerhorn Distilling is Karl and Melissa Neubauer’s family operation in the hills outside Naples, at the head of Canandaigua Lake, opened in 2018 and rebuilt after a fire in 2022. Karl makes every spirit himself, drawing on years of study with master distillers and a family tradition of Austrian schnapps.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Hollerhorn Distilling: their story and where they are">Their story &amp; map</a>
+          <a href="https://hollerhorn.com/" target="_blank" rel="noopener">Website</a>
+        </div>
+      </article>
+      <article class="partner pw-s4" data-partner="fort-hamilton-distillery" data-also="Fort Hamilton Distillery">
+        <h3>Fort Hamilton Distillery</h3>
+        <div class="eyebrow loc">Brooklyn, NY</div>
+        <p>Fort Hamilton Distillery was founded in 2016 by Alex Clark, a British-born bartender who spent years in New York’s classic-cocktail scene, and his wife, Amy Grindeland. Their mission was to bring back New York’s earliest whiskey style, rye, and the distillery takes its name from Fort Hamilton at the southern tip of Brooklyn, itself named for Alexander Hamilton. Since 2020 the company has had its own distillery and tasting room on the second floor of a converted warehouse in Industry City, on the Sunset Park waterfront.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Fort Hamilton Distillery: their story and where they are">Their story &amp; map</a>
+        </div>
+      </article>
+      <article class="partner pw-s3" data-partner="albany-distilling-company" data-also="Albany Distilling Company">
+        <h3>Albany Distilling Company</h3>
+        <div class="eyebrow loc">Albany, NY</div>
+        <p>Albany Distilling Company calls itself the first licensed distillery in Albany since Prohibition. Teachers John Curtin and Matthew Jager opened it in 2011 in a small space on Montgomery Street, beside the Albany Pump Station and close to where the Quackenbush Still House, the city’s first distillery, operated in the mid-1700s. Curtin and co-owner Rick Sicari have since grown it into a much larger production house on Third Street, with a bar and bottle shop downtown.</p>
+        <div class="links">
+          <a class="pt-more" href="#partners" role="button" aria-label="Albany Distilling Company: their story and where they are">Their story &amp; map</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="panel" id="community" role="tabpanel" aria-labelledby="tab-community">
+      <span class="pw-label">Community</span>
+      <article class="partner pw-s2" data-partner="james-beard-foundation">
         <h3>James Beard Foundation</h3>
         <div class="eyebrow loc">New York, NY</div>
         <p>On October 2 and 3, 2026, Eden hosted its first Friends of James Beard Benefit dinner. Guests enjoyed a reception and an eight-course tasting menu cooked over our wood-fired hearth, with optional wine pairings presented by sommelier Keenan Davis. Proceeds support the James Beard Foundation's programs for the restaurant community.</p>
@@ -284,7 +383,7 @@
           <a href="https://www.instagram.com/beardfoundation/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="kitchen-literacy-project">
+      <article class="partner pw-s4" data-partner="kitchen-literacy-project">
         <h3>Kitchen Literacy Project</h3>
         <div class="eyebrow loc">Syracuse, NY</div>
         <p>Founded in 2023 by Jess Miller, the Kitchen Literacy Project teaches Syracuse teens to cook, free of charge, at Salt City Market. Local chefs teach paid cooking classes for the public, and that money pays for the free teen program, giving young people kitchen skills they can use for life.</p>
@@ -292,7 +391,7 @@
           <a class="pt-more" href="#partners" role="button" aria-label="Kitchen Literacy Project: their story and where they are">Their story &amp; map</a>
         </div>
       </article>
-      <article class="partner" data-partner="grills-by-demant">
+      <article class="partner pw-s2" data-partner="grills-by-demant">
         <h3>Grills by Demant</h3>
         <div class="eyebrow loc">Custom Fabrication</div>
         <p>Every grill is a collaboration between stainless-steel expertise and the client's own ideas: custom grills built to bring grill dreams to life.</p>
@@ -303,7 +402,7 @@
           <a href="https://www.instagram.com/grillsbydemant/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </article>
-      <article class="partner" data-partner="eat-local-new-york">
+      <article class="partner pw-s3" data-partner="eat-local-new-york">
         <h3>Eat Local New York</h3>
         <div class="eyebrow loc">New York State</div>
         <p>Eat Local New York celebrates the state's independent restaurants, chefs and producers through restaurant reviews, a podcast featuring local food and drink makers, and Eat Local New York Restaurant Week, which runs from Buffalo to Brooklyn.</p>
@@ -315,6 +414,8 @@
         </div>
       </article>
     </div>
+    </div>
+    <div class="pw-foot"><p>Soil · Pasture · Sea · Vine · Still · Community</p><span>23 partners and growing</span></div>
   </div>
 </section>
 
@@ -734,5 +835,6 @@
 <script src="js/analytics.js?v=20261012b"></script>
 <script src="js/join.js?v=20261013a"></script>
 <script src="js/hearth-hero.js?v=20261020a"></script>
+<script src="js/fire-number.js?v=20261020b"></script>
 </body>
 </html>
