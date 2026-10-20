@@ -81,7 +81,7 @@
         var k=Math.min(1,y/hh);
         heroInner.style.transform='translateY('+(y*.42).toFixed(1)+'px) scale('+(1-k*.08).toFixed(4)+')';
         heroInner.style.opacity=(1-k*1.25).toFixed(3);
-        embers.style.transform='translateY('+(y*.6).toFixed(1)+'px)';
+        if(embers)embers.style.transform='translateY('+(y*.6).toFixed(1)+'px)';
       }
       var r=cat.getBoundingClientRect();
       if(r.bottom>0&&r.top<vh)cat.style.setProperty('--py',((r.top-vh/2)*-.25).toFixed(1)+'px');
@@ -1028,6 +1028,6 @@
   if('IntersectionObserver' in window)new IntersectionObserver(function(es){running=es[0].isIntersecting}).observe(c);
   if(!reduce)requestAnimationFrame(loop);
   }
-  hearth(document.getElementById('embers'));
+  if(document.getElementById('embers'))hearth(document.getElementById('embers'));   // the old hero's canvas (the hearth hero has its own: js/hearth-hero.js)
   hearth(document.getElementById('padFire'),{reach:.74});
 })();
