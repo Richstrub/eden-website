@@ -3,7 +3,8 @@
  * Eden opened on Wednesday, August 14, 2019 and lights the hearth four nights a week
  * (Wednesday to Saturday). It closes two weeks a year, so 8 nights a year are taken off,
  * spread evenly over the time since opening. The number goes up at the start of each
- * Wednesday, Thursday, Friday and Saturday.
+ * Wednesday, Thursday, Friday and Saturday. From Wednesday at 3 pm to Saturday at 11 pm the line
+ * shows tonight's fire and its wood; the rest of the week it shows the next fire, its date, and "Banked".
  * Ash is always in the hearth; maple, hickory and cherry rotate alongside it, so each fire
  * gets its own mix, always the same mix for the same fire number.
  */
@@ -78,15 +79,41 @@
     return mix.length === 2 ? mix[0] + ' & ' + mix[1] : mix.slice(0, -1).join(', ') + ' & ' + mix[mix.length - 1];
   }
 
+  // The fire is shown as burning from Wednesday at 3 pm until Saturday at 11 pm.
+  // Outside that stretch the hearth is banked, and the line shows the next fire and its date.
+  var BURN_FROM = { day: 3, hour: 15 }, BURN_UNTIL = { day: 6, hour: 23 };
+  function burning(now) {
+    var dow = now.getDay(), h = now.getHours();
+    if (dow === BURN_FROM.day) return h >= BURN_FROM.hour;
+    if (dow === BURN_UNTIL.day) return h < BURN_UNTIL.hour;
+    return dow > BURN_FROM.day && dow < BURN_UNTIL.day;
+  }
+  // The first night of the next burning stretch (the coming Wednesday, or today if it is Wednesday before 3 pm)
+  function nextFireDay(now) {
+    var d = dayStart(now);
+    if (d.getDay() === BURN_FROM.day && now.getHours() < BURN_FROM.hour) return d;
+    do { d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1); } while (d.getDay() !== BURN_FROM.day);
+    return d;
+  }
+  function longDate(d) { return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+
   function render() {
-    var now = new Date(), n = fireNumber(now);
+    var now = new Date();
     var date = document.getElementById('hxDate'), wood = document.getElementById('hxWood'), no = document.getElementById('hxNo');
     if (!date || !wood || !no) return;
-    date.textContent = DAYS[now.getDay()] + ', ' + MONTHS[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear();
-    wood.textContent = woodFor(n);
-    no.textContent = 'Fire No. ' + n.toLocaleString('en-US');
+    if (burning(now)) {
+      var n = fireNumber(now);
+      date.textContent = longDate(now);
+      wood.textContent = woodFor(n);
+      no.textContent = 'Fire No. ' + n.toLocaleString('en-US');
+    } else {
+      var next = nextFireDay(now), m = fireNumber(new Date(next.getFullYear(), next.getMonth(), next.getDate(), BURN_FROM.hour));
+      date.textContent = 'Next fire · ' + longDate(next);
+      wood.textContent = 'Banked';
+      no.textContent = 'Fire No. ' + m.toLocaleString('en-US');
+    }
   }
   render();
   setInterval(render, 60000);
-  window.EDEN_FIRE = { fireNumber: fireNumber, woodFor: woodFor };
+  window.EDEN_FIRE = { fireNumber: fireNumber, woodFor: woodFor, burning: burning, nextFireDay: nextFireDay };
 })();
