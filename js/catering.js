@@ -201,18 +201,23 @@ let alaCleared=false;
 /* Bar packages. Every package: $75 setup and $15 per bartender per hour, one bartender plus one for every 30 guests.
    Open bar per guest: beer and wine $16 the first hour, $12 each hour after; with cocktails $18, then $16.
    Cash bar: each guest pays their own tab at the end of the meal. Consumption bar: the host pays the tab at the end.
-   No beverage service at Palladian Hall. The bar menu is offered only with an à la carte dinner in the Restaurant. */
+   Our bar menu (à la carte dinner in the Restaurant only) carries the same setup and bartender fees; drinks are billed as ordered.
+   The service charge applies to the bar setup and bartender fees too. No beverage service at Palladian Hall. */
 const BAR={setup:75,perBartender:15,guestsPer:30,pkgs:{
   menu:{name:'Our bar menu'},'open-bw':{name:'Open bar: beer and wine',first:16,after:12},
   'open-full':{name:'Open bar: beer, wine and cocktails',first:18,after:16},cash:{name:'Cash bar'},cons:{name:'Consumption bar'}}};
 const PALLADIAN='Palladian Hall';
+// Sparkling toasts, priced per guest; each has its own line on the BEO
+const TOASTS={bro:{name:'Brotherhood Blanc de Blancs',price:6,key:'bv.toast.bro'},
+  frank:{name:'Dr. Konstantin Frank Célèbre',price:8,key:'bv.toast.frank'},
+  wiemer:{name:'Hermann J. Wiemer Sparkling Brut Riesling',price:9,key:'bv.toast.wiemer'}};
+function clearF(keys){keys.forEach(k=>{const el=document.querySelector(`[data-f="${k}"]`);const cb=el&&el.type==='checkbox';Q[k]=cb?false:'';if(el){if(cb)el.checked=false;else el.value='';}});}
 function barHours(a,b){a=String(a||'');b=String(b||'');if(!/^\d\d:\d\d/.test(a)||!/^\d\d:\d\d/.test(b))return 0;
   const m=x=>+x.slice(0,2)*60+ +x.slice(3,5);let d=m(b)-m(a);if(d<=0)d+=1440;return Math.ceil(d/60);}
 // the bar's cost from a set of answers: fees (setup, bartenders), food-and-beverage charges, and what is billed later
 function barPrice(key,G,open,close){
   const P=BAR.pkgs[key],r={lines:[],fees:0,fb:0,later:'',n:0,h:0,pp:0};
   if(!P)return r;
-  if(key==='menu'){r.later='drinks from our bar menu, billed as ordered';return r;}
   const h=barHours(open,close),n=1+Math.floor((G||0)/BAR.guestsPer);r.n=n;r.h=h;
   r.fees=BAR.setup+(h?n*h*BAR.perBartender:0);
   r.lines.push(['Bar setup',BAR.setup]);
@@ -220,6 +225,7 @@ function barPrice(key,G,open,close){
   else r.later='bartenders (add the bar opening and closing times to include them)';
   if(P.first&&h){r.pp=P.first+P.after*(h-1);r.fb=r.pp*(G||0);r.lines.push([`${P.name} (${G||0} guests × $${r.pp})`,r.fb]);}
   else if(P.first)r.later='the open bar (add the bar opening and closing times to include it)';
+  if(key==='menu')r.later='drinks from our bar menu, billed as ordered';
   if(key==='cash')r.later='cash bar tabs, paid by each guest at the end of the meal';
   if(key==='cons')r.later='the consumption bar tab, due from you at the end of the meal';
   return r;
@@ -245,18 +251,25 @@ function update(){
   Q['q.hasBeef']=beefList.some(e=>/beef|strip/i.test(e.name))?'yes':'no';
   // Beverages: none at Palladian Hall; our bar menu only with an à la carte dinner in the Restaurant
   Q['q.barOk']=room&&room===PALLADIAN?'no':'yes';
+  Q['q.corp']=/(^|, )Corporate(,|$)/.test(String(Q['ev.type']||''))?'yes':'no';
+  // Alcohol-free: no bar, toast, signature cocktail or wine service; non-alcoholic beverages stay available
+  Q['q.wet']=Q['q.dry']?'no':'yes';
+  if(Q['q.toast']&&!TOASTS[Q['q.toast']])clearF(['q.toast']);
+  if(Q['q.dry']||Q['q.barOk']!=='yes')clearF(['q.toast','q.sig','q.sigIdea','q.wine'].filter(k=>Q[k]));
+  if(Q['q.barOk']!=='yes'&&Q['q.dry'])clearF(['q.dry']);
   const menuOk=style==='ala'&&room==='Restaurant',bs=$('qBar');
   if(bs){
     const has=!!bs.querySelector('option[value="menu"]');
     if(menuOk&&!has)bs.insertBefore(new Option('Our bar menu (with à la carte dinner)','menu'),bs.options[1]);
     if(!menuOk&&has)bs.querySelector('option[value="menu"]').remove();
-    const clearBar=Q['q.barOk']!=='yes'||(Q['q.bar']&&!BAR.pkgs[Q['q.bar']])||(Q['q.bar']==='menu'&&!menuOk);
+    const clearBar=Q['q.barOk']!=='yes'||Q['q.dry']||(Q['q.bar']&&!BAR.pkgs[Q['q.bar']])||(Q['q.bar']==='menu'&&!menuOk);
     if(clearBar){Q['q.bar']='';bs.value='';}
-    if(Q['q.barOk']!=='yes')['q.wine','q.toast','q.na','bev.open','bev.close'].forEach(k=>{Q[k]=k.startsWith('bev')?'':false;const el=document.querySelector(`[data-f="${k}"]`);if(el){if(el.type==='checkbox')el.checked=false;else el.value='';}});
+    if(Q['q.dry'])clearF(['bev.open','bev.close'].filter(k=>Q[k]));
+    if(Q['q.barOk']!=='yes')clearF(['q.na','bev.open','bev.close'].filter(k=>Q[k]));
     document.querySelectorAll('#barTerms [data-bar]').forEach(li=>{li.hidden=li.dataset.bar==='menu'&&!menuOk;li.classList.toggle('on',li.dataset.bar===Q['q.bar']);});
     const bp=barPrice(Q['q.bar'],num('ev.expected'),Q['bev.open'],Q['bev.close']),bc=$('barCalc');
     let t='';
-    if(Q['q.bar']&&Q['q.bar']!=='menu'){
+    if(Q['q.bar']){
       t=bp.h?`${bp.n} bartender${bp.n>1?'s':''} for ${bp.h} hour${bp.h>1?'s':''}: $${BAR.setup} setup + $${bp.n*bp.h*BAR.perBartender} bartenders`:`Add your bar opening and closing times to see the bar cost.`;
       if(bp.h&&bp.pp)t+=` + $${bp.pp} per guest × ${num('ev.expected')||0} guests = $${(bp.fees+bp.fb).toLocaleString('en-US')}`;
       else if(bp.h)t+=` = $${bp.fees.toLocaleString('en-US')}`;
@@ -387,9 +400,14 @@ function buildBEO(){
   const bar=barKey?BAR.pkgs[barKey].name:'';
   if(!barOk){delete D['bev.open'];delete D['bev.close'];}
   if(barKey)D['bev.pkg']=barKey;
-  if(barOk&&Q['q.wine'])D['bv.wine.qty']='1';
-  if(barOk&&Q['q.toast'])D['bv.toast.qty']='1';
+  const dry=barOk&&!!Q['q.dry'];
+  if(dry)D['ev.dry']=true;
+  if(barOk&&!dry&&Q['q.wine'])D['bv.wine.qty']='1';
+  const toast=barOk&&!dry?TOASTS[Q['q.toast']]:null;
+  if(toast)D[toast.key+'.qty']=String(G||1);
+  if(barOk&&!dry&&Q['q.sig'])D['bv.sig.qty']='1';
   if(barOk&&Q['q.na'])D['bv.na.qty']='1';
+  copy('ev.budget');
   // Dietary needs
   const diet=Q.diet.filter(r=>r&&(r.name||r.allergy||r.note)).map(r=>({name:(r.name||'').trim(),table:'',allergy:(r.allergy||'').trim(),sub:(r.note||'').trim(),ok:false}));
   while(diet.length<3)diet.push({});
@@ -400,6 +418,10 @@ function buildBEO(){
   const extra=[];
   if(D['ev.alacarte'])extra.push(D['ev.third']?'Dinner: à la carte from the restaurant menu. The guest was told the 3rd Floor Event Space has a $2,500 food and beverage minimum, or a $250 room fee.':'Dinner: à la carte from the restaurant menu.');
   if(bar)extra.push(`Bar service: ${bar}.`);
+  if(D['ev.dry'])extra.push('Alcohol-free event: no alcohol is served, and guests may not bring their own.');
+  if(toast)extra.push(`Toast: ${toast.name}, $${toast.price} per guest.`);
+  if(D['bv.sig.qty'])extra.push('One signature cocktail'+(String(Q['q.sigIdea']||'').trim()?`; the host's ideas: ${String(Q['q.sigIdea']).trim()}`:'')+'.');
+  if(Q['q.corp']==='yes'&&num('ev.budget'))extra.push(`Corporate event; budget per person: $${num('ev.budget')}.`);
   if(Q['q.rec']==='yes'&&[...hot,...cold].some(it=>Q['q.'+it.key]))extra.push('Canapé quantities were estimated from the reception guest count; please confirm.');
   if(extra.length)n.push('From the client questionnaire: '+extra.join(' '));
   if(n.length)D.notes=n.join('\n\n');
@@ -420,19 +442,22 @@ function estimate(D){
   const bufT=bfOn?bp*bg:0;
   const dessT=sum(desserts);
   const bar=barPrice(D['bev.pkg'],n('ev.expected'),D['bev.open'],D['bev.close']);
-  const fb=suiteT+brunchT+canT+enhT+dinT+tableT+bufT+dessT+bar.fb;
+  const toast=Object.values(TOASTS).find(t=>n(t.key+'.qty')),toastT=toast?toast.price*n(toast.key+'.qty'):0;
+  const fb=suiteT+brunchT+canT+enhT+dinT+tableT+bufT+dessT+bar.fb+toastT;
   // à la carte is billed on what guests order, so the third-floor minimum can't be judged yet: shown as a reminder instead
   const ala=!!D['ev.alacarte'];
   const rental=D['ev.third']&&!ala&&fb<=2500?250:0;
   const svcPct=n('bill.svc'),taxPct=n('bill.tax');
-  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
+  const sub=fb+attend+rental+bar.fees,svc=(fb+bar.fees)*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
   const quoted=[];
   if(ala)quoted.push('à la carte dinner (billed on what your guests order)');
   if(bar.later)quoted.push(bar.later);
-  if(['bv.wine','bv.toast','bv.na'].some(k=>n(k+'.qty')))quoted.push('wine service, toast and non-alcoholic beverages');
+  if(n('bv.sig.qty'))quoted.push('the signature cocktail, priced with your event manager');
+  const other=[['bv.wine','wine service with dinner'],['bv.na','non-alcoholic beverages']].filter(([k])=>n(k+'.qty')).map(x=>x[1]);
+  if(other.length)quoted.push(other.join(' and ')+', priced with your event manager');
   const lines=[['In-suite dining',suiteT],['Brunch and stations',brunchT],['Chef attendant fees',attend],['Reception canapés',canT],['Reception displays',enhT],
     [tier?`Plated dinner ($${tier} × ${dg})`:'Plated dinner',dinT],['Tableside entree selection',tableT],[bp?`Dinner buffet ($${bp} × ${bg})`:'Dinner buffet',bufT],
-    ['Desserts',dessT],...bar.lines,['Third-floor room fee',rental],['À la carte dinner',ala?'Billed as ordered':0],['3rd floor minimum',ala&&D['ev.third']?'$2,500, or $250 room fee':0]].filter(l=>l[1]);
+    ['Desserts',dessT],...bar.lines,[toast?`${toast.name} toast (${n(toast.key+'.qty')} × $${toast.price})`:'Toast',toastT],['Third-floor room fee',rental],['À la carte dinner',ala?'Billed as ordered':0],['3rd floor minimum',ala&&D['ev.third']?'$2,500, or $250 room fee':0]].filter(l=>l[1]);
   return {lines,sub,svc,tax,total,svcPct,taxPct,quoted};
 }
 function renderEstimate(){
@@ -568,7 +593,7 @@ function summary(D){
     else if((m=k.match(/^bf\.(.*)$/))&&NAMES[m[1]]&&D[k]===true)add('Dinner',NAMES[m[1]][1]+' (buffet)');
   });
   if(D['din.temp']||D['bf.temp'])add('Dinner','Beef cooked '+(D['din.temp']||D['bf.temp']));
-  const bev=[];const bar=BAR.pkgs[Q['q.bar']]?BAR.pkgs[Q['q.bar']].name:'';if(bar)bev.push(bar);if(Q['q.wine'])bev.push('Wine service with dinner');if(Q['q.toast'])bev.push('Champagne toast');if(Q['q.na'])bev.push('Non-alcoholic beverages');
+  const bev=[];const bar=BAR.pkgs[Q['q.bar']]?BAR.pkgs[Q['q.bar']].name:'';if(bar)bev.push(bar);if(Q['q.dry'])bev.unshift('Alcohol-free event');if(Q['q.wine'])bev.push('Wine service with dinner');if(TOASTS[Q['q.toast']])bev.push('Toast: '+TOASTS[Q['q.toast']].name);if(Q['q.sig'])bev.push('One signature cocktail');if(Q['q.na'])bev.push('Non-alcoholic beverages');
   bev.forEach(b=>add('Beverages',b));
   Q.diet.filter(r=>r&&(r.name||r.allergy||r.note)).forEach(r=>add('Allergies and dietary needs',[r.name,r.allergy,r.note].filter(Boolean).join(' · ')));
   ['rm.style','rm.head','rm.linen','rm.decor','rm.av','rm.vendors'].forEach(k=>{if(Q[k])add('Room and setup',String(Q[k]).trim());});
@@ -589,7 +614,7 @@ function intakeMail(note){
   const date=longDate(Q['ev.date']);
   const subject=`Event inquiry: ${(Q['ev.name']||Q['ev.contact']||'Event').trim()}${date?' – '+date:''}`;
   const body=['Hello,','','I’d like to plan an event at Eden.','',`Name: ${Q['ev.contact']||''}`,`Organization: ${Q['ev.client']||''}`,`Phone: ${Q['ev.phone']||''}`,`Email: ${Q['ev.email']||''}`,
-    `Event: ${Q['ev.name']||''}`,`Type: ${Q['ev.type']||''}`,`Date: ${date}`,`Time: ${[Q['ev.start'],Q['ev.end']].filter(Boolean).join(' – ')}`,`Expected guests: ${Q['ev.expected']||''}`,
+    `Event: ${Q['ev.name']||''}`,`Type: ${Q['ev.type']||''}`,...(Q['q.corp']==='yes'&&num('ev.budget')?[`Budget per person: $${num('ev.budget')}`]:[]),`Date: ${date}`,`Time: ${[Q['ev.start'],Q['ev.end']].filter(Boolean).join(' – ')}`,`Expected guests: ${Q['ev.expected']||''}`,
     `Location: ${Q['ev.room']==='Other'?(Q['ev.roomAddr']||'Off-site'):(Q['ev.room']||'')}`,'','Thank you,',Q['ev.contact']||''].join('\n');
   const mailto=`mailto:${SEND_TO.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   dlg._body=subject+'\n\n'+body;
