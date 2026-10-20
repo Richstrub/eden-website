@@ -201,8 +201,8 @@ let alaCleared=false;
 /* Bar packages. Every package: $75 setup and $15 per bartender per hour, one bartender plus one for every 30 guests.
    Open bar per guest: beer and wine $16 the first hour, $12 each hour after; with cocktails $18, then $16.
    Cash bar: each guest pays their own tab at the end of the meal. Consumption bar: the host pays the tab at the end.
-   Our bar menu (à la carte dinner in the Restaurant only) carries the same setup and bartender fees; drinks are billed as ordered.
-   The service charge applies to the bar setup and bartender fees too. No beverage service at Palladian Hall. */
+   Our bar menu (à la carte dinner in the Restaurant only) has no setup or bartender fees; drinks are billed as ordered.
+   The service charge applies to food and beverage only, not to the bar setup or bartender fees. No beverage service at Palladian Hall. */
 const BAR={setup:75,perBartender:15,guestsPer:30,pkgs:{
   menu:{name:'Our bar menu'},'open-bw':{name:'Open bar: beer and wine',first:16,after:12},
   'open-full':{name:'Open bar: beer, wine and cocktails',first:18,after:16},cash:{name:'Cash bar'},cons:{name:'Consumption bar'}}};
@@ -218,6 +218,7 @@ function barHours(a,b){a=String(a||'');b=String(b||'');if(!/^\d\d:\d\d/.test(a)|
 function barPrice(key,G,open,close){
   const P=BAR.pkgs[key],r={lines:[],fees:0,fb:0,later:'',n:0,h:0,pp:0};
   if(!P)return r;
+  if(key==='menu'){r.later='drinks from our bar menu, billed as ordered';return r;}
   const h=barHours(open,close),n=1+Math.floor((G||0)/BAR.guestsPer);r.n=n;r.h=h;
   r.fees=BAR.setup+(h?n*h*BAR.perBartender:0);
   r.lines.push(['Bar setup',BAR.setup]);
@@ -225,7 +226,6 @@ function barPrice(key,G,open,close){
   else r.later='bartenders (add the bar opening and closing times to include them)';
   if(P.first&&h){r.pp=P.first+P.after*(h-1);r.fb=r.pp*(G||0);r.lines.push([`${P.name} (${G||0} guests × $${r.pp})`,r.fb]);}
   else if(P.first)r.later='the open bar (add the bar opening and closing times to include it)';
-  if(key==='menu')r.later='drinks from our bar menu, billed as ordered';
   if(key==='cash')r.later='cash bar tabs, paid by each guest at the end of the meal';
   if(key==='cons')r.later='the consumption bar tab, due from you at the end of the meal';
   return r;
@@ -269,7 +269,7 @@ function update(){
     document.querySelectorAll('#barTerms [data-bar]').forEach(li=>{li.hidden=li.dataset.bar==='menu'&&!menuOk;li.classList.toggle('on',li.dataset.bar===Q['q.bar']);});
     const bp=barPrice(Q['q.bar'],num('ev.expected'),Q['bev.open'],Q['bev.close']),bc=$('barCalc');
     let t='';
-    if(Q['q.bar']){
+    if(Q['q.bar']&&Q['q.bar']!=='menu'){
       t=bp.h?`${bp.n} bartender${bp.n>1?'s':''} for ${bp.h} hour${bp.h>1?'s':''}: $${BAR.setup} setup + $${bp.n*bp.h*BAR.perBartender} bartenders`:`Add your bar opening and closing times to see the bar cost.`;
       if(bp.h&&bp.pp)t+=` + $${bp.pp} per guest × ${num('ev.expected')||0} guests = $${(bp.fees+bp.fb).toLocaleString('en-US')}`;
       else if(bp.h)t+=` = $${bp.fees.toLocaleString('en-US')}`;
@@ -448,7 +448,7 @@ function estimate(D){
   const ala=!!D['ev.alacarte'];
   const rental=D['ev.third']&&!ala&&fb<=2500?250:0;
   const svcPct=n('bill.svc'),taxPct=n('bill.tax');
-  const sub=fb+attend+rental+bar.fees,svc=(fb+bar.fees)*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
+  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
   const quoted=[];
   if(ala)quoted.push('à la carte dinner (billed on what your guests order)');
   if(bar.later)quoted.push(bar.later);

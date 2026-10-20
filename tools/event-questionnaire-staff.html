@@ -33,6 +33,10 @@ h3.minor{font-weight:400;margin-top:10px}
 .note{color:var(--muted);font-size:14px;margin:0 0 14px;max-width:70ch}
 .warn{color:var(--warn);font-size:14px;margin:8px 0 0}
 .warn:empty{display:none}
+.q-bar{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;max-width:70ch}
+.q-bar li{font-size:14px;line-height:1.5;color:var(--muted);padding:8px 14px;border-left:2px solid transparent}
+.q-bar li.on{color:inherit;background:var(--moss-soft);border-left-color:var(--moss)}
+.dry-note{font-size:15px;line-height:1.5;margin:8px 0 0;padding:12px 16px;background:var(--moss-soft);border-left:3px solid var(--moss);max-width:70ch}
 .fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px 16px}
 .f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
 .f.wide{grid-column:1/-1}
@@ -134,6 +138,7 @@ ol.steps li{margin:0 0 12px}
   <div class="fields">
     <label class="f">Event name<input data-f="ev.name" placeholder="e.g., Harper–Lee Wedding"></label>
     <label class="f">Type of event<select data-f="ev.type"><option></option><option>Wedding</option><option>Corporate</option><option>Social</option><option>Other</option></select></label>
+    <label class="f" data-show="ev.type=Corporate">Budget per person (food and beverage, $)<input type="number" min="0" step="1" inputmode="decimal" data-f="ev.budget" placeholder="e.g., 85"></label>
     <label class="f">Event date<input type="date" data-f="ev.date"></label>
     <label class="f">Start time<input type="time" data-f="ev.start"></label>
     <label class="f">End time<input type="time" data-f="ev.end"></label>
@@ -256,17 +261,36 @@ ol.steps li{margin:0 0 12px}
   <div class="opts" id="o-dessert"></div>
 </section>
 
-<section class="block">
+<section class="block" data-show="q.barOk=yes">
   <h2><span class="step">STEP 8</span>Beverages</h2>
-  <p class="note">Beverage service is priced by your event manager and isn't included in the estimate.</p>
+  <div class="ask">
+    <label class="pill"><input type="checkbox" data-f="q.dry"> Alcohol-free event</label>
+  </div>
+  <p class="dry-note" data-show="q.dry=true"><b>Alcohol-free:</b> no alcohol will be served at your event, and guests may not bring their own. This becomes part of your event contract. Non-alcoholic beverages are still available below.</p>
+  <div data-show="q.wet=yes">
+  <p class="note" style="margin-top:16px">Every bar package has a $75 setup fee and $15 per bartender per hour, with one bartender plus one more for every 30 guests. Leave the bar blank if you don't need one.</p>
   <div class="fields">
-    <label class="f">Bar service<select data-f="q.bar"><option></option><option>Hosted (you cover drinks)</option><option>Cash bar (guests pay)</option><option>On consumption (billed for what's poured)</option><option>No bar</option></select></label>
+    <label class="f">Bar service<select data-f="q.bar" id="qBar"><option value=""></option><option value="open-bw">Open bar: beer and wine</option><option value="open-full">Open bar: beer, wine and cocktails</option><option value="cash">Cash bar</option><option value="cons">Consumption bar</option></select></label>
     <label class="f">Bar opens<input type="time" data-f="bev.open"></label>
     <label class="f">Bar closes<input type="time" data-f="bev.close"></label>
   </div>
+  <ul class="q-bar" id="barTerms">
+    <li data-bar="open-bw"><b>Open bar, beer and wine.</b> $16 per guest for the first hour, $12 per guest for each hour after.</li>
+    <li data-bar="open-full"><b>Open bar, beer, wine and cocktails.</b> $18 per guest for the first hour, $16 per guest for each hour after.<br>Classic cocktails: Cosmopolitan (Albany Distilling Vodka), Martini and Negroni (Deep Wells Gin), Old Fashioned (Fort Hamilton Whiskey), Manhattan (Fort Hamilton Rye), Margarita (Steelbound Agave), Daiquiri (Albany Distilling Rum).</li>
+    <li data-bar="cash"><b>Cash bar.</b> You cover the setup and bartender fees; each guest pays their own bar tab at the end of the meal.</li>
+    <li data-bar="cons"><b>Consumption bar.</b> You cover the setup and bartender fees, and the balance of the bar tab is due from you at the end of the meal.</li>
+  </ul>
+  <p class="note" id="barCalc" hidden style="margin-top:12px"></p>
+  <div class="fields" style="margin-top:16px">
+    <label class="f">Toast<select data-f="q.toast"><option value=""></option><option value="bro">Brotherhood Blanc de Blancs, $6 per guest</option><option value="frank">Dr. Konstantin Frank Célèbre, $8 per guest</option><option value="wiemer">Hermann J. Wiemer Sparkling Brut Riesling, $9 per guest</option></select></label>
+  </div>
   <div class="ask" style="margin-top:12px">
+    <label class="pill"><input type="checkbox" data-f="q.sig"> One signature cocktail</label>
     <label class="pill"><input type="checkbox" data-f="q.wine"> Wine service with dinner</label>
-    <label class="pill"><input type="checkbox" data-f="q.toast"> Champagne toast</label>
+  </div>
+  <label class="f" data-show="q.sig=true" style="margin-top:12px">Ideas for your signature cocktail (a name, a favorite spirit, a color)<input data-f="q.sigIdea"></label>
+  </div>
+  <div class="ask" style="margin-top:12px">
     <label class="pill"><input type="checkbox" data-f="q.na"> Non-alcoholic beverages</label>
   </div>
 </section>
@@ -493,8 +517,50 @@ const bfChosen=list=>{const t=bfTierNow();return list.filter(it=>Q['bf.'+it.key]
 const allMenu=[...salads,...starters,...entrees,...sides];
 const anyDessert=()=>desserts.some(d=>num(d.key+'.qty')>0);
 
+/* Bar packages. Every package: $75 setup and $15 per bartender per hour, one bartender plus one for every 30 guests.
+   Open bar per guest: beer and wine $16 the first hour, $12 each hour after; with cocktails $18, then $16.
+   Cash bar: each guest pays their own tab at the end of the meal. Consumption bar: the host pays the tab at the end.
+   The service charge applies to food and beverage only, not to the setup or bartender fees. No beverage service at Palladian Hall. */
+const BAR={setup:75,perBartender:15,guestsPer:30,pkgs:{
+  'open-bw':{name:'Open bar: beer and wine',first:16,after:12},'open-full':{name:'Open bar: beer, wine and cocktails',first:18,after:16},
+  cash:{name:'Cash bar'},cons:{name:'Consumption bar'}}};
+const PALLADIAN='Palladian Hall';
+const TOASTS={bro:{name:'Brotherhood Blanc de Blancs',price:6,key:'bv.toast.bro'},
+  frank:{name:'Dr. Konstantin Frank Célèbre',price:8,key:'bv.toast.frank'},
+  wiemer:{name:'Hermann J. Wiemer Sparkling Brut Riesling',price:9,key:'bv.toast.wiemer'}};
+function clearF(keys){keys.forEach(k=>{const el=document.querySelector(`[data-f="${k}"]`);const cb=el&&el.type==='checkbox';Q[k]=cb?false:'';if(el){if(cb)el.checked=false;else el.value='';}});}
+function barHours(a,b){a=String(a||'');b=String(b||'');if(!/^\d\d:\d\d/.test(a)||!/^\d\d:\d\d/.test(b))return 0;
+  const m=x=>+x.slice(0,2)*60+ +x.slice(3,5);let d=m(b)-m(a);if(d<=0)d+=1440;return Math.ceil(d/60);}
+function barPrice(key,G,open,close){
+  const P=BAR.pkgs[key],r={lines:[],fees:0,fb:0,later:'',n:0,h:0,pp:0};
+  if(!P)return r;
+  const h=barHours(open,close),n=1+Math.floor((G||0)/BAR.guestsPer);r.n=n;r.h=h;
+  r.fees=BAR.setup+(h?n*h*BAR.perBartender:0);
+  r.lines.push(['Bar setup',BAR.setup]);
+  if(h)r.lines.push([`Bartenders (${n} × ${h} hr × $${BAR.perBartender})`,n*h*BAR.perBartender]);
+  else r.later='bartenders (add the bar opening and closing times to include them)';
+  if(P.first&&h){r.pp=P.first+P.after*(h-1);r.fb=r.pp*(G||0);r.lines.push([`${P.name} (${G||0} guests × $${r.pp})`,r.fb]);}
+  else if(P.first)r.later='the open bar (add the bar opening and closing times to include it)';
+  if(key==='cash')r.later='cash bar tabs, paid by each guest at the end of the meal';
+  if(key==='cons')r.later='the consumption bar tab, due from you at the end of the meal';
+  return r;
+}
+
 function update(){
   const style=Q['q.din']||'';
+  // Beverages: none at Palladian Hall; alcohol-free events keep non-alcoholic beverages only
+  Q['q.barOk']=String(Q['ev.room']||'')===PALLADIAN?'no':'yes';
+  Q['q.wet']=Q['q.dry']?'no':'yes';
+  if(Q['q.toast']&&!TOASTS[Q['q.toast']])clearF(['q.toast']);
+  if(Q['q.bar']&&!BAR.pkgs[Q['q.bar']])clearF(['q.bar']);
+  if(Q['q.dry']||Q['q.barOk']!=='yes')clearF(['q.bar','bev.open','bev.close','q.toast','q.sig','q.sigIdea','q.wine'].filter(k=>Q[k]));
+  if(Q['q.barOk']!=='yes')clearF(['q.dry','q.na'].filter(k=>Q[k]));
+  document.querySelectorAll('#barTerms [data-bar]').forEach(li=>li.classList.toggle('on',li.dataset.bar===Q['q.bar']));
+  {const bp=barPrice(Q['q.bar'],num('ev.expected'),Q['bev.open'],Q['bev.close']),bc=$('barCalc');let t='';
+   if(Q['q.bar']){t=bp.h?`${bp.n} bartender${bp.n>1?'s':''} for ${bp.h} hour${bp.h>1?'s':''}: $${BAR.setup} setup + $${bp.n*bp.h*BAR.perBartender} bartenders`:'Add your bar opening and closing times to see the bar cost.';
+     if(bp.h&&bp.pp)t+=` + $${bp.pp} per guest × ${num('ev.expected')||0} guests = $${(bp.fees+bp.fb).toLocaleString('en-US')}`;else if(bp.h)t+=` = $${bp.fees.toLocaleString('en-US')}`;
+     if(bp.h)t+='.';if(!num('ev.expected'))t+=' Add your expected guest count in Step 2 for an accurate number.';}
+   bc.textContent=t;bc.hidden=!t;}
   const ent=chosenEntrees(),bE=bfChosen(entrees);
   const beefList=style==='plated'?ent:style==='buffet'?bE:[];
   Q['q.hasBeef']=beefList.some(e=>/beef|strip/i.test(e.name))?'yes':'no';
@@ -612,11 +678,17 @@ function buildBEO(){
   // Desserts
   desserts.forEach(d=>{const q=num(d.key+'.qty');if(q)D[d.key+'.qty']=String(q);});
   // Beverages
-  const bar=String(Q['q.bar']||'');
-  if(bar&&!/^No bar/.test(bar))D['bv.bar.qty']='1';
-  if(Q['q.wine'])D['bv.wine.qty']='1';
-  if(Q['q.toast'])D['bv.toast.qty']='1';
-  if(Q['q.na'])D['bv.na.qty']='1';
+  const barOk=String(Q['ev.room']||'')!==PALLADIAN,dry=barOk&&!!Q['q.dry'];
+  const barKey=barOk&&!dry&&BAR.pkgs[Q['q.bar']]?String(Q['q.bar']):'',bar=barKey?BAR.pkgs[barKey].name:'';
+  if(!barOk||dry){delete D['bev.open'];delete D['bev.close'];}
+  if(barKey)D['bev.pkg']=barKey;
+  if(dry)D['ev.dry']=true;
+  if(barOk&&!dry&&Q['q.wine'])D['bv.wine.qty']='1';
+  const toast=barOk&&!dry?TOASTS[Q['q.toast']]:null;
+  if(toast)D[toast.key+'.qty']=String(G||1);
+  if(barOk&&!dry&&Q['q.sig'])D['bv.sig.qty']='1';
+  if(barOk&&Q['q.na'])D['bv.na.qty']='1';
+  copy('ev.budget');
   // Dietary needs
   const diet=Q.diet.filter(r=>r&&(r.name||r.allergy||r.note)).map(r=>({name:(r.name||'').trim(),table:'',allergy:(r.allergy||'').trim(),sub:(r.note||'').trim(),ok:false}));
   while(diet.length<3)diet.push({});
@@ -626,6 +698,10 @@ function buildBEO(){
   if(Q.notes&&String(Q.notes).trim())n.push(String(Q.notes).trim());
   const extra=[];
   if(bar)extra.push(`Bar service: ${bar}.`);
+  if(D['ev.dry'])extra.push('Alcohol-free event: no alcohol is served, and guests may not bring their own.');
+  if(toast)extra.push(`Toast: ${toast.name}, $${toast.price} per guest.`);
+  if(D['bv.sig.qty'])extra.push('One signature cocktail'+(String(Q['q.sigIdea']||'').trim()?`; the host's ideas: ${String(Q['q.sigIdea']).trim()}`:'')+'.');
+  if(Q['ev.type']==='Corporate'&&num('ev.budget'))extra.push(`Corporate event; budget per person: $${num('ev.budget')}.`);
   if(Q['q.rec']==='yes'&&[...hot,...cold].some(it=>Q['q.'+it.key]))extra.push('Canapé quantities were estimated from the reception guest count; please confirm.');
   if(extra.length)n.push('From the client questionnaire: '+extra.join(' '));
   if(n.length)D.notes=n.join('\n\n');
@@ -645,15 +721,20 @@ function estimate(D){
   const bfOn=Q['q.din']==='buffet',bg=n('bf.guests'),bp=bfPrice(parseInt(D['bf.tier'])||0);
   const bufT=bfOn?bp*bg:0;
   const dessT=sum(desserts);
-  const fb=suiteT+brunchT+canT+enhT+dinT+tableT+bufT+dessT;
+  const bar=barPrice(D['bev.pkg'],n('ev.expected'),D['bev.open'],D['bev.close']);
+  const toast=Object.values(TOASTS).find(t=>n(t.key+'.qty')),toastT=toast?toast.price*n(toast.key+'.qty'):0;
+  const fb=suiteT+brunchT+canT+enhT+dinT+tableT+bufT+dessT+bar.fb+toastT;
   const rental=D['ev.third']&&fb<=2500?250:0;
   const svcPct=n('bill.svc'),taxPct=n('bill.tax');
-  const sub=fb+attend+rental,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
+  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
   const quoted=[];
-  if(['bv.bar','bv.wine','bv.toast','bv.na'].some(k=>n(k+'.qty')))quoted.push('beverage service');
+  if(bar.later)quoted.push(bar.later);
+  if(n('bv.sig.qty'))quoted.push('the signature cocktail, priced with your event manager');
+  const other=[['bv.wine','wine service with dinner'],['bv.na','non-alcoholic beverages']].filter(([k])=>n(k+'.qty')).map(x=>x[1]);
+  if(other.length)quoted.push(other.join(' and ')+', priced with your event manager');
   const lines=[['In-suite dining',suiteT],['Brunch and stations',brunchT],['Chef attendant fees',attend],['Reception canapés',canT],['Reception displays',enhT],
     [tier?`Plated dinner ($${tier} × ${dg})`:'Plated dinner',dinT],['Tableside entree selection',tableT],[bp?`Dinner buffet ($${bp} × ${bg})`:'Dinner buffet',bufT],
-    ['Desserts',dessT],['Third-floor room fee',rental]].filter(l=>l[1]);
+    ['Desserts',dessT],...bar.lines,[toast?`${toast.name} toast (${n(toast.key+'.qty')} × $${toast.price})`:'Toast',toastT],['Third-floor room fee',rental]].filter(l=>l[1]);
   return {lines,sub,svc,tax,total,svcPct,taxPct,quoted};
 }
 function renderEstimate(){
@@ -663,7 +744,7 @@ function renderEstimate(){
   $('estLines').innerHTML=has?E.lines.map(([l,v])=>`<dt>${esc(l)}</dt><dd>${typeof v==='number'?fmt(v):esc(v)}</dd>`).join('')+
     `<dt class="subt">Subtotal</dt><dd class="subt">${fmt(E.sub)}</dd><dt>Service charge (${E.svcPct}%)</dt><dd>${fmt(E.svc)}</dd><dt>Sales tax (${E.taxPct}%)</dt><dd>${fmt(E.tax)}</dd>`:'';
   $('estTotal').textContent=fmt(E.total);$('estTotal2').textContent=fmt(E.total);
-  $('estNote').textContent='Estimate only. Final pricing is confirmed on your banquet event order.'+(E.quoted.length?` Not included: ${E.quoted.join(' and ')}, priced by your event manager.`:'');
+  $('estNote').textContent='Estimate only. Final pricing is confirmed on your banquet event order.'+(E.quoted.length?` Not included: ${E.quoted.join('; ')}.`:'');
 }
 
 function missing(){
