@@ -129,6 +129,8 @@ ol.steps li{margin:0 0 12px}
     <label class="f">Organization or family (optional)<input data-f="ev.client" autocomplete="organization"></label>
     <label class="f">Phone<input type="tel" data-f="ev.phone" autocomplete="tel"></label>
     <label class="f">Email<input type="email" data-f="ev.email" autocomplete="email"></label>
+    <fieldset class="f wide"><legend>Is the organization exempt from New York State sales tax?</legend><div class="ask"><label class="pill"><input type="radio" name="q.taxex" value="yes" data-f="q.taxex"> Yes, tax exempt</label><label class="pill"><input type="radio" name="q.taxex" value="no" data-f="q.taxex"> No</label></div></fieldset>
+    <label class="pill wide" data-show="q.taxex=yes"><input type="checkbox" data-f="q.st119"> We have the client’s completed NY Form ST-119.1 (attach it to the email, or to the inquiry in Catering &amp; BEOs)</label>
     <label class="f wide">Billing address<input data-f="ev.address" autocomplete="street-address"></label>
   </div>
 </section>
@@ -627,6 +629,7 @@ function buildBEO(){
   copy('ev.contact','ev.client','ev.phone','ev.email','ev.address','ev.name','ev.type','ev.date','ev.start','ev.end','ev.expected','ev.room',
        'rm.style','rm.head','rm.linen','rm.decor','rm.av','rm.vendors','bev.open','bev.close');
   if(Q['ev.room']==='Other')copy('ev.roomAddr');
+  if(Q['q.taxex']==='yes'){D['bill.taxex']=true;if(Q['q.st119'])D['bill.st119']='Received by staff';}
   D['ev.third']=Q['ev.room']===THIRD;
   if(Q['ev.contact'])D['sig.client']=String(Q['ev.contact']).trim();
   const G=num('ev.expected');
@@ -726,7 +729,8 @@ function estimate(D){
   const fb=suiteT+brunchT+canT+enhT+dinT+tableT+bufT+dessT+bar.fb+toastT;
   const rental=D['ev.third']&&fb<=2500?250:0;
   const svcPct=n('bill.svc'),taxPct=n('bill.tax');
-  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
+  const exempt=!!D['bill.taxex'];
+  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=exempt?0:(sub+svc)*taxPct/100,total=sub+svc+tax;
   const quoted=[];
   if(bar.later)quoted.push(bar.later);
   if(n('bv.sig.qty'))quoted.push('the signature cocktail, priced with your event manager');
@@ -735,14 +739,14 @@ function estimate(D){
   const lines=[['In-suite dining',suiteT],['Brunch and stations',brunchT],['Chef attendant fees',attend],['Reception canapés',canT],['Reception displays',enhT],
     [tier?`Plated dinner ($${tier} × ${dg})`:'Plated dinner',dinT],['Tableside entree selection',tableT],[bp?`Dinner buffet ($${bp} × ${bg})`:'Dinner buffet',bufT],
     ['Desserts',dessT],...bar.lines,[toast?`${toast.name} toast (${n(toast.key+'.qty')} × $${toast.price})`:'Toast',toastT],['Third-floor room fee',rental]].filter(l=>l[1]);
-  return {lines,sub,svc,tax,total,svcPct,taxPct,quoted};
+  return {lines,sub,svc,tax,total,svcPct,taxPct,quoted,exempt};
 }
 function renderEstimate(){
   const E=estimate(buildBEO());
   const has=E.lines.length>0;
   $('estEmpty').hidden=has;
   $('estLines').innerHTML=has?E.lines.map(([l,v])=>`<dt>${esc(l)}</dt><dd>${typeof v==='number'?fmt(v):esc(v)}</dd>`).join('')+
-    `<dt class="subt">Subtotal</dt><dd class="subt">${fmt(E.sub)}</dd><dt>Service charge (${E.svcPct}%)</dt><dd>${fmt(E.svc)}</dd><dt>Sales tax (${E.taxPct}%)</dt><dd>${fmt(E.tax)}</dd>`:'';
+    `<dt class="subt">Subtotal</dt><dd class="subt">${fmt(E.sub)}</dd><dt>Service charge (${E.svcPct}%)</dt><dd>${fmt(E.svc)}</dd>${E.exempt?'<dt>Sales tax</dt><dd>Exempt (ST-119.1)</dd>':`<dt>Sales tax (${E.taxPct}%)</dt><dd>${fmt(E.tax)}</dd>`}`:'';
   $('estTotal').textContent=fmt(E.total);$('estTotal2').textContent=fmt(E.total);
   $('estNote').textContent='Estimate only. Final pricing is confirmed on your banquet event order.'+(E.quoted.length?` Not included: ${E.quoted.join('; ')}.`:'');
 }
@@ -774,6 +778,7 @@ const addrHtml=()=>SEND_TO.map(a=>`<span class="addr">${esc(a)}</span>`).join('<
 
 $('sendBtn').addEventListener('click',async()=>{
   const st=$('status');
+  if(Q['q.taxex']==='yes'&&!Q['q.st119']){$('w-final').textContent='Tax exempt needs the client’s New York State Form ST-119.1. Tick the box in Step 1 once you have it, or choose No for tax exempt.';return;}
   const m=missing();
   $('w-final').textContent=m.length?`Please add ${m.join(', ')} so we can reach you about your event.`:'';
   if(m.length&&!confirm(`Still missing: ${m.join(', ')}. Send your selections anyway?`))return;
@@ -788,7 +793,7 @@ $('sendBtn').addEventListener('click',async()=>{
   const body=['Hi Tyler and Rich,','',`Attached are my event selections from the Eden questionnaire (file: ${name}).`,'',
     `Name: ${Q['ev.contact']||''}`,`Phone: ${Q['ev.phone']||''}`,`Email: ${Q['ev.email']||''}`,`Event: ${Q['ev.name']||''}`,`Date: ${date}`,
     `Expected guests: ${Q['ev.expected']||''}`,`Location: ${Q['ev.room']==='Other'?(Q['ev.roomAddr']||'Off-site'):(Q['ev.room']||'')}`,`Dinner: ${style}`,
-    `Estimated total: ${fmt(E.total)}${E.quoted.length?` (not including ${E.quoted.join(' and ')})`:''}`,'','Thank you,',Q['ev.contact']||''].join('\n');
+    `Estimated total: ${fmt(E.total)}${E.quoted.length?` (not including ${E.quoted.join(' and ')})`:''}`,...(Q['q.taxex']==='yes'?['','Tax exempt. Form ST-119.1 attached.']:[]),'','Thank you,',Q['ev.contact']||''].join('\n');
   const mailto=`mailto:${SEND_TO.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const coarse=matchMedia('(pointer:coarse)').matches;
   let canShare=false;try{canShare=!!(navigator.canShare&&navigator.canShare({files:[file]}));}catch(_){}

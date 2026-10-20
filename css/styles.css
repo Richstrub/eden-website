@@ -806,3 +806,8 @@ footer .social{color:var(--ivory)}
 @media (max-width:560px){#partners .pw-wall{grid-template-columns:1fr}
   #partners .pw-wall .panel:nth-child(n),#partners .pw-wall .panel[hidden]{padding-left:0;padding-right:0;border-left:0}
   #partners .pw-wall .panel:nth-child(n+2){border-top:1px solid rgba(15,18,21,.16)}}
+#cater .q-tax{display:flex;flex-direction:column;gap:8px}
+#cater .q-tax .q-note{margin:0}
+#cater .q-file{margin:0;font-size:14px;color:var(--q-ink)}
+#cater .q-file button{margin-left:8px;padding:4px 10px;font-size:13px}
+#cater .q-tax a{color:var(--q-accent);text-decoration:underline}

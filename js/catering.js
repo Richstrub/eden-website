@@ -94,6 +94,7 @@ const bufDesc=(it,t)=>it.key==='en.short'?(t===165?'':'Béarnaise'):it.key==='en
 /*BUFFET-END*/
 
 const $=id=>document.getElementById(id);
+let TAXF=null,TAXON=null;   // tax exempt: the attached Form ST-119.1, and one already on file
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const num=k=>{const v=parseFloat(Q[k]);return isFinite(v)&&v>0?v:0;};
 const money=p=>p==null?'Price on request':'$'+p;
@@ -343,6 +344,7 @@ function buildBEO(){
   copy('ev.contact','ev.client','ev.phone','ev.email','ev.address','ev.name','ev.type','ev.date','ev.start','ev.end','ev.expected','ev.room',
        'rm.style','rm.head','rm.linen','rm.decor','rm.av','rm.vendors','bev.open','bev.close');
   if(Q['ev.room']==='Other')copy('ev.roomAddr');
+  if(Q['q.taxex']==='yes'){D['bill.taxex']=true;const f=TAXF||TAXON;if(f)D['bill.st119']=f.name;}
   D['ev.third']=Q['ev.room']===THIRD;
   if(Q['ev.contact'])D['sig.client']=String(Q['ev.contact']).trim();
   const G=num('ev.expected');
@@ -448,7 +450,8 @@ function estimate(D){
   const ala=!!D['ev.alacarte'];
   const rental=D['ev.third']&&!ala&&fb<=2500?250:0;
   const svcPct=n('bill.svc'),taxPct=n('bill.tax');
-  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=(sub+svc)*taxPct/100,total=sub+svc+tax;
+  const exempt=!!D['bill.taxex'];
+  const sub=fb+attend+rental+bar.fees,svc=fb*svcPct/100,tax=exempt?0:(sub+svc)*taxPct/100,total=sub+svc+tax;
   const quoted=[];
   if(ala)quoted.push('à la carte dinner (billed on what your guests order)');
   if(bar.later)quoted.push(bar.later);
@@ -458,18 +461,37 @@ function estimate(D){
   const lines=[['In-suite dining',suiteT],['Brunch and stations',brunchT],['Chef attendant fees',attend],['Reception canapés',canT],['Reception displays',enhT],
     [tier?`Plated dinner ($${tier} × ${dg})`:'Plated dinner',dinT],['Tableside entree selection',tableT],[bp?`Dinner buffet ($${bp} × ${bg})`:'Dinner buffet',bufT],
     ['Desserts',dessT],...bar.lines,[toast?`${toast.name} toast (${n(toast.key+'.qty')} × $${toast.price})`:'Toast',toastT],['Third-floor room fee',rental],['À la carte dinner',ala?'Billed as ordered':0],['3rd floor minimum',ala&&D['ev.third']?'$2,500, or $250 room fee':0]].filter(l=>l[1]);
-  return {lines,sub,svc,tax,total,svcPct,taxPct,quoted};
+  return {lines,sub,svc,tax,total,svcPct,taxPct,quoted,exempt};
 }
 function renderEstimate(){
   const E=estimate(buildBEO());
   const has=E.lines.length>0;
   $('estEmpty').hidden=has;
   $('estLines').innerHTML=has?E.lines.map(([l,v])=>`<dt>${esc(l)}</dt><dd>${typeof v==='number'?fmt(v):esc(v)}</dd>`).join('')+
-    `<dt class="subt">Subtotal</dt><dd class="subt">${fmt(E.sub)}</dd><dt>Service charge (${E.svcPct}%)</dt><dd>${fmt(E.svc)}</dd><dt>Sales tax (${E.taxPct}%)</dt><dd>${fmt(E.tax)}</dd>`:'';
+    `<dt class="subt">Subtotal</dt><dd class="subt">${fmt(E.sub)}</dd><dt>Service charge (${E.svcPct}%)</dt><dd>${fmt(E.svc)}</dd>${E.exempt?'<dt>Sales tax</dt><dd>Exempt (ST-119.1)</dd>':`<dt>Sales tax (${E.taxPct}%)</dt><dd>${fmt(E.tax)}</dd>`}`:'';
   $('estTotal').textContent=fmt(E.total);$('estTotal2').textContent=fmt(E.total);
   $('estNote').textContent='Estimate only. Final pricing is confirmed on your banquet event order.'+(E.quoted.length?` Not included: ${E.quoted.join('; ')}.`:'');
 }
 
+/* Tax exempt: the guest attaches New York State Form ST-119.1. Sending as tax exempt needs it (checked again by the staff site). */
+const TAXMAX=5*1024*1024,TAXTYPES=['application/pdf','image/jpeg','image/png'];
+function taxPaint(){
+  const s=$('qTaxStat');if(!s)return;
+  s.innerHTML=TAXF?`Attached: <b>${esc(TAXF.name)}</b> <button type="button" class="ghost" id="qTaxRm">Remove</button>`
+    :TAXON?`Already on file with us: <b>${esc(TAXON.name)}</b>. Attach a new one only if it has changed.`:'No form attached yet.';
+  const rm=$('qTaxRm');if(rm)rm.addEventListener('click',()=>{TAXF=null;$('qTaxFile').value='';taxPaint();renderEstimate();});
+}
+if($('qTaxFile'))$('qTaxFile').addEventListener('change',e=>{
+  const f=e.target.files&&e.target.files[0],w=$('w-tax');w.textContent='';
+  if(!f)return;
+  const type=f.type||(/\.pdf$/i.test(f.name)?'application/pdf':/\.png$/i.test(f.name)?'image/png':/\.jpe?g$/i.test(f.name)?'image/jpeg':'');
+  if(!TAXTYPES.includes(type)){w.textContent='Please attach the form as a PDF, JPG or PNG.';e.target.value='';return;}
+  if(f.size>TAXMAX){w.textContent='That file is over 5 MB. Please attach a smaller PDF or photo.';e.target.value='';return;}
+  const rd=new FileReader();
+  rd.onload=()=>{TAXF={name:f.name,mime:type,data:String(rd.result).split(',')[1]||''};taxPaint();renderEstimate();$('w-final').textContent='';};
+  rd.onerror=()=>{w.textContent='That file couldn’t be read. Please try again.';};
+  rd.readAsDataURL(f);
+});
 function missing(needEmail){
   const m=[];
   if(!Q['ev.contact'])m.push('your name');
@@ -477,6 +499,7 @@ function missing(needEmail){
   else if(!Q['ev.email']&&!Q['ev.phone'])m.push('an email or phone number');
   if(!Q['ev.date'])m.push('the event date');
   if(!num('ev.expected'))m.push('the expected number of guests');
+  if(PLAN&&Q['q.taxex']==='yes'&&!TAXF&&!TAXON)m.push('your New York State Form ST-119.1 (you chose tax exempt), or choose No for tax exempt');
   return m;
 }
 function longDate(d){if(!d)return '';const p=String(d).split('-').map(Number);if(p.length!==3||!p[0])return d;return new Date(p[0],p[1]-1,p[2]).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
@@ -510,7 +533,7 @@ async function fileFlow(note){
   const body=['Hi Tyler and Rich,','',`Attached are my event selections from the Eden questionnaire (file: ${name}).`,'',
     `Name: ${Q['ev.contact']||''}`,`Phone: ${Q['ev.phone']||''}`,`Email: ${Q['ev.email']||''}`,`Event: ${Q['ev.name']||''}`,`Date: ${date}`,
     `Expected guests: ${Q['ev.expected']||''}`,`Location: ${Q['ev.room']==='Other'?(Q['ev.roomAddr']||'Off-site'):(Q['ev.room']||'')}`,`Dinner: ${style}`,
-    `Estimated total: ${fmt(E.total)}${E.quoted.length?` (not including ${E.quoted.join(' and ')})`:''}`,'','Thank you,',Q['ev.contact']||''].join('\n');
+    `Estimated total: ${fmt(E.total)}${E.quoted.length?` (not including ${E.quoted.join(' and ')})`:''}`,...(Q['q.taxex']==='yes'?['','We are tax exempt. Our New York State Form ST-119.1 is attached.']:[]),'','Thank you,',Q['ev.contact']||''].join('\n');
   const mailto=`mailto:${SEND_TO.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   dlg._save=async btn=>{
     let dl=null;try{dl=window.claude&&await claude.use('downloads');}catch(_){}
@@ -523,7 +546,7 @@ async function fileFlow(note){
     <ol class="steps">
       <li><b>Save your selections file.</b><br><button type="button" data-act="save" style="margin-top:8px">Save my file</button><br><span class="q-note">“${esc(name)}”</span></li>
       <li><b>Start an email to our event team</b> at:<br>${addrHtml()}<br><span class="dlg-row"><button type="button" data-act="copy" class="ghost">Copy addresses</button><button type="button" data-act="copybody" class="ghost">Copy a message</button><a class="mail-alt" href="${esc(mailto)}" target="_blank" rel="noopener">Open in my email app</a></span></li>
-      <li><b>Attach the file and send.</b> Your event manager will be in touch to confirm details and pricing.</li>
+      <li><b>Attach the file${Q['q.taxex']==='yes'?' and your Form ST-119.1':''} and send.</b> Your event manager will be in touch to confirm details and pricing.</li>
     </ol>
     <div class="actions"><button type="button" data-act="close">Done</button></div>`);
   if(note)dlgBody.insertAdjacentHTML('afterbegin',`<p class="q-note dlg-note">${esc(note)}</p>`);
@@ -595,6 +618,7 @@ function summary(D){
   if(D['din.temp']||D['bf.temp'])add('Dinner','Beef cooked '+(D['din.temp']||D['bf.temp']));
   const bev=[];const bar=BAR.pkgs[Q['q.bar']]?BAR.pkgs[Q['q.bar']].name:'';if(bar)bev.push(bar);if(Q['q.dry'])bev.unshift('Alcohol-free event');if(Q['q.wine'])bev.push('Wine service with dinner');if(TOASTS[Q['q.toast']])bev.push('Toast: '+TOASTS[Q['q.toast']].name);if(Q['q.sig'])bev.push('One signature cocktail');if(Q['q.na'])bev.push('Non-alcoholic beverages');
   bev.forEach(b=>add('Beverages',b));
+  if(D['bill.taxex'])add('Billing',`Tax exempt: NY Form ST-119.1${D['bill.st119']?' ('+D['bill.st119']+')':' not attached'}`);
   Q.diet.filter(r=>r&&(r.name||r.allergy||r.note)).forEach(r=>add('Allergies and dietary needs',[r.name,r.allergy,r.note].filter(Boolean).join(' · ')));
   ['rm.style','rm.head','rm.linen','rm.decor','rm.av','rm.vendors'].forEach(k=>{if(Q[k])add('Room and setup',String(Q[k]).trim());});
   return Object.keys(out).map(k=>[k,out[k]]);
@@ -652,10 +676,11 @@ async function sendIntake(){
 async function sendPlan(){
   const st=$('status'),wf=$('w-final');
   const D=buildBEO(),E=estimate(D);
-  const {r,j}=await post('plan',{t:PLAN,answers:Q,beo:D,estimate:Math.round(E.total*100)/100,summary:summary(D)});
+  const {r,j}=await post('plan',Object.assign({t:PLAN,answers:Q,beo:D,estimate:Math.round(E.total*100)/100,summary:summary(D)},Q['q.taxex']==='yes'&&TAXF?{taxForm:TAXF}:{}));
   if(!r||r.status>=500){fileFlow('We couldn’t send your selections online just now, so here’s another way to get them to us.');return;}
   if(j.ok){
     wf.textContent='';
+    if(Q['q.taxex']==='yes'&&TAXF){TAXON={name:TAXF.name};TAXF=null;$('qTaxFile').value='';taxPaint();}
     finished(`<h2 id="sendTitle">Thank you</h2>
       <p>${j.again?'Your changes are':'Your selections are'} on their way to our event team. Your event manager will be in touch to confirm details and pricing with a banquet event order.</p>
       <p class="q-note">You can come back to this link to make changes until your event is confirmed.</p>`);
@@ -695,6 +720,7 @@ $('sendBtn').addEventListener('click',async()=>{
     }
     let local=null;try{local=JSON.parse(localStorage.getItem(STORE_KEY)||'null');}catch(e){}
     if(!local||!Object.keys(local).some(k=>k!=='diet')){Q=Object.assign({},j.answers||{});if(!Array.isArray(Q.diet)||!Q.diet.length)Q.diet=[{}];save();}
+    TAXON=j.st119||null;taxPaint();
     restore();renderDiet();update();
     const first=esc(String(Q['ev.contact']||'').trim().split(' ')[0]);
     if(j.locked){say(`${first?'Hi '+first+'. ':''}Your event details are already with our team, so this questionnaire can’t be changed here anymore. To make a change, reply to our email or write to events@edencny.com.`);sb.disabled=true;return;}
@@ -709,6 +735,7 @@ $('clearBtn').addEventListener('click',()=>{
   Q={diet:[{}]};try{localStorage.removeItem(STORE_KEY);localStorage.removeItem(STARTED);}catch(e){}
   TYPE_BOXES.forEach(b=>{b.checked=false;});
   document.querySelectorAll('[data-f]').forEach(el=>{if(el.type==='radio'||el.type==='checkbox')el.checked=false;else if(el.tagName==='SELECT')el.selectedIndex=0;else el.value='';});
+  TAXF=null;if($('qTaxFile'))$('qTaxFile').value='';taxPaint();
   renderDiet();update();$('status').textContent='Answers cleared.';$('w-final').textContent='';
 });
 

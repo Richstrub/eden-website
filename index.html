@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261020c">
+<link rel="stylesheet" href="css/styles.css?v=20261020d">
 </head>
 <body>
 
@@ -586,6 +586,13 @@
     <label class="f">Organization or family (optional)<input data-f="ev.client" autocomplete="organization"></label>
     <label class="f">Phone<input type="tel" data-f="ev.phone" autocomplete="tel"></label>
     <label class="f">Email<input type="email" data-f="ev.email" autocomplete="email"></label>
+    <fieldset class="f wide q-full"><legend>Is your organization exempt from New York State sales tax?</legend><div class="ask"><label class="pill"><input type="radio" name="q.taxex" value="yes" data-f="q.taxex"> Yes, we’re tax exempt</label><label class="pill"><input type="radio" name="q.taxex" value="no" data-f="q.taxex"> No</label></div></fieldset>
+    <div class="f wide q-full q-tax" data-show="q.taxex=yes">
+      <p class="q-note">Please attach your organization’s completed New York State <b>Form ST-119.1</b> (Exempt Organization Exempt Purchase Certificate). We can only send your selections as tax exempt with the form attached. <a href="https://www.tax.ny.gov/forms/sales_tax_exemption_documents.htm" target="_blank" rel="noopener">Find Form ST-119.1 at tax.ny.gov</a></p>
+      <label class="f">Form ST-119.1 (PDF, JPG or PNG, up to 5 MB)<input type="file" id="qTaxFile" accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png"></label>
+      <p class="q-file" id="qTaxStat">No form attached yet.</p>
+      <p class="warn" id="w-tax"></p>
+    </div>
   </div>
 </section>
 
@@ -851,7 +858,7 @@
 <script src="js/country-maps.js"></script>
 <script src="js/menu-data.js"></script>
 <script src="js/wine-details.js?v=20261018a"></script>
-<script src="js/catering.js?v=20261020c"></script>
+<script src="js/catering.js?v=20261020d"></script>
 <script src="js/app.js?v=20261020a"></script>
 <script src="js/analytics.js?v=20261012b"></script>
 <script src="js/join.js?v=20261013a"></script>
