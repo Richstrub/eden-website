@@ -422,6 +422,10 @@ body.on-cater > section{display:none}
 #cater .q-types .ask{margin:2px 0 0}
 #cater input[type=checkbox].round{appearance:none;-webkit-appearance:none;border-radius:50%;border:1.5px solid var(--q-muted);background:var(--q-surface);cursor:pointer}
 #cater input[type=checkbox].round:checked{border-color:var(--q-accent);background:radial-gradient(circle,var(--q-accent) 0 4.5px,var(--q-surface) 5px)}
+#cater .q-bar{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;max-width:70ch}
+#cater .q-bar li{font-size:14px;line-height:1.5;color:var(--q-muted);padding:8px 14px;border-left:2px solid transparent}
+#cater .q-bar li.on{color:inherit;background:var(--q-soft);border-left-color:var(--q-accent)}
+#cater #barCalc{margin:12px 0 0;font-variant-numeric:tabular-nums}
 #cater .q-callout{font-size:15px;line-height:1.5;margin:4px 0 0;padding:12px 16px;background:var(--q-soft);border-left:3px solid var(--q-accent);max-width:70ch}
 #cater .fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px 16px}
 #cater .f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--q-muted)}

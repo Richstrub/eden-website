@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261020b">
+<link rel="stylesheet" href="css/styles.css?v=20261020c">
 </head>
 <body>
 
@@ -723,14 +723,22 @@
   <div class="opts" id="o-dessert"></div>
 </section>
 
-<section class="block q-full">
+<section class="block q-full" data-show="q.barOk=yes">
   <h2><span class="step">STEP 8</span>Beverages</h2>
-  <p class="q-note">Beverage service is priced by your event manager and isn't included in the estimate.</p>
+  <p class="q-note">Every bar package has a $75 setup fee and $15 per bartender per hour, with one bartender plus one more for every 30 guests. Leave the bar blank if you don't need one.</p>
   <div class="fields">
-    <label class="f">Bar service<select data-f="q.bar"><option></option><option>Hosted (you cover drinks)</option><option>Cash bar (guests pay)</option><option>On consumption (billed for what's poured)</option><option>No bar</option></select></label>
+    <label class="f">Bar service<select data-f="q.bar" id="qBar"><option value=""></option><option value="open-bw">Open bar: beer and wine</option><option value="open-full">Open bar: beer, wine and cocktails</option><option value="cash">Cash bar</option><option value="cons">Consumption bar</option></select></label>
     <label class="f">Bar opens<input type="time" data-f="bev.open"></label>
     <label class="f">Bar closes<input type="time" data-f="bev.close"></label>
   </div>
+  <ul class="q-bar" id="barTerms">
+    <li data-bar="menu"><b>Bar menu.</b> Your guests order from our current bar menu, and drinks are billed as ordered. No setup or bartender fees. Offered with an à la carte dinner in the Restaurant.</li>
+    <li data-bar="open-bw"><b>Open bar, beer and wine.</b> $16 per guest for the first hour, $12 per guest for each hour after.</li>
+    <li data-bar="open-full"><b>Open bar, beer, wine and cocktails.</b> $18 per guest for the first hour, $16 per guest for each hour after.</li>
+    <li data-bar="cash"><b>Cash bar.</b> You cover the setup and bartender fees; each guest pays their own bar tab at the end of the meal.</li>
+    <li data-bar="cons"><b>Consumption bar.</b> You cover the setup and bartender fees, and the balance of the bar tab is due from you at the end of the meal.</li>
+  </ul>
+  <p class="q-note" id="barCalc" hidden></p>
   <div class="ask" style="margin-top:12px">
     <label class="pill"><input type="checkbox" data-f="q.wine"> Wine service with dinner</label>
     <label class="pill"><input type="checkbox" data-f="q.toast"> Champagne toast</label>
@@ -830,7 +838,7 @@
 <script src="js/country-maps.js"></script>
 <script src="js/menu-data.js"></script>
 <script src="js/wine-details.js?v=20261018a"></script>
-<script src="js/catering.js?v=20261015c"></script>
+<script src="js/catering.js?v=20261020a"></script>
 <script src="js/app.js?v=20261020a"></script>
 <script src="js/analytics.js?v=20261012b"></script>
 <script src="js/join.js?v=20261013a"></script>
