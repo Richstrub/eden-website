@@ -96,24 +96,43 @@
     return d;
   }
   function longDate(d) { return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+  function shortDate(d) { return DAYS[d.getDay()].slice(0, 3) + ', ' + MONTHS[d.getMonth()].slice(0, 3) + ' ' + d.getDate(); }
+  // Always one line: if the full line doesn't fit, use short dates, then shrink the type until it does
+  function fit(el, full, short, dateEl) {
+    el.style.fontSize = ''; el.style.letterSpacing = '';
+    dateEl.textContent = full;
+    if (el.scrollWidth <= el.clientWidth + 1) return;
+    dateEl.textContent = short;
+    var size = parseFloat(getComputedStyle(el).fontSize), ls = 0.14;
+    for (var i = 0; i < 40 && el.scrollWidth > el.clientWidth + 1 && size > 6; i++) {
+      size -= 0.25; ls = Math.max(0.04, ls - 0.006);
+      el.style.fontSize = size + 'px'; el.style.letterSpacing = ls + 'em';
+    }
+  }
 
   function render() {
     var now = new Date();
     var date = document.getElementById('hxDate'), wood = document.getElementById('hxWood'), no = document.getElementById('hxNo');
     if (!date || !wood || !no) return;
+    var full, short;
     if (burning(now)) {
       var n = fireNumber(now);
-      date.textContent = longDate(now);
+      full = longDate(now); short = shortDate(now);
       wood.textContent = woodFor(n);
       no.textContent = 'Fire No. ' + n.toLocaleString('en-US');
     } else {
       var next = nextFireDay(now), m = fireNumber(new Date(next.getFullYear(), next.getMonth(), next.getDate(), BURN_FROM.hour));
-      date.textContent = 'Next fire · ' + longDate(next);
+      full = 'Next fire · ' + longDate(next); short = 'Next fire · ' + shortDate(next);
       wood.textContent = 'Banked';
       no.textContent = 'Fire No. ' + m.toLocaleString('en-US');
     }
+    var box = document.getElementById('hxStatus');
+    if (box) { fit(box, full, short, date); LAST = [box, full, short, date]; } else date.textContent = full;
   }
+  var LAST = null;
   render();
   setInterval(render, 60000);
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (LAST) fit.apply(null, LAST); }, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (LAST) fit.apply(null, LAST); });
   window.EDEN_FIRE = { fireNumber: fireNumber, woodFor: woodFor, burning: burning, nextFireDay: nextFireDay };
 })();
