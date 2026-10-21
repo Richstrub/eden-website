@@ -755,8 +755,8 @@ footer .social{color:var(--ivory)}
 .hx-link{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ivory);border-bottom:1px solid rgba(243,238,229,.35);padding-bottom:6px;transition:border-color .4s,color .4s}
 .hx-link:hover{color:#ffd2a6;border-color:#ffd2a6}
 @keyframes hxIn{to{opacity:1;transform:none}}
-.hx-down{position:absolute;z-index:2;left:0;right:0;margin:0 auto;bottom:calc(6px + env(safe-area-inset-bottom,0px));width:44px;height:34px;display:grid;place-items:center;opacity:0;animation:hxIn 1.2s 2.4s ease forwards}
-.hx-down span{width:1px;height:24px;background:linear-gradient(rgba(255,210,166,0),rgba(255,210,166,.9));animation:hxDrip 2.8s ease-in-out infinite}
+.hx-down{position:absolute;z-index:2;left:0;right:0;margin:0 auto;bottom:calc(2px + env(safe-area-inset-bottom,0px));width:44px;height:20px;display:grid;place-items:center;opacity:0;animation:hxIn 1.2s 2.4s ease forwards}
+.hx-down span{width:1px;height:14px;background:linear-gradient(rgba(255,210,166,0),rgba(255,210,166,.9));animation:hxDrip 2.8s ease-in-out infinite}
 @keyframes hxDrip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .hx-sub .hx-dot{display:inline-block;margin:0 1.4em;opacity:.55;font-weight:300}
 @media (max-width:640px){.hx-word{letter-spacing:.3em;padding-left:.3em}.hx-sub{letter-spacing:.2em;font-size:.6rem}.hx-sub .hx-dot{margin:0 .9em}.hx-actions{flex-direction:column;gap:22px}.hx-btn{min-width:230px;text-align:center}}
@@ -765,7 +765,7 @@ footer .social{color:var(--ivory)}
 @media (prefers-reduced-motion:reduce){.hx *,.hx *::before{animation:none!important;opacity:1!important;transform:none!important}.hx .hx-spark-3{opacity:0!important}.hx-heat{filter:none}.hx-fx{display:none}}
 
 /* Hero: the fire line (date · the wood · fire number) */
-.hx-status{display:flex;justify-content:space-between;align-items:baseline;gap:0 clamp(10px,3vw,32px);flex-wrap:nowrap;white-space:nowrap;overflow:hidden;width:min(760px,calc(100vw - 32px));max-width:100%;box-sizing:border-box;position:absolute;z-index:2;left:0;right:0;bottom:calc(46px + env(safe-area-inset-bottom,0px));margin:0 auto;padding-top:16px;border-top:1px solid rgba(243,238,229,.16);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,238,229,.6);opacity:0;animation:hxIn 1.4s 2.1s ease forwards;font-variant-numeric:tabular-nums}
+.hx-status{display:flex;justify-content:space-between;align-items:baseline;gap:0 clamp(10px,3vw,32px);flex-wrap:nowrap;white-space:nowrap;overflow:hidden;width:min(760px,calc(100vw - 32px));max-width:100%;box-sizing:border-box;position:absolute;z-index:2;left:0;right:0;bottom:calc(24px + env(safe-area-inset-bottom,0px));margin:0 auto;padding-top:16px;border-top:1px solid rgba(243,238,229,.16);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,238,229,.6);opacity:0;animation:hxIn 1.4s 2.1s ease forwards;font-variant-numeric:tabular-nums}
 .hx-status b{font-weight:400;color:var(--ember-hot)}
 @media (max-width:640px){.hx-status{justify-content:center;letter-spacing:.14em}}
 .hx-status span{flex:none}
