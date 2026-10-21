@@ -765,7 +765,7 @@ footer .social{color:var(--ivory)}
 @media (prefers-reduced-motion:reduce){.hx *,.hx *::before{animation:none!important;opacity:1!important;transform:none!important}.hx .hx-spark-3{opacity:0!important}.hx-heat{filter:none}.hx-fx{display:none}}
 
 /* Hero: the fire line (date · the wood · fire number) */
-.hx-status{display:flex;justify-content:space-between;align-items:baseline;gap:0 clamp(10px,3vw,32px);flex-wrap:nowrap;white-space:nowrap;overflow:hidden;width:min(760px,calc(100vw - 32px));max-width:100%;box-sizing:border-box;margin:clamp(64px,11vh,120px) auto 0;padding-top:16px;border-top:1px solid rgba(243,238,229,.16);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,238,229,.6);opacity:0;animation:hxIn 1.4s 2.1s ease forwards;font-variant-numeric:tabular-nums}
+.hx-status{display:flex;justify-content:space-between;align-items:baseline;gap:0 clamp(10px,3vw,32px);flex-wrap:nowrap;white-space:nowrap;overflow:hidden;width:min(760px,calc(100vw - 32px));max-width:100%;box-sizing:border-box;position:absolute;z-index:2;left:0;right:0;bottom:calc(92px + env(safe-area-inset-bottom,0px));margin:0 auto;padding-top:16px;border-top:1px solid rgba(243,238,229,.16);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,238,229,.6);opacity:0;animation:hxIn 1.4s 2.1s ease forwards;font-variant-numeric:tabular-nums}
 .hx-status b{font-weight:400;color:var(--ember-hot)}
 @media (max-width:640px){.hx-status{justify-content:center;letter-spacing:.14em}}
 .hx-status span{flex:none}
