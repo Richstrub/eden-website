@@ -2,7 +2,7 @@
  * awards, photo and map are in assets/wines/<id>.json, loaded when a guest taps it.
  * match: every word must appear in the menu section + name + note (accents and case don't matter); when several
  * entries match, the one with the most words wins. */
-window.EDEN_WINE_V = '7';
+window.EDEN_WINE_V = '8';
 window.EDEN_WINE_DETAILS = [
   {"id": "raventos-de-nit", "match": "raventos blanc nit", "kind": "wine"},
   {"id": "bonnet-ponson-coteaux-champenois-chamery-rouge-2022", "match": "bonnet ponson chamery rouge", "kind": "wine"},
@@ -59,6 +59,12 @@ window.EDEN_WINE_DETAILS = [
   {"id": "hollerhorn-distilling-flamed-maple", "match": "specialty hollerhorn distilling flamed maple spirit", "kind": "spirit"},
   {"id": "hollerhorn-distilling-pflaume-barrel-aged-plum-brandy", "match": "specialty hollerhorn distilling pflaume plum brandy", "kind": "spirit"},
   {"id": "hollerhorn-distilling-limoncello", "match": "digestif hollerhorn limoncello", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-grappa", "match": "hollerhorn grappa", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-grappa", "match": "holler horn grappa", "kind": "spirit"},
+  {"id": "hollerhorn-spirit-society-rye", "match": "hollerhorn society", "kind": "spirit"},
+  {"id": "hollerhorn-spirit-society-rye", "match": "holler horn society", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-rauch", "match": "hollerhorn rauch", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-rauch", "match": "holler horn rauch", "kind": "spirit"},
   {"id": "the-dalmore-12-year-old-single-malt-scotch-whisky", "match": "malt dalmore 12 year single scotch", "kind": "spirit"},
   {"id": "olujo-tequila-anejo", "match": "agave olujo anejo", "kind": "spirit"},
   {"id": "mezcal-trascendente-espadin-joven", "match": "agave trascendente joven mezcal", "kind": "spirit"},
@@ -87,7 +93,7 @@ window.EDEN_WINE_DETAILS = [
   {"id": "antonio-vallana-e-figlio-boca-2018", "match": "antonio vallana e figlio boca nebbiolo blend", "kind": "wine"},
   {"id": "argyle-willamette-valley-pinot-noir-2023", "match": "argyle willamette valley pinot noir", "kind": "wine"},
   {"id": "atwater-estate-vineyards-skin-ferment-gewurztraminervignoles", "match": "atwater estate vineyards skin ferment gewurztraminer vignoles", "kind": "wine"},
-  {"id": "bet-the-farm-gamay-noir-2024", "match": "bet farm gamay noir", "kind": "wine"},
+  {"id": "bet-the-farm-gamay-noir-2024", "match": "bet farm gamay", "kind": "wine"},
   {"id": "bideona-viura-de-cabezadas-rioja-alavesa-2023", "match": "bideona rioja cabezadas viura", "kind": "wine"},
   {"id": "bideona-las-parcelas-blanco-rioja-alavesa-2021", "match": "bideona rioja las parcelas viura", "kind": "wine"},
   {"id": "los-bermejos-malvasia-volcanica-seco-2024", "match": "bodegas los bermejos lanzarote malvasia volcanica", "kind": "wine"},
