@@ -812,3 +812,17 @@ footer .social{color:var(--ivory)}
 #cater .q-file{margin:0;font-size:14px;color:var(--q-ink)}
 #cater .q-file button{margin-left:8px;padding:4px 10px;font-size:13px}
 #cater .q-tax a{color:var(--q-accent);text-decoration:underline}
+/* iPad menu: wine search */
+.pad-search{display:flex;flex-direction:column}
+.pad-search .wc-label{margin-bottom:10px}
+.pad-qbox{position:relative}
+.pad-qbox input{width:100%;box-sizing:border-box;font-family:var(--serif);font-size:1.1rem;padding:12px 40px 12px 14px;background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:0;color:var(--ivory);-webkit-appearance:none;appearance:none}
+.pad-qbox input::placeholder{color:var(--soft-dark);opacity:.7}
+.pad-qbox input:focus{outline:none;border-color:var(--ember-hot)}
+.pad-qbox input::-webkit-search-cancel-button{display:none}
+.pad-wcol .pad-qx{position:absolute;right:0;top:0;bottom:0;width:40px;padding:0;border:0;background:none;color:var(--soft-dark);font-size:1.4rem;letter-spacing:0;text-align:center}
+.pad-qn{margin:8px 0 0;font-size:.75rem;color:var(--soft-dark)}
+.pad-none{font-family:var(--serif);font-size:1.3rem;color:var(--soft-dark);margin:24px 0}
+.pad-item[hidden],.pad-group[hidden],.wc-sub a[hidden]{display:none!important}
+@media (max-width:820px){.pad-search{flex:0 0 220px;margin-right:8px}.pad-search .wc-label{display:none}.pad-qbox input{padding:9px 36px 9px 12px;font-size:1rem}.pad-qn{display:none}}
+@media (orientation:portrait) and (min-width:700px){.pad-search{flex:0 0 auto;margin:12px 0 0}.pad-search .wc-label{display:block;margin:0 0 10px}.pad-qbox input{padding:11px 40px 11px 14px;font-size:1.05rem}.pad-qn{display:block}}

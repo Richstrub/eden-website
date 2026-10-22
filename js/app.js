@@ -554,7 +554,7 @@
     if(!tabs.some(function(t){return t.id===pad.tab}))pad.tab=tabs.length?tabs[0].id:null;
     var nav=document.getElementById('padTabs');nav.innerHTML='';
     tabs.forEach(function(t){var b=document.createElement('button');b.textContent=t.label;b.setAttribute('aria-current',t.id===pad.tab);
-      b.onclick=function(){if(pad.tab===t.id)return;pad.tab=t.id;renderPad(menuData);var m=document.getElementById('padMain');m.scrollTop=0;m.classList.remove('fade');void m.offsetWidth;m.classList.add('fade')};nav.appendChild(b)});
+      b.onclick=function(){if(pad.tab===t.id)return;pad.tab=t.id;pad.wq='';renderPad(menuData);var m=document.getElementById('padMain');m.scrollTop=0;m.classList.remove('fade');void m.offsetWidth;m.classList.add('fade')};nav.appendChild(b)});
     document.getElementById('padAllergy').textContent=d.allergy||'';
     var u=document.getElementById('padUpdated');
     if(d.updatedAt){var dt=new Date(d.updatedAt);u.textContent='Updated '+dt.toLocaleDateString(undefined,{month:'short',day:'numeric'})+', '+dt.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})}else u.textContent='';
@@ -576,7 +576,7 @@
       if(g.note)h+='<p class="pad-note">'+esc(g.note)+'</p>';
       if(big)h+='<div class="pad-items">';
       items.forEach(function(it){
-        h+='<div class="pad-item'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
+        h+='<div class="pad-item'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'pad-src');
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'pad',g.title);
@@ -597,16 +597,35 @@
       wc.querySelectorAll('.wc-sub a').forEach(function(a){a.onclick=function(e){e.preventDefault();padScrollTo(document.getElementById(a.dataset.target))}});
     }
     if(wine){
-      var wh='<div class="wc-label">Browse by</div>';
+      var wh='<div class="pad-search"><label class="wc-label" for="padQ">Search wines</label><div class="pad-qbox"><input id="padQ" type="search" placeholder="Grape, region, producer…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" value="'+esc(pad.wq||'')+'"><button type="button" class="pad-qx" aria-label="Clear search"'+(pad.wq?'':' hidden')+'>&times;</button></div></div><div class="wc-label">Browse by</div>';
       WINE_MODES.forEach(function(m){wh+='<button type="button" data-mode="'+m[0]+'" aria-pressed="'+(m[0]===pad.wineMode)+'">'+m[1]+'</button>'});
       if(SUB_LABEL[pad.wineMode])wh+=grapeLinks(gs,'pg','wc-sub',pad.wineMode);
       wc.innerHTML=wh;
       setTimeout(spyPad,0);
       wc.querySelectorAll('.wc-sub a').forEach(function(a){a.onclick=function(e){e.preventDefault();padScrollTo(document.getElementById(a.dataset.target))}});
-      wc.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(pad.wineMode===b.dataset.mode)return;pad.wineMode=b.dataset.mode;renderPad(menuData);main.scrollTop=0;main.classList.remove('fade');void main.offsetWidth;main.classList.add('fade')}});
+      var q=document.getElementById('padQ'),qx=wc.querySelector('.pad-qx');
+      q.oninput=function(){pad.wq=q.value;qx.hidden=!q.value;padFilter();main.scrollTop=0};
+      q.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();q.blur()}};   // closes the iPad keyboard
+      qx.onclick=function(){q.value='';pad.wq='';qx.hidden=true;padFilter();main.scrollTop=0};
+      wc.querySelectorAll('button[data-mode]').forEach(function(b){b.onclick=function(){if(pad.wineMode===b.dataset.mode)return;pad.wineMode=b.dataset.mode;renderPad(menuData);main.scrollTop=0;main.classList.remove('fade');void main.offsetWidth;main.classList.add('fade')}});
     }
     main.querySelectorAll('.pad-jump button').forEach(function(b){b.onclick=function(){padScrollTo(document.getElementById(b.dataset.g))}});
+    if(wine)padFilter();
     if(keepScroll)main.scrollTop=st;
+  }
+  // wine search: case and accents don't matter ("rose" finds Rosé); every word typed must match
+  function padNorm(x){return String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim()}
+  function padFilter(){
+    var main=document.getElementById('padMain'),words=padNorm(pad.wq).split(' ').filter(Boolean),n=0;
+    main.querySelectorAll('.pad-item[data-q]').forEach(function(el){var ok=words.every(function(w){return el.dataset.q.indexOf(w)>=0});el.hidden=!ok;if(ok)n++});
+    main.querySelectorAll('.pad-group').forEach(function(g){g.hidden=!!words.length&&!g.querySelector('.pad-item:not([hidden])')});
+    document.querySelectorAll('#padWcol .wc-sub a').forEach(function(a){var g=document.getElementById(a.dataset.target);a.hidden=!!(g&&g.hidden)});
+    var none=main.querySelector('.pad-none');
+    if(words.length&&!n){if(!none){none=document.createElement('p');none.className='pad-none';main.appendChild(none)}none.textContent='No wines match \u201c'+pad.wq.trim()+'\u201d. Try a grape, a country or a producer.'}
+    else if(none)none.remove();
+    var cnt=document.querySelector('#padWcol .pad-qn');
+    if(words.length&&n){if(!cnt){cnt=document.createElement('p');cnt.className='pad-qn';document.querySelector('#padWcol .pad-search').appendChild(cnt)}cnt.textContent=n+(n===1?' wine':' wines')}
+    else if(cnt)cnt.remove();
   }
   function padScrollTo(el){ // bring a section's heading to the top of the menu, measured on screen so nested layouts can't throw it off
     if(!el)return;var main=document.getElementById('padMain');
@@ -614,7 +633,7 @@
   }
   function padIdle(){ // after 3 quiet minutes, return to the first page for the next guest
     clearTimeout(pad.idle);
-    pad.idle=setTimeout(function(){if(pad.el.hidden)return;closeWine();pad.tab=null;pad.wineMode='style';renderPad(menuData);document.getElementById('padMain').scrollTop=0},180000);
+    pad.idle=setTimeout(function(){if(pad.el.hidden)return;closeWine();pad.tab=null;pad.wineMode='style';pad.wq='';renderPad(menuData);document.getElementById('padMain').scrollTop=0},180000);
   }
   ['pointerdown','touchstart','scroll','wheel'].forEach(function(ev){pad.el.addEventListener(ev,padIdle,{passive:true,capture:true})});
   (function(){var taps=[];document.getElementById('padBrand').addEventListener('click',function(){
