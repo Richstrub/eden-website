@@ -181,7 +181,9 @@
     return h+'</div>';
   }
   function wineNav(mode,cls,groups,idp){
-    var h='<div class="'+cls+'" role="toolbar" aria-label="Browse wines by"><span class="wn-label">Browse by</span>';
+    var h='<div class="'+cls+'" role="toolbar" aria-label="Browse wines by">';
+    if(cls==='wine-nav')h+='<div class="wn-search"><label class="wn-label" for="wnQ">Search wines</label><div class="wn-qbox"><input id="wnQ" type="search" placeholder="Grape, region, producer…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" value="'+esc(siteWq)+'"><button type="button" class="wn-qx" aria-label="Clear search"'+(siteWq?'':' hidden')+'>&times;</button></div><p class="wn-qn" aria-live="polite"></p></div>';
+    h+='<span class="wn-label">Browse by</span>';
     WINE_MODES.forEach(function(m){h+='<button type="button" data-mode="'+m[0]+'" aria-pressed="'+(m[0]===mode)+'">'+m[1]+'</button>'});
     if(SUB_LABEL[mode]&&groups)h+=grapeLinks(groups,idp,'wn-sub',mode);
     return h+'</div>';
@@ -349,7 +351,7 @@
       if(g.note)h+='<p class="mg-note">'+esc(g.note)+'</p>';
       h+='<ul class="ml">';
       items.forEach(function(it){
-        h+='<li class="mi'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
+        h+='<li class="mi'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'mi-src');
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'mi',g.title);
@@ -368,7 +370,15 @@
     return groupsHTML(t.groups||[]);
   }
   function bindWineNav(panel,t){
-    panel.querySelectorAll('.wine-nav button').forEach(function(b){b.onclick=function(){
+    var q=panel.querySelector('#wnQ');
+    if(q){
+      var qx=panel.querySelector('.wn-qx'),lay=panel.querySelector('.wine-layout');
+      q.oninput=function(){siteWq=q.value;qx.hidden=!q.value;siteFilter(panel);var top=lay.getBoundingClientRect().top;if(top<0)window.scrollTo({top:top+window.scrollY-90})};
+      q.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();q.blur()}};
+      qx.onclick=function(){q.value='';siteWq='';qx.hidden=true;siteFilter(panel);q.focus()};
+      siteFilter(panel);
+    }
+    panel.querySelectorAll('.wine-nav button[data-mode]').forEach(function(b){b.onclick=function(){
       siteWineMode=b.dataset.mode;panel.innerHTML=panelInner(t);bindWineNav(panel,t);setTimeout(spySite,0);
       var lay=panel.querySelector('.wine-layout');var top=lay.getBoundingClientRect().top;if(top<0||top>window.innerHeight*.5)window.scrollTo({top:lay.getBoundingClientRect().top+window.scrollY-90});
     }});
@@ -428,12 +438,26 @@
   function markActive(links,cur,box){
     links.forEach(function(a){a.classList.toggle('active',a===cur)});
     if(!cur||!box||!links.length)return;
+    if(box.contains(document.activeElement)&&document.activeElement.tagName==='INPUT')return;   // don't slide the bar away while someone is typing a search
     var br=box.getBoundingClientRect(),cr=cur.getBoundingClientRect();
     if(box.scrollHeight>box.clientHeight+2){
       if(cr.top<br.top+40||cr.bottom>br.bottom-40)box.scrollTop+=(cr.top-br.top)-box.clientHeight/2;
     }else if(box.scrollWidth>box.clientWidth+2){
       if(cr.left<br.left+40||cr.right>br.right-40)box.scrollLeft+=(cr.left-br.left)-box.clientWidth/2;
     }
+  }
+  // website wine search (same matching as the iPad menu)
+  var siteWq='';
+  function siteFilter(panel){
+    var words=padNorm(siteWq).split(' ').filter(Boolean),n=0,body=panel.querySelector('.wine-body');
+    panel.querySelectorAll('.mi[data-q]').forEach(function(el){var ok=words.every(function(w){return el.dataset.q.indexOf(w)>=0});el.hidden=!ok;if(ok)n++});
+    panel.querySelectorAll('.wine-body .mg').forEach(function(g){g.hidden=!!words.length&&!g.querySelector('.mi:not([hidden])')});
+    panel.querySelectorAll('.wn-sub a').forEach(function(a){var g=document.getElementById(a.dataset.target);a.hidden=!!(g&&g.hidden)});
+    var none=body.querySelector('.wn-none');
+    if(words.length&&!n){if(!none){none=document.createElement('p');none.className='wn-none';body.appendChild(none)}none.textContent='No wines match \u201c'+siteWq.trim()+'\u201d. Try a grape, a country or a producer.'}
+    else if(none)none.remove();
+    var cnt=panel.querySelector('.wn-qn');if(cnt)cnt.textContent=words.length&&n?n+(n===1?' wine':' wines'):'';
+    setTimeout(spySite,0);
   }
   function spySite(){
     var panel=document.querySelector('.wine-panel:not([hidden])');if(!panel)return;
