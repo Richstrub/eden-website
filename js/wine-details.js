@@ -1,7 +1,7 @@
 /* Eden: which menu bottles have an "About this wine / spirit" window. Generated; each bottle's story, facts,
  * awards, photo and map are in assets/wines/<id>.json, loaded when a guest taps it.
  * match: every word must appear in the menu section + name + note (accents and case don't matter); when several
- * entries match, the one with the most words wins. */
+ * entries match, the one with the most words wins. A word starting with "-" must not appear ("-cocktails"). */
 window.EDEN_WINE_V = '8';
 window.EDEN_WINE_DETAILS = [
   {"id": "raventos-de-nit", "match": "raventos blanc nit", "kind": "wine"},

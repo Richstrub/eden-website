@@ -203,8 +203,10 @@
     if(n in wdMemo)return wdMemo[n];
     var best=-1,bw=0;
     for(var i=0;i<L.length;i++){
-      var ws=wNorm(L[i].match).split(/\s+/).filter(Boolean);
-      if(ws.length>bw&&ws.every(function(w){return n.indexOf(' '+w+' ')!==-1})){best=i;bw=ws.length}
+      // a word starting with "-" must NOT appear (e.g. "-cocktails": not a cocktail that pours this bottle)
+      var raw=String(L[i].match||'').split(/\s+/),ws=[],no=[];
+      raw.forEach(function(w){if(!w)return;if(w.charAt(0)==='-')no.push(wNorm(w.slice(1)).trim());else wNorm(w).split(/\s+/).forEach(function(x){if(x)ws.push(x)})});
+      if(ws.length>bw&&ws.every(function(w){return n.indexOf(' '+w+' ')!==-1})&&!no.some(function(w){return w&&n.indexOf(' '+w+' ')!==-1})){best=i;bw=ws.length}
     }
     return (wdMemo[n]=best);
   }
