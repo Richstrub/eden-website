@@ -1,11 +1,12 @@
 name: Menu snapshot (temporary)
 on: workflow_dispatch
+permissions: { contents: write }
 jobs:
   snap:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          mkdir s && cd s && git init -q && git checkout -q -b menu-snapshot
           curl -sS "https://qmblccwyxbpvziiwrlne.supabase.co/rest/v1/site_docs?select=path,data&path=like.site/*" -H "apikey: sb_publishable_Nbp1K_Co8tDVB-jNjBRs3w_D40qm4Mg" -o site_docs.json
-          ls -la site_docs.json
-      - uses: actions/upload-artifact@v4
-        with: { name: site-docs, path: site_docs.json }
+          git add site_docs.json && git -c user.name=snap -c user.email=snap@example.com commit -qm snapshot
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" menu-snapshot
