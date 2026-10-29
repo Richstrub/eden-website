@@ -1,0 +1,11 @@
+name: Menu snapshot (temporary)
+on: workflow_dispatch
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sS "https://qmblccwyxbpvziiwrlne.supabase.co/rest/v1/site_docs?select=path,data&path=like.site/*" -H "apikey: sb_publishable_Nbp1K_Co8tDVB-jNjBRs3w_D40qm4Mg" -o site_docs.json
+          ls -la site_docs.json
+      - uses: actions/upload-artifact@v4
+        with: { name: site-docs, path: site_docs.json }
