@@ -2,7 +2,7 @@
  * awards, photo and map are in assets/wines/<id>.json, loaded when a guest taps it.
  * match: every word must appear in the menu section + name + note (accents and case don't matter); when several
  * entries match, the one with the most words wins. A word starting with "-" must not appear ("-cocktails"). */
-window.EDEN_WINE_V = '8';
+window.EDEN_WINE_V = '9';
 window.EDEN_WINE_DETAILS = [
   {"id": "raventos-de-nit", "match": "raventos blanc nit", "kind": "wine"},
   {"id": "bonnet-ponson-coteaux-champenois-chamery-rouge-2022", "match": "bonnet ponson chamery rouge", "kind": "wine"},
@@ -275,5 +275,23 @@ window.EDEN_WINE_DETAILS = [
   {"id": "wolffer-estate-fatalis-fatum-2020", "match": "wolffer estate vineyard long island fatalis fatum cabernet franc", "kind": "wine"},
   {"id": "wolffer-estate-the-grapes-of-roth-merlot-2020", "match": "wolffer estate vineyard long island grapes roth merlot", "kind": "wine"},
   {"id": "finca-wolffer-malbec-2024", "match": "wolffer estate vineyard mendoza finca malbec", "kind": "wine"},
-  {"id": "wolffer-estate-diosa-late-harvest-2021", "match": "wolffer estate vineyard hamptons diosa late harvest ice", "kind": "wine"}
+  {"id": "wolffer-estate-diosa-late-harvest-2021", "match": "wolffer estate vineyard hamptons diosa late harvest ice", "kind": "wine"},
+  {"id": "apollos-praise-lahoma-vineyard-scheurebe-2024", "match": "apollo praise lahoma scheurebe", "kind": "wine"},
+  {"id": "los-bermejos-diego-seco", "match": "los bermejos diego seco", "kind": "wine"},
+  {"id": "chateau-lafayette-reneau-cabernet-sauvignon-2023", "match": "chateau lafayette reneau cabernet sauvignon", "kind": "wine"},
+  {"id": "gerard-fiou-sancerre-rouge-terroir-silex", "match": "fiou sancerre silex", "kind": "wine"},
+  {"id": "cantina-ortaccio-vecchi-filari", "match": "ortaccio vecchi filari", "kind": "wine"},
+  {"id": "ln-mattei-cap-corse-rouge", "match": "mattei cap corse rouge -cocktails", "kind": "spirit"},
+  {"id": "ln-mattei-cap-corse-blanc", "match": "mattei cap corse blanc -cocktails", "kind": "spirit"},
+  {"id": "contratto-aperitif", "match": "aperitif contratto -cocktails", "kind": "spirit"},
+  {"id": "contratto-bitter", "match": "contratto bitter liqueur -cocktails", "kind": "spirit"},
+  {"id": "haus-citrus-flower-aperitif", "match": "haus citrus flower -cocktails", "kind": "spirit"},
+  {"id": "salers-gentiane-aperitif", "match": "aperitif salers terres rouges -cocktails", "kind": "spirit"},
+  {"id": "cocchi-americano", "match": "cocchi americano -cocktails", "kind": "spirit"},
+  {"id": "cappelletti-alpeggio", "match": "cappelletti alpeggio -cocktails", "kind": "spirit"},
+  {"id": "carpano-dry-vermouth", "match": "carpano dry vermouth -cocktails", "kind": "spirit"},
+  {"id": "carpano-sweet-vermouth", "match": "carpano sweet vermouth -cocktails", "kind": "spirit"},
+  {"id": "tribuno-extra-dry-vermouth", "match": "tribuno extra dry vermouth -cocktails", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-neapolitan-gin", "match": "gin hollerhorn neapolitan", "kind": "spirit"},
+  {"id": "hollerhorn-distilling-rauch", "match": "hollerhorn rouch", "kind": "spirit"}
 ];
