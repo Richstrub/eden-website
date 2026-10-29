@@ -840,3 +840,7 @@ footer .social{color:var(--ivory)}
 .mi[hidden],.mg[hidden],.wn-sub a[hidden]{display:none!important}
 @media (max-width:820px){.wn-search{flex:0 0 190px;margin:0 6px 0 0}.wn-search .wn-label,.wn-qn{display:none}.wn-qbox input{padding:8px 34px 8px 11px;font-size:16px}}
 @media (max-width:820px){.wn-search{position:sticky;left:-16px;z-index:2;flex:0 0 172px;margin:0 4px 0 -16px;padding:0 10px 0 16px;background:var(--ink);box-shadow:8px 0 10px -6px rgba(0,0,0,.6)}}
+/* wine list: section headings (Sparkling, White, Rosé…, or each grape/country) bold and larger, on the website and the iPad */
+.wine-body .mg-title{font-size:1.05rem;font-weight:600;letter-spacing:.24em;padding-bottom:12px}
+.pad-grid.wine .pad-gt{font-size:1.15rem;font-weight:600;letter-spacing:.24em;padding-bottom:12px}
+@media (max-width:640px){.wine-body .mg-title{font-size:.95rem;letter-spacing:.2em}}

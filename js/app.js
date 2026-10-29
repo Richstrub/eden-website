@@ -593,7 +593,7 @@
     if(!wine&&!side&&big&&gs.length>1&&gs.length<=10){h+='<div class="pad-jump">';gs.forEach(function(g,i){h+='<button data-g="pg'+i+'">'+esc(g.title)+'</button>'});h+='</div>'}
     
     if(wine&&(pad.wineMode==='country'||pad.wineMode==='appellation'))h+='<div class="wm" aria-hidden="true"></div>';
-    h+='<div class="pad-grid'+(big?' stack':'')+'">';
+    h+='<div class="pad-grid'+(big?' stack':'')+(wine?' wine':'')+'">';
     gs.forEach(function(g,gi){
       var items=vis(g);
       h+='<div class="pad-group" id="pg'+gi+'"><div class="pad-gt">'+esc(g.title)+'</div>';
