@@ -911,3 +911,22 @@ footer .social{color:var(--ivory)}
 .strub-u{position:relative;display:inline-block}
 .strub-u i{position:absolute;display:block;top:-.03em;width:.13em;height:.13em;background:#e8743b}
 .strub-u i:first-child{left:.08em}.strub-u i+i{left:.29em}
+
+/* Specialty Cuts: tonight's cuts nested under the line as a subsection */
+.mi-subcuts,.pad-subcuts{margin:14px 0 4px;padding:2px 0 2px 18px;border-left:1px solid rgba(224,154,94,.45)}
+.pad-subcuts{border-left-color:rgba(176,112,63,.4);margin:16px 0 6px}
+.mi-subcut,.pad-subcut{cursor:pointer;padding:7px 0;-webkit-tap-highlight-color:transparent}
+.mi-subcut+.mi-subcut{border-top:1px solid rgba(243,238,229,.07)}
+.pad-subcut+.pad-subcut{border-top:1px solid rgba(15,18,21,.06)}
+.mi-subcut:focus-visible,.pad-subcut:focus-visible{outline:1px solid var(--ember-hot);outline-offset:3px}
+.mi-sch,.pad-sch{display:flex;align-items:baseline;gap:10px}
+.mi-scn,.pad-scn{font-family:var(--serif);font-size:1.12rem;line-height:1.25;min-width:0}
+.pad-scn{font-size:1.2rem}
+.mi-scp,.pad-scp{font-family:var(--serif);font-size:1.05rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pad-scp{font-size:1.12rem}
+.mi-scs,.pad-scs{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--ember-hot);margin-top:1px}
+.pad-scs{color:var(--ember);font-size:.98rem}
+.mi-scd{font-size:.84rem;color:var(--soft-dark);margin-top:1px}
+.pad-scd{font-size:.88rem;color:#4a4e53;margin-top:2px;line-height:1.5}
+.mi-subcut .mi-dots,.pad-subcut .pad-dots{transform:translateY(-4px)}
+@media (hover:hover){.mi-subcut:hover .mi-scn,.pad-subcut:hover .pad-scn{color:var(--ember-hot)}.pad-subcut:hover .pad-scn{color:var(--ember)}}

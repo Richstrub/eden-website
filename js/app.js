@@ -294,6 +294,17 @@
   function cutsAnchor(it){return it&&!it.cut&&/specialty cuts|steak cuts|tonight.s cuts/i.test(it.name||'')}   // the menu's "Specialty Cuts" line opens the guide
   function cutAttr(it){if(cutsAnchor(it))return ' data-cuts-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': about tonight’s cuts of beef"';var k=cutOf(it);return k?' data-cut="'+esc(k)+'" tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': about this cut"':''}
   function cutHint(it,c){if(cutsAnchor(it))return '<span class="'+c+'-more">About tonight’s cuts &rsaquo;</span>';return cutOf(it)?'<span class="'+c+'-more">About this cut &rsaquo;</span>':''}
+  // the cuts under "Specialty Cuts": a small nested list (name, price, farm), each opening its own explainer
+  function subCutsHTML(subs,c){
+    var h='<div class="'+c+'-subcuts" role="list">';
+    subs.forEach(function(it){
+      h+='<div class="'+c+'-subcut" role="listitem"'+cutAttr(it)+'><div class="'+c+'-sch"><span class="'+c+'-scn">'+esc(it.name)+dietHTML(it,c)+'</span><span class="'+c+'-dots"></span><span class="'+c+'-scp">'+esc(it.price)+'</span></div>';
+      if(it.src)h+=srcHTML(it.src,c+'-scs');
+      if(it.desc)h+='<div class="'+c+'-scd">'+esc(it.desc)+'</div>';
+      h+='</div>';
+    });
+    return h+'</div>';
+  }
   function cutsLink(c){return '<button type="button" class="cuts-link '+c+'-cuts" data-cuts-open aria-haspopup="dialog">About tonight’s cuts of beef <span aria-hidden="true">&rsaquo;</span></button>'}
   function tonightsCuts(){ // every cut on the menu tonight, in menu order, with its sources and prices
     var out=[],by={};
@@ -456,11 +467,14 @@
       h+='<div class="mg"'+(idp?' id="'+idp+gi+'"':'')+'><h3 class="mg-title">'+esc(g.title)+'</h3>';
       if(g.note)h+='<p class="mg-note">'+esc(g.note)+'</p>';
       h+='<ul class="ml">';
+      var anc=items.some(cutsAnchor),subs=anc?items.filter(cutOf):[];
       items.forEach(function(it){
-        h+='<li class="mi'+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+dietHTML(it,'mi')+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
+        if(anc&&cutOf(it))return; // tonight's cuts sit inside the Specialty Cuts line as a subsection
+        h+='<li class="mi'+(cutsAnchor(it)&&subs.length?' mi-cutsec':'')+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+dietHTML(it,'mi')+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'mi-src');
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'mi',g.title)+cutHint(it,'mi');
+        if(cutsAnchor(it)&&subs.length)h+=subCutsHTML(subs,'mi');
         h+=pairHTML(it,'mi');
         h+='</li>';
       });
@@ -706,11 +720,14 @@
       h+='<div class="pad-group" id="pg'+gi+'"><div class="pad-gt">'+esc(g.title)+'</div>';
       if(g.note)h+='<p class="pad-note">'+esc(g.note)+'</p>';
       if(big)h+='<div class="pad-items">';
+      var anc=items.some(cutsAnchor),subs=anc?items.filter(cutOf):[];
       items.forEach(function(it){
-        h+='<div class="pad-item'+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+dietHTML(it,'pad')+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
+        if(anc&&cutOf(it))return;
+        h+='<div class="pad-item'+(cutsAnchor(it)&&subs.length?' pad-cutsec':'')+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+dietHTML(it,'pad')+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'pad-src');
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'pad',g.title)+cutHint(it,'pad');
+        if(cutsAnchor(it)&&subs.length)h+=subCutsHTML(subs,'pad');
         h+=pairHTML(it,'pad');
         h+='</div>';
       });
