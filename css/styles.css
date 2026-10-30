@@ -901,3 +901,8 @@ footer .social{color:var(--ivory)}
 .mg-legend,.pad-legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;font-size:.82rem;color:var(--soft-dark)}
 .pad-legend{color:#6e6457;margin:28px 0 8px}
 .mg-legend span,.pad-legend span{display:inline-flex;align-items:center;gap:7px}
+
+/* small-print credit: website footer and iPad menu */
+.strub{display:block;width:max-content;margin:14px auto 0;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:inherit;opacity:.5;text-decoration:none;transition:opacity .2s}
+.strub:hover,.strub:focus-visible{opacity:.9}
+.strub-pad{margin:12px 0 0;font-size:.55rem}
