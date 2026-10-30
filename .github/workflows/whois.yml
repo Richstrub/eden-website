@@ -1,0 +1,11 @@
+name: whois-check
+on: push
+jobs:
+  w:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt-get -qq install -y whois >/dev/null 2>&1 || true
+          whois edencny.com | sed -n '1,80p'
+          echo ==== RDAP; curl -s https://rdap.verisign.com/com/v1/domain/edencny.com | head -c 4000
+          echo; echo ==== NS; dig +short NS edencny.com; dig +short A edencny.com; dig +short MX edencny.com
