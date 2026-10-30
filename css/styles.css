@@ -903,6 +903,11 @@ footer .social{color:var(--ivory)}
 .mg-legend span,.pad-legend span{display:inline-flex;align-items:center;gap:7px}
 
 /* small-print credit: website footer and iPad menu */
-.strub{display:block;width:max-content;margin:14px auto 0;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:inherit;opacity:.5;text-decoration:none;transition:opacity .2s}
-.strub:hover,.strub:focus-visible{opacity:.9}
+.strub{display:block;width:max-content;margin:16px auto 0;padding-top:4px;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-dark);text-decoration:none;opacity:.7;transition:opacity .2s}
+.strub:hover,.strub:focus-visible{opacity:1}
 .strub-pad{margin:12px 0 0;font-size:.55rem}
+/* the Strüb Creative logo: Instrument Serif, lowercase, the umlaut as two ember squares */
+.strub-mark{font-family:"Instrument Serif",Georgia,serif;font-size:1.7em;line-height:.82;letter-spacing:-.01em;text-transform:none;color:var(--ivory);margin-left:.15em}
+.strub-u{position:relative;display:inline-block}
+.strub-u i{position:absolute;display:block;top:-.03em;width:.13em;height:.13em;background:#e8743b}
+.strub-u i:first-child{left:.08em}.strub-u i+i{left:.29em}
