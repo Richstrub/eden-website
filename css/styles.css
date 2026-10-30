@@ -864,7 +864,7 @@ footer .social{color:var(--ivory)}
 .cut-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:26px;align-items:start}
 .cut-about{font-family:var(--serif);font-size:1.15rem;line-height:1.6;margin:0 0 16px}
 .cut-facts{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
-.cm{display:grid;grid-template-columns:repeat(4,1fr) 1.15fr;grid-template-rows:46px 34px;gap:3px;padding:10px;border:1px solid var(--line-dark);border-radius:46% 40% 30% 34%/34% 30% 40% 46%;background:var(--ink-2)}
+.cm{overflow:hidden;display:grid;grid-template-columns:repeat(4,1fr) 1.15fr;grid-template-rows:46px 34px;gap:3px;padding:10px;border:1px solid var(--line-dark);border-radius:46% 40% 30% 34%/34% 30% 40% 46%;background:var(--ink-2)}
 .cm span{display:grid;place-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--soft-dark);background:rgba(243,238,229,.05);line-height:1.1;padding:2px}
 .cm .on{background:var(--ember);color:#fff}
 .cm-round{grid-column:5;grid-row:1/3}
@@ -875,3 +875,14 @@ footer .social{color:var(--ivory)}
 .cut-srcabout p{margin:0;font-size:.98rem;line-height:1.6;color:var(--soft-dark)}
 .cut-beef{border-top:1px solid var(--line-dark);padding-top:26px}
 @media (max-width:640px){.cut-body{grid-template-columns:1fr}.cm{max-width:260px}.wd-scroll{padding:40px 22px 30px}}
+
+/* ---------- G2 continuous corners (same as the staff site) ----------
+   Browsers that support corner-shape draw rounded corners as a superellipse, so curves ease into straight edges.
+   Circles and the soft glow shapes stay round. Other browsers keep ordinary rounded corners. */
+.wd-card{border-radius:20px;overflow:hidden}
+.cut-jump a{border-radius:999px}
+@supports (corner-shape: superellipse(1.5)){
+  *,*::before,*::after{corner-shape:superellipse(1.5)}
+  .wd-card{border-radius:26px}
+  #cater input[type=checkbox].round,.wd-score,.social a,.hx-glow,.hx-coals i,.hx-spark,.hx-word::before,.cm,.src-pin{corner-shape:round}
+}
