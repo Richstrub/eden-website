@@ -1,0 +1,37 @@
+name: Cow photo candidates (temporary)
+on: workflow_dispatch
+permissions: { contents: write }
+jobs:
+  get:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir s && cd s && git init -q && git checkout -q -b cow-photos
+          python3 - <<'PY'
+          import json, urllib.request, urllib.parse, os
+          UA={'User-Agent':'EdenSite/1.0 (info@edencny.com)'}
+          def get(u):
+              return json.load(urllib.request.urlopen(urllib.request.Request(u,headers=UA)))
+          out=[]
+          for cat in ['Category:Aberdeen Angus cattle','Category:Hereford cattle','Category:Cattle in profile','Category:Side views of cattle','Category:Bulls (cattle) in profile','Category:Charolais cattle']:
+              u='https://commons.wikimedia.org/w/api.php?'+urllib.parse.urlencode({'action':'query','format':'json','generator':'categorymembers','gcmtitle':cat,'gcmtype':'file','gcmlimit':'60','prop':'imageinfo','iiprop':'url|extmetadata|size','iiurlwidth':'480'})
+              try: d=get(u)
+              except Exception as e: print(cat,e); continue
+              for p in (d.get('query',{}).get('pages',{}) or {}).values():
+                  ii=(p.get('imageinfo') or [{}])[0]; md=ii.get('extmetadata',{})
+                  lic=md.get('LicenseShortName',{}).get('value','')
+                  out.append({'cat':cat,'title':p['title'],'lic':lic,'artist':md.get('Artist',{}).get('value','')[:200],'thumb':ii.get('thumburl'),'url':ii.get('url'),'w':ii.get('width'),'h':ii.get('height')})
+          json.dump(out,open('list.json','w'),indent=1)
+          os.makedirs('t',exist_ok=True)
+          n=0
+          for i,o in enumerate(out):
+              if not o['thumb'] or o['w'] is None or o['w']<o['h']*1.15: continue
+              if not any(k in o['lic'] for k in ['Public domain','CC0','PD','CC BY']): continue
+              try:
+                  urllib.request.urlretrieve(o['thumb'], f't/{i:03d}.jpg'); n+=1
+              except Exception as e: print(e)
+              if n>=70: break
+          print('got',n)
+          PY
+          git add -A && git -c user.name=snap -c user.email=snap@example.com commit -qm photos
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" cow-photos
