@@ -1067,11 +1067,14 @@
     var caterEl=document.getElementById('cater'),wasCater=!caterEl.hidden;
     caterEl.hidden=!onCater;document.body.classList.toggle('on-cater',onCater);
     if(onCater&&!wasCater)window.scrollTo(0,0);
+    var privEl=document.getElementById('privacy'),onPriv=(h==='#privacy'),wasPriv=!privEl.hidden;
+    privEl.hidden=!onPriv;document.body.classList.toggle('on-privacy',onPriv);
+    if(onPriv&&!wasPriv)window.scrollTo(0,0);
     var onSup=(h==='#supper'||h==='#supper-menu');
     var was=!supperEl.hidden;
     supperEl.hidden=!onSup;document.body.classList.toggle('on-supper',onSup);
     if(onSup){if(!was)window.scrollTo(0,0);if(h==='#supper-menu')document.getElementById('supper-menu').scrollIntoView();}
-    else if(was||(wasCater&&!onCater)){var t=h&&h.length>1&&document.getElementById(h.slice(1));if(t)t.scrollIntoView();else window.scrollTo(0,0)}
+    else if(was||(wasCater&&!onCater)||(wasPriv&&!onPriv)){var t=h&&h.length>1&&document.getElementById(h.slice(1));if(t)t.scrollIntoView();else window.scrollTo(0,0)}
     window.dispatchEvent(new Event('scroll'));
   }
   window.addEventListener('hashchange',route);

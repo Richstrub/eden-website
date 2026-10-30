@@ -21,6 +21,7 @@
     var h = location.hash;
     if (h === '#supper' || h === '#supper-menu') return '/supper';
     if (h === '#catering') return '/catering';
+    if (h === '#privacy') return '/privacy';
     if (/^#plan-/.test(h)) return '/catering/questionnaire';   // a guest's private link (the code itself is never sent)
     return '/';
   }

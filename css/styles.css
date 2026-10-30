@@ -930,3 +930,19 @@ footer .social{color:var(--ivory)}
 .pad-scd{font-size:.88rem;color:#4a4e53;margin-top:2px;line-height:1.5}
 .mi-subcut .mi-dots,.pad-subcut .pad-dots{transform:translateY(-4px)}
 @media (hover:hover){.mi-subcut:hover .mi-scn,.pad-subcut:hover .pad-scn{color:var(--ember-hot)}.pad-subcut:hover .pad-scn{color:var(--ember)}}
+
+/* Privacy policy page (#privacy) */
+body.on-privacy > section{display:none}
+.privacy .sp-hero{background:var(--ink);color:var(--ivory);padding-top:calc(170px + env(safe-area-inset-top,0px));padding-bottom:80px}
+.privacy .sp-title{color:var(--ivory)}
+.pv-date{margin-top:18px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-dark)}
+.pv-body{padding:72px 24px 96px}
+.pv-body p,.pv-body li{font-size:1rem;line-height:1.75;color:#3d4146;margin:0 0 16px}
+.pv-body h2{font-family:var(--serif);font-weight:400;font-size:1.7rem;margin:44px 0 12px;color:var(--ink)}
+.pv-body h3{font-family:var(--sans);font-weight:600;font-size:.95rem;margin:22px 0 6px;color:var(--ink)}
+.pv-body ul{padding-left:20px;margin:0 0 16px}
+.pv-body a{color:var(--ember);text-decoration:underline;text-underline-offset:3px}
+.pv-back{margin-top:44px}
+@media (max-width:700px){.privacy .sp-hero{padding-top:calc(120px + env(safe-area-inset-top,0px));padding-bottom:60px}.pv-body{padding:48px 20px 72px}}
+footer .foot-join-fine{margin:10px 0 0;font-size:.74rem;opacity:.75}
+footer .foot-join-fine a,footer .foot-priv{color:inherit;text-decoration:underline;text-underline-offset:3px}
