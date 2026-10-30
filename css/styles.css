@@ -881,29 +881,19 @@ footer .social{color:var(--ivory)}
   #cater input[type=checkbox].round,.wd-score,.social a,.hx-glow,.hx-coals i,.hx-spark,.hx-word::before,.cm,.src-pin{corner-shape:round}
 }
 
-/* the butcher's chart in the cuts window: engraved ink on parchment, the cut's part in ember */
-.cm-wrap{max-width:none;margin:4px 0 0;padding:14px 16px 10px;background:#efe6d2;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(59,42,28,.18),inset 0 0 0 5px #efe6d2,inset 0 0 0 6px rgba(59,42,28,.22)}
+/* the butcher's chart in the cuts window: a solid steer on cream, cut lines and labels in cream, the cut's part in ember */
+.cm-wrap{max-width:none;margin:4px 0 0;padding:14px 16px 10px;background:#efe6d2;border-radius:16px;background-image:repeating-linear-gradient(90deg,rgba(59,42,28,.035) 0 1px,transparent 1px 9px);box-shadow:inset 0 0 0 1px rgba(59,42,28,.18),inset 0 0 0 5px #efe6d2,inset 0 0 0 6px rgba(59,42,28,.22)}
 .cm{display:block;width:100%;height:auto;overflow:visible}
-.cm-rest{fill:#e7dcc4}
-.cm-far{fill:#d9ccb0;stroke:#3b2a1c;stroke-width:.7;stroke-linejoin:round}
-.cm-p{fill:#ece2cc}
-.cm-p.on{fill:#c98a55}
-.cm-hl{stroke:#3b2a1c;stroke-width:.35;opacity:.55}
-.cm-hl.hot{stroke:#8a4a1d;opacity:.5}
-.cm-shade{opacity:.55}
-.cm-cut{fill:none;stroke:#3b2a1c;stroke-width:.8;stroke-dasharray:none}
-.cm-cut.dash{stroke-dasharray:2 1.6;stroke-width:.6}
-.cm-edge{fill:none;stroke:#2a1d12;stroke-width:1.1;stroke-linejoin:round}
-.cm-ear{fill:#e2d5ba;stroke:#2a1d12;stroke-width:.8;stroke-linejoin:round}
-.cm-horn{fill:#d8c7a0;stroke:#2a1d12;stroke-width:.8;stroke-linejoin:round}
-.cm-horn.far{fill:#cdbb92}
-.cm-l{fill:none;stroke:#2a1d12;stroke-width:.6;stroke-linecap:round}
-.cm-l.thin{stroke-width:.4;opacity:.7}
-.cm-ink{fill:#2a1d12}
-.cm-muzzle{fill:#dccdb0;stroke:#2a1d12;stroke-width:.5}
-.cm-hoof{fill:#4a3626;stroke:#2a1d12;stroke-width:.6}
-.cm-tail{fill:none;stroke:#2a1d12;stroke-width:1.4;stroke-linecap:round}
-.cm-t{font-family:var(--serif);font-size:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-anchor:middle;fill:#3b2a1c}
-.cm-s{font-family:var(--serif);font-style:italic;font-size:5.4px;text-anchor:middle;fill:#5a4430}
+.cm-halo{fill:none;stroke:#fbf6ea;stroke-width:5;stroke-linejoin:round}
+.cm-rest,.cm-far,.cm-ear{fill:#1b1612}
+.cm-far{stroke:#fbf6ea;stroke-width:1.2}
+.cm-ear{stroke:#efe6d2;stroke-width:.9;stroke-linejoin:round}
+.cm-p{fill:#1b1612;stroke:#efe6d2;stroke-width:1.1;stroke-linejoin:round}
+.cm-p.on{fill:var(--ember)}
+.cm-eye{fill:#efe6d2}
+.cm-horn{fill:#d9cdb3;stroke:#1b1612;stroke-width:.8;stroke-linejoin:round}
+.cm-tail{fill:none;stroke:#1b1612;stroke-width:2.4;stroke-linecap:round}
+.cm-tuft{fill:#1b1612}
+.cm-t{font-family:var(--sans);font-size:6.6px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-anchor:middle;fill:#f3eee5}
+.cm-s{font-family:var(--serif);font-style:italic;font-size:5px;text-anchor:middle;fill:rgba(243,238,229,.72)}
 .cm-t.on,.cm-s.on{fill:#fff}
-.cm-t.on{paint-order:stroke;stroke:#8a4a1d;stroke-width:1.2px}
