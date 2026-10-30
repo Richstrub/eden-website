@@ -861,20 +861,14 @@ footer .social{color:var(--ivory)}
 .cut-offers li{display:flex;justify-content:space-between;gap:16px;font-size:.92rem;color:var(--soft-dark);border-bottom:1px dotted var(--line-dark);padding-bottom:6px}
 .cut-offers i{font-style:normal;opacity:.8}
 .cut-offers b{font-weight:400;color:var(--ivory)}
-.cut-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:26px;align-items:start}
+.cut-body{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:start}
 .cut-about{font-family:var(--serif);font-size:1.15rem;line-height:1.6;margin:0 0 16px}
-.cut-facts{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
-.cm{overflow:hidden;display:grid;grid-template-columns:repeat(4,1fr) 1.15fr;grid-template-rows:46px 34px;gap:3px;padding:10px;border:1px solid var(--line-dark);border-radius:46% 40% 30% 34%/34% 30% 40% 46%;background:var(--ink-2)}
-.cm span{display:grid;place-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--soft-dark);background:rgba(243,238,229,.05);line-height:1.1;padding:2px}
-.cm .on{background:var(--ember);color:#fff}
-.cm-round{grid-column:5;grid-row:1/3}
-.cm-brisket{grid-column:1;grid-row:2}.cm-plate{grid-column:2;grid-row:2}.cm-flank{grid-column:3/5;grid-row:2}
-.cm-chuck{border-top-left-radius:40%}.cm-round{border-top-right-radius:30%;border-bottom-right-radius:22%}
+.cut-facts{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 .cut-srcabout{margin:0 0 18px}
 .cut-srcabout h4{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:0 0 6px}
 .cut-srcabout p{margin:0;font-size:.98rem;line-height:1.6;color:var(--soft-dark)}
 .cut-beef{border-top:1px solid var(--line-dark);padding-top:26px}
-@media (max-width:640px){.cut-body{grid-template-columns:1fr}.cm{max-width:260px}.wd-scroll{padding:40px 22px 30px}}
+@media (max-width:640px){.wd-scroll{padding:40px 22px 30px}}
 
 /* ---------- G2 continuous corners (same as the staff site) ----------
    Browsers that support corner-shape draw rounded corners as a superellipse, so curves ease into straight edges.
@@ -886,3 +880,17 @@ footer .social{color:var(--ivory)}
   .wd-card{border-radius:26px}
   #cater input[type=checkbox].round,.wd-score,.social a,.hx-glow,.hx-coals i,.hx-spark,.hx-word::before,.cm,.src-pin{corner-shape:round}
 }
+
+/* the steer diagram in the cuts window */
+.cm{display:block;width:100%;max-width:520px;height:auto;overflow:visible;margin:4px 0 0}
+.wd-x{border-radius:50%}
+.cm-rest{fill:rgba(243,238,229,.05)}
+.cm-p{fill:rgba(243,238,229,.12);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+.cm-p.on{fill:var(--ember)}
+.cm-edge{fill:none;stroke:rgba(243,238,229,.45);stroke-width:1.2;stroke-linejoin:round}
+.cm-tail{fill:none;stroke:rgba(243,238,229,.45);stroke-width:2;stroke-linecap:round}
+.cm-tuft{fill:rgba(243,238,229,.45)}
+.cm-ear{fill:#262b30;stroke:rgba(243,238,229,.45);stroke-width:1.1;stroke-linejoin:round}
+.cm-horn{fill:rgba(243,238,229,.55)}
+.cm-t{font-family:var(--sans);font-size:7.2px;letter-spacing:.08em;text-transform:uppercase;text-anchor:middle;fill:rgba(243,238,229,.7)}
+.cm-t.on{fill:#fff;font-weight:600}

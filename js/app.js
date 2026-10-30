@@ -293,9 +293,29 @@
     })})});
     return out;
   }
-  var PRIMALS=[['chuck','Chuck'],['rib','Rib'],['shortloin','Short loin'],['sirloin','Sirloin'],['round','Round'],['brisket','Brisket'],['plate','Plate'],['flank','Flank']];
+  /* a side view of a steer, head to the left, divided into the primal cuts; the cut's primal(s) light up in ember */
+  var STEER='M96 58C112 50 126 45 142 46C200 52 252 50 300 44C318 42 334 45 342 52C356 62 360 92 354 118C351 136 344 148 337 157C338 168 336 180 337 190L337 204L321 204L321 193C321 184 316 176 318 162C312 158 305 156 298 154C270 166 200 170 152 158L148 190L147 204L131 204L132 190L130 158C118 156 106 150 98 138C90 128 82 112 74 104C64 108 50 112 38 112C30 112 23 108 22 101C21 94 23 88 27 82C36 70 50 56 70 50C80 48 89 54 96 58Z';
+  var STEER_EXTRA='<path class="cm-ear" d="M80 58C70 57 60 61 55 68C64 69 73 67 82 62Z"/><path class="cm-horn" d="M72 51C71 43 68 37 61 34C65 39 66 45 66 52Z"/>';
+  var PRIMALS=[
+    ['chuck','Chuck','96,0 150,0 150,112 86,112',[121,84]],
+    ['rib','Rib','150,0 205,0 205,112 150,112',[177,84]],
+    ['shortloin','Short loin','205,0 250,0 250,112 205,112',[227,78]],
+    ['sirloin','Sirloin','250,0 292,0 292,112 250,112',[271,84]],
+    ['round','Round','292,0 400,0 400,162 298,162 292,112',[325,104]],
+    ['brisket','Brisket','86,112 150,112 150,162 80,162',[114,140]],
+    ['plate','Plate','150,112 210,112 210,162 150,162',[180,140]],
+    ['flank','Flank','210,112 292,112 298,162 210,162',[252,140]]
+  ],cmN=0;
   function primalMap(on){
-    return '<div class="cm" aria-hidden="true">'+PRIMALS.map(function(p){return '<span class="cm-'+p[0]+(on.indexOf(p[0])<0?'':' on')+'">'+p[1]+'</span>'}).join('')+'</div>';
+    var id='cmclip'+(++cmN),h='<svg class="cm" viewBox="10 36 352 176" aria-hidden="true" focusable="false"><defs><clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath></defs><g clip-path="url(#'+id+')">'+
+      '<rect class="cm-rest" x="0" y="0" width="400" height="220"/>';
+    PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+(on.indexOf(p[0])<0?'':' on')+'" points="'+p[2]+'"/>'});
+    h+='</g>'+STEER_EXTRA+'<path class="cm-edge" d="'+STEER+'"/><path class="cm-tail" d="M343 53C352 66 356 96 355 130"/><path class="cm-tuft" d="M355 128c-3 6-3 12 0 16 3-4 4-10 0-16z"/>';
+    PRIMALS.forEach(function(p){
+      var t=p[1].split(' '),x=p[3][0],y=p[3][1],lit=on.indexOf(p[0])<0?'':' on';
+      h+='<text class="cm-t'+lit+'" x="'+x+'" y="'+(y-(t.length-1)*5)+'">'+t.map(function(w,i){return '<tspan x="'+x+'" dy="'+(i?10:0)+'">'+w+'</tspan>'}).join('')+'</text>';
+    });
+    return h+'</svg>';
   }
   function openCuts(focusKey,from){
     var C=window.EDEN_CUTS;if(!C)return;
