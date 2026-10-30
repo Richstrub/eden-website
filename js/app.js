@@ -294,30 +294,52 @@
     return out;
   }
   /* a side view of a steer, head to the left, divided into the primal cuts; the cut's primal(s) light up in ember */
-  var STEER='M128 52C170 56 220 56 250 54C266 53 280 50 292 49C306 48 318 51 326 54C334 56 340 58 343 61C352 70 356 92 352 112C348 130 342 142 338 150C334 162 340 168 340 176L337 213L338 222L322 222L322 213L320 182C318 168 314 160 306 156C280 166 240 170 200 168C172 167 156 164 148 160L150 186L148 213L150 222L134 222L134 213L132 186L130 162C116 160 104 152 98 140C92 128 88 118 84 112C76 112 66 118 56 122C46 125 38 126 32 124C26 122 22 116 22 110C22 104 24 100 27 98C30 92 38 80 50 72C60 66 72 66 82 70C98 64 112 54 128 52Z';
-  // the far-side legs (behind the body), an ear, a horn and an eye
-  var STEER_BACK='<path class="cm-far" d="M158 150L162 186L160 213L162 222L146 222L146 213L146 186L140 158Z"/><path class="cm-far" d="M316 150C312 162 316 170 318 178L316 213L317 222L301 222L301 213L300 182C298 170 296 162 292 156Z"/>';
-  var STEER_EXTRA='<path class="cm-ear" d="M86 75C96 71 106 73 113 78C105 83 94 83 86 79Z"/><path class="cm-horn" d="M80 71C79 63 75 57 68 54C72 60 73 66 73 73Z"/><circle class="cm-eye" cx="60" cy="83" r="2.2"/>';
+  /* the butcher's chart in the cuts window: an engraved-style steer (Eden's own drawing), head to the left, divided into
+     the primal cuts with the steaks each one gives; the cut's own part is shaded in ember */
+  var STEER='M128 52C170 56 220 56 250 54C266 53 280 50 292 49C306 48 318 51 326 54C334 56 340 58 343 61C352 70 356 92 352 112C348 130 342 142 338 150C334 162 340 168 340 176L337 213L338 222L322 222L322 213L320 182C318 168 314 160 306 156C280 166 240 170 200 168C172 167 156 164 148 160L150 186L148 213L150 222L134 222L134 213L132 186L130 162C116 160 104 152 98 140C92 128 88 118 84 112C76 114 64 122 52 128C44 132 38 135 32 135C26 135 20 131 18 125C16 119 16 113 19 108C24 100 34 88 44 78C50 71 56 66 64 64C76 62 90 60 104 56C112 54 120 52 128 52Z';
+  var FAR_LEGS='<path class="cm-far" d="M158 150L162 186L160 213L162 222L146 222L146 213L146 186L140 158Z"/><path class="cm-far" d="M316 150C312 162 316 170 318 178L316 213L317 222L301 222L301 213L300 182C298 170 296 162 292 156Z"/>';
+  // ink details drawn over the body: face, ear, horn, folds of the dewlap, muscle lines, joints, hooves, tail
+  var DETAIL='<path class="cm-ear" d="M64 68C74 61 87 61 96 66C88 73 75 75 64 72Z"/><path class="cm-l" d="M69 68C77 66 85 66 91 67"/>'+
+    '<path class="cm-l thin" d="M56 66c2-3 5-4 8-3M60 65c2-3 5-4 8-3M52 69c2-3 4-4 7-4"/>'+
+    '<path class="cm-l" d="M47 80C50 77 54 77 57 80C54 82 50 82 47 80Z"/><circle class="cm-ink" cx="52.3" cy="79.8" r="1.3"/><path class="cm-l" d="M45 76C49 73 55 73 59 76"/>'+
+    '<path class="cm-l" d="M19 112c2-3 6-3 7 1-2 2-5 2-7-1z"/><path class="cm-l" d="M19 126C26 129 33 130 40 128"/><path class="cm-l thin" d="M28 104C31 112 31 121 28 130M40 122C52 116 62 108 70 100M34 90C28 98 24 104 22 108M58 90C62 98 68 103 76 106"/>'+
+    '<path class="cm-l thin" d="M86 96C92 104 96 112 98 124M92 90C98 99 102 108 104 118M98 84C104 92 108 100 110 110"/>'+
+    '<path class="cm-l thin" d="M118 62C124 88 126 112 122 138M128 150C138 146 148 150 152 158M290 52C296 60 300 66 300 76M300 80C310 102 316 124 318 146M300 150C306 147 312 151 314 158M336 64C340 70 342 76 342 82"/>'+
+    '<path class="cm-l thin" d="M134 186c4-2 10-2 14 0M322 184c4-2 9-2 13 1M134 213h16M146 213v9M322 213h16M330 213v9M301 213h16M309 213v9M146 213h16M154 213v9"/>'+
+    '<path class="cm-hoof" d="M134 213h16l1 9h-17zM146 213h16l1 9h-17zM301 213h16l1 9h-17zM322 213h15l1 9h-16z"/><path class="cm-l" d="M142 213v9M154 213v9M309 213v9M330 213v9"/>'+
+    '<path class="cm-tail" d="M343 61C350 72 352 100 350 128C349 146 348 158 348 166"/><path class="cm-l" d="M348 164c-3 6-5 13-3 21M348 164c0 7 0 14 2 21M348 164c3 6 5 12 4 19M348 166c-1 6-3 12-6 17"/>';
+  // shaded (cross-hatched) undersides, like an engraving
+  var SHADE='M142 160L150 162L148 213L142 213ZM328 160L338 158L337 213L330 213ZM150 152C200 164 260 164 306 152L306 176L150 176ZM84 112C92 128 100 142 116 156L84 160ZM326 64C352 84 354 130 338 152L362 152L362 64ZM18 118C24 132 40 136 54 128L56 146L16 146Z';
   var PRIMALS=[
-    ['chuck','Chuck','104,0 160,0 160,118 90,118',[128,88]],
-    ['rib','Rib','160,0 215,0 215,118 160,118',[188,88]],
-    ['shortloin','Short loin','215,0 258,0 258,118 215,118',[236,84]],
-    ['sirloin','Sirloin','258,0 300,0 302,118 258,118',[279,88]],
-    ['round','Round','300,0 400,0 400,160 334,160 314,170 302,118',[328,108]],
-    ['brisket','Brisket','90,118 160,118 160,166 80,166',[124,143]],
-    ['plate','Plate','160,118 222,118 222,172 160,172',[191,143]],
-    ['flank','Flank','222,118 302,118 314,170 222,172',[263,143]]
+    ['chuck','Chuck','104,0 160,0 160,118 90,118',[138,84],'Chuck roast|Flat iron'],
+    ['rib','Rib','160,0 215,0 215,118 160,118',[188,80],'Ribeye|Rib roast'],
+    ['shortloin','Short|loin','215,0 258,0 258,98 215,104',[236,68],'Strip · T-bone|Porterhouse'],
+    ['sirloin','Sirloin','258,0 300,0 301,96 258,98',[279,74],'Picanha|Tri-tip'],
+    ['tenderloin','Tenderloin','215,104 258,98 301,96 302,118 215,118',[258,110],''],
+    ['round','Round','300,0 400,0 400,160 334,160 314,170 302,118',[328,96],'Top & bottom|round'],
+    ['brisket','Brisket','90,118 160,118 160,166 80,166',[124,138],''],
+    ['plate','Plate','160,118 222,118 222,172 160,172',[191,136],'Skirt|Short ribs'],
+    ['flank','Flank','222,118 302,118 314,170 222,172',[263,136],'Flank steak']
   ],cmN=0;
   function primalMap(on){
-    var id='cmclip'+(++cmN),h='<svg class="cm" viewBox="14 44 348 184" aria-hidden="true" focusable="false">'+STEER_BACK+'<defs><clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath></defs><g clip-path="url(#'+id+')">'+
-      '<rect class="cm-rest" x="0" y="0" width="400" height="220"/>';
-    PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+(on.indexOf(p[0])<0?'':' on')+'" points="'+p[2]+'"/>'});
-    h+='<path class="cm-cut" d="M104 0L90 118L80 170M160 0V170M215 0V118M258 0V118M300 0L302 118L314 172M222 118V172M80 118H302"/></g>'+STEER_EXTRA+'<path class="cm-edge" d="'+STEER+'"/><path class="cm-tail" d="M343 61C350 72 352 100 350 128C349 146 348 158 348 168"/><path class="cm-tuft" d="M348 164c-4 6-5 14-1 20 4-6 6-14 1-20z"/>';
+    var n=++cmN,id='cmclip'+n,hid='cmhatch'+n,eid='cmhot'+n,lit=function(k){return on.indexOf(k)<0?'':' on'};
+    var h='<div class="cm-wrap"><svg class="cm" viewBox="14 44 348 184" role="img" aria-label="Butcher’s chart of a steer showing where this cut comes from" focusable="false"><defs>'+
+      '<clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath>'+
+      '<pattern id="'+hid+'" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="2.6" class="cm-hl"/></pattern>'+
+      '<pattern id="'+eid+'" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><line x1="0" y1="0" x2="0" y2="3" class="cm-hl hot"/></pattern>'+
+      '</defs>'+FAR_LEGS+'<g clip-path="url(#'+id+')"><rect class="cm-rest" x="0" y="0" width="400" height="240"/>';
+    PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+lit(p[0])+'" points="'+p[2]+'"/>'+(lit(p[0])?'<polygon points="'+p[2]+'" fill="url(#'+eid+')"/>':'')});
+    h+='<path d="'+SHADE+'" fill="url(#'+hid+')" class="cm-shade"/>'+
+      '<path class="cm-cut" d="M104 0L90 118L80 170M160 0V170M215 0V118M258 0V98M300 0L302 118L314 172M222 118V172M80 118H302"/>'+
+      '<path class="cm-cut dash" d="M215 104L258 98L301 96"/></g>'+DETAIL+'<path class="cm-edge" d="'+STEER+'"/>';
     PRIMALS.forEach(function(p){
-      var t=p[1].split(' '),x=p[3][0],y=p[3][1],lit=on.indexOf(p[0])<0?'':' on';
-      h+='<text class="cm-t'+lit+'" x="'+x+'" y="'+(y-(t.length-1)*5)+'">'+t.map(function(w,i){return '<tspan x="'+x+'" dy="'+(i?10:0)+'">'+w+'</tspan>'}).join('')+'</text>';
+      var x=p[3][0],y=p[3][1],L=lit(p[0]),subs=p[4]?p[4].split('|'):[];
+      var lines=p[1].split('|');
+      lines.forEach(function(t,i){h+='<text class="cm-t'+L+'" x="'+x+'" y="'+(y+i*8.4)+'">'+t+'</text>'});
+      var y2=y+(lines.length-1)*8.4;
+      subs.forEach(function(s,i){h+='<text class="cm-s'+L+'" x="'+x+'" y="'+(y2+8+i*6.2)+'">'+s+'</text>'});
     });
-    return h+'</svg>';
+    return h+'</svg></div>';
   }
   function openCuts(focusKey,from){
     var C=window.EDEN_CUTS;if(!C)return;
