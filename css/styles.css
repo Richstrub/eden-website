@@ -884,13 +884,16 @@ footer .social{color:var(--ivory)}
 /* the steer diagram in the cuts window */
 .cm{display:block;width:100%;max-width:520px;height:auto;overflow:visible;margin:4px 0 0}
 .wd-x{border-radius:50%}
-.cm-rest{fill:rgba(243,238,229,.05)}
-.cm-p{fill:rgba(243,238,229,.12);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+.cm-rest{fill:#1d2126}
+.cm-p{fill:#30353a}
+.cm-cut{fill:none;stroke:var(--ink);stroke-width:1.8}
 .cm-p.on{fill:var(--ember)}
 .cm-edge{fill:none;stroke:rgba(243,238,229,.45);stroke-width:1.2;stroke-linejoin:round}
 .cm-tail{fill:none;stroke:rgba(243,238,229,.45);stroke-width:2;stroke-linecap:round}
 .cm-tuft{fill:rgba(243,238,229,.45)}
-.cm-ear{fill:#262b30;stroke:rgba(243,238,229,.45);stroke-width:1.1;stroke-linejoin:round}
+.cm-ear{fill:#1d2126;stroke:rgba(243,238,229,.45);stroke-width:1.1;stroke-linejoin:round}
 .cm-horn{fill:rgba(243,238,229,.55)}
+.cm-far{fill:#16191d;stroke:rgba(243,238,229,.28);stroke-width:1.1;stroke-linejoin:round}
+.cm-eye{fill:rgba(243,238,229,.6)}
 .cm-t{font-family:var(--sans);font-size:7.2px;letter-spacing:.08em;text-transform:uppercase;text-anchor:middle;fill:rgba(243,238,229,.7)}
 .cm-t.on{fill:#fff;font-weight:600}

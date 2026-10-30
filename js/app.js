@@ -294,23 +294,25 @@
     return out;
   }
   /* a side view of a steer, head to the left, divided into the primal cuts; the cut's primal(s) light up in ember */
-  var STEER='M96 58C112 50 126 45 142 46C200 52 252 50 300 44C318 42 334 45 342 52C356 62 360 92 354 118C351 136 344 148 337 157C338 168 336 180 337 190L337 204L321 204L321 193C321 184 316 176 318 162C312 158 305 156 298 154C270 166 200 170 152 158L148 190L147 204L131 204L132 190L130 158C118 156 106 150 98 138C90 128 82 112 74 104C64 108 50 112 38 112C30 112 23 108 22 101C21 94 23 88 27 82C36 70 50 56 70 50C80 48 89 54 96 58Z';
-  var STEER_EXTRA='<path class="cm-ear" d="M80 58C70 57 60 61 55 68C64 69 73 67 82 62Z"/><path class="cm-horn" d="M72 51C71 43 68 37 61 34C65 39 66 45 66 52Z"/>';
+  var STEER='M128 52C170 56 220 56 250 54C266 53 280 50 292 49C306 48 318 51 326 54C334 56 340 58 343 61C352 70 356 92 352 112C348 130 342 142 338 150C334 162 340 168 340 176L337 213L338 222L322 222L322 213L320 182C318 168 314 160 306 156C280 166 240 170 200 168C172 167 156 164 148 160L150 186L148 213L150 222L134 222L134 213L132 186L130 162C116 160 104 152 98 140C92 128 88 118 84 112C76 112 66 118 56 122C46 125 38 126 32 124C26 122 22 116 22 110C22 104 24 100 27 98C30 92 38 80 50 72C60 66 72 66 82 70C98 64 112 54 128 52Z';
+  // the far-side legs (behind the body), an ear, a horn and an eye
+  var STEER_BACK='<path class="cm-far" d="M158 150L162 186L160 213L162 222L146 222L146 213L146 186L140 158Z"/><path class="cm-far" d="M316 150C312 162 316 170 318 178L316 213L317 222L301 222L301 213L300 182C298 170 296 162 292 156Z"/>';
+  var STEER_EXTRA='<path class="cm-ear" d="M86 75C96 71 106 73 113 78C105 83 94 83 86 79Z"/><path class="cm-horn" d="M80 71C79 63 75 57 68 54C72 60 73 66 73 73Z"/><circle class="cm-eye" cx="60" cy="83" r="2.2"/>';
   var PRIMALS=[
-    ['chuck','Chuck','96,0 150,0 150,112 86,112',[121,84]],
-    ['rib','Rib','150,0 205,0 205,112 150,112',[177,84]],
-    ['shortloin','Short loin','205,0 250,0 250,112 205,112',[227,78]],
-    ['sirloin','Sirloin','250,0 292,0 292,112 250,112',[271,84]],
-    ['round','Round','292,0 400,0 400,162 298,162 292,112',[325,104]],
-    ['brisket','Brisket','86,112 150,112 150,162 80,162',[114,140]],
-    ['plate','Plate','150,112 210,112 210,162 150,162',[180,140]],
-    ['flank','Flank','210,112 292,112 298,162 210,162',[252,140]]
+    ['chuck','Chuck','104,0 160,0 160,118 90,118',[128,88]],
+    ['rib','Rib','160,0 215,0 215,118 160,118',[188,88]],
+    ['shortloin','Short loin','215,0 258,0 258,118 215,118',[236,84]],
+    ['sirloin','Sirloin','258,0 300,0 302,118 258,118',[279,88]],
+    ['round','Round','300,0 400,0 400,160 334,160 314,170 302,118',[328,108]],
+    ['brisket','Brisket','90,118 160,118 160,166 80,166',[124,143]],
+    ['plate','Plate','160,118 222,118 222,172 160,172',[191,143]],
+    ['flank','Flank','222,118 302,118 314,170 222,172',[263,143]]
   ],cmN=0;
   function primalMap(on){
-    var id='cmclip'+(++cmN),h='<svg class="cm" viewBox="10 36 352 176" aria-hidden="true" focusable="false"><defs><clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath></defs><g clip-path="url(#'+id+')">'+
+    var id='cmclip'+(++cmN),h='<svg class="cm" viewBox="14 44 348 184" aria-hidden="true" focusable="false">'+STEER_BACK+'<defs><clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath></defs><g clip-path="url(#'+id+')">'+
       '<rect class="cm-rest" x="0" y="0" width="400" height="220"/>';
     PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+(on.indexOf(p[0])<0?'':' on')+'" points="'+p[2]+'"/>'});
-    h+='</g>'+STEER_EXTRA+'<path class="cm-edge" d="'+STEER+'"/><path class="cm-tail" d="M343 53C352 66 356 96 355 130"/><path class="cm-tuft" d="M355 128c-3 6-3 12 0 16 3-4 4-10 0-16z"/>';
+    h+='<path class="cm-cut" d="M104 0L90 118L80 170M160 0V170M215 0V118M258 0V118M300 0L302 118L314 172M222 118V172M80 118H302"/></g>'+STEER_EXTRA+'<path class="cm-edge" d="'+STEER+'"/><path class="cm-tail" d="M343 61C350 72 352 100 350 128C349 146 348 158 348 168"/><path class="cm-tuft" d="M348 164c-4 6-5 14-1 20 4-6 6-14 1-20z"/>';
     PRIMALS.forEach(function(p){
       var t=p[1].split(' '),x=p[3][0],y=p[3][1],lit=on.indexOf(p[0])<0?'':' on';
       h+='<text class="cm-t'+lit+'" x="'+x+'" y="'+(y-(t.length-1)*5)+'">'+t.map(function(w,i){return '<tspan x="'+x+'" dy="'+(i?10:0)+'">'+w+'</tspan>'}).join('')+'</text>';
