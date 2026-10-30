@@ -278,6 +278,66 @@
     document.addEventListener('keydown',key);
     requestAnimationFrame(function(){el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true})});
   }
+  /* ---------- tonight's cuts of beef: items the staff editor marked as a cut (item.cut, item.beef; js/beef-cuts.js) ---------- */
+  function cutOf(it){var C=window.EDEN_CUTS;return it&&it.cut&&C&&C.cuts[it.cut]?it.cut:''}
+  function cutAttr(it){var k=cutOf(it);return k?' data-cut="'+esc(k)+'" tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': about this cut"':''}
+  function cutHint(it,c){return cutOf(it)?'<span class="'+c+'-more">About this cut &rsaquo;</span>':''}
+  function cutsLink(c){return '<button type="button" class="cuts-link '+c+'-cuts" data-cuts-open aria-haspopup="dialog">About tonight’s cuts of beef <span aria-hidden="true">&rsaquo;</span></button>'}
+  function tonightsCuts(){ // every cut on the menu tonight, in menu order, with its sources and prices
+    var out=[],by={};
+    ((menuData&&menuData.tabs)||[]).forEach(function(t){(t.groups||[]).forEach(function(g){(g.items||[]).filter(shown).forEach(function(it){
+      var k=cutOf(it);if(!k)return;
+      if(!by[k]){by[k]={key:k,items:[]};out.push(by[k])}
+      by[k].items.push(it);
+    })})});
+    return out;
+  }
+  var PRIMALS=[['chuck','Chuck'],['rib','Rib'],['shortloin','Short loin'],['sirloin','Sirloin'],['round','Round'],['brisket','Brisket'],['plate','Plate'],['flank','Flank']];
+  function primalMap(on){
+    return '<div class="cm" aria-hidden="true">'+PRIMALS.map(function(p){return '<span class="cm-'+p[0]+(on.indexOf(p[0])<0?'':' on')+'">'+p[1]+'</span>'}).join('')+'</div>';
+  }
+  function openCuts(focusKey,from){
+    var C=window.EDEN_CUTS;if(!C)return;
+    closeWine();
+    var list=tonightsCuts(),none=!list.length;
+    if(none)list=C.order.map(function(k){return {key:k,items:[]}});
+    var srcs={},aged=false;
+    var secs=list.map(function(c){
+      var d=C.cuts[c.key];if(d.aged)aged=true;
+      var offers=c.items.map(function(it){var sk=C.sources[it.beef]?it.beef:'';if(sk)srcs[sk]=1;
+        return '<li><span>'+esc(sk?C.sources[sk].short:(it.src||''))+(it.desc?' <i>· '+esc(it.desc)+'</i>':'')+'</span>'+(it.price?'<b>'+esc(it.price)+'</b>':'')+'</li>'}).join('');
+      return '<section class="cut-sec" id="cut-'+esc(c.key)+'"><h3 class="cut-name">'+esc(d.name)+(d.forTwo?' <small>for two</small>':'')+'</h3>'+
+        (offers?'<ul class="cut-offers">'+offers+'</ul>':'')+
+        '<div class="cut-body">'+primalMap(d.primal)+'<div><p class="cut-about">'+esc(d.about)+'</p>'+
+        '<dl class="wd-facts cut-facts"><div><dt>Where it’s from</dt><dd>'+esc(d.where)+'</dd></div><div><dt>Texture</dt><dd>'+esc(d.texture)+'</dd></div><div><dt>Flavor</dt><dd>'+esc(d.flavor)+'</dd></div><div><dt>Best cooked</dt><dd>'+esc(d.best)+'</dd></div></dl></div></div></section>';
+    }).join('');
+    var srcKeys=none?Object.keys(C.sources):Object.keys(srcs);
+    var beef=srcKeys.map(function(k){return '<div class="cut-srcabout"><h4>'+esc(C.sources[k].name)+'</h4><p>'+esc(C.sources[k].about)+'</p></div>'}).join('')+(aged&&C.aging?'<div class="cut-srcabout"><h4>Dry aging</h4><p>'+esc(C.aging)+'</p></div>':'');
+    var el=document.createElement('div');el.className='wd wd-cuts';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label','Tonight’s cuts of beef');
+    el.innerHTML='<div class="wd-card"><button type="button" class="wd-x" aria-label="Close">&times;</button><div class="wd-scroll">'+
+      '<div class="wd-head"><p class="wd-eye">From the hearth</p><h2 class="wd-name">'+(none?'Our cuts of beef':'Tonight’s cuts of beef')+'</h2><p class="wd-prod">'+(none?'The cuts we bring to the fire. Ask your server what’s on tonight.':'Cooked over the wood fire. Your server can help you choose.')+'</p><div class="wd-rule"></div></div>'+
+      (list.length>1?'<nav class="cut-jump" aria-label="Cuts">'+list.map(function(c){return '<a href="#cut-'+esc(c.key)+'" data-cut-jump="'+esc(c.key)+'">'+esc(C.cuts[c.key].name)+'</a>'}).join('')+'</nav>':'')+
+      secs+(beef?'<div class="wd-sec cut-beef"><h3>Where our beef comes from</h3>'+beef+'</div>':'')+
+      '</div></div>';
+    document.body.appendChild(el);
+    var key=function(e){if(e.key==='Escape')closeWine()};
+    wdOpen={el:el,key:key,back:from};
+    el.addEventListener('click',function(e){
+      var j=e.target.closest('[data-cut-jump]');
+      if(j){e.preventDefault();var s=el.querySelector('#cut-'+j.getAttribute('data-cut-jump'));if(s)s.scrollIntoView({behavior:'smooth',block:'start'});return}
+      if(e.target===el||e.target.closest('.wd-x'))closeWine();
+    });
+    document.addEventListener('keydown',key);
+    requestAnimationFrame(function(){
+      el.classList.add('on');var x=el.querySelector('.wd-x');if(x)x.focus({preventScroll:true});
+      if(focusKey){var s=el.querySelector('#cut-'+focusKey);if(s)s.scrollIntoView({block:'start'})}
+    });
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest&&e.target.closest('[data-cut],[data-cuts-open]');if(!t||t.closest('.wd'))return;
+    e.preventDefault();openCuts(t.getAttribute('data-cut')||'',t);
+  });
+  document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute&&e.target.getAttribute('data-cut')!=null){e.preventDefault();e.target.click()}});
   /* ---------- the partners: tap a portrait for their story (edited on the staff site: Owner > Partner stories, saved in site/team) ---------- */
   var TEAM_DEFAULT={
     rich:{story:"Rich Strub is Eden’s executive chef and a founding partner. He found his calling in the kitchen of a farm-to-table restaurant and teaching kitchen in Vermont, and brought that way of cooking with him to Syracuse, where the farmers he met soon became his friends.\n\nBefore Eden opened in August 2019, Rich spent two years rebuilding the dining room at 118 East Genesee Street, one of Syracuse’s first steel-framed buildings. He tore out the floors, built the eight-ton hearth and made nearly all of the furniture himself; a graphic designer by training, from Champlain College, he shaped how the room looks as much as how it eats.\n\nEverything at Eden is cooked over that wood fire, which he calls “a living thing.” His menu changes with each harvest and names the farm behind every dish, because, in his words, “I like to buy stuff from people who work as hard as we do, and I like to know where it comes from.” Under his direction Eden has earned the Wine Spectator Restaurant Award and the DiRōNA Award of Excellence, and in 2026 hosted its first Friends of James Beard Benefit dinner."},
@@ -353,14 +413,15 @@
       if(g.note)h+='<p class="mg-note">'+esc(g.note)+'</p>';
       h+='<ul class="ml">';
       items.forEach(function(it){
-        h+='<li class="mi'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
+        h+='<li class="mi'+(wineDetail(it,g.title)<0&&!cutOf(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'mi-src');
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
-        h+=moreHint(it,'mi',g.title);
+        h+=moreHint(it,'mi',g.title)+cutHint(it,'mi');
         h+=pairHTML(it,'mi');
         h+='</li>';
       });
       h+='</ul>';
+      if(items.some(cutOf))h+=cutsLink('mg');
       if(g.noteAfter)h+='<p class="mg-note">'+esc(g.noteAfter)+'</p>';
       h+='</div>';
     });
@@ -602,14 +663,15 @@
       if(g.note)h+='<p class="pad-note">'+esc(g.note)+'</p>';
       if(big)h+='<div class="pad-items">';
       items.forEach(function(it){
-        h+='<div class="pad-item'+(wineDetail(it,g.title)<0?'':' has-more')+'"'+moreAttr(it,g.title)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
+        h+='<div class="pad-item'+(wineDetail(it,g.title)<0&&!cutOf(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'pad-src');
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
-        h+=moreHint(it,'pad',g.title);
+        h+=moreHint(it,'pad',g.title)+cutHint(it,'pad');
         h+=pairHTML(it,'pad');
         h+='</div>';
       });
       if(big)h+='</div>';
+      if(items.some(cutOf))h+=cutsLink('pad');
       if(g.noteAfter)h+='<p class="pad-note">'+esc(g.noteAfter)+'</p>';
       h+='</div>';
     });
@@ -919,6 +981,7 @@
   })();
   function route(){
     var h=location.hash;
+    if(h==='#cuts'){history.replaceState(null,'','#menu');h='#menu';setTimeout(function(){var m=document.getElementById('menu');if(m&&!document.body.classList.contains('on-ipad'))m.scrollIntoView();(function go(n){if(tonightsCuts().length||n>40)openCuts('',null);else setTimeout(function(){go(n+1)},100)})(0)},60)}
     if(h==='#editor'){
       var CF=window.EDEN_CONFIG||{};
       if(String(CF.backend).toLowerCase()==='supabase'){ // editing lives on the staff site now

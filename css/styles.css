@@ -845,3 +845,33 @@ footer .social{color:var(--ivory)}
 .mg-title{font-size:1.05rem;font-weight:600;letter-spacing:.24em;padding-bottom:12px}
 .pad-gt{font-size:1.15rem;font-weight:600;letter-spacing:.24em;padding-bottom:12px}
 @media (max-width:640px){.mg-title{font-size:.95rem;letter-spacing:.2em}}
+
+/* ---------- tonight's cuts of beef ---------- */
+.cuts-link{display:inline-flex;align-items:center;gap:8px;margin:14px 0 4px;padding:0 0 3px;background:none;border:0;border-bottom:1px solid rgba(224,154,94,.45);font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember-hot);cursor:pointer}
+.cuts-link:hover{color:var(--ivory);border-bottom-color:var(--ivory)}
+.pad-cuts{color:var(--ember);border-bottom-color:rgba(176,112,63,.45);font-size:.78rem;margin-top:18px}
+.pad-cuts:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.cut-jump{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
+.cut-jump a{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);text-decoration:none;border:1px solid var(--line-dark);padding:7px 12px}
+.cut-jump a:hover{border-color:var(--ember-hot);color:var(--ember-hot)}
+.cut-sec{padding:28px 0 6px;border-top:1px solid var(--line-dark);margin-top:22px;scroll-margin-top:10px}
+.cut-name{font-family:var(--serif);font-weight:300;font-size:1.9rem;line-height:1.1;margin:0 0 10px}
+.cut-name small{font-family:var(--sans);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ember-hot);margin-left:8px;vertical-align:middle}
+.cut-offers{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:6px}
+.cut-offers li{display:flex;justify-content:space-between;gap:16px;font-size:.92rem;color:var(--soft-dark);border-bottom:1px dotted var(--line-dark);padding-bottom:6px}
+.cut-offers i{font-style:normal;opacity:.8}
+.cut-offers b{font-weight:400;color:var(--ivory)}
+.cut-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:26px;align-items:start}
+.cut-about{font-family:var(--serif);font-size:1.15rem;line-height:1.6;margin:0 0 16px}
+.cut-facts{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.cm{display:grid;grid-template-columns:repeat(4,1fr) 1.15fr;grid-template-rows:46px 34px;gap:3px;padding:10px;border:1px solid var(--line-dark);border-radius:46% 40% 30% 34%/34% 30% 40% 46%;background:var(--ink-2)}
+.cm span{display:grid;place-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--soft-dark);background:rgba(243,238,229,.05);line-height:1.1;padding:2px}
+.cm .on{background:var(--ember);color:#fff}
+.cm-round{grid-column:5;grid-row:1/3}
+.cm-brisket{grid-column:1;grid-row:2}.cm-plate{grid-column:2;grid-row:2}.cm-flank{grid-column:3/5;grid-row:2}
+.cm-chuck{border-top-left-radius:40%}.cm-round{border-top-right-radius:30%;border-bottom-right-radius:22%}
+.cut-srcabout{margin:0 0 18px}
+.cut-srcabout h4{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:0 0 6px}
+.cut-srcabout p{margin:0;font-size:.98rem;line-height:1.6;color:var(--soft-dark)}
+.cut-beef{border-top:1px solid var(--line-dark);padding-top:26px}
+@media (max-width:640px){.cut-body{grid-template-columns:1fr}.cm{max-width:260px}.wd-scroll{padding:40px 22px 30px}}
