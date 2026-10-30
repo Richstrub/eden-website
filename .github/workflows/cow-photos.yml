@@ -26,9 +26,9 @@ jobs:
           n=0
           for i,o in enumerate(out):
               if not o['thumb'] or o['w'] is None or o['w']<o['h']*1.15: continue
-              if not any(k in o['lic'] for k in ['Public domain','CC0','PD','CC BY']): continue
+              if not (any(k in o['lic'] for k in ['Public domain','CC0','No restrictions']) or o['lic'].startswith('CC BY ')): continue
               try:
-                  urllib.request.urlretrieve(o['thumb'], f't/{i:03d}.jpg'); n+=1
+                  open(f't/{i:03d}.jpg','wb').write(urllib.request.urlopen(urllib.request.Request(o['thumb'].split('?')[0],headers=UA)).read()); n+=1
               except Exception as e: print(e)
               if n>=70: break
           print('got',n)
