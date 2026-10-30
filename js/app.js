@@ -314,10 +314,10 @@
     ['shank','Shank','880,380 1085,380 1085,609 880,609',[1000,470,-90],'']
   ],cmN=0;
   function primalMap(on){
-    var n=++cmN,mid='cmmask'+n,src='assets/images/cuts/angus-steer.webp?v=2',lit=function(k){return on.indexOf(k)<0?'':' on'};
-    var h='<figure class="cm-wrap"><svg class="cm" viewBox="0 -54 1085 663" role="img" aria-label="Photograph of a black Angus steer marked with the cuts of beef, showing where this cut comes from" focusable="false"><defs>'+
-      '<mask id="'+mid+'" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-54" width="1085" height="663"><image href="'+src+'" y="-54" width="1085" height="663"/></mask></defs>'+
-      '<image class="cm-photo" href="'+src+'" y="-54" width="1085" height="663"/><g mask="url(#'+mid+')"><rect class="cm-dim" y="-54" width="1085" height="663"/>';
+    var n=++cmN,mid='cmmask'+n,src='assets/images/cuts/angus-steer.webp?v=3',lit=function(k){return on.indexOf(k)<0?'':' on'};
+    var h='<figure class="cm-wrap"><svg class="cm" viewBox="0 0 1085 609" role="img" aria-label="Photograph of a black Angus steer marked with the cuts of beef, showing where this cut comes from" focusable="false"><defs>'+
+      '<mask id="'+mid+'" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1085" height="609"><image href="'+src+'" width="1085" height="609"/></mask></defs>'+
+      '<image class="cm-photo" href="'+src+'" width="1085" height="609"/><g mask="url(#'+mid+')"><rect class="cm-dim" width="1085" height="609"/>';
     PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+lit(p[0])+'" points="'+p[2]+'"/>'});
     h+='</g>';
     PRIMALS.forEach(function(p){
