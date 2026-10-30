@@ -294,48 +294,40 @@
     return out;
   }
   /* a side view of a steer, head to the left, divided into the primal cuts; the cut's primal(s) light up in ember */
-  /* the butcher's chart in the cuts window: an engraved-style steer (Eden's own drawing), head to the left, divided into
-     the primal cuts with the steaks each one gives; the cut's own part is shaded in ember */
-  var STEER='M66 64C80 58 96 56 110 54C122 51 130 50 138 50C170 54 220 55 262 52C276 51 286 48 296 48C310 47 322 49 330 52C338 54 342 56 344 58C350 62 354 70 355 80C357 94 356 108 352 120C348 132 344 142 340 152C340 158 343 162 342 168C340 174 339 180 339 188L339 204C341 207 342 212 340 216L340 222L322 222L323 216C324 212 325 208 326 204L326 186C325 178 323 172 322 166C321 160 318 154 314 150C310 148 308 148 306 148C282 160 242 166 202 166C184 166 170 164 160 161C156 160 154 158 152 157C151 164 150 172 149 180C148 186 148 194 148 204C149 208 150 212 149 216L149 222L132 222L133 216C134 212 135 208 135 204L134 188C133 184 133 180 133 174C132 168 131 162 128 156C120 154 113 150 108 146C102 140 98 132 96 124C94 118 92 112 90 106C86 112 80 118 72 122C62 126 50 128 40 128C34 128 29 127 26 125C22 122 20 118 20 113L21 104C22 100 24 98 27 96L46 78C52 72 58 67 66 64Z';
-  var LEG_F='M152 157C151 164 150 172 149 180C148 186 148 194 148 204C149 208 150 212 149 216L149 222L132 222L133 216C134 212 135 208 135 204L134 188C133 184 133 180 133 174C132 168 131 162 128 156Z';
-  var LEG_H='M340 152C340 158 343 162 342 168C340 174 339 180 339 188L339 204C341 207 342 212 340 216L340 222L322 222L323 216C324 212 325 208 326 204L326 186C325 178 323 172 322 166C321 160 318 154 314 150Z';
-  // [key, label (| = new line), polygon, [x, y, rotate], steaks it gives]
+  /* the butcher's chart: a photograph of a steer (Hereford, USDA photo by Michael MacNeil, public domain; ear tags and
+     brand removed), with the primal cuts drawn over it and the cut's own part lit in ember.
+     [key, label (| = new line), polygon in photo pixels (1085 × 609), [x, y, rotate], steaks it gives] */
   var PRIMALS=[
-    ['neck','Neck','62,0 108,0 96,112 90,106 66,62',[99,96,-64],''],
-    ['chuck','Chuck','108,0 160,0 160,116 96,116',[132,80],'Chuck roast|Flat iron'],
-    ['rib','Rib','160,0 215,0 215,116 160,116',[188,80],'Ribeye|Rib roast'],
-    ['shortloin','Short|loin','215,0 258,0 258,96 215,100',[236,64],'Strip · T-bone|Porterhouse'],
-    ['sirloin','Top|sirloin','258,0 286,0 287,95 258,96',[272,66,0,.8],''],
-    ['rumpcap','Rump cap','286,0 306,0 306,95 287,95',[293,72,-90,.8],'Picanha'],
-    ['tenderloin','Tenderloin','215,100 258,96 306,95 306,116 215,116',[259,109],''],
-    ['round','Round','306,0 400,0 400,148 318,148 306,116',[332,94],'Top & bottom|round'],
-    ['btmsirloin','Bottom|sirloin','272,116 306,116 318,148 306,166 272,166',[293,128],'Tri-tip'],
-    ['flank','Flank','222,116 272,116 272,168 222,170',[247,134],'Flank steak'],
-    ['plate','Short|plate','160,116 222,116 222,170 160,170',[191,130],'Skirt|Short ribs'],
-    ['brisket','Brisket','96,116 160,116 160,140 126,140 118,154 92,142',[124,129],''],
-    ['foreshank','Fore|shank','126,140 160,140 160,240 120,240 118,154',[141,170,-90],''],
-    ['shank','Shank','318,148 400,148 400,240 296,240 300,166',[331,186,-90],'']
+    ['neck','Neck','215,20 330,30 318,215 250,275 242,200',[276,130,-82],''],
+    ['chuck','Chuck','330,30 480,22 480,215 318,215',[402,100],'Chuck roast|Flat iron'],
+    ['rib','Rib','480,22 610,18 610,215 480,215',[545,100],'Ribeye|Rib roast'],
+    ['shortloin','Short|loin','610,18 725,12 725,150 610,160',[667,62],'Strip · T-bone|Porterhouse'],
+    ['sirloin','Top|sirloin','725,12 815,10 815,148 725,150',[770,62],''],
+    ['rumpcap','Rump cap','815,10 870,10 870,148 815,148',[842,80,-90],'Picanha'],
+    ['tenderloin','Tenderloin','610,160 725,150 870,148 870,212 610,215',[740,190],''],
+    ['round','Round','870,10 1080,10 1080,380 880,380 900,330 870,212',[968,150],'Top & bottom|round'],
+    ['btmsirloin','Bottom|sirloin','800,215 870,212 900,330 850,345 800,335',[848,252],'Tri-tip'],
+    ['flank','Flank','640,215 800,215 800,340 640,365',[718,262],'Flank steak'],
+    ['plate','Short|plate','470,215 640,215 640,370 470,390',[555,262],'Skirt|Short ribs'],
+    ['brisket','Brisket','250,275 318,215 470,215 470,330 460,380 360,380 250,400',[350,300],''],
+    ['foreshank','Fore shank','360,380 460,380 470,609 350,609',[414,470,-90],''],
+    ['shank','Shank','880,380 1085,380 1085,609 880,609',[1000,470,-90],'']
   ],cmN=0;
   function primalMap(on){
-    var n=++cmN,id='cmclip'+n,lit=function(k){return on.indexOf(k)<0?'':' on'};
-    var h='<div class="cm-wrap"><svg class="cm" viewBox="10 40 356 192" role="img" aria-label="Butcher’s chart of a steer showing where this cut comes from" focusable="false"><defs>'+
-      '<clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath></defs>'+
-      '<path class="cm-halo" d="'+STEER+'"/>'+
-      '<path class="cm-far" transform="translate(14 -2)" d="'+LEG_F+'"/><path class="cm-far" transform="translate(-20 -2)" d="'+LEG_H+'"/>'+
-      '<g clip-path="url(#'+id+')"><rect class="cm-rest" x="0" y="0" width="400" height="240"/>';
+    var n=++cmN,mid='cmmask'+n,src='assets/images/cuts/steer.webp',lit=function(k){return on.indexOf(k)<0?'':' on'};
+    var h='<figure class="cm-wrap"><svg class="cm" viewBox="0 0 1085 609" role="img" aria-label="Photograph of a steer marked with the cuts of beef, showing where this cut comes from" focusable="false"><defs>'+
+      '<mask id="'+mid+'" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1085" height="609"><image href="'+src+'" width="1085" height="609"/></mask></defs>'+
+      '<image href="'+src+'" width="1085" height="609"/><g mask="url(#'+mid+')"><rect class="cm-dim" width="1085" height="609"/>';
     PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+lit(p[0])+'" points="'+p[2]+'"/>'});
-    h+='</g><path class="cm-horn" d="M70 65C70 57 74 51 81 47C79 55 77 61 76 67Z"/><path class="cm-horn" d="M61 67C57 59 57 51 63 45C63 53 65 59 69 65Z"/>'+
-      '<path class="cm-ear" d="M60 71C70 64 84 64 93 68C85 76 70 78 60 75Z"/><circle class="cm-eye" cx="45" cy="86" r="1.6"/>'+
-      '<path class="cm-tail" d="M344 58C352 66 354 92 352 118C351 140 351 156 350 168"/><path class="cm-tuft" d="M350 164c-5 6-8 15-5 24 2 2 8 2 10 0 3-9 0-18-5-24z"/>';
+    h+='</g>';
     PRIMALS.forEach(function(p){
-      var x=p[3][0],y=p[3][1],r=p[3][2]||0,z=p[3][3]||1,L=lit(p[0]),subs=p[4]?p[4].split('|'):[],lines=p[1].split('|');
-      var g='',fs=z===1?'':' style="font-size:'+(6.6*z).toFixed(2)+'px"';
-      lines.forEach(function(t,i){g+='<text class="cm-t'+L+'" x="'+x+'" y="'+(y+i*7.6*z)+'"'+fs+'>'+t+'</text>'});
-      var y2=y+(lines.length-1)*7.6*z;
-      subs.forEach(function(s,i){g+='<text class="cm-s'+L+'" x="'+x+'" y="'+(y2+7*z+i*5.6)+'">'+s+'</text>'});
+      var x=p[3][0],y=p[3][1],r=p[3][2]||0,L=lit(p[0]),subs=p[4]?p[4].split('|'):[],lines=p[1].split('|'),g='';
+      lines.forEach(function(t,i){g+='<text class="cm-t'+L+'" x="'+x+'" y="'+(y+i*24)+'">'+t+'</text>'});
+      var y2=y+(lines.length-1)*24;
+      subs.forEach(function(s,i){g+='<text class="cm-s'+L+'" x="'+x+'" y="'+(y2+22+i*18)+'">'+s+'</text>'});
       h+=r?'<g transform="rotate('+r+' '+x+' '+y+')">'+g+'</g>':g;
     });
-    return h+'</svg></div>';
+    return h+'</svg><figcaption class="cm-credit">Photo: Michael MacNeil, USDA</figcaption></figure>';
   }
   function openCuts(focusKey,from){
     var C=window.EDEN_CUTS;if(!C)return;
