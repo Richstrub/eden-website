@@ -882,13 +882,14 @@ footer .social{color:var(--ivory)}
 }
 
 /* the butcher's chart in the cuts window: a photo of a steer with the cuts drawn on it, the cut's part lit in ember */
-.cm-wrap{margin:4px 0 0;padding:16px 14px 8px;background:radial-gradient(ellipse at 50% 45%,#262b30 0,#15191d 70%);border-radius:16px;box-shadow:inset 0 0 0 1px rgba(243,238,229,.08)}
+.cm-wrap{margin:4px 0 0;padding:16px 14px 8px;background:radial-gradient(ellipse at 50% 42%,#f6efe1 0,#e6dac3 78%);border-radius:16px}
+.cm-photo{filter:drop-shadow(0 10px 14px rgba(40,28,16,.28))}
 .cm{display:block;width:100%;height:auto}
-.cm-dim{fill:#0f1215;opacity:.18}
+.cm-dim{fill:#0f1215;opacity:0}
 .cm-p{fill:none;stroke:#f3eee5;stroke-width:2.4;stroke-opacity:.82;stroke-linejoin:round}
-.cm-p.on{fill:#d07a3f;fill-opacity:.62;stroke-opacity:1}
+.cm-p.on{fill:#d07a3f;fill-opacity:.8;stroke-opacity:1}
 .cm-t{font-family:var(--sans);font-size:22px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-anchor:middle;fill:#fff;paint-order:stroke;stroke:rgba(15,18,21,.78);stroke-width:5px;stroke-linejoin:round}
 .cm-s{font-family:var(--serif);font-style:italic;font-size:17px;text-anchor:middle;fill:#f3eee5;paint-order:stroke;stroke:rgba(15,18,21,.75);stroke-width:4px;stroke-linejoin:round}
 .cm-t.on{stroke:#7a3d12}
 .cm-s.on{stroke:#7a3d12}
-.cm-credit{margin:6px 2px 0;font-size:.62rem;letter-spacing:.06em;color:rgba(243,238,229,.45);text-align:right}
+.cm-credit{margin:6px 2px 0;font-size:.62rem;letter-spacing:.06em;color:rgba(59,42,28,.55);text-align:right}
