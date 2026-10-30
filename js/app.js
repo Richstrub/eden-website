@@ -296,42 +296,49 @@
   /* a side view of a steer, head to the left, divided into the primal cuts; the cut's primal(s) light up in ember */
   /* the butcher's chart in the cuts window: an engraved-style steer (Eden's own drawing), head to the left, divided into
      the primal cuts with the steaks each one gives; the cut's own part is shaded in ember */
-  var STEER='M128 52C170 56 220 56 250 54C266 53 280 50 292 49C306 48 318 51 326 54C334 56 340 58 343 61C352 70 356 92 352 112C348 130 342 142 338 150C334 162 340 168 340 176L337 213L338 222L322 222L322 213L320 182C318 168 314 160 306 156C280 166 240 170 200 168C172 167 156 164 148 160L150 186L148 213L150 222L134 222L134 213L132 186L130 162C116 160 104 152 98 140C92 128 88 118 84 112C76 114 64 122 52 128C44 132 38 135 32 135C26 135 20 131 18 125C16 119 16 113 19 108C24 100 34 88 44 78C50 71 56 66 64 64C76 62 90 60 104 56C112 54 120 52 128 52Z';
-  var FAR_LEGS='<path class="cm-far" d="M158 150L162 186L160 213L162 222L146 222L146 213L146 186L140 158Z"/><path class="cm-far" d="M316 150C312 162 316 170 318 178L316 213L317 222L301 222L301 213L300 182C298 170 296 162 292 156Z"/>';
-  // ink details drawn over the body: face, ear, horn, folds of the dewlap, muscle lines, joints, hooves, tail
-  var DETAIL='<path class="cm-ear" d="M64 68C74 61 87 61 96 66C88 73 75 75 64 72Z"/><path class="cm-l" d="M69 68C77 66 85 66 91 67"/>'+
-    '<path class="cm-l thin" d="M56 66c2-3 5-4 8-3M60 65c2-3 5-4 8-3M52 69c2-3 4-4 7-4"/>'+
-    '<path class="cm-l" d="M47 80C50 77 54 77 57 80C54 82 50 82 47 80Z"/><circle class="cm-ink" cx="52.3" cy="79.8" r="1.3"/><path class="cm-l" d="M45 76C49 73 55 73 59 76"/>'+
-    '<path class="cm-l" d="M19 112c2-3 6-3 7 1-2 2-5 2-7-1z"/><path class="cm-l" d="M19 126C26 129 33 130 40 128"/><path class="cm-l thin" d="M28 104C31 112 31 121 28 130M40 122C52 116 62 108 70 100M34 90C28 98 24 104 22 108M58 90C62 98 68 103 76 106"/>'+
-    '<path class="cm-l thin" d="M86 96C92 104 96 112 98 124M92 90C98 99 102 108 104 118M98 84C104 92 108 100 110 110"/>'+
-    '<path class="cm-l thin" d="M118 62C124 88 126 112 122 138M128 150C138 146 148 150 152 158M290 52C296 60 300 66 300 76M300 80C310 102 316 124 318 146M300 150C306 147 312 151 314 158M336 64C340 70 342 76 342 82"/>'+
-    '<path class="cm-l thin" d="M134 186c4-2 10-2 14 0M322 184c4-2 9-2 13 1M134 213h16M146 213v9M322 213h16M330 213v9M301 213h16M309 213v9M146 213h16M154 213v9"/>'+
-    '<path class="cm-hoof" d="M134 213h16l1 9h-17zM146 213h16l1 9h-17zM301 213h16l1 9h-17zM322 213h15l1 9h-16z"/><path class="cm-l" d="M142 213v9M154 213v9M309 213v9M330 213v9"/>'+
-    '<path class="cm-tail" d="M343 61C350 72 352 100 350 128C349 146 348 158 348 166"/><path class="cm-l" d="M348 164c-3 6-5 13-3 21M348 164c0 7 0 14 2 21M348 164c3 6 5 12 4 19M348 166c-1 6-3 12-6 17"/>';
-  // shaded (cross-hatched) undersides, like an engraving
-  var SHADE='M142 160L150 162L148 213L142 213ZM328 160L338 158L337 213L330 213ZM150 152C200 164 260 164 306 152L306 176L150 176ZM84 112C92 128 100 142 116 156L84 160ZM326 64C352 84 354 130 338 152L362 152L362 64ZM18 118C24 132 40 136 54 128L56 146L16 146Z';
+  var STEER='M66 64C80 58 96 56 110 54C122 51 130 50 138 50C170 54 220 55 262 52C276 51 286 48 296 48C310 47 322 49 330 52C338 54 342 56 344 58C350 62 354 70 355 80C357 94 356 108 352 120C348 132 344 142 340 152C340 158 343 162 342 168C340 174 339 180 339 188L339 204C341 207 342 212 340 216L340 222L322 222L323 216C324 212 325 208 326 204L326 186C325 178 323 172 322 166C321 160 318 154 314 150C310 148 308 148 306 148C282 160 242 166 202 166C184 166 170 164 160 161C156 160 154 158 152 157C151 164 150 172 149 180C148 186 148 194 148 204C149 208 150 212 149 216L149 222L132 222L133 216C134 212 135 208 135 204L134 188C133 184 133 180 133 174C132 168 131 162 128 156C120 154 113 150 108 146C102 140 98 132 96 124C94 118 92 112 90 106C86 116 80 126 72 132C62 138 50 140 40 140C34 140 28 139 24 137C20 134 18 128 18 122L19 110C20 106 22 104 24 102L44 80C50 72 57 66 66 64Z';
+  var LEG_F='M152 157C151 164 150 172 149 180C148 186 148 194 148 204C149 208 150 212 149 216L149 222L132 222L133 216C134 212 135 208 135 204L134 188C133 184 133 180 133 174C132 168 131 162 128 156Z';
+  var LEG_H='M340 152C340 158 343 162 342 168C340 174 339 180 339 188L339 204C341 207 342 212 340 216L340 222L322 222L323 216C324 212 325 208 326 204L326 186C325 178 323 172 322 166C321 160 318 154 314 150Z';
+  // the far-side legs, set back behind the body
+  var FAR_LEGS='<path class="cm-far" transform="translate(14 -2)" d="'+LEG_F+'"/><path class="cm-far" transform="translate(-20 -2)" d="'+LEG_H+'"/>'+
+    '<path class="cm-hoof" transform="translate(14 -2)" d="M133 216h16v6h-17z"/><path class="cm-hoof" transform="translate(-20 -2)" d="M323 216h17v6h-18z"/>';
+  // ink details over the body: ear, eye, face, folds of the dewlap, muscles and bones, joints, hooves, tail
+  var DETAIL='<path class="cm-ear" d="M60 74C70 66 85 66 95 70C87 79 71 81 60 78Z"/><path class="cm-l" d="M65 75C74 72 83 72 90 71"/>'+
+    '<path class="cm-l thin" d="M50 70c2-3 5-4 8-3M54 68c2-3 5-4 8-3M46 73c2-3 4-4 7-4M59 66c2-2 5-3 7-2"/>'+
+    '<path class="cm-l" d="M42 92C45 89 49 89 52 92C49 94 45 94 42 92Z"/><circle class="cm-ink" cx="47.2" cy="91.8" r="1.25"/><path class="cm-l" d="M40 88C44 85 50 85 54 88"/>'+
+    '<path class="cm-l" d="M20 113c2-3 6-3 7 1-2 2-5 2-7-1z"/><path class="cm-l" d="M19 130C26 133 33 134 40 133"/>'+
+    '<path class="cm-l thin" d="M30 102C33 112 33 124 30 136M44 138C54 128 66 120 76 114M38 98C33 102 29 106 26 108M56 100C62 106 70 110 80 112M34 88L52 72"/>'+
+    '<path class="cm-l thin" d="M92 108C96 118 100 128 104 140M98 104C102 114 106 124 110 134M104 98C108 106 112 114 114 124M84 104C88 110 90 116 92 122"/>'+
+    '<path class="cm-l thin" d="M120 60C126 86 128 110 124 140M128 148C138 146 146 150 150 156M140 56C146 70 150 84 150 98M296 50C300 60 302 70 300 80M302 82C314 104 320 126 322 148M334 60C340 66 344 74 344 82M318 150C320 156 322 162 322 168"/>'+
+    '<path class="cm-l thin" d="M170 120C174 134 176 148 174 160M186 120C190 134 192 150 190 164M202 120C206 134 208 150 206 165M218 120C222 134 224 150 222 165"/>'+
+    '<path class="cm-l thin" d="M133 180c4-2 10-2 15 0M134 204c4-1 9-1 13 0M324 172c4-2 10-1 16 0M326 204c4-1 9-1 13 0"/>'+
+    '<path class="cm-hoof" d="M133 216h16v6h-17zM323 216h17v6h-18z"/><path class="cm-l" d="M141 216v6M331 216v6"/>'+
+    '<path class="cm-tail" d="M344 58C352 66 354 92 352 118C351 140 351 156 350 168"/><path class="cm-l" d="M350 166c-3 6-5 14-3 22M350 166c0 8 0 15 2 22M350 166c3 6 5 13 4 20M350 168c-2 6-4 12-7 17M350 168c2 6 5 11 8 15"/>';
+  // shaded undersides and form shadows, cross-hatched like an engraving
+  var SHADE='M150 150C200 162 260 160 306 146L306 176L150 176ZM90 106C96 126 104 142 124 156L84 164ZM330 60C356 84 356 130 340 152L364 152L364 60ZM20 128C28 142 46 144 62 136L64 154L16 154ZM142 160L152 157L148 222L142 222ZM334 160L342 160L340 222L334 222Z';
   var PRIMALS=[
-    ['chuck','Chuck','104,0 160,0 160,118 90,118',[138,84],'Chuck roast|Flat iron'],
+    ['chuck','Chuck','108,0 160,0 160,118 94,118',[136,82],'Chuck roast|Flat iron'],
     ['rib','Rib','160,0 215,0 215,118 160,118',[188,80],'Ribeye|Rib roast'],
     ['shortloin','Short|loin','215,0 258,0 258,98 215,104',[236,68],'Strip · T-bone|Porterhouse'],
-    ['sirloin','Sirloin','258,0 300,0 301,96 258,98',[279,74],'Picanha|Tri-tip'],
-    ['tenderloin','Tenderloin','215,104 258,98 301,96 302,118 215,118',[258,110],''],
-    ['round','Round','300,0 400,0 400,160 334,160 314,170 302,118',[328,96],'Top & bottom|round'],
-    ['brisket','Brisket','90,118 160,118 160,166 80,166',[124,138],''],
-    ['plate','Plate','160,118 222,118 222,172 160,172',[191,136],'Skirt|Short ribs'],
-    ['flank','Flank','222,118 302,118 314,170 222,172',[263,136],'Flank steak']
+    ['sirloin','Sirloin','258,0 302,0 303,96 258,98',[280,74],'Picanha|Tri-tip'],
+    ['tenderloin','Tenderloin','215,104 258,98 303,96 304,118 215,118',[259,110],''],
+    ['round','Round','302,0 400,0 400,150 316,150 304,118',[330,96],'Top & bottom|round'],
+    ['brisket','Brisket','94,118 160,118 160,160 86,160',[124,136],''],
+    ['plate','Plate','160,118 222,118 222,170 160,170',[191,136],'Skirt|Short ribs'],
+    ['flank','Flank','222,118 304,118 316,150 300,170 222,170',[264,136],'Flank steak']
   ],cmN=0;
   function primalMap(on){
     var n=++cmN,id='cmclip'+n,hid='cmhatch'+n,eid='cmhot'+n,lit=function(k){return on.indexOf(k)<0?'':' on'};
     var h='<div class="cm-wrap"><svg class="cm" viewBox="14 44 348 184" role="img" aria-label="Butcher’s chart of a steer showing where this cut comes from" focusable="false"><defs>'+
       '<clipPath id="'+id+'"><path d="'+STEER+'"/></clipPath>'+
       '<pattern id="'+hid+'" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="2.6" class="cm-hl"/></pattern>'+
+      '<linearGradient id="cmtone'+n+'" gradientUnits="userSpaceOnUse" x1="0" y1="50" x2="0" y2="168"><stop offset=".22" stop-color="#fff" stop-opacity=".18"/><stop offset=".5" stop-color="#3b2a1c" stop-opacity="0"/><stop offset=".78" stop-color="#3b2a1c" stop-opacity=".16"/></linearGradient>'+
       '<pattern id="'+eid+'" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><line x1="0" y1="0" x2="0" y2="3" class="cm-hl hot"/></pattern>'+
       '</defs>'+FAR_LEGS+'<g clip-path="url(#'+id+')"><rect class="cm-rest" x="0" y="0" width="400" height="240"/>';
     PRIMALS.forEach(function(p){h+='<polygon class="cm-p'+lit(p[0])+'" points="'+p[2]+'"/>'+(lit(p[0])?'<polygon points="'+p[2]+'" fill="url(#'+eid+')"/>':'')});
     h+='<path d="'+SHADE+'" fill="url(#'+hid+')" class="cm-shade"/>'+
-      '<path class="cm-cut" d="M104 0L90 118L80 170M160 0V170M215 0V118M258 0V98M300 0L302 118L314 172M222 118V172M80 118H302"/>'+
-      '<path class="cm-cut dash" d="M215 104L258 98L301 96"/></g>'+DETAIL+'<path class="cm-edge" d="'+STEER+'"/>';
+      '<path class="cm-cut" d="M108 0L94 118L86 160M160 0V164M215 0V118M258 0V98M302 0L304 118L316 150M222 118V170M84 118H304"/>'+
+      '<path class="cm-cut dash" d="M215 104L258 98L303 96"/><rect x="0" y="0" width="400" height="240" fill="url(#cmtone'+n+')"/></g>'+DETAIL+'<path class="cm-edge" d="'+STEER+'"/>';
     PRIMALS.forEach(function(p){
       var x=p[3][0],y=p[3][1],L=lit(p[0]),subs=p[4]?p[4].split('|'):[];
       var lines=p[1].split('|');
