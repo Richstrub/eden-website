@@ -814,10 +814,13 @@
     Object.keys(p.groups).forEach(function(id){store.saved['g:'+id]=JSON.stringify(p.groups[id])});
   }
   var applyT=null;
+  // wine countries typed different ways ("america", "USA", "U.S.") all count as United States
+  function normCountry(c){var v=String(c||'').trim();if(/^(u\.?s\.?a?\.?|united states( of america)?|america|american|new york|california|oregon|washington state)$/i.test(v))return 'United States';return v?v.charAt(0).toUpperCase()+v.slice(1):v}
+  function normCountries(d){(d.tabs||[]).forEach(function(t){(t.groups||[]).forEach(function(g){(g.items||[]).forEach(function(it){if(it&&typeof it.country==='string')it.country=normCountry(it.country)})})})}
   function applyStore(pending){
     clearTimeout(applyT);applyT=setTimeout(function(){
       var d=assembleMenu();if(!d)return;
-      menuData=clone(d);renderMenu(menuData);renderSupper(menuData.supper);stamp(d.updatedAt);if(!pad.el.hidden)renderPad(menuData,true);
+      menuData=clone(d);normCountries(menuData);renderMenu(menuData);renderSupper(menuData.supper);stamp(d.updatedAt);if(!pad.el.hidden)renderPad(menuData,true);
       if(!ed.dirty&&!ed.saving&&!pending){
         baseline(menuData);
         if(!ed.el.hidden){var a=document.activeElement;if(!(a&&ed.el.contains(a)&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'))){ed.draft=clone(menuData);edRender()}}
