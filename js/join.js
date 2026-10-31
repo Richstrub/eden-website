@@ -35,8 +35,8 @@
   var form = document.getElementById('jbForm'), msg = document.getElementById('jbMsg'), go = document.getElementById('jbGo');
   var KEY = 'eden-join', opened = 0, lastFocus = null, timer = null;
   var COPY = {
-    supper: { eye: 'Eden Supper Club', title: 'Join the Supper Club', lede: 'Be the first to hear about our next Supper Club dinner: intimate tasting menus cooked over the hearth, with Eden × James Beard benefit nights. Members hear before seats go public.', go: 'Join' },
-    list: { eye: 'Eden', title: 'Join our list', lede: 'Seasonal menus, Supper Club dinners and Eden × James Beard nights, a few times a season. Be the first to know when the fire is lit for something special.', go: 'Join' }
+    supper: { eye: 'Eden Supper Club', title: 'Join the Supper Club', lede: 'Be the first to hear about our next Supper Club dinner: intimate tasting menus cooked over the hearth, plus cooking classes and wine and spirit tasting dinners. Members hear before seats go public.', go: 'Join' },
+    list: { eye: 'Eden', title: 'Join our list', lede: 'Seasonal menus, Supper Club dinners, cooking classes and wine and spirit tasting dinners, a few times a season. Be the first to know when the fire is lit for something special.', go: 'Join' }
   };
   function mem(v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(KEY) || '{}'); localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { return {}; } }
   function say(t, err) { msg.textContent = t; msg.className = 'jb-msg' + (t ? (err ? ' err' : ' ok') : ''); }
