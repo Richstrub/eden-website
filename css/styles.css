@@ -983,3 +983,8 @@ footer .foot-join-fine a,footer .foot-priv{color:inherit;text-decoration:underli
 html.jb-lock,html.jb-lock body{overflow:hidden}
 @media (max-width:560px){.jb{align-items:end;padding:0}.jb-card{border-radius:22px 22px 0 0;padding:48px 24px calc(28px + env(safe-area-inset-bottom,0px));transform:translateY(40px)}}
 @media (prefers-reduced-motion:reduce){.jb,.jb-card{transition:none}}
+
+/* home hero: Reserve, Tonight's menu and Join the Supper Club stacked down the center */
+.hx-actions{flex-direction:column;flex-wrap:nowrap;gap:22px}
+.hx-actions .hx-btn{min-width:250px;text-align:center}
+.hx-actions .hx-link{text-align:center}
