@@ -816,7 +816,10 @@
   var applyT=null;
   // wine countries typed different ways ("america", "USA", "U.S.") all count as United States
   function normCountry(c){var v=String(c||'').trim();if(/^(u\.?s\.?a?\.?|united states( of america)?|america|american|new york|california|oregon|washington state)$/i.test(v))return 'United States';return v?v.charAt(0).toUpperCase()+v.slice(1):v}
-  function normCountries(d){(d.tabs||[]).forEach(function(t){(t.groups||[]).forEach(function(g){(g.items||[]).forEach(function(it){if(it&&typeof it.country==='string')it.country=normCountry(it.country)})})})}
+  function normCountries(d){var ws=[];(d.tabs||[]).forEach(function(t){(t.groups||[]).forEach(function(g){(g.items||[]).forEach(function(it){if(it&&typeof it.country==='string'){it.country=normCountry(it.country);ws.push(it)}})})});
+    // stray spaces ("Gamay " vs "Gamay") and a bare "Finger Lakes" next to "Finger Lakes, New York" sort as one
+    ws.forEach(function(it){['grape','appellation'].forEach(function(k){if(typeof it[k]==='string')it[k]=it[k].trim().replace(/\s+/g,' ')})});
+    ws.forEach(function(it){var a=it.appellation;if(!a||a.indexOf(',')>=0)return;var f=ws.filter(function(w){return w.appellation&&w.country===it.country&&w.appellation.toLowerCase().indexOf(a.toLowerCase()+',')===0})[0];if(f)it.appellation=f.appellation})}
   function applyStore(pending){
     clearTimeout(applyT);applyT=setTimeout(function(){
       var d=assembleMenu();if(!d)return;
