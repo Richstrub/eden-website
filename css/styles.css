@@ -875,11 +875,7 @@ footer .social{color:var(--ivory)}
    Circles and the soft glow shapes stay round. Other browsers keep ordinary rounded corners. */
 .wd-card{border-radius:20px;overflow:hidden}
 .cut-jump a{border-radius:999px}
-@supports (corner-shape: superellipse(1.5)){
-  *,*::before,*::after{corner-shape:superellipse(1.5)}
-  .wd-card{border-radius:26px}
-  #cater input[type=checkbox].round,.wd-score,.social a,.hx-glow,.hx-coals i,.hx-spark,.hx-word::before,.cm,.src-pin{corner-shape:round}
-}
+
 
 /* the butcher's chart in the cuts window: a photo of a steer with the cuts drawn on it, the cut's part lit in ember */
 .cm-wrap{margin:4px 0 0;padding:16px 14px 8px;background:radial-gradient(ellipse at 50% 42%,#f6efe1 0,#e6dac3 78%);border-radius:16px}
@@ -988,3 +984,39 @@ html.jb-lock,html.jb-lock body{overflow:hidden}
 .hx-actions{flex-direction:column;flex-wrap:nowrap;gap:22px}
 .hx-actions .hx-btn{min-width:250px;text-align:center}
 .hx-actions .hx-link{text-align:center}
+
+/* ---------- G3 continuous corners: the guest site's shapes ----------
+   Every corner is a squircle (a superellipse with exponent 4): the curve leaves each straight edge with zero
+   curvature and zero change in curvature, so edges flow into corners with no visible "start" of the bend
+   (what Apple's hardware and icons use, a step smoother than G2). Browsers that draw corner-shape (Chrome, Edge)
+   render it natively; Safari and Firefox get the same shape from js/g3.js (an exact clip-path), and plain rounded
+   corners until it runs. Squircles look less round than circles at the same size, so radii grow by about a third
+   where they're drawn. Circles and the soft glows stay round. */
+:root{--g3-xs:10px;--g3-sm:14px;--g3-md:20px;--g3-lg:28px;--g3-k:1}
+@supports (corner-shape: superellipse(2)){
+  :root{--g3-k:1.32}
+  *,*::before,*::after{corner-shape:superellipse(2)}
+  #cater input[type=checkbox].round,.wd-score,.social a,.hx-glow,.hx-coals i,.hx-spark,.hx-word::before,.cm,.src-pin,.cut-jump a,.jb-glow{corner-shape:round}
+}
+/* buttons and fields */
+.btn,.hx-btn,.jb-go,.sp-join{border-radius:calc(var(--g3-sm) * var(--g3-k))}
+.reserve-top,.copy-btn{border-radius:calc(var(--g3-xs) * var(--g3-k))}
+.jb-form input{border-radius:calc(var(--g3-sm) * var(--g3-k))}
+footer #joinForm{border-radius:calc(var(--g3-sm) * var(--g3-k));overflow:hidden}
+.mi-dt,.pad-dt{border-radius:999px}
+/* the team: three cards instead of ruled columns */
+.team{gap:22px;border-top:0}
+.member{background:#fff;border:0!important;border-radius:calc(var(--g3-lg) * var(--g3-k));padding:40px 24px 36px}
+.member .portrait{border-radius:calc(var(--g3-md) * var(--g3-k))}
+/* partners: each family of producers in its own card */
+#partners .pw-wall{gap:18px;border-top:0}
+#partners .pw-wall .panel,#partners .pw-wall .panel[hidden]{background:rgba(255,255,255,.62);border:0!important;border-radius:calc(var(--g3-lg) * var(--g3-k));padding:30px 28px 36px!important}
+#partners .pw-foot{border-top:0;padding-top:8px}
+/* visit: four cards */
+.visit{gap:16px;border:0}
+.visit > div{background:#fff;border:0!important;border-radius:calc(var(--g3-lg) * var(--g3-k))}
+/* windows */
+.wd-card,.jb-card{border-radius:calc(var(--g3-lg) * var(--g3-k))}
+.cm-wrap{border-radius:calc(var(--g3-md) * var(--g3-k))}
+@media (max-width:560px){.jb-card{border-radius:calc(var(--g3-lg) * var(--g3-k)) calc(var(--g3-lg) * var(--g3-k)) 0 0}}
+@media (max-width:900px){.team{gap:16px}.visit{gap:12px}}
