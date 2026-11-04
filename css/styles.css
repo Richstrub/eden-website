@@ -1020,3 +1020,9 @@ footer #joinForm{border-radius:calc(var(--g3-sm) * var(--g3-k));overflow:hidden}
 .cm-wrap{border-radius:calc(var(--g3-md) * var(--g3-k))}
 @media (max-width:560px){.jb-card{border-radius:calc(var(--g3-lg) * var(--g3-k)) calc(var(--g3-lg) * var(--g3-k)) 0 0}}
 @media (max-width:900px){.team{gap:16px}.visit{gap:12px}}
+
+/* the team: five cards, three to a row on wide screens, the second row centered */
+.team{display:flex;flex-wrap:wrap;justify-content:center}
+.team .member{flex:0 1 calc((100% - 44px) / 3);min-width:0}
+@media (max-width:900px){.team .member{flex-basis:calc((100% - 16px) / 2)}}
+@media (max-width:560px){.team .member{flex-basis:100%}}
