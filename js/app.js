@@ -291,6 +291,7 @@
   }
   /* ---------- tonight's cuts of beef: items the staff editor marked as a cut (item.cut, item.beef; js/beef-cuts.js) ---------- */
   function cutOf(it){var C=window.EDEN_CUTS;return it&&it.cut&&C&&C.cuts[it.cut]?it.cut:''}
+  function cutPrice(it){var p=String(it&&it.price!=null?it.price:'').trim();return it&&it.cut&&/^\$?\d+(\.\d+)?$/.test(p)?p+'/oz':p}   // steak cuts are priced by the ounce
   function cutsAnchor(it){return it&&!it.cut&&/specialty cuts|steak cuts|tonight.s cuts/i.test(it.name||'')}   // the menu's "Specialty Cuts" line opens the guide
   function cutAttr(it){if(cutsAnchor(it))return ' data-cuts-open tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': about tonight’s cuts of beef"';var k=cutOf(it);return k?' data-cut="'+esc(k)+'" tabindex="0" role="button" aria-haspopup="dialog" aria-label="'+esc(it.name)+': about this cut"':''}
   function cutHint(it,c){if(cutsAnchor(it))return '<span class="'+c+'-more">About tonight’s cuts &rsaquo;</span>';return cutOf(it)?'<span class="'+c+'-more">About this cut &rsaquo;</span>':''}
@@ -298,7 +299,7 @@
   function subCutsHTML(subs,c){
     var h='<div class="'+c+'-subcuts" role="list">';
     subs.forEach(function(it){
-      h+='<div class="'+c+'-subcut" role="listitem"'+cutAttr(it)+'><div class="'+c+'-sch"><span class="'+c+'-scn">'+esc(it.name)+dietHTML(it,c)+'</span><span class="'+c+'-dots"></span><span class="'+c+'-scp">'+esc(it.price)+'</span></div>';
+      h+='<div class="'+c+'-subcut" role="listitem"'+cutAttr(it)+'><div class="'+c+'-sch"><span class="'+c+'-scn">'+esc(it.name)+dietHTML(it,c)+'</span><span class="'+c+'-dots"></span><span class="'+c+'-scp">'+esc(cutPrice(it))+'</span></div>';
       if(it.src)h+=srcHTML(it.src,c+'-scs');
       if(it.desc)h+='<div class="'+c+'-scd">'+esc(it.desc)+'</div>';
       h+='</div>';
@@ -360,7 +361,7 @@
     var secs=list.map(function(c){
       var d=C.cuts[c.key];if(d.aged)aged=true;
       var offers=c.items.map(function(it){var sk=C.sources[it.beef]?it.beef:'';if(sk)srcs[sk]=1;
-        return '<li><span>'+esc(sk?C.sources[sk].short:(it.src||''))+(it.desc?' <i>· '+esc(it.desc)+'</i>':'')+'</span>'+(it.price?'<b>'+esc(it.price)+'</b>':'')+'</li>'}).join('');
+        return '<li><span>'+esc(sk?C.sources[sk].short:(it.src||''))+(it.desc?' <i>· '+esc(it.desc)+'</i>':'')+'</span>'+(it.price?'<b>'+esc(cutPrice(it))+'</b>':'')+'</li>'}).join('');
       return '<section class="cut-sec" id="cut-'+esc(c.key)+'"><h3 class="cut-name">'+esc(d.name)+(d.forTwo?' <small>for two</small>':'')+'</h3>'+
         (offers?'<ul class="cut-offers">'+offers+'</ul>':'')+
         '<div class="cut-body">'+primalMap(d.primal)+'<div><p class="cut-about">'+esc(d.about)+'</p>'+
@@ -470,7 +471,7 @@
       var anc=items.some(cutsAnchor),subs=anc?items.filter(cutOf):[];
       items.forEach(function(it){
         if(anc&&cutOf(it))return; // tonight's cuts sit inside the Specialty Cuts line as a subsection
-        h+='<li class="mi'+(cutsAnchor(it)&&subs.length?' mi-cutsec':'')+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+dietHTML(it,'mi')+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(it.price)+'</span></div>';
+        h+='<li class="mi'+(cutsAnchor(it)&&subs.length?' mi-cutsec':'')+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(idp==='wg-'?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="mi-head"><span class="mi-name">'+esc(it.name)+dietHTML(it,'mi')+'</span><span class="mi-dots"></span><span class="mi-price">'+esc(cutPrice(it))+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'mi-src');
         if(it.desc)h+='<div class="mi-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'mi',g.title)+cutHint(it,'mi');
@@ -723,7 +724,7 @@
       var anc=items.some(cutsAnchor),subs=anc?items.filter(cutOf):[];
       items.forEach(function(it){
         if(anc&&cutOf(it))return;
-        h+='<div class="pad-item'+(cutsAnchor(it)&&subs.length?' pad-cutsec':'')+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+dietHTML(it,'pad')+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(it.price)+'</span></div>';
+        h+='<div class="pad-item'+(cutsAnchor(it)&&subs.length?' pad-cutsec':'')+(wineDetail(it,g.title)<0&&!cutOf(it)&&!cutsAnchor(it)?'':' has-more')+'"'+moreAttr(it,g.title)+cutAttr(it)+(it.country?' data-country="'+esc(it.country)+'" data-app="'+esc(it.app||'')+'"':'')+(wine?' data-q="'+esc(padNorm([it.name,it.src,it.country,it.appellation,it.app,it.grape,it.desc,g.title,it.glass?'by the glass':''].join(' ')))+'"':'')+'><div class="pad-ih"><span class="pad-name">'+esc(it.name)+dietHTML(it,'pad')+'</span><span class="pad-dots"></span><span class="pad-price">'+esc(cutPrice(it))+'</span></div>';
         if(it.src)h+=srcHTML(it.src,'pad-src');
         if(it.desc)h+='<div class="pad-desc">'+esc(it.desc)+'</div>';
         h+=moreHint(it,'pad',g.title)+cutHint(it,'pad');
