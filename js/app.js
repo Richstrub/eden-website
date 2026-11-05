@@ -201,7 +201,7 @@
   }
   function pairHTML(it,c){ // suggested wine pairing under a dish (Kitchen menu)
     if(!it.pair||isWine(it))return '';
-    return '<div class="'+c+'-pair"><span class="'+c+'-pair-label">Pairing</span><span class="'+c+'-pair-wine">'+esc(it.pair)+'</span>'+(it.pairPrice?'<span class="'+c+'-pair-price">'+esc(it.pairPrice)+' glass</span>':'')+'</div>';
+    return '<div class="'+c+'-pair"><span class="'+c+'-pair-label">Pairing</span><span class="'+c+'-pair-wine">'+esc(it.pair)+'</span>'+(it.pairPrice?'<span class="'+c+'-pair-price">'+esc(it.pairPrice)+(it.pairKind==='spirit'?' pour':' glass')+'</span>':'')+'</div>';
   }
   /* the story behind a wine or spirit. js/wine-details.js is a small index ({id, match, kind}); a bottle's full story is
      assets/wines/<id>.json, fetched when a guest taps it. Matched on the menu section + name + note, every word of
